@@ -47,6 +47,7 @@ html {
     padding-left: 2vw;
     width: 30vw;
     border-radius: 90px;
+    font-size: 1.2vw;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(38,32,62);
     color: rgb(209,231,248);
@@ -61,6 +62,7 @@ html {
     align-items: center;
 }
 .rightNav > span {
+    cursor: pointer;
     margin-left: 2vw;
     padding: 0.5vw;
     border-radius: 99px;
@@ -74,4 +76,31 @@ html {
 .rightNav > span:hover {
     background-color: rgb(153,159,237);
     color: rgb(209,231,248);
+}
+.profileMenu {
+    position: relative;
+    display: none;
+    position: fixed;
+    top: 8.3vw;
+    background-color: rgb(79,72,121);
+    width: 25vw;
+    height: 27.5vw;
+}
+.profileMenu * {
+    margin: auto;
+    color: rgb(209,231,248);
+}
+.profileMenuBtns > a > div {
+    margin-top: 2vw;
+    padding: 0.5vw;
+    width: 80%;
+    font-size: 1.25vw;
+    background-color: rgb(47,41,84);
+}
+.profileMenuBtns > a > div:hover {
+    background-color: rgb(20,15,36);
+}
+.profileMenu > p {
+    font-size: 1vw;
+    margin-top: 5vw;
 }
