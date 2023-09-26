@@ -1,11 +1,11 @@
-body {
-    margin-top: 8.3vw !important;
-}
 html {
     padding: 0;
     margin: 0;
 }
 footer {
+    position: relative;
+    bottom: 0; 
+    left: 0; 
     width: 100vw;
     background-color: rgb(20,15,36);
 }
