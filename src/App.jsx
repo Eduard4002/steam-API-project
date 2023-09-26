@@ -6,29 +6,7 @@ function App() {
   return (
     <>
       <h5>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat
-        lorem eget sapien tincidunt aliquet. Nunc imperdiet a sem et eleifend.
-        Sed non viverra justo, posuere luctus erat. Curabitur ornare augue at
-        egestas volutpat. Quisque sed ultrices tellus. Morbi eu mi pharetra,
-        auctor nisl vel, egestas tellus. Duis luctus tellus id nibh vulputate,
-        dignissim iaculis sem posuere. Nam non risus non mauris porttitor
-        finibus non non sem. Vivamus id augue quis enim auctor tincidunt. Morbi
-        eu diam mauris. Sed mattis turpis ut lacus tempor, vel maximus massa
-        porttitor. Vestibulum et tempus diam. Integer euismod, leo in vehicula
-        placerat, turpis ex gravida leo, at gravida sapien velit vel massa.
-        Nulla quis cursus ante. Donec tincidunt purus eu ornare iaculis. Aliquam
-        sed est scelerisque, tincidunt orci vitae, aliquam mi. Sed eu urna
-        tortor. Vestibulum ac purus a arcu aliquet convallis. Quisque commodo
-        nisi sit amet metus suscipit, tincidunt vulputate quam cursus. Mauris
-        viverra egestas nisi eu ultrices. Fusce tempor a nibh ut aliquam.
-        Pellentesque purus augue, interdum sit amet vehicula ut, condimentum non
-        orci. Ut rhoncus leo vitae laoreet tristique. Suspendisse lobortis
-        varius quam, sit amet gravida ex sollicitudin sed. Donec malesuada
-        sagittis rutrum. Sed id ex bibendum, laoreet urna sed, dapibus libero.
-        Nulla diam diam, pretium vel eleifend sed, tempus eu justo. Donec
-        ullamcorper aliquet hendrerit. Nulla facilisi. Vestibulum in lorem vitae
-        elit tempor pulvinar. Pellentesque sodales eleifend justo, at aliquet
-        sapien varius a. Phasellus viverra nibh quis enim finibus, ut cursus
+        t sapien varius a. Phasellus viverra nibh quis enim finibus, ut cursus
         mauris tristique. Proin dui turpis, fringilla eu sodales eget,
         vestibulum eu massa. Quisque pretium nulla vel molestie hendrerit. Donec
         luctus suscipit orci, sit amet mattis eros interdum et. In tempus id
