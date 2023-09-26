@@ -1,5 +1,5 @@
 * {
-    outline: 1px red solid;
+    /* outline: 1px red solid; */
 }
 html {
     padding: 0;
@@ -17,6 +17,7 @@ html {
     text-align: center;
     float: left;
     width: 25vw;
+    height: 8.3vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +29,7 @@ html {
 .leftNav > h1 {
     color: rgb(128,132,154);
     margin-left: 1.5vw;
-    font-size: 3vw;
+    font-size: 2.6vw;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
 }
@@ -41,8 +42,8 @@ html {
     align-items: center;
 }
 #searchInput {
-    padding: 0.5vw;
-    padding-left: 1.5vw;
+    padding: 1vw;
+    padding-left: 2vw;
     width: 30vw;
     border-radius: 90px;
     font-family: Arial, Helvetica, sans-serif;
@@ -53,10 +54,23 @@ html {
 .rightNav {
     float: right;
     width: 25vw;
+    height: 8.3vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.profileIcon {
+.rightNav > span {
+    margin-left: 2vw;
+    padding: 0.5vw;
+    border-radius: 99px;
+    font-size: 2vw;
+    text-align: center;
     color: rgb(153,159,237);
+    border: 2px solid rgb(80,90,222);
+    background-color: rgb(209,231,248);
+    transition: all 100ms ease-in-out;
+}
+.rightNav > span:hover {
+    background-color: rgb(153,159,237);
+    color: rgb(209,231,248);
 }

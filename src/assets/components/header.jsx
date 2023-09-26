@@ -1,7 +1,5 @@
 import "../css/header.css";
 import Logo from '../img/logo.png'
-import Person from '../img/person.svg'
-import Heart from '../img/heart.svg'
 
 function Header() {
 
@@ -21,8 +19,8 @@ function Header() {
           />
         </div>
         <div className="rightNav">
-          <span className="profileIcon"><img src={Person} alt="Profile" /></span>
-          <span className="favoIcon"><img src={Heart} alt="Favorites" /></span>
+          <span className="material-symbols-outlined">person</span>
+          <span className="material-symbols-outlined">favorite</span>
         </div>
       </nav>
     </>
