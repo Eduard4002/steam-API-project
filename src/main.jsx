@@ -1,22 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import { Games } from "./routes/Games.jsx";
-import Header from "./assets/components/header.jsx";
-import Footer from "./assets/components/footer.jsx";
-import "./index.css";
-import Default from "./assets/components/Default.jsx";
-import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  useParams,
   Link,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  useParams,
 } from "react-router-dom";
+import App from "./App.jsx";
+import Default from "./assets/components/Default.jsx";
+import Footer from "./assets/components/footer.jsx";
+import Header from "./assets/components/header.jsx";
+import "./index.css";
 import LogIn from "./logInPage.jsx";
-import SignUp from "./signUpPage.jsx";
 import Profile from "./profile.jsx";
+import { Games } from "./routes/Games.jsx";
+import SignUp from "./signUpPage.jsx";
 
 const Wrapper = () => (
   <>
@@ -61,12 +60,13 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
+      {
+        path: "games",
+        element: <Games />,
+      },
     ],
   },
-  {
-    path: "games",
-    element: <Games />,
-  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
