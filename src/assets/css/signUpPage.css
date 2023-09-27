@@ -1,0 +1,48 @@
+body {
+    background: rgb(53,41,97);
+    background: linear-gradient(180deg, rgba(53,41,97,1) 0%, rgba(29,21,58,1) 100%);
+}
+.signUpDiv {
+    background-color: rgb(26,22,53);
+    border-radius: 25px;
+    margin: auto;
+    width: 30vw;
+}
+.signUpDiv > h3 {
+    color: rgb(161,159,250);
+    font-size: 3vw;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 3vw;
+}
+.signUpForm label {
+    font-size: 1.25vw;
+    font-weight: lighter;
+}
+.signUpForm input {
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 1vw;
+    width: 50%;
+    padding: 0.75vw;
+    background-color: rgb(161,159,250);
+    color: rgb(26,22,53);
+}
+.signUpForm input[type=submit] {
+    background-color: rgb(53,41,97);
+    color: rgb(161,159,250);
+    font-weight: bold;
+    margin: 2vw;
+    width: 55%;
+}
+.signUpForm input[type=submit]:hover {
+    background-color: rgb(53,41,97);
+    color: rgb(161,159,250);
+    font-weight: bold;
+    margin: 2vw;
+    width: 55%;
+}
+.logInQ {
+    font-size: 1vw;
+    margin-top: 5vw;
+}
