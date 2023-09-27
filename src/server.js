@@ -17,13 +17,9 @@ app.get("/api", function (req, res) {
   var url = "https://api.steampowered.com/ISteamApps/GetAppList/v2/";
 
   console.log("API at: " + url + " fetched");
-
   fetch(url)
     .then((res) => res.json())
-    .then(
-      (data) => res.json(data) // Send the data back to the client
-    )
-
+    .then((data) => res.json(data))
     .catch((error) => console.error(error));
 });
 app.listen(app.get("port"), function () {
