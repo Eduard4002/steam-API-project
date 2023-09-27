@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "../css/listGames.css";
 function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
