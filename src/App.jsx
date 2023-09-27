@@ -1,4 +1,5 @@
 import './App.css'
+import './assets/components/Default'
 
 
 function App() {

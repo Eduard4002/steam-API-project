@@ -1,0 +1,12 @@
+.default-container{
+    width: 50vh;
+    background-color: rgb(53, 26, 78);
+    
+}
+
+li{
+    margin-bottom: 50px;
+    text-align: left;
+    margin-left: 5vh;
+    margin-top: 5vh;
+}

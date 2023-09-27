@@ -1,8 +1,9 @@
 import React from "react";
+import "../css/sidebar.css"
 
 export default function Default() {
   return (
-    <div className="default-container">
+    <div className="default-container" style={{ float: 'left' }} >
 
         <li><a> Main Page</a></li>
         <li><a>Games</a></li>

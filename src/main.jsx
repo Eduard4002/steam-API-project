@@ -18,8 +18,8 @@ import LogIn from "./logInPage.jsx";
 const Wrapper = () => (
   <>
     <Header />
-    <Default />
-    <Outlet />
+    <Default/>
+    <App />
     <Footer />
   </>
 );
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "game",
+    path: "games",
     element: <Games />,
   },
   {
