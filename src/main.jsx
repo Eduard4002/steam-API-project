@@ -8,13 +8,13 @@ import {
   useParams,
 } from "react-router-dom";
 import App from "./App.jsx";
+import Games from "./Games.jsx";
 import Default from "./assets/components/Default.jsx";
 import Footer from "./assets/components/footer.jsx";
 import Header from "./assets/components/header.jsx";
 import "./index.css";
 import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
-import { Games } from "./routes/Games.jsx";
 import SignUp from "./signUpPage.jsx";
 
 const Wrapper = () => (
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "games",
+        path: "/games",
         element: <Games />,
       },
     ],
