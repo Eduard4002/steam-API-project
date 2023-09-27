@@ -16,6 +16,7 @@ import {
 } from "react-router-dom";
 import LogIn from "./logInPage.jsx";
 import SignUp from "./signUpPage.jsx";
+import Profile from "./profile.jsx";
 
 const Wrapper = () => (
   <>
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

@@ -49,7 +49,7 @@ function Header() {
             <div className="profileMenuBtns">
                 <Link to={"/login"}><div>Log In</div></Link>
                 <Link to={"/signup"}><div>Sign Up</div></Link>
-                <a href="#"><div>Profile</div></a>
+                <Link to={"/profile"}><div>Profile</div></Link>
                 <a href="#"><div>Something</div></a>
             </div>
             <p>Dont have an account? <Link to={"/signup"}>Sign Up</Link> to continue</p>
