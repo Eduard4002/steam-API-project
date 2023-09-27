@@ -1,7 +1,9 @@
 .default-container{
     width: 50vh;
     background-color: rgb(53, 26, 78);
-    
+    float: left;
+    position: fixed;
+    height: 100vh;
 }
 
 li{
