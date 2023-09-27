@@ -19,9 +19,7 @@ import LogIn from "./logInPage.jsx";
 const Wrapper = () => (
   <>
     <Header />
-    <ToggleVisibility>
     <Default />
-    </ToggleVisibility>
     <Outlet />
     <Footer />
   </>
