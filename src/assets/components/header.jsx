@@ -1,5 +1,8 @@
 import "../css/header.css";
 import Logo from '../img/logo.png'
+import {
+    Link,
+} from "react-router-dom";
 
 let logInOpen = false;
 const person = document.getElementById("person");
@@ -44,7 +47,7 @@ function Header() {
           <span className="material-symbols-outlined">favorite</span>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
-                <a href="#"><div>Log in</div></a>
+                <Link to={"/src/logInPage.jsx"}><div>Log in</div></Link>
                 <a href="#"><div>Profile</div></a>
                 <a href="#"><div>Log in</div></a>
                 <a href="#"><div>Something</div></a>

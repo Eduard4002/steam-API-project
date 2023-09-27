@@ -13,6 +13,7 @@ import {
   useParams,
   Link,
 } from "react-router-dom";
+import LogIn from "./logInPage.jsx";
 
 const Wrapper = () => (
   <>
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "game",
     element: <Games />,
+  },
+  {
+    path: "src/logInPage.jsx",
+    element: <LogIn />,
   },
 ]);
 

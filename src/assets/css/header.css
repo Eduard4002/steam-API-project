@@ -90,7 +90,7 @@ html {
     margin: auto;
     color: rgb(209,231,248);
 }
-.profileMenuBtns > a > div {
+.profileMenuBtns div {
     margin-top: 2vw;
     padding: 0.5vw;
     width: 80%;
