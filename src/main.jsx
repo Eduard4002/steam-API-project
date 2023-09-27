@@ -6,6 +6,8 @@ import Header from "./assets/components/header.jsx";
 import Footer from "./assets/components/footer.jsx";
 import "./index.css";
 import Default from "./assets/components/Default.jsx";
+import ListGames from "./assets/components/ListGames.jsx";
+import "./assets/css/listGames.css";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -18,7 +20,7 @@ import LogIn from "./logInPage.jsx";
 const Wrapper = () => (
   <>
     <Header />
-    <Default/>
+    <Default />
     <App />
     <Footer />
   </>
@@ -50,7 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path: "games",
-    element: <Games />,
+    element: <ListGames />,
   },
   {
     path: "src/logInPage.jsx",

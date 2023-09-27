@@ -14,10 +14,15 @@ app.use(function (req, res, next) {
 });
 
 app.get("/api", function (req, res) {
-  var url = "https://api.steampowered.com/ISteamApps/GetAppList/v2/";
+  const apiURL = req.query.url; // Get the API URL from the query parameters
 
-  console.log("API at: " + url + " fetched");
-  fetch(url)
+  if (!apiURL) {
+    res.status(400).json({ error: "API URL is missing" });
+    return;
+  }
+
+  console.log("API at: " + apiURL + " fetched");
+  fetch(apiURL)
     .then((res) => res.json())
     .then((data) => res.json(data))
     .catch((error) => console.error(error));

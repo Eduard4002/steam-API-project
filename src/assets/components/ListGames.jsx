@@ -4,10 +4,14 @@ function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
   const [displayedGames, setDisplayedGames] = useState([]);
+  const [images, setImages] = useState([]);
+
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
 
   const gamesPerPage = 10;
-  const maxGames = 100;
+  const maxGames = 15;
+  const allAppsURL =
+    "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json";
 
   // Function to filter and limit games
   const filterAndLimitGames = (games) => {
@@ -25,9 +29,9 @@ function ListGames() {
     return limitedGames;
   };
 
-  //Retrieve the information from the server
+  //Retrieve all games
   useEffect(() => {
-    fetch("http://localhost:3000/api")
+    fetch("http://localhost:3000/api?url=" + allAppsURL)
       .then((response) => response.json())
       .then((json) => {
         const games = json.applist.apps;
@@ -39,25 +43,44 @@ function ListGames() {
       })
       .catch((error) => console.error(error));
   }, []);
-
-  // Function to load the next 10 games
-  const loadNextGames = () => {
-    setCurrentIndex((prevIndex) => prevIndex + 1);
-  };
-
-  // Function to load the previous 10 games if needed
-  const loadPreviousGames = () => {
-    setCurrentIndex((prevIndex) => prevIndex - 1);
-  };
+  console.log("Displayed");
   console.log(displayedGames);
+  //Used for retrieving the images from another API
+  useEffect(() => {
+    displayedGames.map((item) => {
+      fetch(
+        "http://localhost:3000/api?url=" +
+          "https://store.steampowered.com/api/appdetails?appids=" +
+          item.appid
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          if (json[item.appid] && json[item.appid].data.header_image) {
+            setImages((prevImages) => [
+              ...prevImages,
+              json[item.appid].data.header_image,
+            ]);
+          }
+        })
+        .catch((error) => console.error(error));
+    });
+    //setImages(tempArr);
+  }, []);
+  console.log("Images");
+  console.log(images);
+  let indexImages = 0;
   return (
     <div>
-      <button onClick={loadPreviousGames} disabled={currentIndex === 0}>
+      <button
+        onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
+        disabled={currentIndex === 0}
+      >
         <p key="prev">Previous</p>
       </button>
       <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
       <button
-        onClick={loadNextGames}
+        onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
         disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
       >
         <p key="next">Next</p>
@@ -69,6 +92,10 @@ function ListGames() {
         )
         .map((game, index) => (
           <div className="container" key={game.appid + index}>
+            {images && (
+              <img src={images[indexImages++]} key={images[index]}></img>
+            )}
+            <p>{index}</p>
             <p>{game.appid}</p>
             <p>{game.name}</p>
           </div>
