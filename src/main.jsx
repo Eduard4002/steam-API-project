@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import { Games } from "./routes/Games.jsx";
-import Header from "./assets/components/header.jsx";
-import Footer from "./assets/components/footer.jsx";
-import "./index.css";
-import Default from "./assets/components/Default.jsx";
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  useParams,
   Link,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  useParams,
 } from "react-router-dom";
+import App from "./App.jsx";
+import Default from "./assets/components/Default.jsx";
+import Footer from "./assets/components/footer.jsx";
+import Header from "./assets/components/header.jsx";
+import "./index.css";
+import { Games } from "./routes/Games.jsx";
 
 const Wrapper = () => (
   <>
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "game",
+    path: "games",
     element: <Games />,
   },
 ]);
