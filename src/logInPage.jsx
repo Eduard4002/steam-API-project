@@ -12,6 +12,7 @@ function LogIn() {
           <input type="text" id="lname" name="lname" value="Doe"></input><br />
           <input type="submit" value="Submit"></input><br />
         </form>
+        <p className="signUpQ"></p>
       </div>
     </>
   );
