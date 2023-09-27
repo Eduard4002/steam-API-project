@@ -5,15 +5,48 @@ import Header from './assets/components/header.jsx'
 import Footer from './assets/components/footer.jsx'
 import './index.css'
 import Default from './assets/components/Default.jsx'
-import ToggleVisibility from './assets/components/ToggleVisibility.jsx'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+const Wrapper = () => (
+  <>
     <Header />
-      <ToggleVisibility>
-          <Default />
-      </ToggleVisibility>
+    <Default/>
     <App />
     <Footer />
-  </React.StrictMode>,
-)
+  </>
+);
+const Test = () => {
+  let { gameId } = useParams();
+
+  return (
+    <>
+      <h1>Game: {gameId}</h1>
+      <Link to={"/"}>hehe</Link>
+    </>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    element: <Wrapper />,
+    children: [
+      {
+        path: "",
+        element: <App />,
+      },
+      {
+        path: "game/:gameId",
+        element: <Test />,
+      },
+    ],
+  },
+  {
+    path: "games",
+    element: <Games />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
