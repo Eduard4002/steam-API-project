@@ -6,6 +6,7 @@ import Header from "./assets/components/header.jsx";
 import Footer from "./assets/components/footer.jsx";
 import "./index.css";
 import Default from "./assets/components/Default.jsx";
+import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -18,7 +19,9 @@ import LogIn from "./logInPage.jsx";
 const Wrapper = () => (
   <>
     <Header />
+    <ToggleVisibility>
     <Default />
+    </ToggleVisibility>
     <Outlet />
     <Footer />
   </>
