@@ -1,27 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import { Games } from "./routes/Games.jsx";
-import Header from "./assets/components/header.jsx";
-import Footer from "./assets/components/footer.jsx";
-import "./index.css";
-import Default from "./assets/components/Default.jsx";
-import ListGames from "./assets/components/ListGames.jsx";
-import "./assets/css/listGames.css";
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  useParams,
   Link,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  useParams,
 } from "react-router-dom";
+import App from "./App.jsx";
+import Games from "./Games.jsx";
+import Default from "./assets/components/Default.jsx";
+import Footer from "./assets/components/footer.jsx";
+import Header from "./assets/components/header.jsx";
+import "./index.css";
 import LogIn from "./logInPage.jsx";
+import Profile from "./profile.jsx";
+import SignUp from "./signUpPage.jsx";
 
 const Wrapper = () => (
   <>
     <Header />
     <Default />
-    <App />
+    <Outlet />
     <Footer />
   </>
 );
@@ -41,22 +41,30 @@ const router = createBrowserRouter([
     element: <Wrapper />,
     children: [
       {
-        path: "",
+        path: "/",
         element: <App />,
       },
       {
-        path: "game/:gameId",
+        path: "/game/:gameId",
         element: <Test />,
       },
+      {
+        path: "/login",
+        element: <LogIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/games",
+        element: <Games />,
+      },
     ],
-  },
-  {
-    path: "games",
-    element: <ListGames />,
-  },
-  {
-    path: "src/logInPage.jsx",
-    element: <LogIn />,
   },
 ]);
 
