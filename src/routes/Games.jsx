@@ -1,3 +1,4 @@
+import "../routes/Games";
 export const Games = () => {
   return (
     <div>
