@@ -1,4 +1,5 @@
 import "./assets/css/signUpPage.css";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   return (
@@ -14,7 +15,7 @@ function SignUp() {
           <input type="text" id="lname" name="lname" placeholder="Password"></input><br />
           <input type="submit" value="Submit"></input><br />
         </form>
-        <p className="logInQ"></p>
+        <p className="logInQ">Already got an account? <Link to={"/login"}>Log in</Link> to continue</p>
       </div>
     </>
   );
