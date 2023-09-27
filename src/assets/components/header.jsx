@@ -47,7 +47,7 @@ function Header() {
           <span className="material-symbols-outlined">favorite</span>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
-                <Link to={"/src/logInPage.jsx"}><div>Log in</div></Link>
+                <Link to={"/login"}><div>Log in</div></Link>
                 <a href="#"><div>Profile</div></a>
                 <a href="#"><div>Log in</div></a>
                 <a href="#"><div>Something</div></a>
