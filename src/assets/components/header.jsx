@@ -31,8 +31,8 @@ function Header() {
     <>
       <nav className="navBar">
         <div className="leftNav">
-          <img src={Logo} alt="Logo" />
-          <h1>Game API</h1>
+          <Link to={""}><img src={Logo} alt="Logo" /></Link>
+          <Link to={""}><h1>Game API</h1></Link>
         </div>
         <div className="middleNav">
           <input
@@ -47,12 +47,12 @@ function Header() {
           <span className="material-symbols-outlined">favorite</span>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
-                <Link to={"/src/logInPage.jsx"}><div>Log in</div></Link>
+                <Link to={"/login"}><div>Log In</div></Link>
+                <Link to={"/signup"}><div>Sign Up</div></Link>
                 <a href="#"><div>Profile</div></a>
-                <a href="#"><div>Log in</div></a>
                 <a href="#"><div>Something</div></a>
             </div>
-            <p>Dont have an account? <a href="">Sign up</a> to continue</p>
+            <p>Dont have an account? <Link to={"/signup"}>Sign Up</Link> to continue</p>
           </div>
         </div>
       </nav>

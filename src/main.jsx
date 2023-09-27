@@ -15,6 +15,7 @@ import {
   Link,
 } from "react-router-dom";
 import LogIn from "./logInPage.jsx";
+import SignUp from "./signUpPage.jsx";
 
 const Wrapper = () => (
   <>
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LogIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },

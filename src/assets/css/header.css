@@ -23,11 +23,11 @@ html {
     justify-content: center;
     align-items: center;
 }
-.leftNav > img {
+.leftNav img {
     width: 5vw;
     height: 5vw;
 }
-.leftNav > h1 {
+.leftNav h1 {
     color: rgb(128,132,154);
     margin-left: 1.5vw;
     font-size: 2.6vw;
