@@ -15,14 +15,7 @@ function ListGames() {
 
       .catch((error) => console.error(error));
   }, []);
-  console.log("DATA", data);
-  return (
-    <>
-      {data.apps.map((item) => (
-        <p key={item.id}>{item}</p>
-      ))}
-    </>
-  );
+  return <>{data.apps && data.apps.map((item) => console.log(item.name))}</>;
 }
 
 export default ListGames;

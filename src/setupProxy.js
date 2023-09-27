@@ -20,7 +20,10 @@ app.get("/api", function (req, res) {
   console.log("url", url);
 
   fetch(url)
-    .then((response) => response.json())
+    .then((res) => res.json())
+    .then(
+      (data) => res.json(data) // Send the data back to the client
+    )
 
     .catch((error) => console.error(error));
 });
