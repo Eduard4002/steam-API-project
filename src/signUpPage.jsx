@@ -7,11 +7,11 @@ function SignUp() {
         <h3>Sign Up</h3>
         <form action="" className="signUpForm">
           <label>E-Mail:</label><br />
-          <input type="text" id="lname" name="lname" value="Doe"></input><br />
+          <input type="text" id="lname" name="lname" placeholder="E-Mail"></input><br />
           <label>Username:</label><br />
-          <input type="text" id="fname" name="fname" value="John"></input><br />
+          <input type="text" id="fname" name="fname" placeholder="Username"></input><br />
           <label>Password:</label><br />
-          <input type="text" id="lname" name="lname" value="Doe"></input><br />
+          <input type="text" id="lname" name="lname" placeholder="Password"></input><br />
           <input type="submit" value="Submit"></input><br />
         </form>
         <p className="logInQ"></p>
