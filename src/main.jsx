@@ -18,7 +18,6 @@ import Profile from "./profile.jsx";
 import SignUp from "./signUpPage.jsx";
 
 
-
 const Wrapper = () => (
   <>
     <Header />
