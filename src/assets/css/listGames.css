@@ -4,4 +4,8 @@
     border:1px solid black;
     width: 1000px;
     margin:auto;
+    max-height: 200px;
+}
+.container img{
+    max-width: 30%;
 }
