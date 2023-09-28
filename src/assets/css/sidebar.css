@@ -8,7 +8,8 @@
     float: left;
     position: fixed;
     height: 100%; 
-    
+    transition: transform 0.3s ease;
+  
   }
   
  
@@ -40,7 +41,17 @@
   }
 
 
-.component-container{
-    position: flex;
+.coolbtn{
+
+    display: flex;
+    margin-top: 2%;
+    margin-left: 1%;
+float: left;
 }
 
+.coolbtn.move-right {
+    transform: translateX(44vh); 
+    transition: transform 0.3s ease; 
+  }
+  
+ 
