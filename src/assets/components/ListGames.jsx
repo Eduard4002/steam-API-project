@@ -91,10 +91,7 @@ function ListGames() {
 
   return (
     <div>
-<<<<<<< HEAD
       <div className="filter">Filter</div>
-=======
->>>>>>> c3378820beddcf47ecdfb058d6e991bc33522f31
       <div className="mainDiv">
         
         <div className="contFlex">
