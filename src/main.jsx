@@ -15,11 +15,12 @@ import "./index.css";
 import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import SignUp from "./signUpPage.jsx";
+import ListGames from "./assets/components/ListGames.jsx";
 
 const Wrapper = () => (
   <>
     <Header />
-    {/* <ToggleVisibility> <Default /></ToggleVisibility> */}
+    <Default />
     <Outlet />
     <Footer />
   </>
