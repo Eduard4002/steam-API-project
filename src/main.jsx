@@ -66,6 +66,10 @@ const router = createBrowserRouter([
         element: <ListGames />,
         //element: <Games />,
       },
+      {
+        path: "/singlegame",
+        element: <Singlegame />,
+      },
     ],
   },
 ]);
