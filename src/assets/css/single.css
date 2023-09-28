@@ -1,3 +1,7 @@
-body{
-    background-color: linear-gradient(to bottom, #ff9900, #ff3366);
+.singleInfo{
+ width: 100vh;
+}
+
+.singlePic{
+    width: 100vh;
 }
