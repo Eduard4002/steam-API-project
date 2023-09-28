@@ -11,6 +11,7 @@
 }
 .each-slide-effect > div {
   /* background-color: blue; */
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
