@@ -1,7 +1,5 @@
 import "./assets/css/logInPage.css";
 
-
-
 function LogIn() {
   return (
     <>
