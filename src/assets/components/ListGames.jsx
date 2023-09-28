@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/listGames.css";
+
 function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
@@ -7,7 +9,8 @@ function ListGames() {
   const [images, setImages] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
-
+  const [imagesIndex, setImagesIndex] = useState(0); // Start at 0
+  let tempImages = [];
   const gamesPerPage = 10;
   const maxGames = 15;
   const allAppsURL =
@@ -43,63 +46,109 @@ function ListGames() {
       })
       .catch((error) => console.error(error));
   }, []);
-  console.log("Displayed");
-  console.log(displayedGames);
+
   //Used for retrieving the images from another API
   useEffect(() => {
-    displayedGames.map((item) => {
-      fetch(
-        "http://localhost:3000/api?url=" +
-          "https://store.steampowered.com/api/appdetails?appids=" +
-          item.appid
-      )
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
-          if (json[item.appid] && json[item.appid].data.header_image) {
-            setImages((prevImages) => [
-              ...prevImages,
-              json[item.appid].data.header_image,
-            ]);
-          }
-        })
-        .catch((error) => console.error(error));
+    // Clear the existing images array
+    setImages([]);
+
+    // Create a temporary map to associate images with games
+    const imageMap = {};
+
+    // Use Promise.all to wait for all fetch calls to complete
+    Promise.all(
+      displayedGames.map((item) => {
+        // Construct the URL for fetching game details
+        let url =
+          "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
+          item.appid;
+
+        // Perform the fetch request
+        return fetch(url)
+          .then((response) => response.json())
+          .then((json) => {
+            // Check if the JSON response contains an image URL
+            if (json[item.appid].success) {
+              // Associate the fetched image URL with its corresponding game
+              imageMap[item.appid] = json[item.appid].data.header_image;
+            }
+          })
+          .catch((error) => {
+            // Handle errors that occur during the fetch
+            console.error(error);
+          });
+      })
+    ).then(() => {
+      // Create an array of images based on the displayedGames order
+      const imagesForDisplayedGames = displayedGames.map(
+        (item) => imageMap[item.appid] || null
+      );
+
+      // Update the images state with the fetched images
+      setImages(imagesForDisplayedGames);
     });
-    //setImages(tempArr);
-  }, []);
-  console.log("Images");
-  console.log(images);
-  let indexImages = 0;
+  }, [displayedGames]); // This useEffect depends on changes in the displayedGames array
+
   return (
     <div>
-      <button
-        onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
-        disabled={currentIndex === 0}
-      >
-        <p key="prev">Previous</p>
-      </button>
-      <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
-      <button
-        onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
-        disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
-      >
-        <p key="next">Next</p>
-      </button>
-      {displayedGames
-        .slice(
-          currentIndex * gamesPerPage,
-          currentIndex * gamesPerPage + gamesPerPage
-        )
-        .map((game, index) => (
-          <div className="container" key={game.appid + index}>
-            {images && (
-              <img src={images[indexImages++]} key={images[index]}></img>
-            )}
-            <p>{index}</p>
-            <p>{game.appid}</p>
-            <p>{game.name}</p>
-          </div>
-        ))}
+<<<<<<< HEAD
+      <div className="filter">Filter</div>
+=======
+>>>>>>> c3378820beddcf47ecdfb058d6e991bc33522f31
+      <div className="mainDiv">
+        
+        <div className="contFlex">
+          {displayedGames
+            .slice(
+              currentIndex * gamesPerPage,
+              currentIndex * gamesPerPage + gamesPerPage
+            )
+
+            .map((game, index) => (
+              <>
+                <div className="container" key={game.appid + index}>
+                  {images && (
+                    <img
+                      src={
+                        images[currentIndex * gamesPerPage + index] ||
+                        "src/assets/img/placeholder.webp"
+                      }
+                      key={images[currentIndex * gamesPerPage + index]}
+                      className="image"
+                    ></img>
+                  )}
+                  <div className="textDiv">
+                    <h2 key={game.name}>{game.name}</h2>
+                    <h2> : </h2>
+                    <h2 key={game.appid}>{game.appid}</h2>
+                  </div>
+                  <div className="buttonsDiv">
+                    <div className="five-pointed-star"></div>
+
+                    <Link to={"/game/:" + game.appid} className="moreButton">
+                      More
+                    </Link>
+                  </div>
+                </div>
+              </>
+            ))}
+        </div>
+      </div>
+      <div className="buttons">
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
+          disabled={currentIndex === 0}
+        >
+          <p key="prev">Previous</p>
+        </button>
+        <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
+          disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
+        >
+          <p key="next">Next</p>
+        </button>
+      </div>
     </div>
   );
 }
