@@ -1,6 +1,11 @@
 import "./assets/css/logInPage.css";
+// import './assets/components/Sidebar'
+// import './assets/components/ToggleVisibility'
+
 
 function LogIn() {
+ 
+
   return (
     <>
       <div className="logInDiv">
@@ -17,4 +22,5 @@ function LogIn() {
     </>
   );
 }
+
 export default LogIn;

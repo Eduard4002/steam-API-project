@@ -21,7 +21,7 @@ import ListGames from "./assets/components/ListGames.jsx";
 const Wrapper = () => (
   <>
     <Header />
-    <Default />
+    {/* <ToggleVisibility> <Default /></ToggleVisibility> */}
     <Outlet />
     <Footer />
   </>
