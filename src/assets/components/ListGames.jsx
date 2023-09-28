@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/listGames.css";
+
 function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
@@ -7,7 +8,7 @@ function ListGames() {
   const [images, setImages] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
-
+  let tempImages = [];
   const gamesPerPage = 10;
   const maxGames = 15;
   const allAppsURL =
@@ -47,29 +48,45 @@ function ListGames() {
   console.log(displayedGames);
   //Used for retrieving the images from another API
   useEffect(() => {
-    displayedGames.map((item) => {
-      fetch(
-        "http://localhost:3000/api?url=" +
-          "https://store.steampowered.com/api/appdetails?appids=" +
-          item.appid
-      )
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
-          if (json[item.appid] && json[item.appid].data.header_image) {
-            setImages((prevImages) => [
-              ...prevImages,
-              json[item.appid].data.header_image,
-            ]);
-          }
-        })
-        .catch((error) => console.error(error));
+    setImages([]);
+    const imageMap = {}; // Create a temporary map to associate images with games
+
+    // Use Promise.all to wait for all fetch calls to complete
+    Promise.all(
+      displayedGames.map((item) => {
+        let url =
+          "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
+          item.appid;
+
+        return fetch(url)
+          .then((response) => response.json())
+          .then((json) => {
+            console.log("----------");
+            console.log(
+              "Displayed images index: " + displayedGames.indexOf(item)
+            );
+            console.log("URL: " + url);
+            console.log("Response from server: ");
+            console.log(json);
+
+            if (json[item.appid] && json[item.appid].data.header_image) {
+              imageMap[item.appid] = json[item.appid].data.header_image; // Associate image with game
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      })
+    ).then(() => {
+      // Create an array of images based on the displayedGames order
+      const imagesForDisplayedGames = displayedGames.map(
+        (item) => imageMap[item.appid] || null
+      );
+      setImages(imagesForDisplayedGames);
     });
-    //setImages(tempArr);
-  }, []);
+  }, [displayedGames]);
   console.log("Images");
   console.log(images);
-  let indexImages = 0;
   return (
     <div>
       <button
@@ -91,14 +108,14 @@ function ListGames() {
           currentIndex * gamesPerPage + gamesPerPage
         )
         .map((game, index) => (
-          <div className="container" key={game.appid + index}>
-            {images && (
-              <img src={images[indexImages++]} key={images[index]}></img>
-            )}
-            <p>{index}</p>
-            <p>{game.appid}</p>
-            <p>{game.name}</p>
-          </div>
+          <>
+            <div className="container" key={game.appid + index}>
+              {images && <img src={images[index]} key={images[index]}></img>}
+              <p key={index}>{index}</p>
+              <p key={game.appid}>{game.appid}</p>
+              <p key={game.name}>{game.name}</p>
+            </div>
+          </>
         ))}
     </div>
   );
