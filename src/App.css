@@ -1,3 +1,4 @@
+
 body {
   text-align: center;
   margin: 0;
@@ -10,41 +11,33 @@ body {
   margin: auto;
   margin-top: 3vw;
   width: 60vw;
-  height: 45vw;
+  height: 35vw;
 }
-/* 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.favoriteGrid {
+  margin: auto;
+  width: 60vw;
+  height: 15vw;
+  margin-bottom: 5vw;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 3%; 
+  grid-template-areas: 
+    ". . ."; 
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.favoriteCard {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.favoriteStar {
+  position: absolute;
+  color: rgb(255, 223, 118);
+  font-size: 2.5vw;
+  bottom: 1vw;
+  right: 1vw;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.favoriteStar:hover {
+  color: rgb(255, 195, 0);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
