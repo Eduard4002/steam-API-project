@@ -4,13 +4,6 @@
     margin-top: 50px;
 }
 
-.filter {
-    width: 100px;
-    height: 100px;
-    background-color: aqua;
-    margin: 50px;
-}
-
 
 
 .container {
@@ -46,8 +39,15 @@
     display: flex;
     flex-direction: row;
     color: #9EA3BC;
-    min-width: 55%;
 }
+.nameAndDescDiv{
+    min-width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: left;
+}
+
 
 .buttons {
     display: flex;
