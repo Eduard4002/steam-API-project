@@ -89,21 +89,7 @@ function ListGames() {
   console.log(images);
   return (
     <div>
-      <div className="buttons">
-        <button
-          onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
-          disabled={currentIndex === 0}
-        >
-          <p key="prev">Previous</p>
-        </button>
-        <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
-        <button
-          onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
-          disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
-        >
-          <p key="next">Next</p>
-        </button>
-      </div>
+      
       <div className="mainDiv">
         <div className="filter">
           Filter
@@ -120,14 +106,29 @@ function ListGames() {
                 <div className="container" key={game.appid + index}>
                   {images && <img src={images[index]} key={images[index]} className="image"></img>}
                   <div className="textDiv">
-                    <p key={game.name}>{game.name}</p>
-                    <p> : </p>
-                    <p key={game.appid}>{game.appid}</p>
+                    <h2 key={game.name}>{game.name}</h2>
+                    <h2> : </h2>
+                    <h2 key={game.appid}>{game.appid}</h2>
                   </div>
                 </div>
               </>
             ))}
         </div>
+      </div>
+      <div className="buttons">
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
+          disabled={currentIndex === 0}
+        >
+          <p key="prev">Previous</p>
+        </button>
+        <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
+          disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
+        >
+          <p key="next">Next</p>
+        </button>
       </div>
     </div>
   );

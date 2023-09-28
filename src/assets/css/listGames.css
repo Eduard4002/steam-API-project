@@ -1,6 +1,7 @@
 .mainDiv{
     display: flex;
     flex-direction: row;
+    margin-top: 50px;
 }
 .filter{
     width: 300px;
@@ -12,9 +13,10 @@
     border:1px solid black;
     width: 1000px;
     margin: auto;
-    gap: 75px;
+    gap: 20px;
     border-radius: 5px;
     margin-bottom: 20px;
+    background-color: #171224;
 }
 .image{
     max-width: 300px;
@@ -25,11 +27,13 @@
     flex-direction: column;
 }
 .textDiv{
-    gap: 5px;
+    gap: 10px;
     display: flex;
     flex-direction: row;
 }
 .buttons{
     display: flex;
     flex-direction: row;
+    margin: auto;
+    gap: 15px;
 }
