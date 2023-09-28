@@ -12,6 +12,7 @@ function ListGames() {
   const [images, setImages] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
+  const [imagesIndex, setImagesIndex] = useState(0); // Start at 0
   let tempImages = [];
   const gamesPerPage = 10;
   const maxGames = 15;
@@ -48,36 +49,35 @@ function ListGames() {
       })
       .catch((error) => console.error(error));
   }, []);
-  console.log("Displayed");
-  console.log(displayedGames);
+
   //Used for retrieving the images from another API
   useEffect(() => {
+    // Clear the existing images array
     setImages([]);
-    const imageMap = {}; // Create a temporary map to associate images with games
+
+    // Create a temporary map to associate images with games
+    const imageMap = {};
 
     // Use Promise.all to wait for all fetch calls to complete
     Promise.all(
       displayedGames.map((item) => {
+        // Construct the URL for fetching game details
         let url =
           "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
           item.appid;
 
+        // Perform the fetch request
         return fetch(url)
           .then((response) => response.json())
           .then((json) => {
-            console.log("----------");
-            console.log(
-              "Displayed images index: " + displayedGames.indexOf(item)
-            );
-            console.log("URL: " + url);
-            console.log("Response from server: ");
-            console.log(json);
-
-            if (json[item.appid] && json[item.appid].data.header_image) {
-              imageMap[item.appid] = json[item.appid].data.header_image; // Associate image with game
+            // Check if the JSON response contains an image URL
+            if (json[item.appid].success) {
+              // Associate the fetched image URL with its corresponding game
+              imageMap[item.appid] = json[item.appid].data.header_image;
             }
           })
           .catch((error) => {
+            // Handle errors that occur during the fetch
             console.error(error);
           });
       })
@@ -86,18 +86,17 @@ function ListGames() {
       const imagesForDisplayedGames = displayedGames.map(
         (item) => imageMap[item.appid] || null
       );
+
+      // Update the images state with the fetched images
       setImages(imagesForDisplayedGames);
     });
-  }, [displayedGames]);
-  console.log("Images");
-  console.log(images);
+  }, [displayedGames]); // This useEffect depends on changes in the displayedGames array
+
   return (
     <div>
       
       <div className="mainDiv">
-        <div className="filter">
-          Filter
-        </div>
+        <div className="filter">Filter</div>
         <div className="contFlex">
           {displayedGames
             .slice(
@@ -108,7 +107,16 @@ function ListGames() {
             .map((game, index) => (
               <>
                 <div className="container" key={game.appid + index}>
-                  {images && <img src={images[index]} key={images[index]} className="image"></img>}
+                  {images && (
+                    <img
+                      src={
+                        images[currentIndex * gamesPerPage + index] ||
+                        "src/assets/img/placeholder.webp"
+                      }
+                      key={images[currentIndex * gamesPerPage + index]}
+                      className="image"
+                    ></img>
+                  )}
                   <div className="textDiv">
                     <h2 key={game.name}>{game.name}</h2>
                     <h2> : </h2>

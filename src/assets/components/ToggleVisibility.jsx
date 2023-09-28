@@ -13,9 +13,9 @@ export default function ToggleVisibility({ children }) {
   var button = show ? "<" : ">";
 
   return (
-    <div className="component-container">
+    <div className={`component-container ${show ? "show-sidebar" : ""}`}> 
       {show && children}
-      <button className="coolbtn" onClick={toggleShow}>{button}</button>
+      <button className={`coolbtn ${show ? "move-right" : ""}`}  onClick={toggleShow}>{button}</button>
     </div>
   );
 }
