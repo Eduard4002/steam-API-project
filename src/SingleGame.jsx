@@ -1,10 +1,16 @@
 import '../src/assets/css/single.css';
-
+import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
+import ToggleVisibility from "./assets/components/ToggleVisibility";
 
 
 function singlegame() {
     return (
       <>
+        <ToggleVisibility>
+        <StuckMenu /> {/* Use the Slideshow component */}
+      </ToggleVisibility>
+
+      
         <div className="singleContainer">
                 <div className="singleInfo">
                     <div className="stars"></div>

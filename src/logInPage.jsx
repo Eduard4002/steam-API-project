@@ -12,6 +12,7 @@ function LogIn() {
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
+      
       <div className="logInDiv">
         <h3>Log In</h3>
         <form action="" className="logInForm">
