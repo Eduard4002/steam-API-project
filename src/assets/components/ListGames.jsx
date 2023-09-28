@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {
+  Link,
+} from "react-router-dom";
 import "../css/listGames.css";
+
 
 function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
@@ -109,6 +113,14 @@ function ListGames() {
                     <h2 key={game.name}>{game.name}</h2>
                     <h2> : </h2>
                     <h2 key={game.appid}>{game.appid}</h2>
+                  </div>
+                  <div className="buttonsDiv">
+                    <div className="five-pointed-star">
+
+                    </div>
+                    <Link to = "/game/:gameId" className="moreButton">
+                      More
+                    </Link>
                   </div>
                 </div>
               </>
