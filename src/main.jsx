@@ -8,7 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 import App from "./App.jsx";
-import Default from "./assets/components/Default.jsx";
+import ListGames from "./assets/components/ListGames.jsx";
 import Footer from "./assets/components/footer.jsx";
 import Header from "./assets/components/header.jsx";
 import "./index.css";
