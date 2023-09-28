@@ -19,7 +19,7 @@ import SignUp from "./signUpPage.jsx";
 const Wrapper = () => (
   <>
     <Header />
-    <Default />
+    {/* <ToggleVisibility> <Default /></ToggleVisibility> */}
     <Outlet />
     <Footer />
   </>
