@@ -1,24 +1,16 @@
 body {
+  text-align: center;
   margin: 0;
   padding: 0;
-
 }
-#root {
-  margin: 0 auto;
-  text-align: center;
+.appContainer {
+  margin-left: 50vh;
 }
 h5 {
   margin: auto;
-  width: 60%;
   font-size: 2vw;
   padding: 2vw;
 }
-
-
-
-
-
-
 
 /* 
 .logo {
