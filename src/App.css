@@ -6,12 +6,12 @@ body {
 .appContainer {
   margin-left: 50vh;
 }
-h5 {
+.slideWrapper {
   margin: auto;
-  font-size: 2vw;
-  padding: 2vw;
+  margin-top: 3vw;
+  width: 60vw;
+  height: 45vw;
 }
-
 /* 
 .logo {
   height: 6em;
