@@ -5,9 +5,13 @@
 }
 
 .filter {
-    width: 300px;
-    height: 600px;
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 50px;
 }
+
+
 
 .container {
     display: flex;
@@ -33,6 +37,8 @@
 .contFlex {
     display: flex;
     flex-direction: column;
+    width: 2000px;
+    margin-inline: auto;
 }
 
 .textDiv {
@@ -60,7 +66,7 @@
 }
 
 .moreButton {
-    width: 60px;
+    width: 65px;
     height: 30px;
     background-color: #41345E;
     border-radius: 5px;
@@ -85,7 +91,7 @@
     border-bottom: 0.7em solid var(--star-color);
     border-left: 1em solid transparent;
     transform: rotate(35deg);
-    
+
 }
 
 .five-pointed-star:before {

@@ -94,9 +94,9 @@ function ListGames() {
 
   return (
     <div>
-      
+      <div className="filter">Filter</div>
       <div className="mainDiv">
-        <div className="filter">Filter</div>
+        
         <div className="contFlex">
           {displayedGames
             .slice(
