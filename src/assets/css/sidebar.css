@@ -1,0 +1,46 @@
+
+
+.default-container {
+    width: 250px;
+    background-color: rgb(31, 26, 44);
+    color: #fff;
+    padding: 20px; 
+    float: left;
+    position: fixed;
+    height: 100%; 
+    
+  }
+  
+ 
+  .default-container ul {
+    list-style: none; 
+    padding: 0;
+    
+  }
+  
+  
+  .default-container li {
+    margin-bottom: 10px; 
+    
+  }
+  
+
+  .default-container a {
+    text-decoration: none; 
+    color: #fff; 
+    display: block; 
+    padding: 10px; 
+    transition: background-color 0.3s; 
+    cursor: pointer;
+  }
+  
+  .default-container a:hover {
+    background-color: #a191ce; 
+    color: #1c1a29;
+  }
+
+
+.component-container{
+    position: flex;
+}
+
