@@ -1,9 +1,12 @@
 @import "react-slideshow-image/dist/styles.css";
 
+button {
+    padding: 0;
+}
+
 .slider {
-  width: 40vw;
+  width: 38vw;
   height: 300vh;
-  background-color: pink;
 }
 .each-slide-effect {
     width: 100%;
@@ -26,4 +29,13 @@
   padding: 20px;
   font-size: 20px;
   text-align: center;
+}
+.material-symbols-outlined {
+    font-size: 4vw;
+}
+.left {
+    margin-left: 1vw !important;
+}
+.right {
+    margin-right: 2vw !important;
 }
