@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {
+  Link,
+} from "react-router-dom";
 import "../css/listGames.css";
+
 
 function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
@@ -90,21 +94,7 @@ function ListGames() {
 
   return (
     <div>
-      <div className="buttons">
-        <button
-          onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
-          disabled={currentIndex === 0}
-        >
-          <p key="prev">Previous</p>
-        </button>
-        <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
-        <button
-          onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
-          disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
-        >
-          <p key="next">Next</p>
-        </button>
-      </div>
+      
       <div className="mainDiv">
         <div className="filter">Filter</div>
         <div className="contFlex">
@@ -128,14 +118,37 @@ function ListGames() {
                     ></img>
                   )}
                   <div className="textDiv">
-                    <p key={game.name}>{game.name}</p>
-                    <p> : </p>
-                    <p key={game.appid}>{game.appid}</p>
+                    <h2 key={game.name}>{game.name}</h2>
+                    <h2> : </h2>
+                    <h2 key={game.appid}>{game.appid}</h2>
+                  </div>
+                  <div className="buttonsDiv">
+                    <div className="five-pointed-star">
+
+                    </div>
+                    <Link to = "/game/:gameId" className="moreButton">
+                      More
+                    </Link>
                   </div>
                 </div>
               </>
             ))}
         </div>
+      </div>
+      <div className="buttons">
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
+          disabled={currentIndex === 0}
+        >
+          <p key="prev">Previous</p>
+        </button>
+        <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
+        <button
+          onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
+          disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
+        >
+          <p key="next">Next</p>
+        </button>
       </div>
     </div>
   );
