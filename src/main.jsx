@@ -16,7 +16,7 @@ import "./index.css";
 import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import SignUp from "./signUpPage.jsx";
-
+import Singlegame from "./SingleGame.jsx";
 
 const Wrapper = () => (
   <>
