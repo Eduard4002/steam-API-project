@@ -1,19 +1,55 @@
 import "./assets/css/profile.css";
+import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
 function Profile() {
   return (
     <>
       <div className="profileDiv">
         <div className="profileName">
-            <h1>Hi, MargoGamer69!</h1>
+          <h1>Hi, MargoGamer69!</h1>
         </div>
-        <h3>Settings</h3>
-        <div className="settingsDiv">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est aliquid facere quam. Ea veniam est cupiditate earum, quas recusandae, quis assumenda iusto placeat, impedit itaque aspernatur mollitia saepe ipsa!</p>
-        </div>
-        <h3>Recent favorites</h3>
-        <div className="favoriteDiv">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo dolore et repellat, cumque, sit quaerat tenetur maiores alias incidunt perferendis accusamus iste amet. A minima ipsum eos quos quo asperiores!</p>
+        <div className="profileContainer">
+          <div className="settingsDiv">
+            <h3>Settings</h3>
+            <div className="settingsGrid">
+              <div className="settingsHeader">
+                <h3>Main Settings</h3>
+              </div>
+              <div className="settingsCard">
+                <input type="checkbox" name="" id="" />
+                <label>DarkMode</label>
+              </div>
+              <div className="settingsCard">
+                <input type="checkbox" name="" id="" />
+                <label>Något annat</label>
+              </div>
+              <div className="settingsCard">
+                <h3>Profile Settings</h3>
+              </div>
+              <div className="settingsCard">
+                <h5>Change Password:</h5>
+                <label>Current Password:</label>
+                <input type="password" name="" id="" />
+                <label>New Password:</label>
+                <input type="password" name="" id="" />
+                <input type="submit" value="Change Password" />
+              </div>
+              <div className="settingsCard">
+                <h5>Delete User</h5>
+                <input type="button" value="Delete User" />
+              </div>
+            </div>
+          </div>
+          <div className="favoritesDiv">
+            <h3>Recent favorites</h3>
+            <div className="favoritesGrid">
+              <div className="favoritesCard">
+                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
+                <h3>Game Title</h3>
+                <p>Game Description</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
