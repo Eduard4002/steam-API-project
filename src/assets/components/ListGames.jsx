@@ -11,7 +11,7 @@ function ListGames() {
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
 
   const gamesPerPage = 10;
-  const maxGames = 10;
+  const maxGames = 2;
   const allAppsURL =
     "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json";
 
@@ -85,7 +85,7 @@ function ListGames() {
       setExtraData(tempMapped);
     });
   }, [displayedGames]); // This useEffect depends on changes in the displayedGames array
-
+  console.log(extraData);
   //console.log(extraData[0].header_image);
   return (
     <div>
@@ -110,8 +110,24 @@ function ListGames() {
                       className="image"
                     ></img>
                   )}
-                  <div className="textDiv">
-                    <h2 key={game.name}>{game.name}</h2>
+                  <div className="nameAndDescDiv">
+                    <div className="textDiv">
+                      <h2 key={game.name}>{game.name}</h2>
+                    </div>
+
+                    {extraData[currentIndex * gamesPerPage + index] && (
+                      <div
+                        className="description"
+                        key={
+                          extraData[currentIndex * gamesPerPage + index]
+                            .short_description
+                        }
+                      >
+                        {extraData[currentIndex * gamesPerPage + index]
+                          .short_description ||
+                          "There does not appear to be a short description for this game"}
+                      </div>
+                    )}
                   </div>
 
                   <div className="buttonsDiv">

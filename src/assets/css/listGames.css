@@ -127,3 +127,13 @@
     transform: rotate(-70deg);
     content: "";
 }
+.nameAndDescDiv{
+    min-width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: left;
+}
+.description{
+    max-width: 500px;
+}
