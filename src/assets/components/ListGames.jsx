@@ -12,6 +12,7 @@ function ListGames() {
 
   const gamesPerPage = 10;
   const maxGames = 2;
+  const descriptionMaxLength = 130;
   const allAppsURL =
     "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json";
 
@@ -85,6 +86,7 @@ function ListGames() {
       setExtraData(tempMapped);
     });
   }, [displayedGames]); // This useEffect depends on changes in the displayedGames array
+
   console.log(extraData);
   //console.log(extraData[0].header_image);
   return (
@@ -123,9 +125,32 @@ function ListGames() {
                             .short_description
                         }
                       >
+                        {/*Does short description exists*/}
                         {extraData[currentIndex * gamesPerPage + index]
-                          .short_description ||
-                          "There does not appear to be a short description for this game"}
+                          .short_description != "" || (
+                          <p>
+                            There does not appear to be a short description for
+                            this game
+                          </p>
+                        )}
+                        {/*Is short description too large to fit inside of the container*/}
+                        {extraData[currentIndex * gamesPerPage + index]
+                          .short_description.length < descriptionMaxLength ? (
+                          <p>
+                            {
+                              extraData[currentIndex * gamesPerPage + index]
+                                .short_description
+                            }
+                          </p>
+                        ) : (
+                          /*Short description is too large to fit inside of the container*/
+                          <p>
+                            {extraData[
+                              currentIndex * gamesPerPage + index
+                            ].short_description.slice(0, descriptionMaxLength) +
+                              "..."}
+                          </p>
+                        )}
                       </div>
                     )}
                   </div>

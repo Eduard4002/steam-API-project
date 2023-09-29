@@ -134,6 +134,12 @@
     margin: 0px;
     text-align: left;
 }
+.textDiv h2{
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 0;
+}
 .description{
     max-width: 500px;
+    margin-bottom: 50px;
 }
