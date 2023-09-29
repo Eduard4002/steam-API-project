@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
-import ToggleVisibility from "./assets/components/ToggleVisibility";
-import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
 
 function ListGames() {
 
-  <ToggleVisibility>
-    <StuckMenu /> {/* Use the Slideshow component */}
-  </ToggleVisibility>
 
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
