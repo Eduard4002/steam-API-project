@@ -20,10 +20,10 @@ function Profile() {
                 <label>DarkMode</label>
               </div>
               <div className="settingsCard">
-                <input type="checkbox" name="" id="" />
+                <input type="checkbox" name="" id="" checked/>
                 <label>Något annat</label>
               </div>
-              <div className="settingsCard">
+              <div className="settingsHeader">
                 <h3>Profile Settings</h3>
               </div>
               <div className="settingsCard">
@@ -35,7 +35,7 @@ function Profile() {
                 <input type="submit" value="Change Password" />
               </div>
               <div className="settingsCard">
-                <h5>Delete User</h5>
+                <h5>Delete User:</h5>
                 <input type="button" value="Delete User" />
               </div>
             </div>

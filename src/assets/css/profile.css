@@ -18,6 +18,7 @@
     font-weight: 350;
     margin-left: 4vw;
     text-align: left;
+    font-size: 4vw;
 }
 .profileContainer {
     display: flex;
@@ -39,13 +40,67 @@
 .settingsGrid {
     background-color: rgb(58,49,113);
 }
-.settingsCard > h3 {
+.settingsHeader > h3 {
+    font-size: 1.5vw;
     margin: 0;
     padding: 0;
     padding-top: 1vw;
 }
 .settingsCard {
-
+    padding-left: 2vw;
+    padding-bottom: 1vw;
+    text-align: left;
+}
+.settingsCard > label {
+    font-size: 1.5vw;
+}
+.settingsCard > h5 {
+    font-size: 1vw;
+}
+input[type=checkbox] {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+input[type=password] {
+  width: 95%;
+  border-radius: 5px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: rgb(38,32,62);
+  border: none;
+  color: rgb(117,117,99);
+  font-size: 1.5vw;
+}
+input[type=submit] {
+  width: 50%;
+  border-radius: 5px;
+  padding: 12px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: rgb(38,32,62);
+  border: none;
+  color: rgb(136, 128, 187);
+  font-size: 1.5vw;
+}
+input[type=submit]:hover {
+    background-color: rgb(31,24,70);
+}
+input[type=button] {
+  width: 50%;
+  border-radius: 5px;
+  padding: 12px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: rgb(216, 28, 28);
+  border: none;
+  color: rgb(31,24,70);
+  font-size: 1.5vw;
+}
+input[type=button]:hover {
+    background-color: rgb(173, 0, 0);
 }
 .favoritesDiv {
     margin-left: 5%;
