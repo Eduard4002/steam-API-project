@@ -1,7 +1,7 @@
 import '../src/assets/css/single.css';
 import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
-
+// import LinkGamesPage from './assets/components/LinkGamesPage'; 
 
 function singlegame() {
     return (
