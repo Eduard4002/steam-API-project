@@ -6,27 +6,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// --------------------------------------Code to use from other sorcers-----------------------------------------------------------------
-
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import ItemDetail from './ItemDetail'; // Your component for displaying item details
 
@@ -44,7 +23,6 @@
 // export default LinkGamesPage;
 
 
-// --------------------------------------Code to use from other sorcers-----------------------------------------------------------------
 
 
 import React, { useEffect, useState } from 'react';
@@ -92,49 +70,3 @@ export default LinkGamesPage;
 
 
 
-
-
-// --------------------------------------Code to use from other sorcers-----------------------------------------------------------------
-
-
-
-// Promise.all(
-//     displayedGames.map((item) => {
-
-//       // Construct the URL for fetching game details
-//       let url =
-//         "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
-//         item.appid;
-
-
-
-
-//       // Perform the fetch request
-//       return fetch(url)
-//         .then((response) => response.json())
-//         .then((json) => {
-//           // Check if the JSON response contains an image URL
-//           if (json[item.appid].success) {
-//             // Associate the fetched image URL with its corresponding game
-//             imageMap[item.appid] = json[item.appid].data.header_image;
-//           }
-//         })
-//         .catch((error) => {
-//           // Handle errors that occur during the fetch
-//           console.error(error);
-//         });
-//     })
-//   ).then(() => {
-//     // Create an array of images based on the displayedGames order
-//     const imagesForDisplayedGames = displayedGames.map(
-//       (item) => imageMap[item.appid] || null
-//     );
-
-//     // Update the images state with the fetched images
-//     setImages(imagesForDisplayedGames);
-//   });
-
-
-
-//   const Test = () => {
-//     let { gameId } = useParams();
