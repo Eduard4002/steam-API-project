@@ -61,16 +61,17 @@ function singlegame() {
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
                         <h1>Game Title Placeholder</h1>
+                        <div className="favesBtnAndUnder">
+                            <button className="favesBtn">
+                                <p>Add To Favorites</p>
+                                <div className="star" id="active"></div>
 
-                        <button className="favesBtn">
-                            <p>Add To Favorites</p>
-                            <div className="star" id="active"></div>
-
-                        </button>
-                        <div className="underFaves">
-                        <p>Pc Requirements: [{itemData.pcRequirements}Placeholder]</p>
-                        <p>Developers: [{itemData.Developers}Placeholder]</p>
-                        <p>General Information: [{itemData.generalInformation}Placeholder]</p>
+                            </button>
+                            <div className="underFaves">
+                                <p>Pc Requirements: [{itemData.pcRequirements}Placeholder]</p>
+                                <p>Developers: [{itemData.Developers}Placeholder]</p>
+                                <p>General Information: [{itemData.generalInformation}Placeholder]</p>
+                            </div>
                         </div>
                     </div>
                 </div>
