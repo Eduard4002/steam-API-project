@@ -39,6 +39,10 @@
     display: flex;
     flex-direction: row;
     color: #9EA3BC;
+    
+}
+.textDiv h2{
+    margin-top:20px !important;
 }
 .nameAndDescDiv{
     min-width: 55%;
@@ -47,7 +51,9 @@
     margin: 0px;
     text-align: left;
 }
-
+.description{
+    max-width: 500px;
+}
 
 .buttons {
     display: flex;

@@ -119,7 +119,7 @@ function ListGames() {
                       <h2> : </h2>
                       <h2 key={game.appid}>{game.appid}</h2>
                     </div>
-                    <div>Description</div>
+                    <div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </div>
                   </div>
 
                   <div className="buttonsDiv">
