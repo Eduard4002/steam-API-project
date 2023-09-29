@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
+import StuckMenu from './stuckMenu'; // Import your Slideshow component
+import ToggleVisibility from "./ToggleVisibility";
 
 
 
@@ -96,7 +98,9 @@ function ListGames() {
   //console.log(extraData[0].header_image);
   return (
     <>
-
+  <ToggleVisibility>
+                <StuckMenu /> {/* Use the Slideshow component */}
+            </ToggleVisibility>
       <div>
         <div className="mainDiv">
           <div className="contFlex">
