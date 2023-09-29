@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
+import ToggleVisibility from "./assets/components/ToggleVisibility";
+import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
 
 function ListGames() {
+
+  <ToggleVisibility>
+    <StuckMenu /> {/* Use the Slideshow component */}
+  </ToggleVisibility>
+
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
   const [displayedGames, setDisplayedGames] = useState([]);
@@ -128,11 +135,11 @@ function ListGames() {
                         {/*Does short description exists*/}
                         {extraData[currentIndex * gamesPerPage + index]
                           .short_description != "" || (
-                          <p>
-                            There does not appear to be a short description for
-                            this game
-                          </p>
-                        )}
+                            <p>
+                              There does not appear to be a short description for
+                              this game
+                            </p>
+                          )}
                         {/*Is short description too large to fit inside of the container*/}
                         {extraData[currentIndex * gamesPerPage + index]
                           .short_description.length < descriptionMaxLength ? (
