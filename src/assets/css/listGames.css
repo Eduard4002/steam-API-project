@@ -22,7 +22,7 @@
 .image {
     border: 1px solid white;
     margin: 10px;
-    max-width: 300px;
+    width: 300px;
     border-radius: 5px;
     max-height: 150px;
 }
@@ -39,6 +39,10 @@
     display: flex;
     flex-direction: row;
     color: #9EA3BC;
+    
+}
+.textDiv h2{
+    margin-top:20px !important;
 }
 .nameAndDescDiv{
     min-width: 55%;
@@ -47,7 +51,9 @@
     margin: 0px;
     text-align: left;
 }
-
+.description{
+    max-width: 500px;
+}
 
 .buttons {
     display: flex;
@@ -120,4 +126,14 @@
     border-left: 1em solid transparent;
     transform: rotate(-70deg);
     content: "";
+}
+.nameAndDescDiv{
+    min-width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: left;
+}
+.description{
+    max-width: 500px;
 }
