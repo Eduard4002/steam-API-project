@@ -60,8 +60,7 @@ function singlegame() {
                         </div>
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
-                        <h1>Game Title</h1>
-                        <p> {itemData.short_description} </p>
+                        <h1>Game Title Placeholder</h1>
 
                         <button className="favesBtn">
                             <p>Add To Favorites</p>
@@ -69,9 +68,9 @@ function singlegame() {
 
                         </button>
                         <div className="underFaves">
-                        <p>Pc Requirements: [{itemData.pcRequirements}Lorem ipsum]</p>
-                        <p>Developers: [{itemData.Developers}Lorem ipsum]</p>
-                        <p>General Information: [{itemData.generalInformation}Lorem ipsum]</p>
+                        <p>Pc Requirements: [{itemData.pcRequirements}Placeholder]</p>
+                        <p>Developers: [{itemData.Developers}Placeholder]</p>
+                        <p>General Information: [{itemData.generalInformation}Placeholder]</p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +80,7 @@ function singlegame() {
                         <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="a" className="gamePic" />
                         <div className="underPic">
 
-                            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sequi, porro aperiam dolorum enim architecto fugit aut labore earum quas repellat tempore autem! Animi tempora vitae accusantium quae eos natus?</h4>
+                            <h4>{itemData.short_description} Description Placeholder</h4>
                         </div>
                     </div>
                 </div>
