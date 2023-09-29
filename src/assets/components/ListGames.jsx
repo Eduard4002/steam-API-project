@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
 
+
+
+
 function ListGames() {
 
 
@@ -92,99 +95,103 @@ function ListGames() {
   console.log(extraData);
   //console.log(extraData[0].header_image);
   return (
-    <div>
-      <div className="mainDiv">
-        <div className="contFlex">
-          {displayedGames
-            .slice(
-              currentIndex * gamesPerPage,
-              currentIndex * gamesPerPage + gamesPerPage
-            )
+    <>
 
-            .map((game, index) => (
-              <>
-                <div className="container" key={game.appid + index}>
-                  {extraData[currentIndex * gamesPerPage + index] && (
-                    <img
-                      src={
-                        extraData[currentIndex * gamesPerPage + index]
-                          .header_image || "src/assets/img/placeholder.webp"
-                      }
-                      key={extraData[currentIndex * gamesPerPage + index]}
-                      className="image"
-                    ></img>
-                  )}
-                  <div className="nameAndDescDiv">
-                    <div className="textDiv">
-                      <h2 key={game.name}>{game.name}</h2>
-                    </div>
+      <div>
+        <div className="mainDiv">
+          <div className="contFlex">
+            {displayedGames
+              .slice(
+                currentIndex * gamesPerPage,
+                currentIndex * gamesPerPage + gamesPerPage
+              )
 
+              .map((game, index) => (
+                <>
+
+                  <div className="container" key={game.appid + index}>
                     {extraData[currentIndex * gamesPerPage + index] && (
-                      <div
-                        className="description"
-                        key={
+                      <img
+                        src={
                           extraData[currentIndex * gamesPerPage + index]
-                            .short_description
+                            .header_image || "src/assets/img/placeholder.webp"
                         }
-                      >
-                        {/*Does short description exists*/}
-                        {extraData[currentIndex * gamesPerPage + index]
-                          .short_description != "" || (
+                        key={extraData[currentIndex * gamesPerPage + index]}
+                        className="image"
+                      ></img>
+                    )}
+                    <div className="nameAndDescDiv">
+                      <div className="textDiv">
+                        <h2 key={game.name}>{game.name}</h2>
+                      </div>
+
+                      {extraData[currentIndex * gamesPerPage + index] && (
+                        <div
+                          className="description"
+                          key={
+                            extraData[currentIndex * gamesPerPage + index]
+                              .short_description
+                          }
+                        >
+                          {/*Does short description exists*/}
+                          {extraData[currentIndex * gamesPerPage + index]
+                            .short_description != "" || (
+                              <p>
+                                There does not appear to be a short description for
+                                this game
+                              </p>
+                            )}
+                          {/*Is short description too large to fit inside of the container*/}
+                          {extraData[currentIndex * gamesPerPage + index]
+                            .short_description.length < descriptionMaxLength ? (
                             <p>
-                              There does not appear to be a short description for
-                              this game
+                              {
+                                extraData[currentIndex * gamesPerPage + index]
+                                  .short_description
+                              }
+                            </p>
+                          ) : (
+                            /*Short description is too large to fit inside of the container*/
+                            <p>
+                              {extraData[
+                                currentIndex * gamesPerPage + index
+                              ].short_description.slice(0, descriptionMaxLength) +
+                                "..."}
                             </p>
                           )}
-                        {/*Is short description too large to fit inside of the container*/}
-                        {extraData[currentIndex * gamesPerPage + index]
-                          .short_description.length < descriptionMaxLength ? (
-                          <p>
-                            {
-                              extraData[currentIndex * gamesPerPage + index]
-                                .short_description
-                            }
-                          </p>
-                        ) : (
-                          /*Short description is too large to fit inside of the container*/
-                          <p>
-                            {extraData[
-                              currentIndex * gamesPerPage + index
-                            ].short_description.slice(0, descriptionMaxLength) +
-                              "..."}
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                        </div>
+                      )}
+                    </div>
 
-                  <div className="buttonsDiv">
-                    <div className="five-pointed-star"></div>
+                    <div className="buttonsDiv">
+                      <div className="five-pointed-star"></div>
 
-                    <Link to={"/game/:" + game.appid} className="moreButton">
-                      More
-                    </Link>
+                      <Link to={"/game/:" + game.appid} className="moreButton">
+                        More
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
+          </div>
+        </div>
+        <div className="buttons">
+          <button
+            onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
+            disabled={currentIndex === 0}
+          >
+            <p key="prev">Previous</p>
+          </button>
+          <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
+          <button
+            onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
+            disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
+          >
+            <p key="next">Next</p>
+          </button>
         </div>
       </div>
-      <div className="buttons">
-        <button
-          onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
-          disabled={currentIndex === 0}
-        >
-          <p key="prev">Previous</p>
-        </button>
-        <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
-        <button
-          onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
-          disabled={(currentIndex + 1) * gamesPerPage >= maxGames}
-        >
-          <p key="next">Next</p>
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
 
