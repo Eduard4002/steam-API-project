@@ -1,25 +1,68 @@
-.singleContainer{
+.singleContainer {
     min-height: 60vh;
+    width: 30%;
+    margin-top: 50px;
+}
+.singlePicDiv{
+    width: 70%;
+}
+.mainSingleDiv p{
+    display: flex;
+    flex-direction: row;
+    color: #8C81D3;
+}
+.underPic{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-inline: 200px;
+}
+.underPic h4{
+    color: #8C81D3;
 }
 
-.singleInfo{
+
+.singleInfo {
     width: 100vh;
     float: left;
+    max-width: 100%;
 }
 
-.singlePic{
-    width: 100vh;
-    float: right;
+.singlePic {
+    width: 80vw;
+    margin-top: 50px;
+}
+.gamePic{
+    max-width: 700px;
+    width: 60vw;
+}
+.mainSingleDiv{
+    display: flex;
+    flex-direction: row;
 }
 
 
 
 
-.favesBtn{
+.favesBtn {
     padding: 0px;
     padding-inline: 7px;
-    padding-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    background-color: #41345E;
 }
+.favesBtn p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.favesBtn div {
+    align-self: center;
+    margin-left: 10px;
+}
+
 #active {
     background-color: goldenrod;
 }
@@ -28,6 +71,6 @@
     background-color: black;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     display: inline-block;
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
 }

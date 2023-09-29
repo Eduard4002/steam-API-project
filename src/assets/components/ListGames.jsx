@@ -170,7 +170,7 @@ function ListGames() {
                     <div className="buttonsDiv">
                       <div className="five-pointed-star"></div>
 
-                      <Link to={"/game/:" + game.appid} className="moreButton">
+                      <Link to={"/game/" + game.appid} className="moreButton">
                         More
                       </Link>
                     </div>
