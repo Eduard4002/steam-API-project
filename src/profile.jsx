@@ -20,7 +20,7 @@ function Profile() {
                 <label>DarkMode</label>
               </div>
               <div className="settingsCard">
-                <input type="checkbox" name="" id="" checked/>
+                <input type="checkbox" name="" id="" checked />
                 <label>Något annat</label>
               </div>
               <div className="settingsHeader">
@@ -45,8 +45,41 @@ function Profile() {
             <div className="favoritesGrid">
               <div className="favoritesCard">
                 <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <h3>Game Title</h3>
-                <p>Game Description</p>
+                <div className="favoritesText">
+                  <h3>Game Title</h3>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Dolores odio placeat, molestias ratione facere maiores
+                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
+                    ratione, provident itaque minus quidem mollitia earum!
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div className="favoritesCard">
+                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
+                <div className="favoritesText">
+                  <h3>Game Title</h3>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Dolores odio placeat, molestias ratione facere maiores
+                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
+                    ratione, provident itaque minus quidem mollitia earum!
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div className="favoritesCard">
+                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
+                <div className="favoritesText">
+                  <h3>Game Title</h3>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Dolores odio placeat, molestias ratione facere maiores
+                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
+                    ratione, provident itaque minus quidem mollitia earum!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
