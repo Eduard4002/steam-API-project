@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/game/:gameId",
-        element: <Test />,
+        element: <Singlegame />,
       },
       {
         path: "/login",
@@ -66,10 +66,10 @@ const router = createBrowserRouter([
         element: <ListGames />,
         //element: <Games />,
       },
-      {
-        path: "/singlegame",
-        element: <Singlegame />,
-      },
+      // {
+      //   path: "/singlegame",
+      //   element: <Singlegame />,
+      // },
     ],
   },
 ]);
