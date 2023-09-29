@@ -23,7 +23,8 @@
     "react-router-dom": "^6.16.0",
     "react-slideshow-image": "^4.2.1",
     "request": "^2.88.2",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

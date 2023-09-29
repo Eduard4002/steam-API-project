@@ -92,7 +92,7 @@ function ListGames() {
   return (
     <div>
       <div className="mainDiv">
-        <div className="filter">Filter</div>
+
         <div className="contFlex">
           {displayedGames
             .slice(
@@ -113,11 +113,15 @@ function ListGames() {
                       className="image"
                     ></img>
                   )}
-                  <div className="textDiv">
-                    <h2 key={game.name}>{game.name}</h2>
-                    <h2> : </h2>
-                    <h2 key={game.appid}>{game.appid}</h2>
+                  <div className="nameAndDescDiv">
+                    <div className="textDiv">
+                      <h2 key={game.name}>{game.name}</h2>
+                      <h2> : </h2>
+                      <h2 key={game.appid}>{game.appid}</h2>
+                    </div>
+                    <div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </div>
                   </div>
+
                   <div className="buttonsDiv">
                     <div className="five-pointed-star"></div>
 

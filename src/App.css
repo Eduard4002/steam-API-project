@@ -1,14 +1,13 @@
-
 body {
   text-align: center;
   margin: 0;
   padding: 0;
 }
 .appContainer {
-  margin-left: 50vh;
+  margin-left: 19.531vw;
 }
 .slideWrapper {
-  margin: auto;
+  margin-inline: auto;
   margin-top: 3vw;
   width: 60vw;
   height: 35vw;
@@ -18,12 +17,11 @@ body {
   width: 60vw;
   height: 15vw;
   margin-bottom: 5vw;
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr; 
-  gap: 0px 3%; 
-  grid-template-areas: 
-    ". . ."; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 3%;
+  grid-template-areas: ". . .";
 }
 .favoriteCard {
   position: relative;
