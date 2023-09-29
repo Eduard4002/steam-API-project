@@ -6,13 +6,12 @@ function ListGames() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   const [data, setData] = useState([]);
   const [displayedGames, setDisplayedGames] = useState([]);
-  const [images, setImages] = useState([]);
+  const [extraData, setExtraData] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
-  const [imagesIndex, setImagesIndex] = useState(0); // Start at 0
-  let tempImages = [];
+
   const gamesPerPage = 10;
-  const maxGames = 15;
+  const maxGames = 10;
   const allAppsURL =
     "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json";
 
@@ -50,10 +49,10 @@ function ListGames() {
   //Used for retrieving the images from another API
   useEffect(() => {
     // Clear the existing images array
-    setImages([]);
+    setExtraData([]);
 
     // Create a temporary map to associate images with games
-    const imageMap = {};
+    const temp = {};
 
     // Use Promise.all to wait for all fetch calls to complete
     Promise.all(
@@ -70,7 +69,7 @@ function ListGames() {
             // Check if the JSON response contains an image URL
             if (json[item.appid].success) {
               // Associate the fetched image URL with its corresponding game
-              imageMap[item.appid] = json[item.appid].data.header_image;
+              temp[item.appid] = json[item.appid].data;
             }
           })
           .catch((error) => {
@@ -80,20 +79,18 @@ function ListGames() {
       })
     ).then(() => {
       // Create an array of images based on the displayedGames order
-      const imagesForDisplayedGames = displayedGames.map(
-        (item) => imageMap[item.appid] || null
-      );
+      const tempMapped = displayedGames.map((item) => temp[item.appid] || null);
 
       // Update the images state with the fetched images
-      setImages(imagesForDisplayedGames);
+      setExtraData(tempMapped);
     });
   }, [displayedGames]); // This useEffect depends on changes in the displayedGames array
 
+  //console.log(extraData[0].header_image);
   return (
     <div>
       <div className="filter">Filter</div>
       <div className="mainDiv">
-        
         <div className="contFlex">
           {displayedGames
             .slice(
@@ -104,20 +101,18 @@ function ListGames() {
             .map((game, index) => (
               <>
                 <div className="container" key={game.appid + index}>
-                  {images && (
+                  {extraData[currentIndex * gamesPerPage + index] && (
                     <img
                       src={
-                        images[currentIndex * gamesPerPage + index] ||
-                        "src/assets/img/placeholder.webp"
+                        extraData[currentIndex * gamesPerPage + index]
+                          .header_image || "src/assets/img/placeholder.webp"
                       }
-                      key={images[currentIndex * gamesPerPage + index]}
+                      key={extraData[currentIndex * gamesPerPage + index]}
                       className="image"
                     ></img>
                   )}
                   <div className="textDiv">
                     <h2 key={game.name}>{game.name}</h2>
-                    <h2> : </h2>
-                    <h2 key={game.appid}>{game.appid}</h2>
                   </div>
                   <div className="buttonsDiv">
                     <div className="five-pointed-star"></div>
