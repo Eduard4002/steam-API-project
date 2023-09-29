@@ -60,6 +60,7 @@ function singlegame() {
                         </div>
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
+                        <h1>Game Title</h1>
                         <p> {itemData.short_description} </p>
 
                         <button className="favesBtn">
@@ -68,7 +69,7 @@ function singlegame() {
 
                         </button>
                         <div className="underFaves">
-                            <h5></h5>
+                        <p>description</p>
                         </div>
                     </div>
 
