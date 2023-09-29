@@ -47,7 +47,7 @@ function LogIn() {
         </form>
         <p className="signUpQ">
           {" "}
-          Don't have an account? <Link to={"/signup"}>Sign up</Link> to continue{" "}
+          Dont have an account? <Link to={"/signup"}>Sign up</Link> to continue{" "}
         </p>
       </div>
     </>
