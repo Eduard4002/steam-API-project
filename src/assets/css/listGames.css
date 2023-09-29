@@ -4,13 +4,6 @@
     margin-top: 50px;
 }
 
-.filter {
-    width: 100px;
-    height: 100px;
-    background-color: aqua;
-    margin: 50px;
-}
-
 
 
 .container {
@@ -46,7 +39,20 @@
     display: flex;
     flex-direction: row;
     color: #9EA3BC;
+    
+}
+.textDiv h2{
+    margin-top:20px !important;
+}
+.nameAndDescDiv{
     min-width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: left;
+}
+.description{
+    max-width: 500px;
 }
 
 .buttons {

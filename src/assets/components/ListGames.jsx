@@ -89,7 +89,6 @@ function ListGames() {
   //console.log(extraData[0].header_image);
   return (
     <div>
-      <div className="filter">Filter</div>
       <div className="mainDiv">
         <div className="contFlex">
           {displayedGames
@@ -114,6 +113,7 @@ function ListGames() {
                   <div className="textDiv">
                     <h2 key={game.name}>{game.name}</h2>
                   </div>
+
                   <div className="buttonsDiv">
                     <div className="five-pointed-star"></div>
 
