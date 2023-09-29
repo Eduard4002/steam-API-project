@@ -17,7 +17,7 @@ function singlegame() {
                     <h1 className="gameName"></h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sequi, porro aperiam dolorum enim architecto fugit aut labore earum quas repellat tempore autem! Animi tempora vitae accusantium quae eos natus?</p>
 
-                    <button className="favesBtn"></button>
+                    <button className="favesBtn"><div className="star" id="active"></div></button>
                     <div className="underFaves">
                         <h5></h5>
                     </div>

@@ -1,3 +1,68 @@
 .profileDiv {
-    background-color: pink;
+    background-color: rgb(81,73,132);
+    border-radius: 10px;
+    margin: auto;
+    padding: 1vw;
+    margin-top: 2vw;
+    width: 80%;
+}
+.profileName {
+    background-color: rgb(31,24,70);
+    margin: auto;
+    margin-top: 2vw;
+    padding: 0.1vw;
+    width: 90%;
+}
+.profileName > h1 {
+    color: rgb(136, 128, 187);
+    font-weight: 350;
+    margin-left: 4vw;
+    text-align: left;
+}
+.profileContainer {
+    display: flex;
+    margin: auto;
+    width: 90%;
+}
+.settingsDiv {
+    margin-top: 2vw;
+    width: 47.5%;
+}
+.settingsDiv > h3 {
+    color: rgb(136, 128, 187);
+    font-weight: 400;
+    font-size: 2.25vw;
+    margin-bottom: 0;
+    text-align: left;
+    margin-left: 1vw;
+}
+.settingsGrid {
+    background-color: rgb(58,49,113);
+}
+.settingsCard > h3 {
+    margin: 0;
+    padding: 0;
+    padding-top: 1vw;
+}
+.settingsCard {
+
+}
+.favoritesDiv {
+    margin-left: 5%;
+    margin-top: 2vw;
+    width: 47.5%;
+}
+.favoritesDiv > h3 {
+    color: rgb(136, 128, 187);
+    font-weight: 400;
+    font-size: 2.25vw;
+    margin-bottom: 0;
+    text-align: left;
+    margin-left: 1vw;
+}
+.favoritesGrid {
+    background-color: rgb(58,49,113);
+}
+.favoritesDiv img {
+    width: 5vw;
 }

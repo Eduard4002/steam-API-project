@@ -22,7 +22,7 @@
 .image {
     border: 1px solid white;
     margin: 10px;
-    max-width: 300px;
+    width: 300px;
     border-radius: 5px;
     max-height: 150px;
 }
@@ -126,4 +126,20 @@
     border-left: 1em solid transparent;
     transform: rotate(-70deg);
     content: "";
+}
+.nameAndDescDiv{
+    min-width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: left;
+}
+.textDiv h2{
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 0;
+}
+.description{
+    max-width: 500px;
+    margin-bottom: 50px;
 }
