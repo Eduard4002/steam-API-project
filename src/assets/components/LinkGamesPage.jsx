@@ -66,6 +66,8 @@ const LinkGamesPage = () => {
       }
     };
 
+    console.log (data);
+
     fetchData();
   }, [gameId]);
 

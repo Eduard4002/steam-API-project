@@ -1,7 +1,8 @@
 import '../src/assets/css/single.css';
 import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
-// import LinkGamesPage from './assets/components/LinkGamesPage'; 
+import LinkGamesPage from './assets/components/LinkGamesPage'; 
+// import { useParams } from 'react-router-dom';
 
 function singlegame() {
     return (
@@ -14,7 +15,7 @@ function singlegame() {
             <div className="singleContainer">
                 <div className="singleInfo">
                     <div className="stars"></div>
-                    <h1 className="gameName"></h1>
+                    {/* <h1>{itemData.name}</h1> */}
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sequi, porro aperiam dolorum enim architecto fugit aut labore earum quas repellat tempore autem! Animi tempora vitae accusantium quae eos natus?</p>
 
                     <button className="favesBtn"><div className="star" id="active"></div></button>
