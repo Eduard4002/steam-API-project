@@ -1,7 +1,13 @@
+.singleContainer{
+    min-height: 60vh;
+}
+
 .singleInfo{
  width: 100vh;
+ float: left;
 }
 
 .singlePic{
     width: 100vh;
+    float: right;
 }
