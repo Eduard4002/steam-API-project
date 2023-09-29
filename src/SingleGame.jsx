@@ -69,17 +69,12 @@ function singlegame() {
 
                         </button>
                         <div className="underFaves">
-                        <p>description</p>
+                        <p>Pc Requirements: [{itemData.pcRequirements}Lorem ipsum]</p>
+                        <p>Developers: [{itemData.Developers}Lorem ipsum]</p>
+                        <p>General Information: [{itemData.generalInformation}Lorem ipsum]</p>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
-
 
                 <div className="singlePicDiv">
                     <div className="singlePic">
