@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import "../css/header.css";
 import Logo from "../img/logo.png";
-import { Link } from "react-router-dom";
+
 let logInOpen = false;
 const person = document.getElementById("person");
+const profileMenu = document.getElementById("profileMenu");
 
 function openLogIn() {
   if (logInOpen) {
@@ -29,6 +31,19 @@ function HandleSearch(event) {
   const url = "/result/" + inputValue;
   window.location.href = url;
 }
+window.addEventListener("click", function (e) {
+  if (logInOpen) {
+    if (
+      e.target != profileMenu &&
+      e.target != document.getElementById("person")
+    ) {
+      document.getElementById("profileMenu").style.display = "none";
+      console.log("helo");
+      logInOpen = false;
+    }
+  }
+});
+
 function Header() {
   return (
     <>
@@ -64,22 +79,25 @@ function Header() {
           </Link>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
-              <Link to={"/login"}>
+              <Link to={"/login"} onClick={openLogIn}>
                 <div>Log In</div>
               </Link>
-              <Link to={"/signup"}>
+              <Link to={"/signup"} onClick={openLogIn}>
                 <div>Sign Up</div>
               </Link>
-              <Link to={"/profile"}>
+              <Link to={"/profile"} onClick={openLogIn}>
                 <div>Profile</div>
               </Link>
-              <Link to={""}>
+              <Link to={""} onClick={openLogIn}>
                 <div>Log Out</div>
               </Link>
             </div>
             <p>
-              Dont have an account? <Link to={"/signup"}>Sign Up</Link> to
-              continue
+              Dont have an account?{" "}
+              <Link to={"/signup"} onClick={openLogIn}>
+                Sign Up
+              </Link>{" "}
+              to continue
             </p>
           </div>
         </div>
