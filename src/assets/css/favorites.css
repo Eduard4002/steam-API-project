@@ -8,4 +8,43 @@
   padding-bottom: 3vw;
   width: 80%;
 }
-
+.favoriteCard {
+    color: rgb(228, 223, 255);
+  border-radius: 5px;
+  background-color: rgb(58, 49, 113);
+  display: flex;
+  padding: 1.5vw;
+  margin-bottom: 2vw;
+}
+.favoriteCard > img {
+  border-radius: 10px;
+  width: 20vw;
+  height: 11vw;
+}
+.favoriteText {
+  width: 70%;
+  text-align: left;
+  display: block;
+}
+.favoriteText > h3 {
+  text-overflow: ellipsis;
+  margin: 0;
+  margin-top: 1.25vw;
+  margin-bottom: 0.5vw;
+  margin-left: 1vw;
+  font-size: 2.5vw;
+}
+.favoriteText > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3vw;
+  width: 17.5vw;
+  margin: 0;
+  margin-left: 1vw;
+  font-size: 1.1vw;
+}
+.favoriteSettings > span {
+  color: goldenrod;
+  cursor: pointer;
+}
