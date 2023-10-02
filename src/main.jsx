@@ -18,6 +18,7 @@ import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
+import DataArray from "./DataArray.jsx";
 
 const Wrapper = () => (
   <>
@@ -37,7 +38,12 @@ const Test = () => {
     </>
   );
 };
-
+const SetGames = () => {
+  const data = DataArray();
+  if (data.length === 0) return <h1>Loading</h1>;
+  const shuffledGames = [...data].sort(() => Math.random() - 0.5);
+  return <ListGames dataToDisplay={shuffledGames} maxGames={2} />;
+};
 const router = createBrowserRouter([
   {
     element: <Wrapper />,
@@ -68,7 +74,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/games",
-        element: <ListGames />,
+        element: <SetGames />,
         //element: <Games />,
       },
       // {
