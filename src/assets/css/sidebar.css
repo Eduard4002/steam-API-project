@@ -9,7 +9,7 @@
     position: fixed;
     height: 100%; 
     transition: transform 0.3s ease; 
-  
+  z-index: 99;
   }
   
  
@@ -20,7 +20,7 @@
   }
   
   
-  .default-container li {
+  .default-container .link {
     margin-bottom: 10px; 
     
   }
