@@ -12,30 +12,20 @@ function Favorites() {
       </ToggleVisibility>
       <div className="favoritesDiv">
         <h1>Your Favorites</h1>
-        <Link to={""}>
-          <div className="favoriteCard">
-            <img src={imagePlaceholder} alt="Game thumbnail" />
-            <div className="favoriteText">
-              <h3>Game Title</h3>
-              <p>Hejsan på digsan</p>
-            </div>
-            <div className="favoriteSettings">
-              <span className="material-symbols-outlined">grade</span>
-            </div>
-          </div>
-        </Link>
-        <Link to={""}>
-          <div className="favoriteCard">
-            <img src={imagePlaceholder} alt="Game thumbnail" />
-            <div className="favoriteText">
-              <h3>Game Title</h3>
-              <p>Hejsan på digsan</p>
-            </div>
-            <div className="favoriteSettings">
-              <span className="material-symbols-outlined">grade</span>
-            </div>
-          </div>
-        </Link>
+        <template>
+            <Link to={""}>
+              <div className="favoriteCard">
+                <img src={imagePlaceholder} alt="Game thumbnail" />
+                <div className="favoriteText">
+                  <h3>Game Title</h3>
+                  <p>Hejsan på digsan</p>
+                </div>
+                <div className="favoriteSettings">
+                  <span className="material-symbols-outlined">grade</span>
+                </div>
+              </div>
+            </Link>
+        </template>
       </div>
     </>
   );
