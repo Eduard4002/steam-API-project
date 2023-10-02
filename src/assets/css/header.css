@@ -61,7 +61,7 @@ html {
     justify-content: center;
     align-items: center;
 }
-.rightNav > span {
+.rightNav span {
     cursor: pointer;
     margin-left: 2vw;
     padding: 0.5vw;
@@ -73,7 +73,7 @@ html {
     background-color: rgb(209,231,248);
     transition: all 100ms ease-in-out;
 }
-.rightNav > span:hover {
+.rightNav span:hover {
     background-color: rgb(153,159,237);
     color: rgb(209,231,248);
 }
