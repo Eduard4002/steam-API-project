@@ -1,61 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
-import StuckMenu from './stuckMenu'; // Import your Slideshow component
+import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./ToggleVisibility";
-
-
-
+import DataArray from "../../DataArray";
 
 function ListGames() {
-
-
-  const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
-  const [data, setData] = useState([]);
   const [displayedGames, setDisplayedGames] = useState([]);
   const [extraData, setExtraData] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
 
-  const gamesPerPage = 10;
-  const maxGames = 2;
+  const gamesPerPage = 5;
+  const maxGames = 10;
   const descriptionMaxLength = 130;
-  const allAppsURL =
-    "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json";
-
-  // Function to filter and limit games
-  const filterAndLimitGames = (games) => {
-    // Check if the game has a name (non-empty) and if the name contains only English characters
-    const filteredData = games.filter((item) => {
-      return item.name && englishCharacterRegex.test(item.name);
-    });
-
-    // Shuffle the filtered games randomly
-    const shuffledGames = [...filteredData].sort(() => Math.random() - 0.5);
-
-    // Limit the shuffled games to the variable maxGames
-    const limitedGames = shuffledGames.slice(0, maxGames);
-
-    return limitedGames;
-  };
-
-  //Retrieve all games
-  useEffect(() => {
-    fetch("http://localhost:3000/api?url=" + allAppsURL)
-      .then((response) => response.json())
-      .then((json) => {
-        const games = json.applist.apps;
-        setData(games);
-
-        // Call the filtering and limiting function and set displayedGames
-        const limitedGames = filterAndLimitGames(games);
-        setDisplayedGames(limitedGames);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  const data = DataArray();
+  console.log(data);
 
   //Used for retrieving the images from another API
   useEffect(() => {
+    if (data.length === 0) return;
+
+    // Shuffle the filtered games randomly
+    const shuffledGames = [...data].sort(() => Math.random() - 0.5);
+
+    // Limit the shuffled games to the variable maxGames
+    setDisplayedGames(shuffledGames.slice(0, maxGames));
     // Clear the existing images array
     setExtraData([]);
 
@@ -92,19 +62,22 @@ function ListGames() {
       // Update the images state with the fetched images
       setExtraData(tempMapped);
     });
-  }, [displayedGames]); // This useEffect depends on changes in the displayedGames array
+  }, [data]); // This useEffect depends on changes in the displayedGames array
+
+  if (data.length === 0) return <h1>LOADING</h1>;
 
   console.log(extraData);
   //console.log(extraData[0].header_image);
   return (
     <>
-  <ToggleVisibility>
-                <StuckMenu /> {/* Use the Slideshow component */}
-            </ToggleVisibility>
+      <ToggleVisibility>
+        <StuckMenu /> {/* Use the Slideshow component */}
+      </ToggleVisibility>
       <div>
         <div className="mainDiv">
           <div className="contFlex">
-            {displayedGames
+            {extraData
+              .filter(Boolean)
               .slice(
                 currentIndex * gamesPerPage,
                 currentIndex * gamesPerPage + gamesPerPage
@@ -112,7 +85,6 @@ function ListGames() {
 
               .map((game, index) => (
                 <>
-
                   <div className="container" key={game.appid + index}>
                     {extraData[currentIndex * gamesPerPage + index] && (
                       <img
@@ -126,7 +98,9 @@ function ListGames() {
                     )}
                     <div className="nameAndDescDiv">
                       <div className="textDiv">
-                        <h2 key={game.name}>{game.name}</h2>
+                        <h2 key={game.name}>
+                          {extraData[currentIndex * gamesPerPage + index]?.name}
+                        </h2>
                       </div>
 
                       {extraData[currentIndex * gamesPerPage + index] && (
@@ -140,11 +114,11 @@ function ListGames() {
                           {/*Does short description exists*/}
                           {extraData[currentIndex * gamesPerPage + index]
                             .short_description != "" || (
-                              <p>
-                                There does not appear to be a short description for
-                                this game
-                              </p>
-                            )}
+                            <p>
+                              There does not appear to be a short description
+                              for this game
+                            </p>
+                          )}
                           {/*Is short description too large to fit inside of the container*/}
                           {extraData[currentIndex * gamesPerPage + index]
                             .short_description.length < descriptionMaxLength ? (
@@ -159,8 +133,10 @@ function ListGames() {
                             <p>
                               {extraData[
                                 currentIndex * gamesPerPage + index
-                              ].short_description.slice(0, descriptionMaxLength) +
-                                "..."}
+                              ].short_description.slice(
+                                0,
+                                descriptionMaxLength
+                              ) + "..."}
                             </p>
                           )}
                         </div>
