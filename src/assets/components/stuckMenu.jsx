@@ -1,10 +1,10 @@
-import "../css/sidebar.css";
 import { Link } from "react-router-dom";
 import DataArray from "../../DataArray";
+import "../css/sidebar.css";
 export default function stuckMenu() {
   const data = DataArray();
 
-  if (data.length === 0) return <h1>LOADING</h1>;
+  if (data.length === 0) return <h1>LOADING...</h1>;
   const randomGameIndex = Math.floor(Math.random() * data.length);
   return (
     <div className="default-container">

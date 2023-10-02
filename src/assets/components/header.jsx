@@ -33,10 +33,7 @@ function HandleSearch(event) {
 }
 window.addEventListener("click", function (e) {
   if (logInOpen) {
-    if (
-      e.target != profileMenu &&
-      e.target != document.getElementById("person")
-    ) {
+    if (e.target != profileMenu && e.target != document.getElementById("person")) {
       document.getElementById("profileMenu").style.display = "none";
       console.log("helo");
       logInOpen = false;
@@ -44,7 +41,15 @@ window.addEventListener("click", function (e) {
   }
 });
 
+
 function Header() {
+  
+  function logOut() {
+    localStorage.removeItem("user");
+
+
+  }
+
   return (
     <>
       <nav className="navBar">
@@ -79,18 +84,10 @@ function Header() {
           </Link>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
-              <Link to={"/login"} onClick={openLogIn}>
-                <div>Log In</div>
-              </Link>
-              <Link to={"/signup"} onClick={openLogIn}>
-                <div>Sign Up</div>
-              </Link>
-              <Link to={"/profile"} onClick={openLogIn}>
-                <div>Profile</div>
-              </Link>
-              <Link to={""} onClick={openLogIn}>
-                <div>Log Out</div>
-              </Link>
+                <Link to={"/login"} onClick= {openLogIn}><div>Log In</div></Link>
+                <Link to={"/signup"} onClick= {openLogIn}><div>Sign Up</div></Link>
+                <Link to={"/profile"} onClick= {openLogIn}><div>Profile</div></Link>
+                <Link to={""} onClick= {openLogIn}><div onClick={logOut}>Log Out</div></Link>
             </div>
             <p>
               Dont have an account?{" "}
