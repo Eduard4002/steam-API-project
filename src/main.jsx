@@ -16,6 +16,7 @@ import Header from "./assets/components/header.jsx";
 import "./index.css";
 import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
+import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
 
 const Wrapper = () => (
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/favorites",
+        element: <Favorites />,
       },
       {
         path: "/games",
