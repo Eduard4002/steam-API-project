@@ -68,6 +68,22 @@ function singlegame() {
         </>)
     }
 
+    function starChange(){
+        if (document.getElementById("inactive"))
+        {
+            document.getElementById("inactive").id = "active"
+        }
+        else if (document.getElementById("active"))
+        {
+            document.getElementById("active").id = "inactive"
+        }
+        else if (document.getElementById("none"))
+        {
+            document.getElementById("none").id = "active"
+        }
+
+    }
+
     return (
         <>
             <ToggleVisibility>
@@ -78,30 +94,20 @@ function singlegame() {
 
                 <div className="singleContainer">
                     <div className="singleInfo">
-                        <div className="stars">
-                            <div className="star" id="active"></div>
-                            <div className="star" id="active"></div>
-                            <div className="star" id="active"></div>
-                            <div className="star"></div>
-                            <div className="star"></div>
-                        </div>
+                        
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
                         {/* <h1>Game Title Placeholder</h1> */}
                         <div className="favesBtnAndUnder">
-                            <button className="favesBtn">
+                            <button className="favesBtn" onClick={() => starChange()}>
                                 <p>Add To Favorites</p>
-                                <div className="star" id="active"></div>
+                                <div className="star" id="none" ></div>
 
                             </button>
                             <div className="underFaves">
-                                {/* <p>Pc Requirements: [{itemData.pc_requirements.minimum}Placeholder]</p> */}
                                 
                                 <p>Developers: [{itemData.developers}]</p>
-                                {/* <p>General Information: [{itemData.generalInformation}Placeholder]</p> */}
                                 <p dangerouslySetInnerHTML={{__html: itemData.pc_requirements.minimum}}></p>
-                                {/* <p>{itemData.pc_requirements.minimum}</p> */}
-                                {/* <p>{itemData.supported_languages}</p> */}
                                 <h3>Supported Languages</h3>
                                 <p dangerouslySetInnerHTML={{__html: itemData.supported_languages}}></p>
                             </div>
