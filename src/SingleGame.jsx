@@ -4,13 +4,15 @@ import '../src/assets/css/single.css';
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
 
-function singlegame() {
+function Singlegame() {
 
 
     const { gameId } = useParams();
     const [itemData, setItemData] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [starActive, setStarActive] = useState(false);
+    const [animate, setAnimate] = useState(false);
 
 
 
@@ -72,18 +74,9 @@ function singlegame() {
     }
 
     function starChange(){
-        if (document.getElementById("inactive"))
-        {
-            document.getElementById("inactive").id = "active"
-        }
-        else if (document.getElementById("active"))
-        {
-            document.getElementById("active").id = "inactive"
-        }
-        else if (document.getElementById("none"))
-        {
-            document.getElementById("none").id = "active"
-        }
+        setAnimate(true)
+        setStarActive(!starActive)
+        setTimeout(() => setAnimate(false), 200)
     }
     if(itemData.steam_appid === 0) return <h1>Loading</h1>
     const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
@@ -102,9 +95,9 @@ function singlegame() {
                         <h1>{itemData.name}</h1>
                         {/* <h1>Game Title Placeholder</h1> */}
                         <div className="favesBtnAndUnder">
-                            <button className="favesBtn" onClick={() => starChange()}>
+                            <button className="favesBtn" onClick={starChange}>
                                 <p>Add To Favorites</p>
-                                <div className="star" id="none" ></div>
+                                <div className={`star ${starActive ? "active" : "inactive"} ${animate ? "animate" : ""}`} ></div>
 
                             </button>
                             <div className="underFaves">
@@ -134,4 +127,4 @@ function singlegame() {
         </>
     );
 }
-export default singlegame;
+export default Singlegame;
