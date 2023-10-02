@@ -49,14 +49,16 @@ const SearchBar = () => {
   if (filteredData.length === 0) {
     return <h1>There does not appear to be any result</h1>;
   }
-  return <ListGames dataToDisplay={filteredData} maxGames={50} />;
+  return (
+    <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
+  );
 };
 
 const SetGames = () => {
   const data = DataArray();
   if (data.length === 0) return <h1>Loading</h1>;
   const shuffledGames = [...data].sort(() => Math.random() - 0.5);
-  return <ListGames dataToDisplay={shuffledGames} maxGames={2} />;
+  return <ListGames dataToDisplay={shuffledGames.slice(0, 10)} />;
 };
 const router = createBrowserRouter([
   {
