@@ -54,8 +54,6 @@ function ListGames({ dataToDisplay, maxGames = 10, gamesPerPage = 5 }) {
     });
   }, [dataToDisplay, maxGames]); // This useEffect depends on changes in the displayedGames array
 
-  if (dataToDisplay.length === 0) return <h1>LOADING</h1>;
-
   return (
     <>
       <ToggleVisibility>

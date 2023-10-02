@@ -38,6 +38,20 @@ const Test = () => {
     </>
   );
 };
+const SearchBar = () => {
+  let { value } = useParams();
+  //Filter array with search value
+  const data = DataArray();
+  if (data.length === 0) return <h1>Loading</h1>;
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(value.toLowerCase())
+  );
+  if (filteredData.length === 0) {
+    return <h1>There does not appear to be any result</h1>;
+  }
+  return <ListGames dataToDisplay={filteredData} maxGames={50} />;
+};
+
 const SetGames = () => {
   const data = DataArray();
   if (data.length === 0) return <h1>Loading</h1>;
@@ -75,6 +89,11 @@ const router = createBrowserRouter([
       {
         path: "/games",
         element: <SetGames />,
+        //element: <Games />,
+      },
+      {
+        path: "/result/:value",
+        element: <SearchBar />,
         //element: <Games />,
       },
       // {
