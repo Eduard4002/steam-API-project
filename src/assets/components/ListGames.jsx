@@ -3,29 +3,19 @@ import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./ToggleVisibility";
-import DataArray from "../../DataArray";
 
-function ListGames() {
+function ListGames({ dataToDisplay, maxGames = 10, gamesPerPage = 5 }) {
   const [displayedGames, setDisplayedGames] = useState([]);
   const [extraData, setExtraData] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
 
-  const gamesPerPage = 5;
-  const maxGames = 10;
   const descriptionMaxLength = 130;
-  const data = DataArray();
-  console.log(data);
 
   //Used for retrieving the images from another API
   useEffect(() => {
-    if (data.length === 0) return;
+    if (dataToDisplay.length === 0) return;
 
-    // Shuffle the filtered games randomly
-    const shuffledGames = [...data].sort(() => Math.random() - 0.5);
-
-    // Limit the shuffled games to the variable maxGames
-    setDisplayedGames(shuffledGames.slice(0, maxGames));
     // Clear the existing images array
     setExtraData([]);
 
@@ -45,7 +35,7 @@ function ListGames() {
           .then((response) => response.json())
           .then((json) => {
             // Check if the JSON response contains an image URL
-            if (json[item.appid].success) {
+            if (json && json[item.appid].success) {
               // Associate the fetched image URL with its corresponding game
               temp[item.appid] = json[item.appid].data;
             }
@@ -58,16 +48,14 @@ function ListGames() {
     ).then(() => {
       // Create an array of images based on the displayedGames order
       const tempMapped = displayedGames.map((item) => temp[item.appid] || null);
-
+      setDisplayedGames(dataToDisplay.slice(0, maxGames));
       // Update the images state with the fetched images
       setExtraData(tempMapped);
     });
-  }, [data]); // This useEffect depends on changes in the displayedGames array
+  }, [dataToDisplay, maxGames]); // This useEffect depends on changes in the displayedGames array
 
-  if (data.length === 0) return <h1>LOADING</h1>;
+  if (dataToDisplay.length === 0) return <h1>LOADING</h1>;
 
-  console.log(extraData);
-  //console.log(extraData[0].header_image);
   return (
     <>
       <ToggleVisibility>
@@ -76,8 +64,8 @@ function ListGames() {
       <div>
         <div className="mainDiv">
           <div className="contFlex">
-            {extraData
-              .filter(Boolean)
+            {displayedGames
+
               .slice(
                 currentIndex * gamesPerPage,
                 currentIndex * gamesPerPage + gamesPerPage
@@ -98,7 +86,11 @@ function ListGames() {
                     )}
                     <div className="nameAndDescDiv">
                       <div className="textDiv">
-                        <h2 key={game.name}>
+                        <h2
+                          key={
+                            extraData[currentIndex * gamesPerPage + index]?.name
+                          }
+                        >
                           {extraData[currentIndex * gamesPerPage + index]?.name}
                         </h2>
                       </div>
