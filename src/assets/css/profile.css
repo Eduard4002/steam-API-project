@@ -1,123 +1,157 @@
 .profileDiv {
-    background-color: rgb(81,73,132);
-    border-radius: 10px;
-    margin: auto;
-    padding: 1vw;
-    margin-top: 2vw;
-    width: 80%;
+  background-color: rgb(81, 73, 132);
+  border-radius: 10px;
+  margin: auto;
+  padding: 1vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  padding-bottom: 3vw;
+  width: 80%;
 }
 .profileName {
-    background-color: rgb(31,24,70);
-    margin: auto;
-    margin-top: 2vw;
-    padding: 0.1vw;
-    width: 90%;
+  border-radius: 5px;
+  background-color: rgb(31, 24, 70);
+  margin: auto;
+  margin-top: 2vw;
+  padding: 0.1vw;
+  width: 90%;
 }
 .profileName > h1 {
-    color: rgb(136, 128, 187);
-    font-weight: 350;
-    margin-left: 4vw;
-    text-align: left;
-    font-size: 4vw;
+  color: rgb(136, 128, 187);
+  font-weight: 350;
+  margin-left: 4vw;
+  text-align: left;
+  font-size: 4vw;
 }
 .profileContainer {
-    display: flex;
-    margin: auto;
-    width: 90%;
+  display: flex;
+  margin: auto;
+  width: 90%;
 }
 .settingsDiv {
-    margin-top: 2vw;
-    width: 47.5%;
+  margin-top: 2vw;
+  width: 47.5%;
 }
 .settingsDiv > h3 {
-    color: rgb(136, 128, 187);
-    font-weight: 400;
-    font-size: 2.25vw;
-    margin-bottom: 0;
-    text-align: left;
-    margin-left: 1vw;
+  color: rgb(136, 128, 187);
+  font-weight: 400;
+  font-size: 2.25vw;
+  margin-bottom: 0;
+  text-align: left;
+  margin-left: 1vw;
 }
 .settingsGrid {
-    background-color: rgb(58,49,113);
+  border-radius: 5px;
+  background-color: rgb(58, 49, 113);
 }
 .settingsHeader > h3 {
-    font-size: 1.5vw;
-    margin: 0;
-    padding: 0;
-    padding-top: 1vw;
+  font-size: 1.5vw;
+  margin: 0;
+  padding: 0;
+  padding-top: 1vw;
 }
 .settingsCard {
-    padding-left: 2vw;
-    padding-bottom: 1vw;
-    text-align: left;
+  padding-left: 2vw;
+  padding-bottom: 1vw;
+  text-align: left;
 }
 .settingsCard > label {
-    font-size: 1.5vw;
+  font-size: 1.5vw;
 }
 .settingsCard > h5 {
-    font-size: 1vw;
+  font-size: 1vw;
 }
-input[type=checkbox] {
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 1.5vw;
-    height: 1.5vw;
+.profileDiv input[type="checkbox"] {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 1.5vw;
+  height: 1.5vw;
 }
-input[type=password] {
+.profileDiv input[type="password"] {
   width: 95%;
   border-radius: 5px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  background-color: rgb(38,32,62);
+  background-color: rgb(38, 32, 62);
   border: none;
-  color: rgb(117,117,99);
+  color: rgb(117, 117, 99);
   font-size: 1.5vw;
 }
-input[type=submit] {
+.profileDiv input[type="submit"] {
   width: 50%;
   border-radius: 5px;
   padding: 12px 10px;
   margin: 8px 0;
   box-sizing: border-box;
-  background-color: rgb(38,32,62);
+  background-color: rgb(38, 32, 62);
   border: none;
   color: rgb(136, 128, 187);
   font-size: 1.5vw;
 }
-input[type=submit]:hover {
-    background-color: rgb(31,24,70);
+.profileDiv input[type="submit"]:hover {
+  background-color: rgb(31, 24, 70);
 }
-input[type=button] {
+.profileDiv input[type="button"] {
+  cursor: pointer;
   width: 50%;
   border-radius: 5px;
   padding: 12px 10px;
   margin: 8px 0;
   box-sizing: border-box;
-  background-color: rgb(216, 28, 28);
+  background-color: rgb(249, 139, 2);
   border: none;
-  color: rgb(31,24,70);
+  color: rgb(31, 24, 70);
   font-size: 1.5vw;
 }
-input[type=button]:hover {
-    background-color: rgb(173, 0, 0);
+.profileDiv input[type="button"]:hover {
+  background-color: rgb(182, 100, 0);
 }
 .favoritesDiv {
-    margin-left: 5%;
-    margin-top: 2vw;
-    width: 47.5%;
+  margin-left: 5%;
+  margin-top: 2vw;
+  width: 47.5%;
 }
 .favoritesDiv > h3 {
-    color: rgb(136, 128, 187);
-    font-weight: 400;
-    font-size: 2.25vw;
-    margin-bottom: 0;
-    text-align: left;
-    margin-left: 1vw;
+  color: rgb(136, 128, 187);
+  font-weight: 400;
+  font-size: 2.25vw;
+  margin-bottom: 0;
+  text-align: left;
+  margin-left: 1vw;
 }
 .favoritesGrid {
-    background-color: rgb(58,49,113);
+  border-radius: 5px;
+  background-color: rgb(58, 49, 113);
 }
-.favoritesDiv img {
-    width: 5vw;
+.favoritesCard {
+  display: flex;
+  padding: 1.5vw;
+}
+.favoritesCard > img {
+  border-radius: 10px;
+  width: 12.5vw;
+  height: 7.5vw;
+}
+.favoritesText {
+  text-align: left;
+  display: block;
+}
+.favoritesText > h3 {
+  text-overflow: ellipsis;
+  margin: 0;
+  margin-top: 1.25vw;
+  margin-bottom: 0.5vw;
+  margin-left: 1vw;
+  font-size: 1.5vw;
+}
+.favoritesText > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3vw;
+  width: 17.5vw;
+  margin: 0;
+  margin-left: 1vw;
+  font-size: 1.1vw;
 }

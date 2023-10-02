@@ -44,13 +44,13 @@ function Header() {
         </div>
         <div className="rightNav">
           <span className="material-symbols-outlined" id="person" onClick={openLogIn}>person</span>
-          <span className="material-symbols-outlined">favorite</span>
+          <Link to={"/favorites"}><span className="material-symbols-outlined">grade</span></Link>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
                 <Link to={"/login"}><div>Log In</div></Link>
                 <Link to={"/signup"}><div>Sign Up</div></Link>
                 <Link to={"/profile"}><div>Profile</div></Link>
-                <Link to={"/singlegame"}><div>SingleGame</div></Link>
+                <Link to={""}><div>Log Out</div></Link>
             </div>
             <p>Dont have an account? <Link to={"/signup"}>Sign Up</Link> to continue</p>
           </div>
