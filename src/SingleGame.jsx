@@ -16,6 +16,7 @@ function singlegame() {
 
 
 
+
     useEffect(() => {
         fetch(`http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`)
             .then((response) => response.json())
@@ -29,6 +30,8 @@ function singlegame() {
             });
     }, []);
 
+
+    
 
 
 
@@ -81,9 +84,9 @@ function singlegame() {
         {
             document.getElementById("none").id = "active"
         }
-
     }
-
+    if(itemData.steam_appid === 0) return <h1>Loading</h1>
+    const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
     return (
         <>
             <ToggleVisibility>
@@ -117,10 +120,13 @@ function singlegame() {
 
                 <div className="singlePicDiv">
                     <div className="singlePic">
-                        <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="a" className="gamePic" />
+                        <img src={itemData.capsule_image} alt="a" className="gamePic" />
                         <div className="underPic">
 
                             <h4>{itemData.short_description} Description Placeholder</h4>
+                            <a href={gameUrl}>store.steampowered.com/app/{itemData.steam_appid}</a>
+                            <a href=""></a>
+
                         </div>
                     </div>
                 </div>
