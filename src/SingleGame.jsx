@@ -1,15 +1,16 @@
-import '../src/assets/css/single.css';
-import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
-import ToggleVisibility from "./assets/components/ToggleVisibility";
-//import LinkGamesPage from './assets/components/LinkGamesPage';
-// import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import '../src/assets/css/single.css';
+import ToggleVisibility from "./assets/components/ToggleVisibility";
+import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
+
 function singlegame() {
 
 
     const { gameId } = useParams();
-    const [itemData, setItemData] = useState([]);
+    const [itemData, setItemData] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
 
 
@@ -19,10 +20,15 @@ function singlegame() {
         fetch(`http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`)
             .then((response) => response.json())
             .then((json) => {
+                setLoading(false)
                 setItemData(json[gameId].data);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => {
+                console.error(error)
+                setError(error)
+            });
     }, []);
+
 
 
 
@@ -40,6 +46,27 @@ function singlegame() {
 
     console.log(itemData);
     console.log(gameId);
+    console.log(isLoading);
+
+    if (error) {
+        return (<>
+            <ToggleVisibility>
+                <StuckMenu /> {/* Use the Slideshow component */}
+            </ToggleVisibility>
+
+            <h1>{`${error}`}</h1>
+        </>)
+    }
+
+    if (isLoading) {
+        return (<>
+            <ToggleVisibility>
+                <StuckMenu /> {/* Use the Slideshow component */}
+            </ToggleVisibility>
+
+            <h1>Loading...</h1>
+        </>)
+    }
 
     return (
         <>
@@ -60,7 +87,7 @@ function singlegame() {
                         </div>
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
-                        <h1>Game Title Placeholder</h1>
+                        {/* <h1>Game Title Placeholder</h1> */}
                         <div className="favesBtnAndUnder">
                             <button className="favesBtn">
                                 <p>Add To Favorites</p>
@@ -68,9 +95,15 @@ function singlegame() {
 
                             </button>
                             <div className="underFaves">
-                                <p>Pc Requirements: [{itemData.pcRequirements}Placeholder]</p>
-                                <p>Developers: [{itemData.Developers}Placeholder]</p>
-                                <p>General Information: [{itemData.generalInformation}Placeholder]</p>
+                                {/* <p>Pc Requirements: [{itemData.pc_requirements.minimum}Placeholder]</p> */}
+                                
+                                <p>Developers: [{itemData.developers}]</p>
+                                {/* <p>General Information: [{itemData.generalInformation}Placeholder]</p> */}
+                                <p dangerouslySetInnerHTML={{__html: itemData.pc_requirements.minimum}}></p>
+                                {/* <p>{itemData.pc_requirements.minimum}</p> */}
+                                {/* <p>{itemData.supported_languages}</p> */}
+                                <h3>Supported Languages</h3>
+                                <p dangerouslySetInnerHTML={{__html: itemData.supported_languages}}></p>
                             </div>
                         </div>
                     </div>
