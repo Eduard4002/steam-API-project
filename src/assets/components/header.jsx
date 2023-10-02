@@ -25,7 +25,14 @@ function openLogIn() {
     }
 }
 
+
 function Header() {
+  
+  function logOut() {
+    localStorage.removeItem("user");
+
+
+  }
 
   return (
     <>
@@ -47,10 +54,10 @@ function Header() {
           <span className="material-symbols-outlined">favorite</span>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
-                <Link to={"/login"}><div>Log In</div></Link>
-                <Link to={"/signup"}><div>Sign Up</div></Link>
-                <Link to={"/profile"}><div>Profile</div></Link>
-                <Link to={""}><div>Log Out</div></Link>
+                <Link to={"/login"} onClick= {openLogIn}><div>Log In</div></Link>
+                <Link to={"/signup"} onClick= {openLogIn}><div>Sign Up</div></Link>
+                <Link to={"/profile"} onClick= {openLogIn}><div>Profile</div></Link>
+                <Link to={""} onClick= {openLogIn}><div onClick={logOut}>Log Out</div></Link>
             </div>
             <p>Dont have an account? <Link to={"/signup"}>Sign Up</Link> to continue</p>
           </div>
