@@ -44,7 +44,7 @@ function Header() {
         </div>
         <div className="rightNav">
           <span className="material-symbols-outlined" id="person" onClick={openLogIn}>person</span>
-          <span className="material-symbols-outlined">favorite</span>
+          <Link to={"/favorites"}><span className="material-symbols-outlined">grade</span></Link>
           <div className="profileMenu" id="profileMenu">
             <div className="profileMenuBtns">
                 <Link to={"/login"}><div>Log In</div></Link>
