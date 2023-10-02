@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../src/assets/css/single.css';
@@ -13,6 +14,7 @@ function Singlegame() {
     const [error, setError] = useState(null);
     const [starActive, setStarActive] = useState(false);
     const [animate, setAnimate] = useState(false);
+    const [favorites, setFavorites] = useState([]);
 
 
 
@@ -49,9 +51,9 @@ function Singlegame() {
     //       }
     //     };
 
-    console.log(itemData);
-    console.log(gameId);
-    console.log(isLoading);
+    // console.log(itemData);
+    // console.log(gameId);
+    // console.log(isLoading);
 
     if (error) {
         return (<>
@@ -73,11 +75,22 @@ function Singlegame() {
         </>)
     }
 
-    function starChange(){
+    function favoriteClick(){
         setAnimate(true)
         setStarActive(!starActive)
         setTimeout(() => setAnimate(false), 200)
+
+        const user = JSON.parse(localStorage.getItem("user"));
+
+
+
+        user.favorites.push(itemData.steam_appid);
+        const updateUser = JSON.stringify(user);
+        localStorage.setItem("user", updateUser);
+
+
     }
+
     if(itemData.steam_appid === 0) return <h1>Loading</h1>
     const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
     return (
@@ -95,7 +108,7 @@ function Singlegame() {
                         <h1>{itemData.name}</h1>
                         {/* <h1>Game Title Placeholder</h1> */}
                         <div className="favesBtnAndUnder">
-                            <button className="favesBtn" onClick={starChange}>
+                            <button className="favesBtn" onClick={favoriteClick}>
                                 <p>Add To Favorites</p>
                                 <div className={`star ${starActive ? "active" : "inactive"} ${animate ? "animate" : ""}`} ></div>
 
