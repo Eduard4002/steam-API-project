@@ -92,19 +92,19 @@ function Singlegame() {
     //LocalStorage
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
-      const newItemId = itemData.steam_appid;
-      const index = user.favorites.indexOf(newItemId);
+      const newItem = itemData;
+      const index = user.favorites.indexOf(newItem);
       if (index !== -1) {
         user.favorites.splice(index, 1);
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
-        console.log("Removed ID:", newItemId);
+        console.log("Removed Item:", newItem);
         setStarActive(false);
       } else {
-        user.favorites.push(newItemId);
+        user.favorites.push(newItem);
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
-        console.log("Added ID:", newItemId);
+        console.log("Added Item:", newItem);
         setStarActive(true);
       }
     } else {
@@ -143,7 +143,9 @@ function Singlegame() {
                 ></div>
               </button>
               <div className="underFaves">
-                <p>Developers: [{itemData.developers}]</p>
+                <p>
+                  Developers: {itemData.developers} + {itemData.price_overview.final_formatted}
+                </p>
                 <p
                   dangerouslySetInnerHTML={{
                     __html: itemData.pc_requirements.minimum,
@@ -161,7 +163,7 @@ function Singlegame() {
         </div>
         <div className="singlePicDiv">
           <div className="singlePic">
-            <img src={itemData.capsule_image} alt="a" className="gamePic" />
+            <img src={itemData.header_image} alt="a" className="gamePic" />
             <div className="underPic">
               <h4>{itemData.short_description} Description Placeholder</h4>
               <a href={gameUrl}>
