@@ -38,7 +38,10 @@ function Favorites() {
 
         {user.favorites.map((item, index) => (
           <div key={index} className="favoriteGames">
-            {item.name}
+            <h3>{item.name}</h3>
+            <div>
+              <a href={item.website}>{item.website}</a>
+            </div>
             <img src={item.header_image} alt="Game thumbnail" />
           </div>
         ))}
