@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import DataArray from "../../DataArray";
+import { DataArray, getRandomGames } from "../../DataArray.jsx";
 import "../css/sidebar.css";
 export default function stuckMenu() {
   const data = DataArray();

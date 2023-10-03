@@ -5,9 +5,7 @@ function DataArray() {
   const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
   useEffect(() => {
     // Check if data is already loaded, and return early if it is.
-    if (data.length !== 0) {
-      return;
-    }
+
     fetch(
       "http://localhost:3000/api?url=" +
         "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=A0911E4728A7BFFA31252DC83DEB9573&format=json"
@@ -26,5 +24,17 @@ function DataArray() {
 
   return data;
 }
+function getRandomGames(amount) {
+  const data = DataArray();
+  console.log("Hello");
+  if (data.length === 0) return [];
 
-export default DataArray;
+  if (localStorage.getItem("DATA") != "")
+    return JSON.parse(localStorage.getItem("DATA"));
+
+  const shuffledGames = [...data].sort(() => Math.random() - 0.5);
+
+  localStorage.setItem("DATA", JSON.stringify(shuffledGames.slice(0, amount)));
+  return shuffledGames.slice(0, amount);
+}
+export { DataArray, getRandomGames };
