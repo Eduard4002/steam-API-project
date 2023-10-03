@@ -92,7 +92,7 @@ function Singlegame() {
     //LocalStorage
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
-      const newItem = itemData;
+      const newItem = itemData.steam_appid;
       const index = user.favorites.indexOf(newItem);
       if (index !== -1) {
         user.favorites.splice(index, 1);
