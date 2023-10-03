@@ -146,19 +146,19 @@ function Singlegame() {
                 }`}
               ></div>
             </button>
-            <h1>{itemData.name}</h1>
-            <p>{itemData.price_overview?.final_formatted || "Free to play"}</p>
-            <p>Developers: {itemData.developers}</p>
-            <span>Realease date: {itemData.release_date.date}</span>
+            <h1 className="gameTitle">{itemData.name}</h1>
+            <p className="gamePrice">{itemData.price_overview?.final_formatted || "Free to play"}</p>
+            <p className="gameInfo">Developers: {itemData.developers}</p>
+            <p className="gameInfo">Realease date: {itemData.release_date.date}</p>
           </div>
           <div className="rightGameDiv">
-            <img src={itemData.header_image} alt="" />
-            <h3>Description:</h3>
-            <p>{itemData.short_description}</p>
+            <img src={itemData.header_image} alt="Picture of Game" className="gameImage"/>
+            <div className="gameDescription">
+              <p>{itemData.short_description}</p>
+            </div>
           </div>
         </div>
         <div className="bottomGameDiv">
-          <hr />
           <h3>System Requirements:</h3>
           <table>
             <tr>
