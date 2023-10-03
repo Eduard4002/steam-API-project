@@ -10,12 +10,25 @@ html {
 
   color-scheme: light dark;
 
-  
+  /* --------------------general ---------------------------------------- */
   --body_color: rgb(220, 187, 223);
-  --body_background: rgb(43, 33, 82);
-  --body_background: linear-gradient(180deg, rgb(69, 37, 110) 0%, rgb(16, 12, 31) 100%);
-  --sidebar: rgb(29, 16, 43);
+  --body_background: rgb(31, 7, 52);
+  --body_background: linear-gradient(180deg, rgb(28, 30, 51) 0%, rgb(16, 5, 30) 100%);
 
+  /* -------------------sidebar------------------------------------ */
+  --sidebar: rgb(5, 4, 29);
+  --sidebar_a_prehover: #1b1731;
+  --sidebar_a_hover:#9d82cc;
+  --sidebar_text:#f7f0fc;
+  --sidebar_text_hover:#120b16;
+
+  --sidebar_bttn:#110515;
+
+
+
+/* ----------------------------topper----------------------------------------------------- */
+  --topper:rgb(1, 1, 24);
+  /* ------------------------------------------------------------------------ */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
