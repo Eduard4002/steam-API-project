@@ -82,50 +82,49 @@
 
 // -----------------------------------------------------------------------------------------
 
-import React, { useState, useEffect } from 'react';
-import "../css/dark"
-
-const DarkModeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-
-    const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode) {
-      setIsDarkMode(JSON.parse(savedDarkMode));
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !isDarkMode;
-    setIsDarkMode(newDarkMode);
+// import React, { useState, useEffect } from 'react';
 
 
-    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
-  };
+// const DarkModeToggle = () => {
+//   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  return (
-    <div>
-      <label>
-        Dark Mode
-        <input
-          type="checkbox"
-          checked={isDarkMode}
-          onChange={toggleDarkMode}
-/>
-      </label>
+//   useEffect(() => {
+
+//     const savedDarkMode = localStorage.getItem('darkMode');
+//     if (savedDarkMode) {
+//       setIsDarkMode(JSON.parse(savedDarkMode));
+//     }
+//   }, []);
+
+
+//   const toggleDarkMode = () => {
+//     const newDarkMode = !isDarkMode;
+//     setIsDarkMode(newDarkMode);
+
+
+//     localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+//   };
+
+//   return (
+//     <div>
+//       <label>
+//         Dark Mode
+//         <input
+//           type="checkbox"
+//           checked={isDarkMode}
+//           onChange={toggleDarkMode}
+// />
+//       </label>
       
-      <DarkModeToggle />
-    </div>
-  );
-};
+//       {/* <DarkModeToggle /> */}
 
-export default DarkModeToggle;
+//     </div>
+//   );
+// };
+
+// export default DarkModeToggle;
 
 
-
-
-// -------------------------------------ignore for now---------------------------
 // const [isDarkMode, setIsDarkMode] = useState(false);
 
 
@@ -145,3 +144,40 @@ export default DarkModeToggle;
 //     document.body.classList.remove('dark-mode');
 //   }
 // }, [isDarkMode]);
+
+// -----------------------------------------------------------------------------------------
+
+import React from "react";
+
+import "../css/dark-mode.css"
+
+const DarkMode = () => {
+  const setDarkMode = () =>{
+    document.querySelector("body").setAttribute('data-theme' , 'dark');
+  };
+
+  const setLightMode = () =>{
+    document.querySelector("body").setAttribute('data-theme' , 'light');
+  };
+
+const toggleTheme = (e) => {
+  if (e.target.checked) setDarkMode();
+  else setLightMode()
+}
+
+    return (
+        <div className='dark_mode'>
+            <input
+                className='dark_mode_input'
+                type='checkbox'
+                id='darkmode-toggle'
+                onChange={toggleTheme}
+            />
+            <label className='dark_mode_label' for='darkmode-toggle'>
+             
+            </label>
+        </div>
+    );
+};
+
+export default DarkMode;

@@ -20,8 +20,22 @@ app.get("/api", function (req, res) {
     res.status(400).json({ error: "API URL is missing" });
     return;
   }
+  const currentTime = new Date();
+  const hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  const seconds = currentTime.getSeconds();
 
-  console.log("API at: " + apiURL + " fetched");
+  console.log(
+    "[API at: " +
+      apiURL +
+      " fetched] " +
+      "TIME: " +
+      hours +
+      ":" +
+      minutes +
+      ":" +
+      seconds
+  );
   fetch(apiURL)
     .then((res) => res.json())
     .then((data) => res.json(data))
