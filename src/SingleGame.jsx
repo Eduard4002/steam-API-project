@@ -11,10 +11,10 @@ function Singlegame() {
     const { gameId } = useParams();
     const [itemData, setItemData] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [starActive, setStarActive] = useState(false);
     const [animate, setAnimate] = useState(false);
     const [favorites, setFavorites] = useState([]);
+    const [error, setError] = useState(null);
+    let [starActive, setStarActive] = useState(false);
 
 
 
@@ -74,13 +74,7 @@ function Singlegame() {
             <h1>Loading...</h1>
         </>)
     }
-
-    function favoriteClick() {
-        //StarAnim
-        setAnimate(true)
-        setStarActive(!starActive)
-        setTimeout(() => setAnimate(false), 200)
-
+    function checkAndHandleFavorites() {
         //LocalStorage
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && Array.isArray(user.favorites)) {
@@ -91,15 +85,29 @@ function Singlegame() {
                 const updateUser = JSON.stringify(user);
                 localStorage.setItem("user", updateUser);
                 console.log("Removed ID:", newItemId);
+                setStarActive(starActive = false);
             } else {
                 user.favorites.push(newItemId);
                 const updateUser = JSON.stringify(user);
                 localStorage.setItem("user", updateUser);
                 console.log("Added ID:", newItemId);
+                setStarActive(starActive = true);
             }
         } else {
             console.log("User or favorites array not found in localStorage.");
         }
+        console.log("CheckFunction run")
+    }
+    
+    
+    
+    function favoriteClick() {
+        //StarAnim
+        setAnimate(true)
+        setStarActive(!starActive)
+        setTimeout(() => setAnimate(false), 200)
+        checkAndHandleFavorites();
+        
     }
 
     if (itemData.steam_appid === 0) return <h1>Loading</h1>
