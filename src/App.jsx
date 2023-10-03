@@ -5,15 +5,27 @@ import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow 
 import Slideshow from "./assets/components/slideshow";
 import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
+
+
+
+
 function App() {
   const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
 
+
   return (
+
     <>
+
+
       {/* Other components */}
       <StuckMenu /> {/* Use the Slideshow component */}
       {/* Other components */}
+
+  
+
       <div className="appContainer">
+    
         <div className="slideWrapper">
           <Slideshow />
         </div>

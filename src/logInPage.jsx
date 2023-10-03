@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 
+
 function LogIn() {
   const navigate = useNavigate();
 
@@ -38,6 +39,8 @@ function LogIn() {
 
   return (
     <>
+ 
+
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>

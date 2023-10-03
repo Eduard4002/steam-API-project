@@ -37,13 +37,15 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-                <input type="checkbox" name="" id="" />
-                <label>DarkMode</label>
-              </div>
-              <div className="settingsCard">
-                <input type="checkbox" name="" id="" checked />
-                <label>Något annat</label>
-              </div>
+
+              {/* <DarkModeToggle /> */}
+                              {/* <input type="checkbox" name="" id="" />
+                              <label>DarkMode</label> */}
+                            </div>
+                            {/* <div className="settingsCard">
+                              <input type="checkbox" name="" id="" checked />
+                              <label>Något annat</label>
+                            </div> */}
               <div className="settingsHeader">
                 <h3>Profile Settings</h3>
               </div>
@@ -109,4 +111,7 @@ function Profile() {
     </>
   );
 }
+
+
+
 export default Profile;

@@ -23,8 +23,11 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "react-slideshow-image": "^4.2.1",
+    "react-switch": "^7.0.0",
+    "react-toggle-dark-mode": "^1.1.1",
     "request": "^2.88.2",
     "save-dev": "^0.0.1-security",
+    "styled-components": "^6.0.8",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

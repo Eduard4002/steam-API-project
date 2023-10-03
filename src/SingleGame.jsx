@@ -11,10 +11,10 @@ function Singlegame() {
     const { gameId } = useParams();
     const [itemData, setItemData] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [starActive, setStarActive] = useState(false);
     const [animate, setAnimate] = useState(false);
     const [favorites, setFavorites] = useState([]);
+    const [error, setError] = useState(null);
+    let [starActive, setStarActive] = useState(false);
 
 
 
@@ -35,7 +35,7 @@ function Singlegame() {
     }, []);
 
 
-    
+
 
 
 
@@ -74,24 +74,43 @@ function Singlegame() {
             <h1>Loading...</h1>
         </>)
     }
-
-    function favoriteClick(){
+    function checkAndHandleFavorites() {
+        //LocalStorage
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user && Array.isArray(user.favorites)) {
+            const newItemId = itemData.steam_appid;
+            const index = user.favorites.indexOf(newItemId);
+            if (index !== -1) {
+                user.favorites.splice(index, 1);
+                const updateUser = JSON.stringify(user);
+                localStorage.setItem("user", updateUser);
+                console.log("Removed ID:", newItemId);
+                setStarActive(starActive = false);
+            } else {
+                user.favorites.push(newItemId);
+                const updateUser = JSON.stringify(user);
+                localStorage.setItem("user", updateUser);
+                console.log("Added ID:", newItemId);
+                setStarActive(starActive = true);
+            }
+        } else {
+            console.log("User or favorites array not found in localStorage.");
+        }
+        console.log("CheckFunction run")
+    }
+    
+    
+    
+    function favoriteClick() {
+        //StarAnim
         setAnimate(true)
         setStarActive(!starActive)
         setTimeout(() => setAnimate(false), 200)
-
-        const user = JSON.parse(localStorage.getItem("user"));
-
-
-
-        user.favorites.push(itemData.steam_appid);
-        const updateUser = JSON.stringify(user);
-        localStorage.setItem("user", updateUser);
-
-
+        checkAndHandleFavorites();
+        
     }
 
-    if(itemData.steam_appid === 0) return <h1>Loading</h1>
+    if (itemData.steam_appid === 0) return <h1>Loading</h1>
     const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
     return (
         <>
@@ -103,7 +122,7 @@ function Singlegame() {
 
                 <div className="singleContainer">
                     <div className="singleInfo">
-                        
+
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
                         {/* <h1>Game Title Placeholder</h1> */}
@@ -114,11 +133,11 @@ function Singlegame() {
 
                             </button>
                             <div className="underFaves">
-                                
+
                                 <p>Developers: [{itemData.developers}]</p>
-                                <p dangerouslySetInnerHTML={{__html: itemData.pc_requirements.minimum}}></p>
+                                <p dangerouslySetInnerHTML={{ __html: itemData.pc_requirements.minimum }}></p>
                                 <h3>Supported Languages</h3>
-                                <p dangerouslySetInnerHTML={{__html: itemData.supported_languages}}></p>
+                                <p dangerouslySetInnerHTML={{ __html: itemData.supported_languages }}></p>
                             </div>
                         </div>
                     </div>
