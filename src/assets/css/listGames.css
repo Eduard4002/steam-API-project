@@ -63,7 +63,16 @@
     gap: 15px;
     margin-bottom: 50px;
 }
+.buttons button{
+    height: 50px;
 
+}
+.activeIndex{
+    background-color: #3A3171;
+}
+.activeIndex:focus{
+    outline: none;
+}
 .buttonsDiv {
     display: flex;
     flex-direction: column;
