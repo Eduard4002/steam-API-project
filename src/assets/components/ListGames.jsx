@@ -4,12 +4,13 @@ import "../css/listGames.css";
 import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./ToggleVisibility";
 
-function ListGames({ dataToDisplay, maxGames = 10, gamesPerPage = 5 }) {
+function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
 
   const descriptionMaxLength = 130;
+  const indexAmount = Math.ceil(dataToDisplay.length / gamesPerPage);
 
   //Used for retrieving extra data from another API
   useEffect(() => {
@@ -56,7 +57,25 @@ function ListGames({ dataToDisplay, maxGames = 10, gamesPerPage = 5 }) {
       setExtraData(tempMapped.filter(Boolean));
     });
   }, [dataToDisplay, maxGames, currentIndex]); // This useEffect depends on changes in the displayedGames array
-  console.log(extraData);
+
+  //Create index elements
+  const elements = [];
+
+  for (let i = 0; i < indexAmount; i++) {
+    // Generate unique key if needed
+    const key = `element_${i}`;
+    const className = i === currentIndex ? "activeIndex" : "";
+    // Create JSX element and push it into the elements array
+    elements.push(
+      <button
+        className={className}
+        key={key}
+        onClick={() => setCurrentIndex(i)}
+      >
+        {i + 1}
+      </button>
+    );
+  }
   return (
     <>
       <ToggleVisibility>
@@ -129,21 +148,7 @@ function ListGames({ dataToDisplay, maxGames = 10, gamesPerPage = 5 }) {
             ))}
           </div>
         </div>
-        <div className="buttons">
-          <button
-            onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
-            disabled={currentIndex === 0}
-          >
-            <p key="prev">Previous</p>
-          </button>
-          <p>{currentIndex + 1}</p> {/* Add 1 to display the 1-based index */}
-          <button
-            onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
-            disabled={(currentIndex + 1) * gamesPerPage >= dataToDisplay.length}
-          >
-            <p key="next">Next</p>
-          </button>
-        </div>
+        <div className="buttons">{elements}</div>
       </div>
     </>
   );

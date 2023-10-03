@@ -58,7 +58,7 @@ const SetGames = () => {
   const data = DataArray();
   if (data.length === 0) return <h1>Loading</h1>;
   const shuffledGames = [...data].sort(() => Math.random() - 0.5);
-  return <ListGames dataToDisplay={shuffledGames.slice(0, 10)} />;
+  return <ListGames dataToDisplay={shuffledGames.slice(0, 20)} />;
 };
 const router = createBrowserRouter([
   {
@@ -91,12 +91,10 @@ const router = createBrowserRouter([
       {
         path: "/games",
         element: <SetGames />,
-        //element: <Games />,
       },
       {
         path: "/result/:value",
         element: <SearchBar />,
-        //element: <Games />,
       },
       // {
       //   path: "/singlegame",
