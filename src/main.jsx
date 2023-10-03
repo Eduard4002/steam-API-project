@@ -18,11 +18,11 @@ import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
+import DataArray from "./DataArray.jsx";
 // import DarkMode from "./assets/components/DarkMode.jsx"
 
 const Wrapper = () => (
-<>
-  
+  <>
     {/* <DarkMode/> */}
     <Header />
     <Default />
@@ -111,4 +111,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
