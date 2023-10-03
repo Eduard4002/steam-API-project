@@ -1,23 +1,22 @@
 .singleGameDiv {
-    background-color: var(--body_background);
+  background-color: var(--body_background);
 }
 .gameTopDiv {
-    display: inline-flex;
-    width: 100vw;
+  display: inline-flex;
+  width: 100vw;
 }
 .leftGameDiv {
-    background-color: rgba(250, 0, 0, 0.5);
-    width: 40vw;
+  background-color: rgba(250, 0, 0, 0.5);
+  width: 40vw;
 }
 .rightGameDiv {
-    background-color: rgba(250, 250, 0, 0.5);
-    width: 60vw;
+  background-color: rgba(250, 250, 0, 0.5);
+  width: 60vw;
 }
 .bottomGameDiv {
-    background-color: rgba(0, 250, 250, 0.5);
-    width: 100vw;
+  background-color: rgba(0, 250, 250, 0.5);
+  width: 100vw;
 }
-
 
 .favesBtn {
   padding: 0px;
