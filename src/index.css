@@ -25,6 +25,15 @@ html {
   
 }
 
+.for_light_theme{
+  --background: rgb(96, 86, 134);
+  --background: linear-gradient(180deg, rgb(141, 123, 207) 0%, rgb(46, 37, 77) 100%);
+}
+
+.for_dark_theme{
+  --background: rgb(53,41,97);
+  --background: linear-gradient(180deg, rgba(53,41,97,1) 0%, rgba(29,21,58,1) 100%);
+}
 
 a {
   font-weight: 500;

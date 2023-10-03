@@ -1,7 +1,8 @@
 import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
+import StuckMenu from "./assets/components/stuckMenu"; 
 import ToggleVisibility from "./assets/components/ToggleVisibility";
+// import DarkMode from "./assets/components/DarkMode";
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("user");
@@ -36,15 +37,7 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-
-              {/* <DarkModeToggle /> */}
-                              {/* <input type="checkbox" name="" id="" />
-                              <label>DarkMode</label> */}
-                            </div>
-                            {/* <div className="settingsCard">
-                              <input type="checkbox" name="" id="" checked />
-                              <label>Något annat</label>
-                            </div> */}
+              {/* <DarkMode/> */}
               <div className="settingsHeader">
                 <h3>Profile Settings</h3>
               </div>
@@ -110,7 +103,5 @@ function Profile() {
     </>
   );
 }
-
-
 
 export default Profile;

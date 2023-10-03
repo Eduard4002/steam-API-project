@@ -18,11 +18,12 @@ import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
+// import DarkMode from "./assets/components/DarkMode.jsx"
 
 const Wrapper = () => (
 <>
   
-  
+    {/* <DarkMode/> */}
     <Header />
     <Default />
     <Outlet />
@@ -54,29 +55,6 @@ const SearchBar = () => {
     <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
   );
 };
-
-
-// -------------------------------------ignore for now---------------------------
-// const [isDarkMode, setIsDarkMode] = useState(false);
-
-
-// useEffect(() => {
-//   // Check local storage for saved dark mode preference
-//   const savedDarkMode = localStorage.getItem('darkMode');
-//   if (savedDarkMode) {
-//     setIsDarkMode(JSON.parse(savedDarkMode));
-//   }
-// }, []);
-
-// // Conditionally apply dark mode styles
-// useEffect(() => {
-//   if (isDarkMode) {
-//     document.body.classList.add('dark-mode');
-//   } else {
-//     document.body.classList.remove('dark-mode');
-//   }
-// }, [isDarkMode]);
-
 
 const SetGames = () => {
   const data = DataArray();
