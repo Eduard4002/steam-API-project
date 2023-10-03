@@ -144,19 +144,22 @@ function Singlegame() {
             ></div>
           </button>
           <h1>{itemData.name}</h1>
-          {/* <p>{itemData.price_overview.final_formatted}</p> */}
+          <p>
+            {itemData.price_overview?.final_formatted || "Free to play"}
+          </p>
           <p>Developers: {itemData.developers}</p>
           <span>Realease date: {itemData.release_date.date}</span>
         </div>
         <div className="rightGameDiv">
           <img src={itemData.header_image} alt="" />
           <h3>Description:</h3>
-          <p>
-            <script>stripHTML(itemData.detailed_description);</script>
-          </p>
+          <p>{itemData.short_description}</p>
         </div>
         <div className="bottomGameDiv">
           <hr />
+          <p
+            dangerouslySetInnerHTML={{ __html: itemData.detailed_description }}
+          ></p>
         </div>
 
         {/* <div className="singleContainer">
