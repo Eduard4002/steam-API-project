@@ -36,6 +36,25 @@ function Singlegame() {
 
 
 
+    useEffect(() => {
+        if(isLoading){
+            return
+        }
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user)
+        if (user && Array.isArray(user.favorites)) {
+            const newItemId = itemData.steam_appid;
+            const index = user.favorites.indexOf(newItemId);
+            console.log('idx', index)
+            if (index == -1) {
+                setStarActive(false);
+            } else {
+                setStarActive(true);
+            }
+        } else {
+            console.log("User or favorites array not found in localStorage.");
+        }
+    }, [isLoading])
 
 
 
@@ -85,29 +104,27 @@ function Singlegame() {
                 const updateUser = JSON.stringify(user);
                 localStorage.setItem("user", updateUser);
                 console.log("Removed ID:", newItemId);
-                setStarActive(starActive = false);
+                setStarActive(false);
             } else {
                 user.favorites.push(newItemId);
                 const updateUser = JSON.stringify(user);
                 localStorage.setItem("user", updateUser);
                 console.log("Added ID:", newItemId);
-                setStarActive(starActive = true);
+                setStarActive(true);
             }
         } else {
             console.log("User or favorites array not found in localStorage.");
         }
         console.log("CheckFunction run")
     }
-    
-    
-    
+
+
     function favoriteClick() {
         //StarAnim
         setAnimate(true)
-        setStarActive(!starActive)
         setTimeout(() => setAnimate(false), 200)
         checkAndHandleFavorites();
-        
+
     }
 
     if (itemData.steam_appid === 0) return <h1>Loading</h1>
