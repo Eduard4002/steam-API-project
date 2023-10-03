@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ListGames from "./assets/components/ListGames";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/favorites.css";
@@ -20,16 +21,13 @@ function Favorites() {
     // }
 
     const favArrayLength = user.favorites.length;
-
-    for (var i = 0; i < favArrayLength; i++) {
-      console.log(user.favorites[i].name);
-    }
   } else {
     console.log("User or favorites array not found in localStorage.");
   }
-
+  console.log(user.favorites);
   return (
     <>
+      <ListGames dataToDisplay={user.favorites} />
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
