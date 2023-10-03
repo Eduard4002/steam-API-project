@@ -120,6 +120,12 @@ function Singlegame() {
     checkAndHandleFavorites();
   }
 
+  function stripHtml(html) {
+    let tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  }
+
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
   return (
@@ -127,12 +133,37 @@ function Singlegame() {
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
-      <div className="mainSingleDiv">
-        <div className="singleContainer">
+      <div className="singleGameDiv">
+        <div className="leftGameDiv">
+          <button className="gameFavBtn" onClick={favoriteClick}>
+            <p>Favorite</p>
+            <div
+              className={`star ${starActive ? "active" : "inactive"} ${
+                animate ? "animate" : ""
+              }`}
+            ></div>
+          </button>
+          <h1>{itemData.name}</h1>
+          <p>{itemData.price_overview.final_formatted}</p>
+          <p>Developers: {itemData.developers}</p>
+          <span>Realease date: {itemData.release_date.date}</span>
+        </div>
+        <div className="rightGameDiv">
+          <img src={itemData.header_image} alt="" />
+          <h3>Description:</h3>
+          <p>
+            <script>stripHTML(itemData.detailed_description);</script>
+          </p>
+        </div>
+        <div className="bottomGameDiv">
+          <hr />
+        </div>
+
+        {/* <div className="singleContainer">
           <div className="singleInfo">
-            {/* <h1>{itemData.name}</h1> */}
+             <h1>{itemData.name}</h1> 
             <h1>{itemData.name}</h1>
-            {/* <h1>Game Title Placeholder</h1> */}
+             <h1>Game Title Placeholder</h1> 
             <div className="favesBtnAndUnder">
               <button className="favesBtn" onClick={favoriteClick}>
                 <p>Favorite</p>
@@ -172,7 +203,7 @@ function Singlegame() {
               <a href=""></a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
