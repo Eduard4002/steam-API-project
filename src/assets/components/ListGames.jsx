@@ -35,6 +35,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
             "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
             item.appid;
 
+          console.log(url);
+
           // Perform the fetch request
           return fetch(url)
             .then((response) => response.json())
@@ -56,7 +58,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
       // Update the images state with the fetched images
       setExtraData(tempMapped.filter(Boolean));
     });
-  }, [dataToDisplay, maxGames, currentIndex]); // This useEffect depends on changes in the displayedGames array
+  }, [maxGames, currentIndex]); // This useEffect depends on changes in the displayedGames array
 
   //Create index elements
   const elements = [];
