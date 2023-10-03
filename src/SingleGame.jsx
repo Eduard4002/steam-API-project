@@ -145,7 +145,7 @@ function Singlegame() {
                         {/* <h1>Game Title Placeholder</h1> */}
                         <div className="favesBtnAndUnder">
                             <button className="favesBtn" onClick={favoriteClick}>
-                                <p>Add To Favorites</p>
+                                <p>Favorite</p>
                                 <div className={`star ${starActive ? "active" : "inactive"} ${animate ? "animate" : ""}`} ></div>
 
                             </button>
