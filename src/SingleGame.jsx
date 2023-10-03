@@ -120,12 +120,6 @@ function Singlegame() {
     checkAndHandleFavorites();
   }
 
-  function stripHtml(html) {
-    let tmp = document.createElement("DIV");
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
-  }
-
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
   return (
