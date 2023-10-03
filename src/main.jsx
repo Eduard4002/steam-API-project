@@ -16,10 +16,8 @@ import Header from "./assets/components/header.jsx";
 import "./index.css";
 import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
+import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
-// import "./assets/css/dark-mode.css";
-
-
 
 const Wrapper = () => (
 <>
@@ -39,6 +37,21 @@ const Test = () => {
       <h1>Game: {gameId}</h1>
       <Link to={"/"}>hehe</Link>
     </>
+  );
+};
+const SearchBar = () => {
+  let { value } = useParams();
+  //Filter array with search value
+  const data = DataArray();
+  if (data.length === 0) return <h1>Loading</h1>;
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(value.toLowerCase())
+  );
+  if (filteredData.length === 0) {
+    return <h1>There does not appear to be any result</h1>;
+  }
+  return (
+    <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
   );
 };
 
@@ -65,6 +78,12 @@ const Test = () => {
 // }, [isDarkMode]);
 
 
+const SetGames = () => {
+  const data = DataArray();
+  if (data.length === 0) return <h1>Loading</h1>;
+  const shuffledGames = [...data].sort(() => Math.random() - 0.5);
+  return <ListGames dataToDisplay={shuffledGames.slice(0, 10)} />;
+};
 const router = createBrowserRouter([
   {
     element: <Wrapper />,
@@ -90,8 +109,17 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "/favorites",
+        element: <Favorites />,
+      },
+      {
         path: "/games",
-        element: <ListGames />,
+        element: <SetGames />,
+        //element: <Games />,
+      },
+      {
+        path: "/result/:value",
+        element: <SearchBar />,
         //element: <Games />,
       },
       // {

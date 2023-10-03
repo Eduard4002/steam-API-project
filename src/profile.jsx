@@ -2,20 +2,32 @@ import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
-import DarkModeToggle from "./assets/components/DarkModeToggle";
-
 
 function Profile() {
+  const loggedInUserId = localStorage.getItem("user");
+
+  if (!loggedInUserId) {
+    return (
+      <p className="logInQ">
+        You are not logged in. To continue, please{" "}
+        <Link to={"/login"}> Log In </Link> or{" "}
+        <Link to={"/signup"}> Sign Up </Link>{" "}
+      </p>
+    );
+  }
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+
   return (
     <>
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
       <div className="profileDiv">
-          <div className="profileName">
-            <h1>Hi, MargoGamer69!</h1>
-          </div>
-
+        <div className="profileName">
+          <h1>Hi, {user.username} </h1>
+        </div>
         <div className="profileContainer">
           <div className="settingsDiv">
             <h3>Settings</h3>

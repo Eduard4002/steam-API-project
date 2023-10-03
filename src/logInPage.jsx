@@ -11,20 +11,31 @@ function LogIn() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const userKey = username;
 
-    const storedUserData = JSON.parse(window.localStorage.getItem(userKey));
+    
 
     if (
       storedUserData &&
       username === storedUserData.username &&
       password === storedUserData.password
     ) {
+      window.localStorage.setItem("user", storedUserData.id,);
       navigate("/");
     } else {
       alert("Wrong details bozo");
     }
   }
+
+ /* const loggedInUserId = localStorage.getItem("user");
+
+  if (loggedInUserId) {
+    return (
+      <p className="logInQ">
+        You are already logged in. Go to <Link to={"/"}> Home Page </Link> or{" "}
+        <Link to={"/profile"}> Profile Page </Link> to continue.{" "}
+      </p>
+    );
+  } */
 
   return (
     <>

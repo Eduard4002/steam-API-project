@@ -1,16 +1,21 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../src/assets/css/single.css';
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from './assets/components/stuckMenu'; // Import your Slideshow component
 
-function singlegame() {
+function Singlegame() {
 
 
     const { gameId } = useParams();
     const [itemData, setItemData] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [starActive, setStarActive] = useState(false);
+    const [animate, setAnimate] = useState(false);
+    const [favorites, setFavorites] = useState([]);
+
 
 
 
@@ -30,6 +35,8 @@ function singlegame() {
     }, []);
 
 
+    
+
 
 
     //   useEffect(() => {
@@ -44,9 +51,9 @@ function singlegame() {
     //       }
     //     };
 
-    console.log(itemData);
-    console.log(gameId);
-    console.log(isLoading);
+    // console.log(itemData);
+    // console.log(gameId);
+    // console.log(isLoading);
 
     if (error) {
         return (<>
@@ -68,6 +75,24 @@ function singlegame() {
         </>)
     }
 
+    function favoriteClick(){
+        setAnimate(true)
+        setStarActive(!starActive)
+        setTimeout(() => setAnimate(false), 200)
+
+        const user = JSON.parse(localStorage.getItem("user"));
+
+
+
+        user.favorites.push(itemData.steam_appid);
+        const updateUser = JSON.stringify(user);
+        localStorage.setItem("user", updateUser);
+
+
+    }
+
+    if(itemData.steam_appid === 0) return <h1>Loading</h1>
+    const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
     return (
         <>
             <ToggleVisibility>
@@ -78,30 +103,20 @@ function singlegame() {
 
                 <div className="singleContainer">
                     <div className="singleInfo">
-                        <div className="stars">
-                            <div className="star" id="active"></div>
-                            <div className="star" id="active"></div>
-                            <div className="star" id="active"></div>
-                            <div className="star"></div>
-                            <div className="star"></div>
-                        </div>
+                        
                         {/* <h1>{itemData.name}</h1> */}
                         <h1>{itemData.name}</h1>
                         {/* <h1>Game Title Placeholder</h1> */}
                         <div className="favesBtnAndUnder">
-                            <button className="favesBtn">
+                            <button className="favesBtn" onClick={favoriteClick}>
                                 <p>Add To Favorites</p>
-                                <div className="star" id="active"></div>
+                                <div className={`star ${starActive ? "active" : "inactive"} ${animate ? "animate" : ""}`} ></div>
 
                             </button>
                             <div className="underFaves">
-                                {/* <p>Pc Requirements: [{itemData.pc_requirements.minimum}Placeholder]</p> */}
                                 
                                 <p>Developers: [{itemData.developers}]</p>
-                                {/* <p>General Information: [{itemData.generalInformation}Placeholder]</p> */}
                                 <p dangerouslySetInnerHTML={{__html: itemData.pc_requirements.minimum}}></p>
-                                {/* <p>{itemData.pc_requirements.minimum}</p> */}
-                                {/* <p>{itemData.supported_languages}</p> */}
                                 <h3>Supported Languages</h3>
                                 <p dangerouslySetInnerHTML={{__html: itemData.supported_languages}}></p>
                             </div>
@@ -111,10 +126,13 @@ function singlegame() {
 
                 <div className="singlePicDiv">
                     <div className="singlePic">
-                        <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="a" className="gamePic" />
+                        <img src={itemData.capsule_image} alt="a" className="gamePic" />
                         <div className="underPic">
 
                             <h4>{itemData.short_description} Description Placeholder</h4>
+                            <a href={gameUrl}>store.steampowered.com/app/{itemData.steam_appid}</a>
+                            <a href=""></a>
+
                         </div>
                     </div>
                 </div>
@@ -122,4 +140,4 @@ function singlegame() {
         </>
     );
 }
-export default singlegame;
+export default Singlegame;
