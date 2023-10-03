@@ -2,7 +2,7 @@
 
 .default-container {
     width: 19.531vw;
-    background-color: rgb(29, 16, 43);
+    background: var(--sidebar);
     color: #fff;
     padding: 20px; 
     float: left;
