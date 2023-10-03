@@ -83,7 +83,7 @@
 // -----------------------------------------------------------------------------------------
 
 import React, { useState, useEffect } from 'react';
-
+import "../css/dark"
 
 const DarkModeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -112,8 +112,7 @@ const DarkModeToggle = () => {
           type="checkbox"
           checked={isDarkMode}
           onChange={toggleDarkMode}
-          
-        />
+/>
       </label>
       
       <DarkModeToggle />
