@@ -2,7 +2,7 @@ import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 import StuckMenu from "./assets/components/stuckMenu"; 
 import ToggleVisibility from "./assets/components/ToggleVisibility";
-// import DarkMode from "./assets/components/DarkMode";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("user");
