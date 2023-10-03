@@ -2,6 +2,7 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+ 
 }
 .appContainer {
   margin-left: 19.531vw;
@@ -39,3 +40,4 @@ body {
 .favoriteStar:hover {
   color: rgb(255, 195, 0);
 }
+

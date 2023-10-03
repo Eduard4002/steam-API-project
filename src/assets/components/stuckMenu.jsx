@@ -1,9 +1,10 @@
 import "../css/sidebar.css"
 import { Link } from "react-router-dom";
 
+
 export default function stuckMenu() {
   return (
-    <div className="default-container" >
+    <div className="default-container" id="themes">
 
       <ul>
         <li><Link to={""}><div>Main Page</div></Link></li>

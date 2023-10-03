@@ -2,6 +2,8 @@ import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
+import DarkModeToggle from "./assets/components/DarkModeToggle";
+
 
 function Profile() {
   return (
@@ -10,9 +12,10 @@ function Profile() {
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
       <div className="profileDiv">
-        <div className="profileName">
-          <h1>Hi, MargoGamer69!</h1>
-        </div>
+          <div className="profileName">
+            <h1>Hi, MargoGamer69!</h1>
+          </div>
+
         <div className="profileContainer">
           <div className="settingsDiv">
             <h3>Settings</h3>
@@ -21,13 +24,15 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-                <input type="checkbox" name="" id="" />
-                <label>DarkMode</label>
-              </div>
-              <div className="settingsCard">
-                <input type="checkbox" name="" id="" checked />
-                <label>Något annat</label>
-              </div>
+
+              <DarkModeToggle />
+                              {/* <input type="checkbox" name="" id="" />
+                              <label>DarkMode</label> */}
+                            </div>
+                            {/* <div className="settingsCard">
+                              <input type="checkbox" name="" id="" checked />
+                              <label>Något annat</label>
+                            </div> */}
               <div className="settingsHeader">
                 <h3>Profile Settings</h3>
               </div>
@@ -93,4 +98,7 @@ function Profile() {
     </>
   );
 }
+
+
+
 export default Profile;

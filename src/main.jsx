@@ -17,9 +17,14 @@ import "./index.css";
 import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import SignUp from "./signUpPage.jsx";
+// import "./assets/css/dark-mode.css";
+
+
 
 const Wrapper = () => (
-  <>
+<>
+  
+  
     <Header />
     <Default />
     <Outlet />
@@ -36,6 +41,29 @@ const Test = () => {
     </>
   );
 };
+
+
+// -------------------------------------ignore for now---------------------------
+// const [isDarkMode, setIsDarkMode] = useState(false);
+
+
+// useEffect(() => {
+//   // Check local storage for saved dark mode preference
+//   const savedDarkMode = localStorage.getItem('darkMode');
+//   if (savedDarkMode) {
+//     setIsDarkMode(JSON.parse(savedDarkMode));
+//   }
+// }, []);
+
+// // Conditionally apply dark mode styles
+// useEffect(() => {
+//   if (isDarkMode) {
+//     document.body.classList.add('dark-mode');
+//   } else {
+//     document.body.classList.remove('dark-mode');
+//   }
+// }, [isDarkMode]);
+
 
 const router = createBrowserRouter([
   {
@@ -79,3 +107,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
