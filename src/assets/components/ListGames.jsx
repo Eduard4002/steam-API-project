@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
-import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./ToggleVisibility";
+import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
@@ -29,11 +29,11 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
           currentIndex * gamesPerPage,
           currentIndex * gamesPerPage + gamesPerPage
         )
-        .map((item) => {
+        .map((item, index) => {
           // Construct the URL for fetching game details
           let url =
             "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
-            item.appid;
+            (item.appid || dataToDisplay[index]);
 
           // Perform the fetch request
           return fetch(url)

@@ -101,7 +101,7 @@ function Singlegame() {
         console.log("Removed Item:", newItem);
         setStarActive(false);
       } else {
-        user.favorites.push(newItem);
+        user.favorites.push({ appid: newItem });
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
         console.log("Added Item:", newItem);
