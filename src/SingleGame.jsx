@@ -144,7 +144,7 @@ function Singlegame() {
             ></div>
           </button>
           <h1>{itemData.name}</h1>
-          <p>{itemData.price_overview.final_formatted}</p>
+          {/* <p>{itemData.price_overview.final_formatted}</p> */}
           <p>Developers: {itemData.developers}</p>
           <span>Realease date: {itemData.release_date.date}</span>
         </div>
