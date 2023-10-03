@@ -9,8 +9,11 @@ html {
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
+  
+  --body_color: rgb(220, 187, 223);
+  --body_background: rgb(43, 33, 82);
+  --body_background: linear-gradient(180deg, rgb(69, 37, 110) 0%, rgb(16, 12, 31) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,25 +28,10 @@ html {
   
 }
 
-[data-theme= "dark"] {
-  --background: rgb(53,41,97);
-  --background: linear-gradient(180deg, rgba(53,41,97,1) 0%, rgba(29,21,58,1) 100%);
-}
-
 [data-theme= "light"]{
-  --background: rgb(96, 86, 134);
-  --background: linear-gradient(180deg, rgb(141, 123, 207) 0%, rgb(46, 37, 77) 100%);
-}
-
-
-.for_light_theme{
-  --background: rgb(96, 86, 134);
-  --background: linear-gradient(180deg, rgb(141, 123, 207) 0%, rgb(46, 37, 77) 100%);
-}
-
-.for_dark_theme{
-  --background: rgb(53,41,97);
-  --background: linear-gradient(180deg, rgba(53,41,97,1) 0%, rgba(29,21,58,1) 100%);
+  --body_background: rgb(96, 86, 134);
+  --body_background: linear-gradient(180deg, rgb(196, 178, 248) 0%, rgb(240, 229, 255) 100%);
+  --body_color:  rgb(104, 84, 177); ;
 }
 
 a {
@@ -61,7 +49,8 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  
+ background: var(--body_background);
+ color: var(--body_color);
   /* min-height: 100vh; */
 }
 
