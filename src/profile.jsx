@@ -3,6 +3,8 @@ import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import { Link } from "react-router-dom";
+import DarkMode from "./assets/components/DarkMode";
+
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("user");
@@ -37,7 +39,7 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-
+            <DarkMode/>
               {/* <DarkModeToggle /> */}
                               {/* <input type="checkbox" name="" id="" />
                               <label>DarkMode</label> */}

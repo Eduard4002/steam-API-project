@@ -96,6 +96,7 @@
 //     }
 //   }, []);
 
+
 //   const toggleDarkMode = () => {
 //     const newDarkMode = !isDarkMode;
 //     setIsDarkMode(newDarkMode);
@@ -159,8 +160,10 @@ const DarkMode = () => {
     document.querySelector("body").setAttribute('data-theme' , 'light');
   };
 
-  setDarkMode();
-
+const toggleTheme = (e) => {
+  if (e.target.checked) setDarkMode();
+  else setLightMode()
+}
 
     return (
         <div className='dark_mode'>
@@ -168,6 +171,7 @@ const DarkMode = () => {
                 className='dark_mode_input'
                 type='checkbox'
                 id='darkmode-toggle'
+                onChange={toggleTheme}
             />
             <label className='dark_mode_label' for='darkmode-toggle'>
              
