@@ -3,7 +3,6 @@
 .default-container {
     width: 19.531vw;
     background: var(--sidebar);
-    color: #fff;
     padding: 20px; 
     float: left;
     position: fixed;
@@ -21,7 +20,7 @@
   
   
   .default-container .link {
-    margin-bottom: 10px; 
+    margin-bottom: 30px; 
     
   }
   
@@ -29,16 +28,19 @@
   .default-container a {
     font-size: 1.5vw;
     text-decoration: none; 
-    color: #fff; 
+    color:var(--sidebar_text); 
     display: block; 
-    padding: 10px; 
+    padding: 5px; 
     transition: background-color 0.3s; 
     cursor: pointer;
+    background : var( --sidebar_a_prehover);
+    
   }
   
   .default-container a:hover {
-    background-color: #a191ce; 
-    color: #1c1a29;
+    background: var( --sidebar_a_hover); 
+    color: var(--sidebar_text_hover);
+    
   }
 
 
@@ -48,11 +50,14 @@
     margin-top: 2%;
     margin-left: 1%;
 float: left;
+background: var(--sidebar_bttn);
+
 }
 
 .coolbtn.move-right {
     transform: translateX(44vh); 
     transition: transform 0.3s ease; 
+    
   }
   
  

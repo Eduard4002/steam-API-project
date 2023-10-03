@@ -3,16 +3,12 @@ html {
   padding: 0;
   margin: 0;
 }
-footer .dark{
+footer{
   padding: 1vw;
   position: relative;
   bottom: 0;
   left: 0;
-  background-color: rgb(20, 15, 36);
-}
-
-footer.light{
-  background-color: rgb(63, 54, 95);
+  background-color: rgb(9, 6, 19);
 }
 
 .logoDiv {
