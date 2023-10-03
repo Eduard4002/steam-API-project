@@ -1,6 +1,6 @@
 import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import StuckMenu from "./assets/components/stuckMenu"; 
+import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import { Link } from "react-router-dom";
 
@@ -37,7 +37,15 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-              {/* <DarkMode/> */}
+
+              {/* <DarkModeToggle /> */}
+                              {/* <input type="checkbox" name="" id="" />
+                              <label>DarkMode</label> */}
+                            </div>
+                            {/* <div className="settingsCard">
+                              <input type="checkbox" name="" id="" checked />
+                              <label>Något annat</label>
+                            </div> */}
               <div className="settingsHeader">
                 <h3>Profile Settings</h3>
               </div>
@@ -103,5 +111,7 @@ function Profile() {
     </>
   );
 }
+
+
 
 export default Profile;
