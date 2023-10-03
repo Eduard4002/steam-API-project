@@ -133,33 +133,53 @@ function Singlegame() {
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
-      <div className="singleGameDiv">
-        <div className="leftGameDiv">
-          <button className="gameFavBtn" onClick={favoriteClick}>
-            <p>Favorite</p>
-            <div
-              className={`star ${starActive ? "active" : "inactive"} ${
-                animate ? "animate" : ""
-              }`}
-            ></div>
-          </button>
-          <h1>{itemData.name}</h1>
-          <p>
-            {itemData.price_overview?.final_formatted || "Free to play"}
-          </p>
-          <p>Developers: {itemData.developers}</p>
-          <span>Realease date: {itemData.release_date.date}</span>
-        </div>
-        <div className="rightGameDiv">
-          <img src={itemData.header_image} alt="" />
-          <h3>Description:</h3>
-          <p>{itemData.short_description}</p>
+      <div
+        className="singleGameDiv"
+        style={{
+          backgroundImage: `url(${itemData.background})`,
+          backgroundAttachment: "fixed", // Fixed position
+          backgroundSize: "cover", // Cover the entire div
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="gameTopDiv">
+          <div className="leftGameDiv">
+            <button className="gameFavBtn" onClick={favoriteClick}>
+              <p>Favorite</p>
+              <div
+                className={`star ${starActive ? "active" : "inactive"} ${
+                  animate ? "animate" : ""
+                }`}
+              ></div>
+            </button>
+            <h1>{itemData.name}</h1>
+            <p>{itemData.price_overview?.final_formatted || "Free to play"}</p>
+            <p>Developers: {itemData.developers}</p>
+            <span>Realease date: {itemData.release_date.date}</span>
+          </div>
+          <div className="rightGameDiv">
+            <img src={itemData.header_image} alt="" />
+            <h3>Description:</h3>
+            <p>{itemData.short_description}</p>
+          </div>
         </div>
         <div className="bottomGameDiv">
           <hr />
-          <p
-            dangerouslySetInnerHTML={{ __html: itemData.detailed_description }}
-          ></p>
+          <h3>System Requirements:</h3>
+          <table>
+            <tr>
+              <td
+                dangerouslySetInnerHTML={{
+                  __html: itemData.pc_requirements.minimum,
+                }}
+              ></td>
+              <td
+                dangerouslySetInnerHTML={{
+                  __html: itemData.pc_requirements.recommended,
+                }}
+              ></td>
+            </tr>
+          </table>
         </div>
 
         {/* <div className="singleContainer">

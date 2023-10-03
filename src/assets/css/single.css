@@ -1,102 +1,73 @@
-.singleContainer {
-    min-height: 60vh;
-    width: 30%;
-    margin-top: 50px;
+.singleGameDiv {
+    background-color: var(--body_background);
 }
-
-.singlePicDiv {
-    width: 70%;
+.gameTopDiv {
+    display: inline-flex;
+    width: 100vw;
 }
-
-.mainSingleDiv p {
-    display: flex;
-    flex-direction: row;
-    color: #8C81D3;
+.leftGameDiv {
+    background-color: rgba(250, 0, 0, 0.5);
+    width: 40vw;
 }
-
-.underPic {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-inline: 200px;
-}
-
-.underPic h4 {
-    color: #8C81D3;
-}
-
-
-.singleInfo {
-    width: 100vh;
-    float: left;
-    max-width: 100%;
-}
-
-.singlePic {
-    margin-top: 50px;
-}
-
-.gamePic {
-    max-width: 700px;
+.rightGameDiv {
+    background-color: rgba(250, 250, 0, 0.5);
     width: 60vw;
-    border-radius: 5px;
 }
-
-.mainSingleDiv {
-    display: flex;
-    flex-direction: row;
+.bottomGameDiv {
+    background-color: rgba(0, 250, 250, 0.5);
+    width: 100vw;
 }
-
-
 
 
 .favesBtn {
-    padding: 0px;
-    padding-inline: 7px;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    background-color: #41345E;
-    margin-bottom: 30px;
+  padding: 0px;
+  padding-inline: 7px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  background-color: #41345e;
+  margin-bottom: 30px;
 }
-
 .favesBtn p {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 5px;
 }
-
 .favesBtn div {
-    align-self: center;
-    margin-left: 10px;
+  align-self: center;
+  margin-left: 10px;
 }
-
 .favesBtnAndUnder {
-    margin-left: 70px;
+  margin-left: 70px;
 }
-
-
 .stars {
-    margin-top: 20px;
+  margin-top: 20px;
 }
-
 .star {
-    background-color: black;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-    z-index: 1;
-
-    transition: all ease-in-out 0.2s;
+  background-color: black;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  z-index: 1;
+  transition: all ease-in-out 0.2s;
 }
-
 .star.active {
-    background-color: goldenrod;
-    z-index: 1;
+  background-color: goldenrod;
+  z-index: 1;
 }
-
 .star.animate {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
