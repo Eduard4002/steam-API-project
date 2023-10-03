@@ -37,7 +37,7 @@ function Profile() {
               </div>
               <div className="settingsCard">
 
-              <DarkModeToggle />
+              {/* <DarkModeToggle /> */}
                               {/* <input type="checkbox" name="" id="" />
                               <label>DarkMode</label> */}
                             </div>
