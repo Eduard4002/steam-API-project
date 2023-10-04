@@ -7,12 +7,13 @@ import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow 
 
 function Singlegame() {
   const { gameId } = useParams();
-  const [itemData, setItemData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
+  const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
+  
 
   useEffect(() => {
     fetch(
@@ -36,8 +37,8 @@ function Singlegame() {
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
     if (user && Array.isArray(user.favorites)) {
-      const newItemId = itemData.steam_appid;
-      const index = user.favorites.indexOf(newItemId);
+      const newItem = itemData.steam_appid;
+      const index = user.favorites.findIndex(fav => fav.appid === newItem);
       console.log("idx", index);
       if (index == -1) {
         setStarActive(false);
@@ -93,19 +94,25 @@ function Singlegame() {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
       const newItem = itemData.steam_appid;
-      const index = user.favorites.indexOf(newItem);
+      const index = user.favorites.findIndex(fav => fav.appid === newItem);
       if (index !== -1) {
         user.favorites.splice(index, 1);
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
         console.log("Removed Item:", newItem);
         setStarActive(false);
-      } else {
-        user.favorites.push({ appid: newItem });
+
+        console.log(index);
+      } else if (index == -1) {
+        user.favorites.push({ 'appid': itemData.steam_appid });
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
         console.log("Added Item:", newItem);
         setStarActive(true);
+
+        console.log(index);
+      } else {
+        console.log(index);
       }
     } else {
       console.log("User or favorites array not found in localStorage.");
@@ -147,12 +154,20 @@ function Singlegame() {
               ></div>
             </button>
             <h1 className="gameTitle">{itemData.name}</h1>
-            <p className="gamePrice">{itemData.price_overview?.final_formatted || "Free to play"}</p>
+            <p className="gamePrice">
+              {itemData.price_overview?.final_formatted || "Free to play"}
+            </p>
             <p className="gameInfo">Developers: {itemData.developers}</p>
-            <p className="gameInfo">Realease date: {itemData.release_date.date}</p>
+            <p className="gameInfo">
+              Realease date: {itemData.release_date.date}
+            </p>
           </div>
           <div className="rightGameDiv">
-            <img src={itemData.header_image} alt="Picture of Game" className="gameImage"/>
+            <img
+              src={itemData.header_image}
+              alt="Picture of Game"
+              className="gameImage"
+            />
             <div className="gameDescription">
               <p>{itemData.short_description}</p>
             </div>
@@ -178,9 +193,9 @@ function Singlegame() {
 
         {/* <div className="singleContainer">
           <div className="singleInfo">
-             <h1>{itemData.name}</h1> 
             <h1>{itemData.name}</h1>
-             <h1>Game Title Placeholder</h1> 
+            <h1>{itemData.name}</h1>
+            <h1>Game Title Placeholder</h1>
             <div className="favesBtnAndUnder">
               <button className="favesBtn" onClick={favoriteClick}>
                 <p>Favorite</p>
