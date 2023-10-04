@@ -6,7 +6,6 @@ import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
-import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
 function Singlegame() {
   const { gameId } = useParams();
@@ -193,8 +192,9 @@ function Singlegame() {
                   <div
                     style={{
                       backgroundImage: `url(${itemData.header_image})`,
-                      backgroundSize: "cover",
+                      backgroundSize: "contain",
                       backgroundPosition: "center center",
+                      backgroundRepeat: "no-repeat",
                     }}
                   ></div>
                 </div>
@@ -234,6 +234,7 @@ function Singlegame() {
               </tr>
             </tbody>
           </table>
+          <h3>Get the Full Experience by <a href={gameUrl} target="blank">Clicking This Link</a></h3>
         </div>
 
         {/* <div className="singleContainer">

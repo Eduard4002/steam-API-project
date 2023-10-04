@@ -45,15 +45,20 @@ const SearchBar = () => {
   //Filter array with search value
   const data = DataArray();
   if (data.length === 0) return <h1>Loading</h1>;
-  const filteredData = data.filter((item) =>
-    item.name.toLowerCase().includes(value.toLowerCase())
-  );
+
+  const filteredData = data.filter((item) => {
+    return item.name.toLowerCase().includes(value.toLowerCase());
+  });
+
+  console.log("Search value is " + value);
+  console.log(filteredData);
   if (filteredData.length === 0) {
     return <h1>There does not appear to be any result</h1>;
+  } else {
+    return (
+      <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
+    );
   }
-  return (
-    <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
-  );
 };
 
 const SetGames = () => {

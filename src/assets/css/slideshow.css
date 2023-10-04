@@ -6,7 +6,7 @@ button {
 
 .slider {
   width: 100%;
-  height: 30vw;
+  height: 28.5vw;
 }
 .each-slide-effect {
   background-size: cover;
@@ -14,20 +14,20 @@ button {
   background-attachment: fixed;
   background-position: center;
   width: 100%;
-  height: 30vw;
-  
+  height: 28.5vw;
+
 }
 .each-slide-effect > div {
   /* background-color: blue; */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 65vh;
+  height: 100%;
 }
 .each-slide-effect span {
   /* background-color: ; */
@@ -42,5 +42,5 @@ button {
   margin-left: 1vw !important;
 }
 .right {
-  margin-right: 2vw !important;
+  margin-right: 3vw !important;
 }
