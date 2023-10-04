@@ -19,7 +19,14 @@ import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
 import { DataArray, getRandomGames } from "./DataArray.jsx";
+import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
+window.addEventListener("load", () => {
+  let music = new Audio(theme_music);
+  music.load();
+  music.play();
+  console.log("Should be playing Theme song...");
+});
 
 const Wrapper = () => (
   <>
