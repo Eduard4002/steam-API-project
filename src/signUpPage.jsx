@@ -13,7 +13,7 @@ function SignUp() {
 
     const userKey = username;
 
-    let userData = []; 
+    let userData = [];
     userData.push({ "email": email });
     userData.push({ "username": username });
     userData.push({ "password": password });

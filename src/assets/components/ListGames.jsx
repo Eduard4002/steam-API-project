@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
+import "../css/single.css";
 import ToggleVisibility from "./ToggleVisibility";
 import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 
@@ -62,6 +63,13 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
   //Create index elements
   const elements = [];
+  const test = true
+  
+  // const user = JSON.parse(localStorage.getItem("users"));
+  // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
+  // if (index !== -1) {
+  //   console.log("")
+  // }
 
   for (let i = 0; i < indexAmount; i++) {
     // Generate unique key if needed
@@ -135,7 +143,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                   </div>
 
                   <div className="buttonsDiv">
-                    <div className="five-pointed-star"></div>
+                    <div className={`star ${test ? "active" : "inactive"}`}></div>
+                    
 
                     <Link
                       to={"/game/" + game.steam_appid}
