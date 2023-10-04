@@ -8,7 +8,7 @@ footer{
   position: relative;
   bottom: 0;
   left: 0;
-  background-color: rgb(9, 6, 19);
+  background: var( --topper);
 }
 
 .logoDiv {
@@ -22,7 +22,7 @@ footer{
   height: 5vw;
 }
 .logoDiv > h1 {
-  color: rgb(128, 132, 154);
+  color: var(  --logg);
   margin-left: 1.5vw;
   font-size: 2.6vw;
   font-family: Arial, Helvetica, sans-serif;
