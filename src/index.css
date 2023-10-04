@@ -12,7 +12,7 @@ html {
 
   /* --------------------general ---------------------------------------- */
   --body_color: rgb(220, 187, 223);
-  --body_background: linear-gradient(180deg, rgb(33, 36, 62) 0%, rgb(16, 5, 30) 100%);
+  --body_background: radial-gradient(circle, #391244, #28133a, #1b122f, #110d22, #050514);
 
   /* ----------------------------topper/footer----------------------------------------------------- */
   --topper:rgb(1, 1, 25);
@@ -31,13 +31,13 @@ html {
 --popup_bttn_hover:rgb(20,15,36);
 
   /* -------------------sidebar------------------------------------ */
-  --sidebar: linear-gradient(to bottom, #020218, #0b0422, #120923, #020110, #01010b);;
+  --sidebar: linear-gradient(to bottom, #010110, #0b0422, #120923, #020110, #01010b);;
   --sidebar_a_prehover: #1b1731;
   --sidebar_a_hover:#ada5e1;
   --sidebar_text:#f7f0fc;
   --sidebar_text_hover:#291a66;
 
-  --sidebar_bttn:#110515;
+  --sidebar_bttn:#390f47;
 
 
 /* --------------------------------app------------------------------------------ */
@@ -64,10 +64,10 @@ html {
 --more_text_hover:#111;
 --more_hover:#aca2eb;
 --bttn_active:#3A3171;
---bttn:rgb(42, 25, 51);
+--bttn:rgb(15, 6, 19);
 /* ---------------------------------profiles------------------------------------------ */
 
---profile_bkg:rgb(59, 58, 101);
+--profile_bkg:linear-gradient(180deg, rgb(66, 72, 120) 0%, rgb(12, 5, 27) 100%);
 --progile_user:rgb(9, 5, 34);
 --profile_user_text:rgb(232, 228, 255);
 --setting_txt:rgb(255, 255, 255);
@@ -77,7 +77,7 @@ html {
 --setting_change:rgb(51, 46, 123);
 --settings_faves: rgb(255, 255, 255);
 --settings_fave_div: rgb(31, 27, 60);
---fave_big_div
+--fave_big_div:rgb(51, 42, 88);
 
 /* ------------------------------------------single game page-------------------------------------------------- */
 
@@ -173,6 +173,7 @@ html {
 --setting_change:rgb(18, 10, 125);
 --settings_faves: rgb(255, 255, 255);
 --settings_fave_div: rgb(89, 109, 206);
+--fave_big_div:blue;
 
 /* ------------------------------------------single game page-------------------------------------------------- */
 
