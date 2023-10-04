@@ -1,35 +1,51 @@
-import "./assets/css/signUpPage.css";
-import { Link, useNavigate, useRouteLoaderData } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import "./assets/css/signUpPage.css";
 
 function SignUp() {
   const navigate = useNavigate();
 
   function storeData() {
+
     const email = document.getElementById("email").value;
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     const userKey = username;
 
-    let userData = { email, username, password, id: uuidv4(), favorites: [] };
+    let userData = []; 
+    userData.push({ "email": email });
+    userData.push({ "username": username });
+    userData.push({ "password": password });
+    userData.push({ "id": uuidv4() });
+    userData.push({ "favorites": [] });
+
     const userDataString = JSON.stringify(userData);
 
     // if (window.localStorage.getItem(userKey)) {
     //   alert("Username is taken.");
     //   return;
     // }
+    let usersLocalstorage = window.localStorage.getItem("users");
+    if (usersLocalstorage) {
+      let users = JSON.parse(window.localStorage.getItem("users"));
+      users.push(userData);
+      window.localStorage.setItem("users", JSON.stringify(users));
+    } else {
+      window.localStorage.setItem("users", userDataString);
+    }
 
-    window.localStorage.setItem("user", userDataString);
+    
+    window.localStorage.setItem("CurrLogged", userData.id);
 
-
+    
     navigate("/");
   }
 
   // Check if there's a 'logged' key in localStorage
-  const loggedInUserId = JSON.parse(localStorage.getItem("user"));
+  const loggedInUserId = localStorage.getItem("CurrLogged");
 
-  if (loggedInUserId) {
+  if (loggedInUserId != "0") {
     return (
       <p className="logInQ">
         You are already logged in. Go to <Link to={"/"}> Home Page </Link> or{" "}

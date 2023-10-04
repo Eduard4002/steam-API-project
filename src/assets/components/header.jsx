@@ -44,7 +44,7 @@ window.addEventListener("click", function (e) {
 function Header() {
   
   function logOut() {
-    localStorage.removeItem("user");
+    localStorage.setItem("CurrLogged", "0");
 
 
   }

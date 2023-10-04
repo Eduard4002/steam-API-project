@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Slide } from "react-slideshow-image";
 import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
-import { Slide } from "react-slideshow-image";
 import "./assets/css/slideshow.css";
 import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
@@ -187,13 +187,6 @@ const properties = {
             </p>
           </div>
           <div className="rightGameDiv">
-<<<<<<< HEAD
-            <img
-              src={itemData.header_image}
-              alt="Picture of Game"
-              className="gameImage"
-            />
-=======
             <div className="gameImage">
               <Slide {...properties}>
                 <div className="each-slide-effect">
@@ -210,7 +203,6 @@ const properties = {
                 </div>
               </Slide>
             </div>
->>>>>>> ae9b4309c2be23850a2ea29427cc350018586dab
             <div className="gameDescription">
               <p>{itemData.short_description}</p>
             </div>
