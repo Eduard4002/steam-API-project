@@ -198,12 +198,12 @@ function Singlegame() {
                     }}
                   ></div>
                 </div>
-                {itemData.screenshots.map(({ id, path_thumbnail }) => (
+                {itemData.screenshots.map(({ id, path_full }) => (
                   <div key={id} className="item">
                     <div className="each-slide-effect">
                       <div
                           style={{
-                            backgroundImage: `url(${path_thumbnail})`,
+                            backgroundImage: `url(${path_full})`,
                           }}
                         ></div>
                     </div>
