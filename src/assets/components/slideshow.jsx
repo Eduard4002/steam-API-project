@@ -22,27 +22,17 @@ const properties = {
   ),
 };
 
-const Slideshow = () => {
-  const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
-
+const Slideshow = ({ images }) => {
   return (
     <>
       <Slide {...properties}>
-        <div className="each-slide-effect">
-          <div style={{ backgroundImage: `url(${images[0]})` }}>
-            <span>Game 1</span>
+        {images?.map((image, index) => (
+          <div key={index} className="each-slide-effect">
+            <div style={{ backgroundImage: `url(${image})` }}>
+              <span>Game {index + 1}</span>
+            </div>
           </div>
-        </div>
-        <div className="each-slide-effect">
-          <div style={{ backgroundImage: `url(${images[1]})` }}>
-            <span>Game 2</span>
-          </div>
-        </div>
-        <div className="each-slide-effect">
-          <div style={{ backgroundImage: `url(${images[2]}` }}>
-            <span>Game 3</span>
-          </div>
-        </div>
+        ))}
       </Slide>
     </>
   );
