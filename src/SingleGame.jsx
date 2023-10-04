@@ -190,7 +190,7 @@ const properties = {
             <div className="gameImage">
               <Slide {...properties}>
                 <div className="each-slide-effect">
-                  <div style={{ backgroundImage: `url(${itemData.header_image})`, backgroundSize: "contain"}}>
+                  <div style={{ backgroundImage: `url(${itemData.header_image})`, backgroundSize: "cover", backgroundPosition: "center center",}}>
                   </div>
                 </div>
                 <div className="each-slide-effect">
@@ -199,6 +199,14 @@ const properties = {
                 </div>
                 <div className="each-slide-effect">
                   <div style={{ backgroundImage: `url(${itemData.screenshots[1].path_thumbnail}` }}>
+                  </div>
+                </div>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.screenshots[2].path_thumbnail}` }}>
+                  </div>
+                </div>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.screenshots[3].path_thumbnail}` }}>
                   </div>
                 </div>
               </Slide>

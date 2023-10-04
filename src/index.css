@@ -12,22 +12,77 @@ html {
 
   /* --------------------general ---------------------------------------- */
   --body_color: rgb(220, 187, 223);
-  --body_background: rgb(31, 7, 52);
-  --body_background: linear-gradient(180deg, rgb(28, 30, 51) 0%, rgb(16, 5, 30) 100%);
+  --body_background: linear-gradient(180deg, rgb(33, 36, 62) 0%, rgb(16, 5, 30) 100%);
+
+  /* ----------------------------topper/footer----------------------------------------------------- */
+  --topper:rgb(1, 1, 25);
+  --logg:rgb(128, 132, 154);
+  --search: rgb(38,32,62);
+  --search_text:rgb(209,231,248);
+  --links: #646cff ;
+--icon_prof:rgb(153,159,237);
+--icon_prof_hover:  rgb(209,231,248);
+--icon_prof_bkg_hover:rgb(153,159,237);
+
+  /* ----------------------------topper/footer__ popup----------------------------------------------------- */
+
+--popup_bkg:rgb(70, 63, 116);
+--popup_bttn:rgb(42, 38, 73);
+--popup_bttn_hover:rgb(20,15,36);
 
   /* -------------------sidebar------------------------------------ */
-  --sidebar: rgb(5, 4, 29);
+  --sidebar: linear-gradient(to bottom, #020218, #0b0422, #120923, #020110, #01010b);;
   --sidebar_a_prehover: #1b1731;
-  --sidebar_a_hover:#9d82cc;
+  --sidebar_a_hover:#ada5e1;
   --sidebar_text:#f7f0fc;
-  --sidebar_text_hover:#120b16;
+  --sidebar_text_hover:#291a66;
 
   --sidebar_bttn:#110515;
 
 
+/* --------------------------------app------------------------------------------ */
 
-/* ----------------------------topper----------------------------------------------------- */
-  --topper:rgb(1, 1, 24);
+--starfave:rgb(255, 231, 154);
+--starfave_hover:rgb(255, 195, 0);
+
+
+/* ----------------------------login page----------------------------------- */
+
+--background_login:rgb(45, 39, 93);
+--login_text:rgb(161,159,250);
+--login_submit:rgb(23, 13, 58);
+--login_submit_text:rgb(161,159,250);
+--login_submit_hover:rgb(89, 76, 138);
+--login_submit_hover_text:rgb(28, 14, 78);
+
+/* -------------------------------------games page---------------------------------------- */
+
+--games_div:#0b051e;
+--games_more: #4b3db2;
+--game_div_top_text:#c2c9e8;
+--more_text:#fbfbff;
+--more_text_hover:#111;
+--more_hover:#aca2eb;
+--bttn_active:#3A3171;
+--bttn:rgb(42, 25, 51);
+/* ---------------------------------profiles------------------------------------------ */
+
+--profile_bkg:rgb(59, 58, 101);
+--progile_user:rgb(9, 5, 34);
+--profile_user_text:rgb(232, 228, 255);
+--setting_txt:rgb(255, 255, 255);
+--setting_div:rgb(24, 19, 56);
+--setting_input: rgb(9, 10, 30);
+--setting_txt_input:rgb(117, 117, 99);
+--setting_change:rgb(51, 46, 123);
+--settings_faves: rgb(255, 255, 255);
+--settings_fave_div: rgb(31, 27, 60);
+--fave_big_div
+
+/* ------------------------------------------single game page-------------------------------------------------- */
+
+
+
   /* ------------------------------------------------------------------------ */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,16 +97,92 @@ html {
   
 }
 
+
+
+
+
+
+
+
+
+
 [data-theme= "light"]{
-  --body_background: rgb(96, 86, 134);
-  --body_background: linear-gradient(180deg, rgb(116, 93, 184) 0%, rgb(130, 104, 167) 100%);
-  --body_color:  rgb(104, 84, 177);
-  --sidebar: rgb(87, 50, 126);
+
+  /* --------------------general ---------------------------------------- */
+  --body_color: rgb(220, 187, 223);
+  --body_background: linear-gradient(180deg, #a7c7f7 0%, rgb(164, 188, 243) 100%);
+  --body_color:  rgb(40, 32, 67);
+
+ /* ----------------------------topper/footer----------------------------------------------------- */
+ --topper:rgb(84, 125, 196);
+  --logg:rgb(255, 255, 255);
+  --search: rgb(246, 244, 255);
+  --search_text:rgb(47, 50, 101);
+  --links: rgb(255, 255, 255);
+  --icon_prof:rgb(89, 97, 199);
+  --icon_prof_hover:  rgb(209, 224, 246);
+  --icon_prof_bkg_hover:rgb(60, 67, 173);
+    /* ----------------------------topper/footer__ popup----------------------------------------------------- */
+
+--popup_bkg:rgb(67, 98, 166);
+--popup_bttn:rgb(29, 59, 125);
+--popup_bttn_hover:rgb(21, 29, 90);
+
+
+  /* -------------------sidebar------------------------------------ */
+
+  --sidebar: linear-gradient(to bottom, #6d98cc,  #5a63b4, #4648b4);;
+  --sidebar_a_prehover: #ffffff;
+  --sidebar_a_hover:#475690;
+  --sidebar_text:#150651;
+  --sidebar_text_hover:#ffffff;
+
+  --sidebar_bttn:#5f61ae;
+
+
+/* ----------------------------login page----------------------------------- */
+
+--background_login:rgb(109, 150, 239);
+--login_text:rgb(255, 255, 255);
+--login_submit:rgb(39, 69, 169);
+--login_submit_text:rgb(255, 255, 255);
+--login_submit_hover:rgb(79, 115, 244);
+--login_submit_hover_text:rgb(16, 8, 47);
+
+
+/* -------------------------------------games page---------------------------------------- */
+--games_div:#7294ea;
+--game_div_top_text:#ffffff;
+
+--games_more: #2f39a4;
+--more_text:#fbfbff;
+--more_text_hover:#000000;
+--more_hover:#ffffff;
+--bttn_active:#28328b;
+--bttn:rgb(91, 110, 195);
+
+/* ---------------------------------profiles------------------------------------------ */
+
+--profile_bkg:rgb(121, 163, 221);
+--progile_user:rgb(69, 107, 188);
+--profile_user_text:rgb(232, 228, 255);
+--setting_txt:rgb(255, 255, 255);
+--setting_div:rgb(85, 113, 205);
+--setting_input: rgb(52, 57, 154);
+--setting_txt_input:rgb(239, 239, 237);
+--setting_change:rgb(18, 10, 125);
+--settings_faves: rgb(255, 255, 255);
+--settings_fave_div: rgb(89, 109, 206);
+
+/* ------------------------------------------single game page-------------------------------------------------- */
+
+
+
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var( --links);
   text-decoration: inherit;
 }
 a:hover {
@@ -66,6 +197,7 @@ body {
   min-width: 320px;
  background: var(--body_background);
  color: var(--body_color);
+
   /* min-height: 100vh; */
 }
 

@@ -11,7 +11,7 @@
   z-index: 99;
   }
   
- 
+
   .default-container ul {
     list-style: none; 
     padding: 0;
@@ -34,13 +34,14 @@
     transition: background-color 0.3s; 
     cursor: pointer;
     background : var( --sidebar_a_prehover);
+    transition: all 0.2s ease-in-out;
     
   }
   
   .default-container a:hover {
     background: var( --sidebar_a_hover); 
     color: var(--sidebar_text_hover);
-    
+    transform: scale(1.05);
   }
 
 
