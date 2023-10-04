@@ -193,8 +193,9 @@ function Singlegame() {
                   <div
                     style={{
                       backgroundImage: `url(${itemData.header_image})`,
-                      backgroundSize: "cover",
+                      backgroundSize: "100% 100%",
                       backgroundPosition: "center center",
+                      backgroundRepeat: "no-repeat",
                     }}
                   ></div>
                 </div>
