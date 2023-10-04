@@ -16,7 +16,6 @@ function Singlegame() {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  
 
   useEffect(() => {
     fetch(
@@ -41,7 +40,7 @@ function Singlegame() {
     console.log(user);
     if (user && Array.isArray(user.favorites)) {
       const newItem = itemData.steam_appid;
-      const index = user.favorites.findIndex(fav => fav.appid === newItem);
+      const index = user.favorites.findIndex((fav) => fav.appid === newItem);
       console.log("idx", index);
       if (index == -1) {
         setStarActive(false);
@@ -97,7 +96,7 @@ function Singlegame() {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
       const newItem = itemData.steam_appid;
-      const index = user.favorites.findIndex(fav => fav.appid === newItem);
+      const index = user.favorites.findIndex((fav) => fav.appid === newItem);
       if (index !== -1) {
         user.favorites.splice(index, 1);
         const updateUser = JSON.stringify(user);
@@ -107,7 +106,7 @@ function Singlegame() {
 
         console.log(index);
       } else if (index == -1) {
-        user.favorites.push({ 'appid': itemData.steam_appid });
+        user.favorites.push({ appid: itemData.steam_appid });
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
         console.log("Added Item:", newItem);
@@ -129,30 +128,31 @@ function Singlegame() {
     setTimeout(() => setAnimate(false), 200);
     checkAndHandleFavorites();
   }
+  // Example usage:
 
   const buttonStyle = {
-  width: "30px",
-  background: "none",
-  border: "0px",
-  padding: "0",
-};
+    width: "30px",
+    background: "none",
+    border: "0px",
+    padding: "0",
+  };
 
-const properties = {
-  prevArrow: (
-    <button className="left" style={{ ...buttonStyle }}>
-      <span className="material-symbols-outlined">chevron_left</span>
-    </button>
-  ),
-  nextArrow: (
-    <button className="right" style={{ ...buttonStyle }}>
-      <span className="material-symbols-outlined">chevron_right</span>
-    </button>
-  ),
-};
+  const properties = {
+    prevArrow: (
+      <button className="left" style={{ ...buttonStyle }}>
+        <span className="material-symbols-outlined">chevron_left</span>
+      </button>
+    ),
+    nextArrow: (
+      <button className="right" style={{ ...buttonStyle }}>
+        <span className="material-symbols-outlined">chevron_right</span>
+      </button>
+    ),
+  };
 
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
-  const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
+  console.log(itemData.screenshots);
   return (
     <>
       <ToggleVisibility>
@@ -188,27 +188,27 @@ const properties = {
           </div>
           <div className="rightGameDiv">
             <div className="gameImage">
-              <Slide {...properties}>
+              <Slide {...properties} id="slideContainer">
                 <div className="each-slide-effect">
-                  <div style={{ backgroundImage: `url(${itemData.header_image})`, backgroundSize: "cover", backgroundPosition: "center center",}}>
-                  </div>
+                  <div
+                    style={{
+                      backgroundImage: `url(${itemData.header_image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                    }}
+                  ></div>
                 </div>
-                <div className="each-slide-effect">
-                  <div style={{ backgroundImage: `url(${itemData.screenshots[0].path_thumbnail})` }}>
+                {itemData.screenshots.map(({ id, path_thumbnail }) => (
+                  <div key={id} className="item">
+                    <div className="each-slide-effect">
+                      <div
+                          style={{
+                            backgroundImage: `url(${path_thumbnail})`,
+                          }}
+                        ></div>
+                    </div>
                   </div>
-                </div>
-                <div className="each-slide-effect">
-                  <div style={{ backgroundImage: `url(${itemData.screenshots[1].path_thumbnail}` }}>
-                  </div>
-                </div>
-                <div className="each-slide-effect">
-                  <div style={{ backgroundImage: `url(${itemData.screenshots[2].path_thumbnail}` }}>
-                  </div>
-                </div>
-                <div className="each-slide-effect">
-                  <div style={{ backgroundImage: `url(${itemData.screenshots[3].path_thumbnail}` }}>
-                  </div>
-                </div>
+                ))}
               </Slide>
             </div>
             <div className="gameDescription">
