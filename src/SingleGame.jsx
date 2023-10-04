@@ -187,13 +187,6 @@ const properties = {
             </p>
           </div>
           <div className="rightGameDiv">
-<<<<<<< HEAD
-            <img
-              src={itemData.header_image}
-              alt="Picture of Game"
-              className="gameImage"
-            />
-=======
             <div className="gameImage">
               <Slide {...properties}>
                 <div className="each-slide-effect">
@@ -218,7 +211,6 @@ const properties = {
                 </div>
               </Slide>
             </div>
->>>>>>> ae9b4309c2be23850a2ea29427cc350018586dab
             <div className="gameDescription">
               <p>{itemData.short_description}</p>
             </div>
