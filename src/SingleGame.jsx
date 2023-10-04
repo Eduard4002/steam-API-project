@@ -4,15 +4,19 @@ import { useParams } from "react-router-dom";
 import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
+import { Slide } from "react-slideshow-image";
+import "./assets/css/slideshow.css";
+import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
 function Singlegame() {
   const { gameId } = useParams();
-  const [itemData, setItemData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
+  const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
+  
 
   useEffect(() => {
     fetch(
@@ -36,8 +40,8 @@ function Singlegame() {
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
     if (user && Array.isArray(user.favorites)) {
-      const newItemId = itemData.steam_appid;
-      const index = user.favorites.indexOf(newItemId);
+      const newItem = itemData.steam_appid;
+      const index = user.favorites.findIndex(fav => fav.appid === newItem);
       console.log("idx", index);
       if (index == -1) {
         setStarActive(false);
@@ -92,20 +96,26 @@ function Singlegame() {
     //LocalStorage
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
-      const newItem = itemData;
-      const index = user.favorites.indexOf(newItem);
+      const newItem = itemData.steam_appid;
+      const index = user.favorites.findIndex(fav => fav.appid === newItem);
       if (index !== -1) {
         user.favorites.splice(index, 1);
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
         console.log("Removed Item:", newItem);
         setStarActive(false);
-      } else {
-        user.favorites.push(newItem);
+
+        console.log(index);
+      } else if (index == -1) {
+        user.favorites.push({ 'appid': itemData.steam_appid });
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
         console.log("Added Item:", newItem);
         setStarActive(true);
+
+        console.log(index);
+      } else {
+        console.log(index);
       }
     } else {
       console.log("User or favorites array not found in localStorage.");
@@ -120,19 +130,117 @@ function Singlegame() {
     checkAndHandleFavorites();
   }
 
+  const buttonStyle = {
+  width: "30px",
+  background: "none",
+  border: "0px",
+  padding: "0",
+};
+
+const properties = {
+  prevArrow: (
+    <button className="left" style={{ ...buttonStyle }}>
+      <span className="material-symbols-outlined">chevron_left</span>
+    </button>
+  ),
+  nextArrow: (
+    <button className="right" style={{ ...buttonStyle }}>
+      <span className="material-symbols-outlined">chevron_right</span>
+    </button>
+  ),
+};
+
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
+  const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
   return (
     <>
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
-      <div className="mainSingleDiv">
-        <div className="singleContainer">
+      <div
+        className="singleGameDiv"
+        style={{
+          backgroundImage: `url(${itemData.background})`,
+          backgroundAttachment: "fixed", // Fixed position
+          backgroundSize: "cover", // Cover the entire div
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="gameTopDiv">
+          <div className="leftGameDiv">
+            <button className="gameFavBtn" onClick={favoriteClick}>
+              <p>Favorite</p>
+              <div
+                className={`star ${starActive ? "active" : "inactive"} ${
+                  animate ? "animate" : ""
+                }`}
+              ></div>
+            </button>
+            <h1 className="gameTitle">{itemData.name}</h1>
+            <p className="gamePrice">
+              {itemData.price_overview?.final_formatted || "Free to play"}
+            </p>
+            <p className="gameInfo">Developers: {itemData.developers}</p>
+            <p className="gameInfo">
+              Realease date: {itemData.release_date.date}
+            </p>
+          </div>
+          <div className="rightGameDiv">
+<<<<<<< HEAD
+            <img
+              src={itemData.header_image}
+              alt="Picture of Game"
+              className="gameImage"
+            />
+=======
+            <div className="gameImage">
+              <Slide {...properties}>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.header_image})`, backgroundSize: "contain"}}>
+                  </div>
+                </div>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.screenshots[0].path_thumbnail})` }}>
+                  </div>
+                </div>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.screenshots[1].path_thumbnail}` }}>
+                  </div>
+                </div>
+              </Slide>
+            </div>
+>>>>>>> ae9b4309c2be23850a2ea29427cc350018586dab
+            <div className="gameDescription">
+              <p>{itemData.short_description}</p>
+            </div>
+          </div>
+        </div>
+        <div className="bottomGameDiv">
+          <h3>System Requirements:</h3>
+          <table>
+            <tbody>
+              <tr>
+                <td
+                  dangerouslySetInnerHTML={{
+                    __html: itemData.pc_requirements.minimum,
+                  }}
+                ></td>
+                <td
+                  dangerouslySetInnerHTML={{
+                    __html: itemData.pc_requirements.recommended,
+                  }}
+                ></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* <div className="singleContainer">
           <div className="singleInfo">
-            {/* <h1>{itemData.name}</h1> */}
             <h1>{itemData.name}</h1>
-            {/* <h1>Game Title Placeholder</h1> */}
+            <h1>{itemData.name}</h1>
+            <h1>Game Title Placeholder</h1>
             <div className="favesBtnAndUnder">
               <button className="favesBtn" onClick={favoriteClick}>
                 <p>Favorite</p>
@@ -172,7 +280,7 @@ function Singlegame() {
               <a href=""></a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

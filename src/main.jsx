@@ -18,7 +18,7 @@ import LogIn from "./logInPage.jsx";
 import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
-import DataArray from "./DataArray.jsx";
+import { DataArray, getRandomGames } from "./DataArray.jsx";
 // import DarkMode from "./assets/components/DarkMode.jsx"
 
 const Wrapper = () => (
@@ -57,10 +57,9 @@ const SearchBar = () => {
 };
 
 const SetGames = () => {
-  const data = DataArray();
+  const data = getRandomGames(20);
   if (data.length === 0) return <h1>Loading</h1>;
-  const shuffledGames = [...data].sort(() => Math.random() - 0.5);
-  return <ListGames dataToDisplay={shuffledGames.slice(0, 20)} />;
+  return <ListGames dataToDisplay={data} />;
 };
 const router = createBrowserRouter([
   {
