@@ -4,6 +4,7 @@ import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow 
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import { Link } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
+import ListGames from "./assets/components/ListGames";
 
 
 function Profile() {
@@ -20,13 +21,14 @@ function Profile() {
   }
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+
 
   return (
     <>
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
+      
       <div className="profileDiv">
         <div className="profileName">
           <h1>Hi, {user.username} </h1>
@@ -66,7 +68,8 @@ function Profile() {
             </div>
           </div>
           <div className="favoritesDiv">
-            <h3>Recent favorites</h3>
+            <h3>Recent favorites</h3>    
+            <ListGames dataToDisplay={user.favorites.slice(-3).reverse()} />
             <div className="favoritesGrid">
               <div className="favoritesCard">
                 <img src={imagePlaceholder} alt="Picture of Favorite Game" />
@@ -81,6 +84,17 @@ function Profile() {
                 </div>
               </div>
               <hr />
+
+
+
+
+
+
+
+
+
+
+
               <div className="favoritesCard">
                 <img src={imagePlaceholder} alt="Picture of Favorite Game" />
                 <div className="favoritesText">

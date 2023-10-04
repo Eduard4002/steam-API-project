@@ -86,11 +86,18 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
       </button>
     );
   }
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const fav = user.favorites;
+
+  //const index = user.favorites.findIndex((fav) => fav.appid === newItem);
+
+  
+
   return (
     <>
-      <ToggleVisibility>
-        <StuckMenu /> {/* Use the Slideshow component */}
-      </ToggleVisibility>
+     
       <div>
         <div className="mainDiv">
           <div className="contFlex">
@@ -143,7 +150,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                   </div>
 
                   <div className="buttonsDiv">
-                    <div className={`star ${test ? "active" : "inactive"}`}></div>
+                    
                     
 
                     <Link
