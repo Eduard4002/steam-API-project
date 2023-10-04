@@ -118,7 +118,7 @@ body{
   margin-left: 5%;
   margin-top: 2vw;
   width: 47.5%;
-  background-color: aqua !important;
+  background:var(--fave_big_div) !important;
 
   
 
