@@ -21,10 +21,11 @@ import SignUp from "./signUpPage.jsx";
 import { DataArray, getRandomGames } from "./DataArray.jsx";
 import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
-window.addEventListener("load", () => {
-  let music = new Audio(theme_music).loop;
-  music.load();
-  music.play();
+
+window.addEventListener("click", () => {
+  let music = new Audio(theme_music); // Create an Audio element
+  music.loop = true; // Set the loop property to true
+  music.play(); // Call play() on the Audio element
   console.log("Should be playing Theme song...");
 });
 
