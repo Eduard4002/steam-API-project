@@ -234,6 +234,7 @@ function Singlegame() {
               </tr>
             </tbody>
           </table>
+          <h3>Get the Full Experience by <a href={gameUrl} target="blank">Clicking This Link</a></h3>
         </div>
 
         {/* <div className="singleContainer">
