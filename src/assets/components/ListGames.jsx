@@ -150,7 +150,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                   </div>
 
                   <div className="buttonsDiv">
-                    
+                    <div className={`star ${test ? "active" : "inactive"}`}></div>
                     
 
                     <Link
