@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ListGames from "./assets/components/ListGames";
-import ToggleVisibility from "./assets/components/ToggleVisibility";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/favorites.css";
 
 function Favorites() {
@@ -28,21 +26,8 @@ function Favorites() {
   return (
     <>
       <ListGames dataToDisplay={user.favorites} />
-      <ToggleVisibility>
-        <StuckMenu /> {/* Use the Slideshow component */}
-      </ToggleVisibility>
       <div className="favoritesDiv">
         <h1>Your Favorites </h1>
-
-        {user.favorites.map((item, index) => (
-          <div key={index} className="favoriteGames">
-            <h3>{item.name}</h3>
-            <div>
-              <a href={item.website}>{item.website}</a>
-            </div>
-            <img src={item.header_image} alt="Game thumbnail" />
-          </div>
-        ))}
         <template>
           <Link to={""}>
             <div className="favoriteCard">

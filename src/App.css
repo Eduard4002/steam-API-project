@@ -34,12 +34,12 @@ body {
 }
 .favoriteStar {
   position: absolute;
-  color: rgb(255, 231, 154);
-  font-size: 2vw;
+  color:var(--starfave);
   top: 1vw;
   right: 1vw;
+  
 }
 .favoriteStar:hover {
-  color: rgb(255, 195, 0);
+  color: var(--starfave_hover);
 }
 

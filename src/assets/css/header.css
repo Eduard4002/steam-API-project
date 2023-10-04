@@ -28,7 +28,7 @@ html {
     height: 5vw;
 }
 .leftNav h1 {
-    color: rgb(128,132,154);
+    color: var(--logg);
     margin-left: 1.5vw;
     font-size: 2.6vw;
     font-family: Arial, Helvetica, sans-serif;
@@ -49,8 +49,8 @@ html {
     border-radius: 90px;
     font-size: 1.2vw;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(38,32,62);
-    color: rgb(209,231,248);
+    background-color:var(--search);
+    color: var(--search_text);
     border: none;
 }
 .rightNav {
@@ -68,21 +68,21 @@ html {
     border-radius: 99px;
     font-size: 2vw;
     text-align: center;
-    color: rgb(153,159,237);
+    color: var(--icon_prof);
     border: 2px solid rgb(80,90,222);
     background-color: rgb(209,231,248);
     transition: all 100ms ease-in-out;
 }
 .rightNav span:hover {
-    background-color: rgb(153,159,237);
-    color: rgb(209,231,248);
+    background:var(--icon_prof_bkg_hover);
+    color: var(--icon_prof_hover);
 }
 .profileMenu {
     position: relative;
     display: none;
     position: fixed;
     top: 8.3vw;
-    background-color: rgb(79,72,121);
+    background:var(--popup_bkg);
     width: 25vw;
     height: 27.5vw;
 }
@@ -95,10 +95,12 @@ html {
     padding: 0.5vw;
     width: 80%;
     font-size: 1.25vw;
-    background-color: rgb(47,41,84);
+    background:var(--popup_bttn);
+    transition: all 0.2s ease-in-out;
 }
 .profileMenuBtns > a > div:hover {
-    background-color: rgb(20,15,36);
+    background:var(--popup_bttn_hover);
+    transform: scale(1.05);
 }
 .profileMenu > p {
     font-size: 1vw;

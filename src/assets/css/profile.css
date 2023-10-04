@@ -6,7 +6,7 @@ body{
 
 
 .profileDiv {
-  background-color: rgb(81, 73, 132);
+  background: var(--profile_bkg);
   border-radius: 10px;
   margin: auto;
   padding: 1vw;
@@ -17,14 +17,14 @@ body{
 }
 .profileName {
   border-radius: 5px;
-  background-color: rgb(31, 24, 70);
+  background:var(--progile_user);
   margin: auto;
   margin-top: 2vw;
   padding: 0.1vw;
   width: 90%;
 }
 .profileName > h1 {
-  color: rgb(136, 128, 187);
+  color: var(--profile_user_text);
   font-weight: 350;
   margin-left: 4vw;
   text-align: left;
@@ -40,7 +40,7 @@ body{
   width: 47.5%;
 }
 .settingsDiv > h3 {
-  color: rgb(136, 128, 187);
+  color: var(--setting_txt);
   font-weight: 400;
   font-size: 2.25vw;
   margin-bottom: 0;
@@ -49,7 +49,7 @@ body{
 }
 .settingsGrid {
   border-radius: 5px;
-  background-color: rgb(58, 49, 113);
+  background:var(--setting_div);
 }
 .settingsHeader > h3 {
   font-size: 1.5vw;
@@ -80,9 +80,9 @@ body{
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  background-color: rgb(38, 32, 62);
+  background:var(--setting_input);
   border: none;
-  color: rgb(117, 117, 99);
+  color: var(--setting_txt_input);
   font-size: 1.5vw;
 }
 .profileDiv input[type="submit"] {
@@ -91,7 +91,7 @@ body{
   padding: 12px 10px;
   margin: 8px 0;
   box-sizing: border-box;
-  background-color: rgb(38, 32, 62);
+  background-color: var(--setting_change);
   border: none;
   color: rgb(136, 128, 187);
   font-size: 1.5vw;
@@ -112,15 +112,17 @@ body{
   font-size: 1.5vw;
 }
 .profileDiv input[type="button"]:hover {
-  background-color: rgb(182, 100, 0);
+  background-color: rgb(185, 80, 19);
 }
 .favoritesDiv {
   margin-left: 5%;
   margin-top: 2vw;
   width: 47.5%;
+  
+
 }
 .favoritesDiv > h3 {
-  color: rgb(136, 128, 187);
+  color:var(--settings_faves);
   font-weight: 400;
   font-size: 2.25vw;
   margin-bottom: 0;
@@ -129,7 +131,7 @@ body{
 }
 .favoritesGrid {
   border-radius: 5px;
-  background-color: rgb(58, 49, 113);
+  background:var(--settings_fave_div);
 }
 .favoritesCard {
   display: flex;
