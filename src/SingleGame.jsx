@@ -6,7 +6,6 @@ import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
-import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
 function Singlegame() {
   const { gameId } = useParams();
