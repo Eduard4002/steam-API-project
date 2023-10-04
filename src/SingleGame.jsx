@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
+import { Slide } from "react-slideshow-image";
+import "./assets/css/slideshow.css";
+import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
 function Singlegame() {
   const { gameId } = useParams();
@@ -120,8 +123,29 @@ function Singlegame() {
     checkAndHandleFavorites();
   }
 
+  const buttonStyle = {
+  width: "30px",
+  background: "none",
+  border: "0px",
+  padding: "0",
+};
+
+const properties = {
+  prevArrow: (
+    <button className="left" style={{ ...buttonStyle }}>
+      <span className="material-symbols-outlined">chevron_left</span>
+    </button>
+  ),
+  nextArrow: (
+    <button className="right" style={{ ...buttonStyle }}>
+      <span className="material-symbols-outlined">chevron_right</span>
+    </button>
+  ),
+};
+
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
+  const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
   return (
     <>
       <ToggleVisibility>
@@ -147,12 +171,31 @@ function Singlegame() {
               ></div>
             </button>
             <h1 className="gameTitle">{itemData.name}</h1>
-            <p className="gamePrice">{itemData.price_overview?.final_formatted || "Free to play"}</p>
+            <p className="gamePrice">
+              {itemData.price_overview?.final_formatted || "Free to play"}
+            </p>
             <p className="gameInfo">Developers: {itemData.developers}</p>
-            <p className="gameInfo">Realease date: {itemData.release_date.date}</p>
+            <p className="gameInfo">
+              Realease date: {itemData.release_date.date}
+            </p>
           </div>
           <div className="rightGameDiv">
-            <img src={itemData.header_image} alt="Picture of Game" className="gameImage"/>
+            <div className="gameImage">
+              <Slide {...properties}>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.header_image})`, backgroundSize: "contain"}}>
+                  </div>
+                </div>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.screenshots[0].path_thumbnail})` }}>
+                  </div>
+                </div>
+                <div className="each-slide-effect">
+                  <div style={{ backgroundImage: `url(${itemData.screenshots[1].path_thumbnail}` }}>
+                  </div>
+                </div>
+              </Slide>
+            </div>
             <div className="gameDescription">
               <p>{itemData.short_description}</p>
             </div>
