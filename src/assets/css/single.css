@@ -45,7 +45,9 @@ body {
   width: 58vw;
 }
 .gameImage {
-  margin: auto;
+    padding: 0;
+  background-color: black;
+  margin: 0 auto 0 auto;
   width: 50vw;
 }
 .gameDescription {
@@ -61,18 +63,18 @@ body {
   padding-bottom: 3vw;
 }
 .bottomGameDiv > h3 {
-    color: rgb(250, 250, 250);
-    font-size: 2vw;
+  color: rgb(250, 250, 250);
+  font-size: 2vw;
 }
 .bottomGameDiv > table {
-    color: rgb(250, 250, 250);
-    text-align: left;
-    margin: auto;
+  color: rgb(250, 250, 250);
+  text-align: left;
+  margin: auto;
 }
 .bottomGameDiv > table td {
-    font-size: 1.25vw;
-    padding: 2vw;
-    max-width: 45vw;
+  font-size: 1.25vw;
+  padding: 2vw;
+  max-width: 45vw;
 }
 
 .gameFavBtn {
