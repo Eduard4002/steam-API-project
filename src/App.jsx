@@ -13,6 +13,10 @@ function App() {
 
   //Gets 100 top trending games from "steamspy"
   useEffect(() => {
+    if (window.localStorage.getItem("Trend") != "[]") {
+      setExtraData(JSON.parse(window.localStorage.getItem("Trend")));
+      return;
+    }
     fetch(
       "http://localhost:3000/api?url=" +
         "https://steamspy.com/api.php?request=top100in2weeks"
@@ -27,9 +31,14 @@ function App() {
         }
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [data]);
   //Used for retrieving extra data from another API
   useEffect(() => {
+    if (window.localStorage.getItem("Trend") != "[]") {
+      setExtraData(JSON.parse(window.localStorage.getItem("Trend")));
+      return;
+    }
+    console.log("Fetching information");
     // Clear the existing images array
     setExtraData([]);
 
@@ -65,8 +74,15 @@ function App() {
       // Update the images state with the fetched images
       setExtraData(tempMapped.filter(Boolean));
     });
-  }, []); // This useEffect depends on changes in the displayedGames array
-  console.log(extraData);
+    console.log(extraData);
+    window.localStorage.setItem("Trend", JSON.stringify(extraData));
+  }, [data]);
+  if (extraData.length === 0) return <h1>Loading</h1>;
+  let imagesArr = [];
+  for (let i = 0; i < 3; i++) {
+    imagesArr.push(extraData[i]?.header_image);
+  }
+
   return (
     <>
       {/* Other components */}
@@ -74,29 +90,20 @@ function App() {
       {/* Other components */}
       <div className="appContainer">
         <div className="slideWrapper">
-          <Slideshow />
+          <Slideshow images={imagesArr} />
         </div>
         <div className="favoriteGrid">
-          <div
-            className="favoriteCard"
-            style={{ backgroundImage: `url(${images[0]}` }}
-          >
+          <div className="favoriteCard" style={{}}>
             <span className="favoriteStar material-symbols-outlined">
               grade
             </span>
           </div>
-          <div
-            className="favoriteCard"
-            style={{ backgroundImage: `url(${images[1]}` }}
-          >
+          <div className="favoriteCard" style={{}}>
             <span className="favoriteStar material-symbols-outlined">
               grade
             </span>{" "}
           </div>
-          <div
-            className="favoriteCard"
-            style={{ backgroundImage: `url(${images[2]}` }}
-          >
+          <div className="favoriteCard" style={{}}>
             <span className="favoriteStar material-symbols-outlined">
               grade
             </span>
