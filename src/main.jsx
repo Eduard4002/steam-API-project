@@ -22,7 +22,7 @@ import { DataArray, getRandomGames } from "./DataArray.jsx";
 import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
 window.addEventListener("load", () => {
-  let music = new Audio(theme_music);
+  let music = new Audio(theme_music).loop;
   music.load();
   music.play();
   console.log("Should be playing Theme song...");
