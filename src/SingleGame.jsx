@@ -7,6 +7,7 @@ import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
 
+
 function Singlegame() {
   const { gameId } = useParams();
   const [isLoading, setLoading] = useState(true);
@@ -82,6 +83,7 @@ function Singlegame() {
   if (isLoading) {
     return (
       <>
+      
         <ToggleVisibility>
           <StuckMenu /> {/* Use the Slideshow component */}
         </ToggleVisibility>
@@ -157,6 +159,7 @@ function Singlegame() {
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
+<div className="main"> 
       <div
         className="singleGameDiv"
         style={{
@@ -283,6 +286,9 @@ function Singlegame() {
           </div>
         </div> */}
       </div>
+     
+</div>
+
     </>
   );
 }

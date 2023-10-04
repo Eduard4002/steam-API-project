@@ -1,9 +1,3 @@
-/* @import url("/src/index.css");
-
-body{
- background-color: var(--body_background);
-} */
-
 
 .profileDiv {
   background: var(--profile_bkg);
@@ -34,6 +28,7 @@ body{
   display: flex;
   margin: auto;
   width: 90%;
+  color: var(--profile_user_text);
 }
 .settingsDiv {
   margin-top: 2vw;
@@ -93,7 +88,7 @@ body{
   box-sizing: border-box;
   background-color: var(--setting_change);
   border: none;
-  color: rgb(136, 128, 187);
+  color: rgb(198, 190, 245);
   font-size: 1.5vw;
 }
 .profileDiv input[type="submit"]:hover {
