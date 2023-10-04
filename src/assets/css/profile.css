@@ -118,6 +118,8 @@ body{
   margin-left: 5%;
   margin-top: 2vw;
   width: 47.5%;
+  background-color: aqua !important;
+
   
 
 }
@@ -128,23 +130,31 @@ body{
   margin-bottom: 0;
   text-align: left;
   margin-left: 1vw;
+  
 }
 .favoritesGrid {
   border-radius: 5px;
-  background:var(--settings_fave_div);
+
+  
 }
 .favoritesCard {
   display: flex;
   padding: 1.5vw;
+  background:var(--settings_fave_div);
+  border-radius: 5px;  
+  
+ 
 }
 .favoritesCard > img {
   border-radius: 10px;
   width: 12.5vw;
   height: 7.5vw;
+  
 }
 .favoritesText {
   text-align: left;
   display: block;
+  
 }
 .favoritesText > h3 {
   text-overflow: ellipsis;
@@ -153,6 +163,7 @@ body{
   margin-bottom: 0.5vw;
   margin-left: 1vw;
   font-size: 1.5vw;
+  
 }
 .favoritesText > p {
   white-space: nowrap;
