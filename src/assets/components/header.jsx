@@ -35,7 +35,6 @@ window.addEventListener("click", function (e) {
   if (logInOpen) {
     if (e.target != profileMenu && e.target != document.getElementById("person")) {
       document.getElementById("profileMenu").style.display = "none";
-      console.log("helo");
       logInOpen = false;
     }
   }
