@@ -15,7 +15,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   //Used for retrieving extra data from another API
   useEffect(() => {
     if (dataToDisplay.length === 0) return;
-
+    
     // Clear the existing images array
     setExtraData([]);
 
