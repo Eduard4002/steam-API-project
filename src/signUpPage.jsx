@@ -13,12 +13,14 @@ function SignUp() {
 
     const userKey = username;
 
-    let userData = [];
+    let userData = { email, username, password, id: uuidv4(), favorites: [] };
+
+    /* let userData = [];
     userData.push({ "email": email });
     userData.push({ "username": username });
     userData.push({ "password": password });
     userData.push({ "id": uuidv4() });
-    userData.push({ "favorites": [] });
+    userData.push({ "favorites": [] }); */
 
     const userDataString = JSON.stringify(userData);
 
@@ -26,7 +28,7 @@ function SignUp() {
     //   alert("Username is taken.");
     //   return;
     // }
-    let usersLocalstorage = window.localStorage.getItem("users");
+    /*let usersLocalstorage = window.localStorage.getItem("users");
     if (usersLocalstorage) {
       let users = JSON.parse(window.localStorage.getItem("users"));
       users.push(userData);
@@ -34,9 +36,10 @@ function SignUp() {
     } else {
       window.localStorage.setItem("users", userDataString);
     }
-
     
-    window.localStorage.setItem("CurrLogged", userData.id);
+    window.localStorage.setItem("CurrLogged", userData.id); */
+
+    window.localStorage.setItem("user", userDataString);
 
     
     navigate("/");
@@ -45,14 +48,14 @@ function SignUp() {
   // Check if there's a 'logged' key in localStorage
   const loggedInUserId = localStorage.getItem("CurrLogged");
 
-  if (loggedInUserId != "0") {
+  /*if (loggedInUserId != "0") {
     return (
       <p className="logInQ">
         You are already logged in. Go to <Link to={"/"}> Home Page </Link> or{" "}
         <Link to={"/profile"}> Profile Page </Link> to continue.{" "}
       </p>
     );
-  }
+  } */
 
   return (
     <>
