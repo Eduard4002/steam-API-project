@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Slide } from "react-slideshow-image";
 import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
-import { Slide } from "react-slideshow-image";
 import "./assets/css/slideshow.css";
 import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 

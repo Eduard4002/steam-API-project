@@ -1,7 +1,7 @@
-import "./assets/css/logInPage.css";
 import { Link, useNavigate } from "react-router-dom";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
+import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
+import "./assets/css/logInPage.css";
 
 
 function LogIn() {
@@ -12,18 +12,22 @@ function LogIn() {
     const password = document.getElementById("password").value;
 
 
-    
+    const usersArr = JSON.parse(localStorage.getItem("users"));
 
-    if (
-      storedUserData &&
-      username === storedUserData.username &&
-      password === storedUserData.password
-    ) {
-      window.localStorage.setItem("user", storedUserData.id,);
-      navigate("/");
-    } else {
-      alert("Wrong details bozo");
-    }
+    //Loop through all users saved in localstorage
+    usersArr.map((user) => {
+
+      if (
+        username === user.username &&
+        password === user.password
+      ) {
+        window.localStorage.setItem("CurrLogged", user.id);
+        navigate("/");
+      } else {
+        alert("Wrong details bozo");
+      }
+    })
+
   }
 
  /* const loggedInUserId = localStorage.getItem("user");

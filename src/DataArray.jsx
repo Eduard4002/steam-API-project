@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function DataArray() {
   const [data, setData] = useState([]);
-  const englishCharacterRegex = /^[A-Za-z0-9\s]+$/;
+  const allowedCharactersRegex = /^[^\x00-\x1F\x22\x27\x3C\x3E\x5C\x7C]+$/;
 
   useEffect(() => {
     if (data.length > 0) return;
@@ -16,7 +16,7 @@ function DataArray() {
         const games = json.applist.apps;
 
         const filteredData = games.filter((item) => {
-          return item.name && englishCharacterRegex.test(item.name);
+          return item.name && allowedCharactersRegex.test(item.name);
         });
         setData(filteredData);
       })
