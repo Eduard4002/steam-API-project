@@ -161,18 +161,20 @@ function Singlegame() {
         <div className="bottomGameDiv">
           <h3>System Requirements:</h3>
           <table>
-            <tr>
-              <td
-                dangerouslySetInnerHTML={{
-                  __html: itemData.pc_requirements.minimum,
-                }}
-              ></td>
-              <td
-                dangerouslySetInnerHTML={{
-                  __html: itemData.pc_requirements.recommended,
-                }}
-              ></td>
-            </tr>
+            <tbody>
+              <tr>
+                <td
+                  dangerouslySetInnerHTML={{
+                    __html: itemData.pc_requirements.minimum,
+                  }}
+                ></td>
+                <td
+                  dangerouslySetInnerHTML={{
+                    __html: itemData.pc_requirements.recommended,
+                  }}
+                ></td>
+              </tr>
+            </tbody>
           </table>
         </div>
 
