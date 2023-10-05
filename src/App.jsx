@@ -1,10 +1,10 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./assets/components/Default";
 import "./assets/components/ToggleVisibility";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import Slideshow from "./assets/components/slideshow";
+import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import React, { useEffect, useState } from "react";
 
 function App() {
   const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
@@ -94,19 +94,13 @@ function App() {
         </div>
         <div className="favoriteGrid">
           <div className="favoriteCard" style={{}}>
-            <span className="favoriteStar material-symbols-outlined">
-              grade
-            </span>
+
           </div>
           <div className="favoriteCard" style={{}}>
-            <span className="favoriteStar material-symbols-outlined">
-              grade
-            </span>{" "}
+          
           </div>
           <div className="favoriteCard" style={{}}>
-            <span className="favoriteStar material-symbols-outlined">
-              grade
-            </span>
+          
           </div>
         </div>
       </div>
