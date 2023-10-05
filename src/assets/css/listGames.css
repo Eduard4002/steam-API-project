@@ -71,17 +71,21 @@
 .buttons {
   display: flex;
   flex-direction: row;
-  width: 1px;
-  margin-inline: auto;
-  gap: 15px;
+  justify-content: center; /* Center the div horizontally */
+  align-items: center; /* Center the div vertically */
   margin-bottom: 50px;
+  gap: 15px;
 }
+
 .buttons button {
   height: 50px;
   background: var(--bttn);
 }
 .buttons .activeIndex {
   background: var(--bttn_active);
+}
+.buttons button:nth-child(n + 16) {
+  display: none;
 }
 
 .activeIndex:focus {
