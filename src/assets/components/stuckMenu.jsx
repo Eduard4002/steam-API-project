@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { DataArray, getRandomGames } from "../../DataArray.jsx";
+import { getDataLength } from "../../DataArray.jsx";
+import React from "react";
 import "../css/sidebar.css";
 export default function stuckMenu() {
-  const data = DataArray();
-  if (data.length === 0) return;
-  const randomGameIndex = Math.floor(Math.random() * data.length);
+  const randomGameIndex = Math.floor(Math.random() * getDataLength());
+  //window.location.href("/game/" + data[randomGameIndex].appid);
+
   return (
     <div className="default-container">
       <ul>
@@ -18,7 +19,7 @@ export default function stuckMenu() {
         <Link to={"/"} className="link">
           Something
         </Link>
-        <Link to={"/game/" + data[randomGameIndex].appid} className="link">
+        <Link to={"/game/idx/" + randomGameIndex} className="link">
           Random
         </Link>
       </ul>
