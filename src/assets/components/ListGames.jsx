@@ -148,23 +148,16 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     </div>
 
                     <div className="buttonsDiv">
-                      <div className={`star ${fav.find((item) => item.appid === game.steam_appid) ? "active" : "inactive"}`} key={game.steam_appid + 2}>
-                      
-                    </div>
-                      <Link
-                        to={"/game/" + game.steam_appid}
-                        className="moreButton"
-                        key={game.steam_appid}
-                      >
-                        More
-                      </Link>
+                      <div
+                        className={`star ${
+                          fav.find((item) => item.appid === game.steam_appid)
+                            ? "active"
+                            : "inactive"
+                        }`}
+                        key={game.steam_appid + 2}
+                      ></div>
                     </div>
                   </div>
-
-                  <div className="buttonsDiv">
-                    <div className={`star ${test ? "active" : "inactive"}`}></div>
-                  </div>
-                </div>
                 </Link>
               </>
             ))}
