@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
 
-
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
 
@@ -100,10 +99,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
           <div className="contFlex">
             {extraData.map((game, index) => (
               <>
-                <Link
-                  to={"/game/id/" + game.steam_appid}
-                  key={game.steam_appid}
-                >
+                <Link to={"/game/" + game.steam_appid} key={game.steam_appid}>
                   <div className="container" key={game.appid + index}>
                     {game && (
                       <img
@@ -150,7 +146,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                         </div>
                       )}
                     </div>
-
                     <div className="buttonsDiv">
                       <div
                         className={`star ${
