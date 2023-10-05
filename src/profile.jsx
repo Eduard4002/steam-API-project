@@ -1,10 +1,10 @@
-import "./assets/css/profile.css";
-import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
-import ToggleVisibility from "./assets/components/ToggleVisibility";
 import { Link } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
 import ListGames from "./assets/components/ListGames";
+import ToggleVisibility from "./assets/components/ToggleVisibility";
+import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
+import "./assets/css/profile.css";
+import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 
 
 function Profile() {
@@ -68,7 +68,7 @@ function Profile() {
             </div>
           </div>
           <div className="favoritesDiv">
-            <h3>Recent favorites</h3>    
+            <h3>Recent favorites</h3>
             <ListGames dataToDisplay={user.favorites.slice(-3).reverse()} />
             <div className="favoritesGrid">
               <div className="favoritesCard">
