@@ -1,171 +1,170 @@
 .mainDiv {
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
 }
 
-
+.contFlex > a {
+    margin: auto;
+  width: 1200px;
+}
 
 .container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    /* box-shadow: rgba(74, 10, 137, 0.378) 0px 13px 27px -5px, rgba(94, 0, 95, 0.559) 0px 8px 16px -8px; */
-    box-shadow: rgba(12, 4, 54, 0.892) 0px 2px 4px, rgba(156, 73, 156, 0.305) 0px 6px 15px -3px, rgba(80, 60, 122, 0.689) 0px -3px 0px inset;
-    width: 1200px;
-    margin: auto;
-    gap: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    background:var(--games_div);
-    height: 150px;
-    transition: all 0.2s ease-in-out;
-
+  /* box-shadow: rgba(74, 10, 137, 0.378) 0px 13px 27px -5px, rgba(94, 0, 95, 0.559) 0px 8px 16px -8px; */
+  box-shadow: rgba(12, 4, 54, 0.892) 0px 2px 4px,
+    rgba(156, 73, 156, 0.305) 0px 6px 15px -3px,
+    rgba(80, 60, 122, 0.689) 0px -3px 0px inset;
+  width: 1200px;
+  margin: auto;
+  gap: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background: var(--games_div);
+  height: 150px;
+  transition: all 0.2s ease-in-out;
 }
-.container:hover{
-    transform: scale(1.05);
+.container:hover {
+  transform: scale(1.05);
 }
 .image {
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    margin: 10px;
-    width: 300px;
-    border-radius: 5px;
-    max-height: 150px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin: 10px;
+  width: 300px;
+  border-radius: 5px;
+  max-height: 150px;
 }
 
 .contFlex {
-    display: flex;
-    flex-direction: column;
-    width: 2000px;
-    margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  width: 2000px;
+  margin-inline: auto;
 }
 
 .textDiv {
-    gap: 10px;
-    display: flex;
-    flex-direction: row;
-    color:var(--game_div_top_text);
-    
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  color: var(--game_div_top_text);
 }
-.textDiv h2{
-    margin-top:20px !important;
+.textDiv h2 {
+  margin-top: 20px !important;
 }
-.nameAndDescDiv{
-    min-width: 55%;
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    text-align: left;
+.nameAndDescDiv {
+  min-width: 55%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  text-align: left;
 }
-.description{
-    max-width: 500px;
+.description {
+  max-width: 500px;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
-    width: 1px;
-    margin-inline: auto;
-    gap: 15px;
-    margin-bottom: 50px;
-   
+  display: flex;
+  flex-direction: row;
+  width: 1px;
+  margin-inline: auto;
+  gap: 15px;
+  margin-bottom: 50px;
 }
-.buttons button{
-    height: 50px;
-    background:var(--bttn);
+.buttons button {
+  height: 50px;
+  background: var(--bttn);
 }
-.buttons .activeIndex{
-    background: var(--bttn_active);
+.buttons .activeIndex {
+  background: var(--bttn_active);
 }
 
-.activeIndex:focus{
-    outline: none;
-    
+.activeIndex:focus {
+  outline: none;
 }
 .buttonsDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .moreButton {
-    width: 65px;
-    height: 30px;
-    background:var(--games_more);
-    border-radius: 5px;
-    color: var(--more_text);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  width: 65px;
+  height: 30px;
+  background: var(--games_more);
+  border-radius: 5px;
+  color: var(--more_text);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-  .moreButton:hover {
-    transform: scale(1.1);
-    color: var(--more_text_hover);
-    background: var(--more_hover);
-  }
+.moreButton:hover {
+  transform: scale(1.1);
+  color: var(--more_text_hover);
+  background: var(--more_hover);
+}
 .five-pointed-star {
-    margin-left: 30px;
-    width: 30px;
-    height: 30px;
+  margin-left: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .five-pointed-star {
-    --star-color: orange;
-    margin: 1em auto;
-    font-size: 1em;
-    position: relative;
-    display: block;
-    width: 0px;
-    height: 0px;
-    border-right: 1em solid transparent;
-    border-bottom: 0.7em solid var(--star-color);
-    border-left: 1em solid transparent;
-    transform: rotate(35deg);
-
+  --star-color: orange;
+  margin: 1em auto;
+  font-size: 1em;
+  position: relative;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  transform: rotate(35deg);
 }
 
 .five-pointed-star:before {
-    border-bottom: 0.8em solid var(--star-color);
-    border-left: 0.3em solid transparent;
-    border-right: 0.3em solid transparent;
-    position: absolute;
-    height: 0;
-    width: 0;
-    top: -0.45em;
-    left: -0.65em;
-    display: block;
-    content: "";
-    transform: rotate(-35deg);
+  border-bottom: 0.8em solid var(--star-color);
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -0.45em;
+  left: -0.65em;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
 }
 
 .five-pointed-star:after {
-    position: absolute;
-    display: block;
-    top: 0.03em;
-    left: -1.05em;
-    width: 0;
-    height: 0;
-    border-right: 1em solid transparent;
-    border-bottom: 0.7em solid var(--star-color);
-    border-left: 1em solid transparent;
-    transform: rotate(-70deg);
-    content: "";
+  position: absolute;
+  display: block;
+  top: 0.03em;
+  left: -1.05em;
+  width: 0;
+  height: 0;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  transform: rotate(-70deg);
+  content: "";
 }
-.nameAndDescDiv{
-    min-width: 55%;
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    text-align: left;
+.nameAndDescDiv {
+  min-width: 55%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  text-align: left;
 }
-.textDiv h2{
-    margin-top: 20px;
-    margin-bottom: 0;
-    padding: 0;
+.textDiv h2 {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0;
 }
-.description{
-    max-width: 500px;
-    margin-bottom: 50px;
+.description {
+  max-width: 500px;
+  margin-bottom: 50px;
 }
