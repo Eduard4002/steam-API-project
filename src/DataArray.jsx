@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 
 function DataArray() {
   const [data, setData] = useState([]);
-  const allowedCharactersRegex = /^[^\x00-\x1F\x22\x27\x3C\x3E\x5C\x7C]+$/;
+  const allowedCharactersRegex = /^[ A-Za-z0-9_@./#&+-:]*$/;
 
   useEffect(() => {
     if (data.length > 0) return;
+
     fetch(
       "http://localhost:3000/api?url=" +
         "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=A0911E4728A7BFFA31252DC83DEB9573&format=json"
@@ -21,7 +22,7 @@ function DataArray() {
         setData(filteredData);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [data]);
 
   return data;
 }
@@ -56,4 +57,7 @@ function getRandomGames(amount) {
 
   return newData;
 }
-export { DataArray, getRandomGames };
+function getDataLength() {
+  return 146994;
+}
+export { DataArray, getRandomGames, getDataLength };
