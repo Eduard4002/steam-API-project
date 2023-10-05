@@ -146,7 +146,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                         </div>
                       )}
                     </div>
-
                     <div className="buttonsDiv">
                       <div
                         className={`star ${

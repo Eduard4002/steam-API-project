@@ -6,17 +6,33 @@ import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
+import { DataArray } from "./DataArray";
 
-function Singlegame() {
-  const { gameId } = useParams();
+function Singlegame({ type }) {
+  const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
+  let data;
 
+  data = DataArray();
+  console.log("Val " + value);
+  //const gameId = data[randomIndex].appid;
   useEffect(() => {
+    if (data.length === 0) {
+      return;
+    }
+    let gameId;
+    if (type === "id") {
+      gameId = value;
+    } else {
+      gameId = data[value].appid;
+    }
+    console.log("Game id" + gameId);
+
     fetch(
       `http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`
     )
@@ -29,7 +45,7 @@ function Singlegame() {
         console.error(error);
         setError(error);
       });
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (isLoading) {
@@ -265,7 +281,6 @@ function Singlegame() {
               </tr>
             </tbody>
           </table>
-
           <h3>
             Get the Full Experience by{" "}
             <a href={gameUrl} target="blank">

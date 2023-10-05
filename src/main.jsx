@@ -82,8 +82,12 @@ const router = createBrowserRouter([
         element: <App />,
       },
       {
-        path: "/game/:gameId",
-        element: <Singlegame />,
+        path: "/game/id/:value",
+        element: <Singlegame type={"id"} />,
+      },
+      {
+        path: "/game/idx/:value",
+        element: <Singlegame type={"index"} />,
       },
       {
         path: "/login",
