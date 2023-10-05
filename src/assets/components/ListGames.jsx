@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
-import ToggleVisibility from "./ToggleVisibility";
-import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
@@ -89,10 +87,11 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
+  const newItem = extraData.appid;
   const fav = user.favorites;
+  // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
-  //const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-
+  console.log(fav);
   return (
     <>
       <div>
@@ -117,6 +116,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     <div className="nameAndDescDiv">
                       <div className="textDiv">
                         <h2 key={game.name}>{game.name}</h2>
+                        <h2 key={game.appid + 1}>{game.steam_appid}</h2>
                       </div>
 
                       {game?.short_description && (
@@ -152,9 +152,13 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
                     <div className="buttonsDiv">
                       <div
-                        className={`star ${test ? "active" : "inactive"}`}
+                        className={`star ${
+                          fav.find((item) => item.appid === game.steam_appid)
+                            ? "active"
+                            : "inactive"
+                        }`}
+                        key={game.steam_appid + 2}
                       ></div>
-                      More
                     </div>
                   </div>
                 </Link>

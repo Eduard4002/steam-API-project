@@ -51,7 +51,7 @@
   color: var(--game_div_top_text);
 }
 .textDiv h2 {
-  width: 650px;
+  width: 625px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,7 +65,8 @@
   text-align: left;
 }
 .description {
-  max-width: 500px;
+    width: 600px;
+    height: 150px;
 }
 
 .buttons {
@@ -173,6 +174,5 @@
   padding: 0;
 }
 .description {
-  max-width: 500px;
   margin-bottom: 50px;
 }
