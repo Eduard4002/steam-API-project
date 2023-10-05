@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
-import ToggleVisibility from "./ToggleVisibility";
-import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
@@ -16,7 +14,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   //Used for retrieving extra data from another API
   useEffect(() => {
     if (dataToDisplay.length === 0) return;
-    
+
     // Clear the existing images array
     setExtraData([]);
 
@@ -63,8 +61,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
   //Create index elements
   const elements = [];
-  const test = true
-  
+  const test = true;
+
   // const user = JSON.parse(localStorage.getItem("users"));
   // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
   // if (index !== -1) {
@@ -89,68 +87,78 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
+  const newItem = extraData.appid;
   const fav = user.favorites;
+  // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
-  //const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-
-  
-
+  console.log(fav);
   return (
     <>
-     
       <div>
         <div className="mainDiv">
           <div className="contFlex">
             {extraData.map((game, index) => (
               <>
-                <Link
-                      to={"/game/" + game.steam_appid}
-                      key={game.steam_appid}
-                    >
-                <div className="container" key={game.appid + index}>
-                  {game && (
-                    <img
-                      src={
-                        game.header_image || "src/assets/img/placeholder.webp"
-                      }
-                      key={game.header_image}
-                      className="image"
-                    ></img>
-                  )}
-                  <div className="nameAndDescDiv">
-                    <div className="textDiv">
-                      <h2 key={game.name}>{game.name}</h2>
+                <Link to={"/game/" + game.steam_appid} key={game.steam_appid}>
+                  <div className="container" key={game.appid + index}>
+                    {game && (
+                      <img
+                        src={
+                          game.header_image || "src/assets/img/placeholder.webp"
+                        }
+                        key={game.header_image}
+                        className="image"
+                      ></img>
+                    )}
+                    <div className="nameAndDescDiv">
+                      <div className="textDiv">
+                        <h2 key={game.name}>{game.name}</h2>
+                        <h2 key={game.appid + 1}>{game.steam_appid}</h2>
+                      </div>
+
+                      {game?.short_description && (
+                        <div
+                          className="description"
+                          key={game?.short_description}
+                        >
+                          {/*Does short description exists*/}
+                          {game?.short_description != "" || (
+                            <p>
+                              There does not appear to be a short description
+                              for this game
+                            </p>
+                          )}
+                          {/*Is short description too large to fit inside of the container?*/}
+                          {game?.short_description.length <
+                          descriptionMaxLength ? (
+                            <p key={game.short_description}>
+                              {game.short_description}
+                            </p>
+                          ) : (
+                            /*Short description is too large to fit inside of the container*/
+                            <p key={game.short_description}>
+                              {game?.short_description.slice(
+                                0,
+                                descriptionMaxLength
+                              ) + "..."}
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
 
-                    {game?.short_description && (
-                      <div
-                        className="description"
-                        key={game?.short_description}
+                    <div className="buttonsDiv">
+                      <div className={`star ${fav.find((item) => item.appid === game.steam_appid) ? "active" : "inactive"}`} key={game.steam_appid + 2}>
+                      
+                    </div>
+                      <Link
+                        to={"/game/" + game.steam_appid}
+                        className="moreButton"
+                        key={game.steam_appid}
                       >
-                        {/*Does short description exists*/}
-                        {game?.short_description != "" || (
-                          <p>
-                            There does not appear to be a short description for
-                            this game
-                          </p>
-                        )}
-                        {/*Is short description too large to fit inside of the container?*/}
-                        {game?.short_description.length <
-                        descriptionMaxLength ? (
-                          <p key={game.short_description}>
-                            {game.short_description}
-                          </p>
-                        ) : (
-                          /*Short description is too large to fit inside of the container*/
-                          <p key={game.short_description}>
-                            {game?.short_description.slice(
-                              0,
-                              descriptionMaxLength
-                            ) + "..."}
-                          </p>
-                        )}
-                      </div>
-                    )}
+                        More
+                      </Link>
+                    </div>
                   </div>
 
                   <div className="buttonsDiv">
