@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
 
+
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
 
