@@ -40,6 +40,12 @@ body {
   text-align: left;
   font-size: 1.2vw;
 }
+.genreList {
+    margin-top: 1vw;
+}
+.smallGameInfo {
+    font-weight: 200;
+}
 .rightGameDiv {
   /* background-color: rgba(250, 250, 0, 0.5); */
   width: 58vw;
