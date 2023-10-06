@@ -244,12 +244,12 @@ function Singlegame({ type }) {
                 {itemData.screenshots.length > 0 ? (
                   itemData.screenshots
                     .slice(0, 5)
-                    .map(({ id, path_thumbnail }) => (
+                    .map(({ id, path_full }) => (
                       <div key={id} className="item">
                         <div className="each-slide-effect">
                           <div
                             style={{
-                              backgroundImage: `url(${path_thumbnail})`,
+                              backgroundImage: `url(${path_full})`,
                             }}
                           ></div>
                         </div>
