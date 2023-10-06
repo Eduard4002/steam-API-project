@@ -200,6 +200,17 @@ function Singlegame({ type }) {
             <p className="gameInfo">
               Realease date: {itemData.release_date.date}
             </p>
+            <div className="genreList gameInfo">
+              Genres:
+              <span className="smallGameInfo"> Game</span>
+              {itemData.genres.map((item, index) => {
+                return (
+                  <span key={index} className="smallGameInfo">
+                    , {item.description}
+                  </span>
+                );
+              })}
+            </div>
           </div>
           <div className="rightGameDiv">
             <div className="gameImage">
@@ -214,17 +225,39 @@ function Singlegame({ type }) {
                     }}
                   ></div>
                 </div>
-                {itemData.screenshots.map(({ id, path_full }) => (
-                  <div key={id} className="item">
-                    <div className="each-slide-effect">
-                      <div
-                        style={{
-                          backgroundImage: `url(${path_full})`,
-                        }}
-                      ></div>
+                {/* {itemData.movies.length > 0 ? (
+                  itemData.movies.map(({ id, mp4 }) => (
+                    <div key={id} className="item">
+                      <div className="each-slide-effect">
+                        <div>
+                          <video width="100%" height="100%" controls autoPlay>
+                            <source src={mp4.max} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
+                )} */}
+                {itemData.screenshots.length > 0 ? (
+                  itemData.screenshots
+                    .slice(0, 5)
+                    .map(({ id, path_full }) => (
+                      <div key={id} className="item">
+                        <div className="each-slide-effect">
+                          <div
+                            style={{
+                              backgroundImage: `url(${path_full})`,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))
+                ) : (
+                  <div>No screenshots available</div>
+                )}
               </Slide>
             </div>
             <div className="gameDescription">
