@@ -94,7 +94,7 @@ html {
 
 #root {
   width: 100%;
-  
+  overflow: hidden;
 }
 
 
