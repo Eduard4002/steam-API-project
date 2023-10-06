@@ -240,19 +240,21 @@ function Singlegame({ type }) {
                   ))
                 ) : (
                   <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
-                )} */}                        
+                )} */}
                 {itemData.screenshots.length > 0 ? (
-                  itemData.screenshots.map(({ id, path_full }) => (
-                    <div key={id} className="item">
-                      <div className="each-slide-effect">
-                        <div
-                          style={{
-                            backgroundImage: `url(${path_full})`,
-                          }}
-                        ></div>
+                  itemData.screenshots
+                    .slice(0, 5)
+                    .map(({ id, path_thumbnail }) => (
+                      <div key={id} className="item">
+                        <div className="each-slide-effect">
+                          <div
+                            style={{
+                              backgroundImage: `url(${path_thumbnail})`,
+                            }}
+                          ></div>
+                        </div>
                       </div>
-                    </div>
-                  ))
+                    ))
                 ) : (
                   <div>No screenshots available</div>
                 )}
