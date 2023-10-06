@@ -99,7 +99,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
           <div className="contFlex">
             {extraData.map((game, index) => (
               <>
-                <Link to={"/game/" + game.steam_appid} key={game.steam_appid}>
+                <Link to={"/game/id/" + game.steam_appid} key={game.steam_appid}>
                   <div className="container" key={game.appid + index}>
                     {game && (
                       <img
