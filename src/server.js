@@ -1,7 +1,6 @@
 import express from "express";
-var app = express();
-import request from "request";
 import sqlite3 from "sqlite3";
+var app = express();
 sqlite3.verbose()
 const db = new sqlite3.Database('./db/db.sqlite')
 
