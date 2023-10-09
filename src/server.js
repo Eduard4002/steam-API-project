@@ -6,7 +6,15 @@ sqlite3.verbose()
 const db = new sqlite3.Database('./db/db.sqlite')
 
 db.serialize(() => {
-  db.run('CREATE TABLE accounts (data TEXT)')
+  db.run('CREATE TABLE [IF NOT EXISTS] [schema_name].table_name' (
+    column_1, data_type, PRIMARY, KEY,
+    column_2, data_type, NOT, NULL,
+    column_3, data_type, DEFAULT, 0,
+    table_constraints
+
+  ) [WITHOUT [ROWID] ] );
+  
+
   const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
   VALUES
     (email, password, username, id, favorites, )
