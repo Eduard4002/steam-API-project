@@ -9,6 +9,7 @@
 .gameTopDiv {
   display: inline-flex;
   width: 100%;
+  margin-top: 3vw;
   margin-bottom: 5vw;
 }
 .leftGameDiv {
