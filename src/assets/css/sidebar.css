@@ -1,63 +1,52 @@
-
-
 .default-container {
-    width: 19.531vw;
-    background: var(--sidebar);
-    padding: 20px; 
-    float: left;
-    position: fixed;
-    height: 100%; 
-    transition: all 0.25s;
+  width: 19.531vw;
+  background: var(--sidebar);
+  padding: 20px;
+  float: left;
+  position: fixed;
+  height: 100%;
+  transition: all 0.25s;
   z-index: 99;
-  }
-  
-  .default-container ul {
-    list-style: none; 
-    padding: 0;
-    
-  }
-  
-  
-  .default-container .link {
-    margin-bottom: 30px; 
-    
-  }
-  
+}
 
-  .default-container a {
-    font-size: 1.5vw;
-    text-decoration: none; 
-    color:var(--sidebar_text); 
-    display: block; 
-    padding: 5px; 
-    transition: background-color 0.3s; 
-    cursor: pointer;
-    background : var( --sidebar_a_prehover);
-    transition: all 0.2s ease-in-out;
-    
-  }
-  
-  .default-container a:hover {
-    background: var( --sidebar_a_hover); 
-    color: var(--sidebar_text_hover);
-    transform: scale(1.05);
-  }
+.default-container ul {
+  list-style: none;
+  padding: 0;
+}
 
+.default-container .link {
+  margin-bottom: 30px;
+}
 
-.coolbtn{
+.default-container a {
+  font-size: 1.5vw;
+  text-decoration: none;
+  color: var(--sidebar_text);
+  display: block;
+  padding: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  background: var(--sidebar_a_prehover);
+  transition: all 0.2s ease-in-out;
+}
+
+.default-container a:hover {
+  background: var(--sidebar_a_hover);
+  color: var(--sidebar_text_hover);
+  transform: scale(1.05);
+}
+
+.coolbtn {
   z-index: 99999;
-    display: flex;
-    margin-top: 2%;
-    margin-left: 1%;
-float: left;
-background: var(--sidebar_bttn);
-position: fixed;
+  display: flex;
+  margin-top: 2%;
+  margin-left: 1%;
+  float: left;
+  background: var(--sidebar_bttn);
+  position: fixed;
 }
 
 .coolbtn.move-right {
-    transform: translateX(47vh); 
-    transition: transform 0.3s ease; 
-    
-  }
-  
- 
+  transform: translateX(47vh);
+  transition: transform 0.3s ease;
+}
