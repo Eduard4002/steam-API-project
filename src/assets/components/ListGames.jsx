@@ -113,7 +113,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     <div className="nameAndDescDiv">
                       <div className="textDiv">
                         <h2 key={game.name}>{game.name}</h2>
-                        <h2 key={game.appid + 1}>{game.steam_appid}</h2>
                       </div>
 
                       {game?.short_description && (
