@@ -19,6 +19,10 @@ import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
 import { DataArray, getRandomGames } from "./DataArray.jsx";
+import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
+import StuckMenu from "./assets/components/stuckMenu.jsx"; // Import your Slideshow component
+import About from "./About.jsx";
+
 // import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
 
@@ -32,6 +36,9 @@ const Wrapper = () => (
   <>
     {/* <DarkMode/> */}
     <Header />
+    <ToggleVisibility>
+        <StuckMenu /> 
+      </ToggleVisibility>
     <Default />
     <Outlet />
     <Footer />
@@ -110,13 +117,15 @@ const router = createBrowserRouter([
         element: <SetGames />,
       },
       {
+        path: "/about",
+        element: <About />,
+      },
+      {
         path: "/result/:value",
         element: <SearchBar />,
       },
-      // {
-      //   path: "/singlegame",
-      //   element: <Singlegame />,
-      // },
+    
+ 
     ],
   },
 ]);

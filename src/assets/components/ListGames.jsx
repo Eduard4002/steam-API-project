@@ -96,9 +96,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   console.log(fav);
   return (
     <>
-    <ToggleVisibility>
-        <StuckMenu /> {/* Use the Slideshow component */}
-      </ToggleVisibility>
+
 
       <div>
         <div className="mainDiv">

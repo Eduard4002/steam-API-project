@@ -16,12 +16,14 @@ export default function stuckMenu() {
           Games
         </Link>
 
-        <Link to={"/"} className="link">
-          Something
-        </Link>
         <Link to={"/game/idx/" + randomGameIndex} className="link">
           Random
         </Link>
+
+        <Link to={"/about"} className="link">
+          About
+        </Link>
+        
       </ul>
     </div>
   );
