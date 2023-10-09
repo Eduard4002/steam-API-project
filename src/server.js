@@ -1,27 +1,27 @@
 import express from "express";
-import sqlite3 from "sqlite3";
+// import sqlite3 from "sqlite3";
 var app = express();
-sqlite3.verbose()
-const db = new sqlite3.Database('./db/db.sqlite')
+// sqlite3.verbose()
+// const db = new sqlite3.Database('./db/db.sqlite')
 
-db.serialize(() => {
-  db.run('CREATE TABLE accounts (data TEXT)')
-  const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
-  VALUES
-    (email, password, username, id, favorites, )
+// db.serialize(() => {
+//   db.run('CREATE TABLE accounts (data TEXT)')
+//   const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
+//   VALUES
+//     (email, password, username, id, favorites, )
 
-  for (let i = 0; i < 10; i++) {
-    stmt.run(`Ipsum ${i}`)
-  }
+//   for (let i = 0; i < 10; i++) {
+//     stmt.run(`Ipsum ${i}`)
+//   }
 
-  stmt.finalize()
+//   stmt.finalize()
 
-  db.each('SELECT rowid AS id, info FROM lorem', (err, row) => {
-    console.log(`${row.id}: ${row.info}`)
-  })
-})
+//   db.each('SELECT rowid AS id, info FROM lorem', (err, row) => {
+//     console.log(`${row.id}: ${row.info}`)
+//   })
+// })
 
-db.close()
+// db.close()
 
 app.set("port", 3000);
 
