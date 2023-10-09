@@ -47,6 +47,24 @@
 }
 
 .coolbtn.move-right {
-  transform: translateX(47vh);
+  transform: translateX(21vw);
   transition: transform 0.3s ease;
+}
+@media screen and (max-width: 750px) {
+  .default-container {
+    width: 95vw;
+  }
+  .default-container ul {
+    padding-top: 5vw;
+  }
+  .default-container a {
+    font-size: 5vw;
+  }
+  .coolbtn {
+    float: none;
+  }
+  .coolbtn.move-right {
+    transform: translateX(90vw);
+    transition: transform 0.3s ease;
+  }
 }
