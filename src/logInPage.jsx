@@ -45,9 +45,9 @@ function LogIn() {
     <>
  
 
-      <ToggleVisibility>
-        <StuckMenu /> {/* Use the Slideshow component */}
-      </ToggleVisibility>
+      {/* <ToggleVisibility>
+        <StuckMenu /> 
+      </ToggleVisibility> */}
 
       <div className="logInDiv">
         <h3>Log In</h3>

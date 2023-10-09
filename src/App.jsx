@@ -34,10 +34,7 @@ function App() {
   }, [data]);
   //Used for retrieving extra data from another API
   useEffect(() => {
-    if (window.localStorage.getItem("Trend") != "[]") {
-      setExtraData(JSON.parse(window.localStorage.getItem("Trend")));
-      return;
-    }
+    
     console.log("Fetching information");
     // Clear the existing images array
     setExtraData([]);

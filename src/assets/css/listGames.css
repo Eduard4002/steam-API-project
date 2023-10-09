@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: row;
   margin-top: 50px;
+  position: relative;
 }
-
+.contFlex {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 .contFlex > a {
+  position: relative;
+  width: 90%;
   margin: auto;
-  width: 1200px;
 }
 
 .container {
@@ -17,7 +23,7 @@
   box-shadow: rgba(12, 4, 54, 0.892) 0px 2px 4px,
     rgba(156, 73, 156, 0.305) 0px 6px 15px -3px,
     rgba(80, 60, 122, 0.689) 0px -3px 0px inset;
-  width: 1200px;
+  width: 100%;
   margin: auto;
   gap: 20px;
   border-radius: 10px;
@@ -40,7 +46,7 @@
 .contFlex {
   display: flex;
   flex-direction: column;
-  width: 2000px;
+  width: 100%;
   margin-inline: auto;
 }
 
@@ -51,13 +57,16 @@
   color: var(--game_div_top_text);
 }
 .textDiv h2 {
-  width: 625px;
+  width: 70% !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 20px !important;
 }
 .nameAndDescDiv {
+  height: 80%;
+  width: 100%;
+  overflow: hidden;
   min-width: 55%;
   display: flex;
   flex-direction: column;
@@ -65,8 +74,8 @@
   text-align: left;
 }
 .description {
-    width: 600px;
-    height: 150px;
+  width: 70%;
+  height: 150px;
 }
 
 .buttons {
@@ -93,10 +102,12 @@
   outline: none;
 }
 .buttonsDiv {
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-top: 30px;
+  right: 1vw;
+  top: 1vw;
 }
 
 .moreButton {
@@ -115,16 +126,13 @@
   background: var(--more_hover);
 }
 .five-pointed-star {
-  margin-left: 30px;
+  top: 0;
   width: 30px;
   height: 30px;
-}
-
-.five-pointed-star {
+  position: absolute;
   --star-color: orange;
   margin: 1em auto;
   font-size: 1em;
-  position: relative;
   display: block;
   width: 0px;
   height: 0px;

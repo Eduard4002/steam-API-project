@@ -1,15 +1,23 @@
 .favoritesDiv {
-  background-color: rgb(81, 73, 132);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px !important;
   margin: auto;
   padding: 1vw;
-  margin-top: 2vw;
+  margin-top: 3vw !important;
   margin-bottom: 2vw;
   padding-bottom: 3vw;
-  width: 80%;
+  width: 80% !important;
+}
+.favoritesDiv > h1 {
+  color: var(--progile_user);
 }
 .favoriteCard {
-    color: rgb(228, 223, 255);
+  color: rgb(228, 223, 255);
   border-radius: 5px;
   background-color: rgb(58, 49, 113);
   display: flex;

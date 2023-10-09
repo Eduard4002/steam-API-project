@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
+import ToggleVisibility from "./ToggleVisibility";
+import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [extraData, setExtraData] = useState([]);
@@ -94,6 +96,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   console.log(fav);
   return (
     <>
+
+
       <div>
         <div className="mainDiv">
           <div className="contFlex">
@@ -113,7 +117,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     <div className="nameAndDescDiv">
                       <div className="textDiv">
                         <h2 key={game.name}>{game.name}</h2>
-                        <h2 key={game.appid + 1}>{game.steam_appid}</h2>
                       </div>
 
                       {game?.short_description && (
