@@ -51,11 +51,11 @@
     margin-left: 1%;
 float: left;
 background: var(--sidebar_bttn);
-
+position: fixed;
 }
 
 .coolbtn.move-right {
-    transform: translateX(44vh); 
+    transform: translateX(47vh); 
     transition: transform 0.3s ease; 
     
   }

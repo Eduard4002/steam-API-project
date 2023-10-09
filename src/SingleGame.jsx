@@ -98,6 +98,7 @@ function Singlegame({ type }) {
   if (isLoading) {
     return (
       <>
+      
         <ToggleVisibility>
           <StuckMenu /> {/* Use the Slideshow component */}
         </ToggleVisibility>
@@ -173,6 +174,7 @@ function Singlegame({ type }) {
       <ToggleVisibility>
         <StuckMenu /> {/* Use the Slideshow component */}
       </ToggleVisibility>
+<div className="main"> 
       <div
         className="singleGameDiv"
         style={{
@@ -337,6 +339,9 @@ function Singlegame({ type }) {
           </div>
         </div> */}
       </div>
+     
+</div>
+
     </>
   );
 }
