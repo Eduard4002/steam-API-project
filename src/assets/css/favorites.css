@@ -6,7 +6,7 @@
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding-bottom: 3vw;
-  width: 80%;
+  width: 80% !important;
 }
 .favoriteCard {
     color: rgb(228, 223, 255);

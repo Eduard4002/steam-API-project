@@ -19,7 +19,14 @@ import Profile from "./profile.jsx";
 import Favorites from "./favorites.jsx";
 import SignUp from "./signUpPage.jsx";
 import { DataArray, getRandomGames } from "./DataArray.jsx";
+// import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
+
+// window.addEventListener("click", () => {
+//   let music = new Audio(theme_music); // Create an Audio element
+//   music.play(); // Call play() on the Audio element
+//   console.log("Should be playing Theme song...");
+// });
 
 const Wrapper = () => (
   <>
@@ -75,8 +82,12 @@ const router = createBrowserRouter([
         element: <App />,
       },
       {
-        path: "/game/:gameId",
-        element: <Singlegame />,
+        path: "/game/id/:value",
+        element: <Singlegame type={"id"} />,
+      },
+      {
+        path: "/game/idx/:value",
+        element: <Singlegame type={"index"} />,
       },
       {
         path: "/login",

@@ -25,9 +25,9 @@ function Favorites() {
   console.log(user.favorites);
   return (
     <>
-      <ListGames dataToDisplay={user.favorites} />
       <div className="favoritesDiv">
         <h1>Your Favorites </h1>
+        <ListGames dataToDisplay={user.favorites} />
         <template>
           <Link to={""}>
             <div className="favoriteCard">

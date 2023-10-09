@@ -1,3 +1,9 @@
+/* @import url("/src/index.css");
+
+body{
+ background-color: var(--body_background);
+} */
+
 
 .profileDiv {
   background: var(--profile_bkg);
@@ -11,7 +17,7 @@
 }
 .profileName {
   border-radius: 5px;
-  background:var(--progile_user);
+  background: var(--progile_user);
   margin: auto;
   margin-top: 2vw;
   padding: 0.1vw;
@@ -32,7 +38,7 @@
 }
 .settingsDiv {
   margin-top: 2vw;
-  width: 47.5%;
+  width: 110%;
 }
 .settingsDiv > h3 {
   color: var(--setting_txt);
@@ -44,7 +50,7 @@
 }
 .settingsGrid {
   border-radius: 5px;
-  background:var(--setting_div);
+  background: var(--setting_div);
 }
 .settingsHeader > h3 {
   font-size: 1.5vw;
@@ -75,7 +81,7 @@
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  background:var(--setting_input);
+  background: var(--setting_input);
   border: none;
   color: var(--setting_txt_input);
   font-size: 1.5vw;
@@ -109,56 +115,56 @@
 .profileDiv input[type="button"]:hover {
   background-color: rgb(185, 80, 19);
 }
+
 .favoritesDiv {
+  position: relative;
   margin-left: 5%;
-  margin-top: 2vw;
-  width: 47.5%;
-  background:var(--fave_big_div) !important;
-
-  
-
+  margin-top: 1vw !important;
+  width: 38vw !important;
+  background: transparent !important;
 }
 .favoritesDiv > h3 {
-  color:var(--settings_faves);
+  color: var(--settings_faves);
   font-weight: 400;
   font-size: 2.25vw;
   margin-bottom: 0;
   text-align: left;
   margin-left: 1vw;
-  
+}
+.contFlex {
+  width: 100% !important;
 }
 .favoritesGrid {
+  padding-top: 0.5vw;
+  padding-bottom: 0.1vw;
+  position: relative;
+  width: 40vw;
+  background-color: var(--setting_div);
   border-radius: 5px;
-
-  
 }
 .favoritesCard {
   display: flex;
   padding: 1.5vw;
-  background:var(--settings_fave_div);
-  border-radius: 5px;  
-  
- 
+  background: var(--settings_fave_div);
+  border-radius: 5px;
 }
 .favoritesCard > img {
   border-radius: 10px;
   width: 12.5vw;
   height: 7.5vw;
-  
 }
 .favoritesText {
   text-align: left;
   display: block;
-  
 }
-.favoritesText > h3 {
+.textDiv > h2 {
+  width: 12vw;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
-  margin-top: 1.25vw;
   margin-bottom: 0.5vw;
-  margin-left: 1vw;
   font-size: 1.5vw;
-  
 }
 .favoritesText > p {
   white-space: nowrap;

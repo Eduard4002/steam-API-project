@@ -6,18 +6,33 @@ import "../src/assets/css/single.css";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
+import { DataArray } from "./DataArray";
 
-
-function Singlegame() {
-  const { gameId } = useParams();
+function Singlegame({ type }) {
+  const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
+  let data;
 
+  data = DataArray();
+  console.log("Val " + value);
+  //const gameId = data[randomIndex].appid;
   useEffect(() => {
+    if (data.length === 0) {
+      return;
+    }
+    let gameId;
+    if (type === "id") {
+      gameId = value;
+    } else {
+      gameId = data[value].appid;
+    }
+    console.log("Game id" + gameId);
+
     fetch(
       `http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`
     )
@@ -30,7 +45,7 @@ function Singlegame() {
         console.error(error);
         setError(error);
       });
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (isLoading) {
@@ -187,6 +202,17 @@ function Singlegame() {
             <p className="gameInfo">
               Realease date: {itemData.release_date.date}
             </p>
+            <div className="genreList gameInfo">
+              Genres:
+              <span className="smallGameInfo"> Game</span>
+              {itemData.genres.map((item, index) => {
+                return (
+                  <span key={index} className="smallGameInfo">
+                    , {item.description}
+                  </span>
+                );
+              })}
+            </div>
           </div>
           <div className="rightGameDiv">
             <div className="gameImage">
@@ -201,17 +227,39 @@ function Singlegame() {
                     }}
                   ></div>
                 </div>
-                {itemData.screenshots.map(({ id, path_full }) => (
-                  <div key={id} className="item">
-                    <div className="each-slide-effect">
-                      <div
-                          style={{
-                            backgroundImage: `url(${path_full})`,
-                          }}
-                        ></div>
+                {/* {itemData.movies.length > 0 ? (
+                  itemData.movies.map(({ id, mp4 }) => (
+                    <div key={id} className="item">
+                      <div className="each-slide-effect">
+                        <div>
+                          <video width="100%" height="100%" controls autoPlay>
+                            <source src={mp4.max} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
+                )} */}
+                {itemData.screenshots.length > 0 ? (
+                  itemData.screenshots
+                    .slice(0, 5)
+                    .map(({ id, path_full }) => (
+                      <div key={id} className="item">
+                        <div className="each-slide-effect">
+                          <div
+                            style={{
+                              backgroundImage: `url(${path_full})`,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))
+                ) : (
+                  <div>No screenshots available</div>
+                )}
               </Slide>
             </div>
             <div className="gameDescription">
@@ -237,7 +285,12 @@ function Singlegame() {
               </tr>
             </tbody>
           </table>
-          <h3>Get the Full Experience by <a href={gameUrl} target="blank">Clicking This Link</a></h3>
+          <h3>
+            Get the Full Experience by{" "}
+            <a href={gameUrl} target="blank">
+              Clicking This Link
+            </a>
+          </h3>
         </div>
 
         {/* <div className="singleContainer">
