@@ -57,7 +57,7 @@
   color: var(--game_div_top_text);
 }
 .textDiv h2 {
-  width: 625px;
+  width: 70% !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
