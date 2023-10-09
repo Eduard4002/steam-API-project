@@ -1,38 +1,55 @@
 import express from "express";
 var app = express();
 import request from "request";
-import sqlite3 from "sqlite3";
-sqlite3.verbose()
-const db = new sqlite3.Database('./db/db.sqlite')
+import sqlite3 from "better-sqlite3";
+// const db = new sqlite3.Database('./db/db.sqlite')
+const db = sqlite3("db/database.sqlite")
 
-db.serialize(() => {
-  db.run('CREATE TABLE [IF NOT EXISTS] [schema_name].table_name' (
-    column_1, data_type, PRIMARY, KEY,
-    column_2, data_type, NOT, NULL,
-    column_3, data_type, DEFAULT, 0,
-    table_constraints
+// db.serialize(() => {
+//   db.run('CREATE TABLE [IF NOT EXISTS] [schema_name].table_name' (
+//     column_1, data_type, PRIMARY, KEY,
+//     column_2, data_type, NOT, NULL,
+//     column_3, data_type, DEFAULT, 0,
+//     table_constraints
 
-  ) [WITHOUT [ROWID] ] );
+//   ) [WITHOUT [ROWID] ] );
   
 
-  const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
-  VALUES
-    (email, password, username, id, favorites, )
+//   const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
+//   VALUES
+//     (email, password, username, id, favorites, )
 
-  for (let i = 0; i < 10; i++) {
-    stmt.run(`Ipsum ${i}`)
-  }
+//   for (let i = 0; i < 10; i++) {
+//     stmt.run(`Ipsum ${i}`)
+//   }
 
-  stmt.finalize()
+//   stmt.finalize()
 
-  db.each('SELECT rowid AS id, info FROM lorem', (err, row) => {
-    console.log(`${row.id}: ${row.info}`)
-  })
-})
+//   db.each('SELECT rowid AS id, info FROM lorem', (err, row) => {
+//     console.log(`${row.id}: ${row.info}`)
+//   })
+// })
 
-db.close()
+// db.close()
+
+db.prepare("CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL)").run()
+db.prepare("CREATE TABLE IF NOT EXISTS favorites (gameid INTEGER NOT NULL)").run()
+console.log(db.prepare("SELECT * FROM users").all())
+
+/* const user = {
+  id: "YEEET",
+  username: "admin",
+  email: "example@yeet.com",
+  password: "hashy",
+}
+
+const favorite = {
+  uid: "YEEET",
+  game_id: 12
+} */
 
 app.set("port", 3000);
+app.use(express.json());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -42,6 +59,49 @@ app.use(function (req, res, next) {
   );
   next();
 });
+
+const findUserStatement = db.prepare("SELECT id FROM users WHERE username = ?")
+
+const createUserStatement = db.prepare("INSERT INTO users (id, email, username, password) VALUES (?, ?, ?, ?)")
+
+const addToFav = db.prepare("INSERT INTO favorites (gameid) VALUES (?)")
+
+  
+
+app.post('/signup', function(req, res){
+  /* const foundUser = findUserStatement.get(req.body.username)
+
+  const foundEmail = findUserStatement.get(req.body.email)
+
+  if (foundUser ) {
+    res.status(409)
+    res.send("User already exists")
+    return
+  }
+
+  if (foundEmail) {
+    res.status(409)
+    res.send("Email already in use")
+    return
+  } */
+
+  console.log(req.body)
+
+  res.status(200).send("User created successfully");
+
+  createUserStatement.run(req.body.id, req.body.email, req.body.username,  req.body.password)
+})
+
+app.post('/singlegame', function(req, res) {
+  console.log(req.body)
+  addToFav.run(req.body.newItem)
+  
+  res.status(200).send("OK")
+})
+
+
+
+
 
 app.get("/api", function (req, res) {
   const apiURL = req.query.url; // Get the API URL from the query parameters

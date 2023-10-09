@@ -7,6 +7,7 @@ import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
 import { DataArray } from "./DataArray";
+import axios from "axios";
 
 function Singlegame({ type }) {
   const { value } = useParams();
@@ -110,8 +111,11 @@ function Singlegame({ type }) {
     //LocalStorage
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
-      const newItem = itemData.steam_appid;
+      const newItem = {
+        newItem: itemData.steam_appid,
+      };
       const index = user.favorites.findIndex((fav) => fav.appid === newItem);
+
       if (index !== -1) {
         user.favorites.splice(index, 1);
         const updateUser = JSON.stringify(user);
@@ -121,6 +125,13 @@ function Singlegame({ type }) {
 
         console.log(index);
       } else if (index == -1) {
+        axios
+          .post("http://localhost:3000/singlegame", newItem)
+          .then((response) => {})
+          .catch((error) => {
+            console.error(error);
+          });
+
         user.favorites.push({ appid: itemData.steam_appid });
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
@@ -242,19 +253,17 @@ function Singlegame({ type }) {
                   <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
                 )} */}
                 {itemData.screenshots.length > 0 ? (
-                  itemData.screenshots
-                    .slice(0, 5)
-                    .map(({ id, path_full }) => (
-                      <div key={id} className="item">
-                        <div className="each-slide-effect">
-                          <div
-                            style={{
-                              backgroundImage: `url(${path_full})`,
-                            }}
-                          ></div>
-                        </div>
+                  itemData.screenshots.slice(0, 5).map(({ id, path_full }) => (
+                    <div key={id} className="item">
+                      <div className="each-slide-effect">
+                        <div
+                          style={{
+                            backgroundImage: `url(${path_full})`,
+                          }}
+                        ></div>
                       </div>
-                    ))
+                    </div>
+                  ))
                 ) : (
                   <div>No screenshots available</div>
                 )}

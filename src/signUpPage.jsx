@@ -1,61 +1,45 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./assets/css/signUpPage.css";
+import axios from "axios";
 
 function SignUp() {
   const navigate = useNavigate();
 
-  function storeData() {
+  const [userData, setUserData] = useState({
+    id: generateUserId(),
+    email: "",
+    username: "",
+    password: "",
+  });
 
-    const email = document.getElementById("email").value;
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    const userKey = username;
-
-    let userData = { email, username, password, id: uuidv4(), favorites: [] };
-
-    /* let userData = [];
-    userData.push({ "email": email });
-    userData.push({ "username": username });
-    userData.push({ "password": password });
-    userData.push({ "id": uuidv4() });
-    userData.push({ "favorites": [] }); */
-
-    const userDataString = JSON.stringify(userData);
-
-    // if (window.localStorage.getItem(userKey)) {
-    //   alert("Username is taken.");
-    //   return;
-    // }
-    /*let usersLocalstorage = window.localStorage.getItem("users");
-    if (usersLocalstorage) {
-      let users = JSON.parse(window.localStorage.getItem("users"));
-      users.push(userData);
-      window.localStorage.setItem("users", JSON.stringify(users));
-    } else {
-      window.localStorage.setItem("users", userDataString);
-    }
-    
-    window.localStorage.setItem("CurrLogged", userData.id); */
-
-    window.localStorage.setItem("user", userDataString);
-
-    
-    navigate("/");
+  function generateUserId() {
+    const timestamp = Date.now().toString(36);
+    const random = Math.random().toString(36).substring(2, 8);
+    return `${timestamp}${random}`;
   }
 
-  // Check if there's a 'logged' key in localStorage
-  const loggedInUserId = localStorage.getItem("CurrLogged");
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
 
-  /*if (loggedInUserId != "0") {
-    return (
-      <p className="logInQ">
-        You are already logged in. Go to <Link to={"/"}> Home Page </Link> or{" "}
-        <Link to={"/profile"}> Profile Page </Link> to continue.{" "}
-      </p>
-    );
-  } */
+  function storeData(e) {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:3000/signup", userData)
+      .then((response) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   return (
     <>
@@ -67,9 +51,10 @@ function SignUp() {
           <input
             type="email"
             id="email"
-            name="lname"
+            name="email"
             placeholder="E-Mail"
             required
+            onChange={handleChange}
           ></input>
           <br />
           <label>Username:</label>
@@ -77,9 +62,10 @@ function SignUp() {
           <input
             type="text"
             id="username"
-            name="fname"
+            name="username"
             placeholder="Username"
             required
+            onChange={handleChange}
           ></input>
           <br />
           <label>Password:</label>
@@ -87,9 +73,10 @@ function SignUp() {
           <input
             type="password"
             id="password"
-            name="lname"
+            name="password"
             placeholder="Password"
             required
+            onChange={handleChange}
           ></input>
           <br />
           <input type="submit" value="Submit"></input>
