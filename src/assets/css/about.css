@@ -1,0 +1,33 @@
+.main{
+  margin-top: ;
+    
+}
+
+
+
+.InfoCont{
+    background: var(--popup_bkg) ;
+    margin-bottom: 50px;
+    height: 100px;
+    width: 40%;
+
+}
+
+
+.gitBttn{
+    float: right;
+margin-right: 1%;
+color: var(--more_text);
+}
+
+
+
+
+
+.InfoGeneralCont{
+    background: var(--popup_bkg);
+    width: 100vh;
+    height: 70vh;
+    margin-right: 50px;
+    float: right;
+}
