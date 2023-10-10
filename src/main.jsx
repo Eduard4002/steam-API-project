@@ -37,8 +37,8 @@ const Wrapper = () => (
     {/* <DarkMode/> */}
     <Header />
     <ToggleVisibility>
-        <StuckMenu /> 
-      </ToggleVisibility>
+      <StuckMenu />
+    </ToggleVisibility>
     <Default />
     <Outlet />
     <Footer />
@@ -77,6 +77,7 @@ const SearchBar = () => {
 
 const SetGames = () => {
   const data = JSON.parse(localStorage.getItem("DATA"));
+  console.log(Array.isArray(data));
   if (data.length === 0) return <h1>Loading</h1>;
   return <ListGames dataToDisplay={data} gamesPerPage={5} />;
 };
@@ -124,8 +125,6 @@ const router = createBrowserRouter([
         path: "/result/:value",
         element: <SearchBar />,
       },
-    
- 
     ],
   },
 ]);

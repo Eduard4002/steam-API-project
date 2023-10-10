@@ -56,11 +56,11 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
               )
               .map((game, index) => (
                 <>
-                  <Link
-                    to={"/game/id/" + game.steam_appid}
-                    key={game.steam_appid}
-                  >
-                    <div className="gameDiv" key={game.appid + index}>
+                  <div className="gameDiv" key={game.appid + index}>
+                    <Link
+                      to={"/game/id/" + game.steam_appid}
+                      key={game.steam_appid}
+                    >
                       {" "}
                       {/*-------------------- Old Classname = container ------------*/}
                       <div className="gameGrid">
@@ -123,8 +123,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                           ></div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </>
               ))}
           </div>
