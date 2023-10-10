@@ -93,11 +93,23 @@ app.post('/signup', function(req, res){
 })
 
 app.post('/singlegame', function(req, res) {
-  console.log(req.body)
-  addToFav.run(req.body.uid, req.body.newItem)
-  
-  res.status(200).send("OK")
-})
+  const userId = req.body.uid; // Assuming you have the user's ID
+  const gameId = req.body.newItem;
+
+  // Check if the game ID exists for the specific user in the favorites
+  const existingFavorite = db.prepare("SELECT * FROM favorites WHERE uid = ? AND gameid = ?").get(userId, gameId);
+
+  if (existingFavorite) {
+    // If the game ID exists in the user's favorites, remove it
+    db.prepare("DELETE FROM favorites WHERE uid = ? AND gameid = ?").run(userId, gameId);
+    res.status(200).json({ message: "Game removed from favorites" });
+  } else {
+    // If the game ID is not in the user's favorites, you can add it if needed
+    // Add your code here to add the game ID to favorites if required
+    // res.status(404).json({ message: "Game not found in favorites" });
+    db.prepare("INSERT INTO favorites (uid, gameid) VALUES (?, ?)").run(userId, gameId)
+  }
+});
 
 app.post('/login', function(req, res){
   const username = req.body.username;
