@@ -8,7 +8,7 @@ import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
 
-  const descriptionMaxLength = 130;
+  const descriptionMaxLength = 300;
   if (dataToDisplay.length === 0) return;
   const indexAmount = Math.ceil(dataToDisplay.length / gamesPerPage);
 
@@ -56,11 +56,11 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
               )
               .map((game, index) => (
                 <>
-                  <Link
-                    to={"/game/id/" + game.steam_appid}
-                    key={game.steam_appid}
-                  >
-                    <div className="gameDiv" key={game.appid + index}>
+                  <div className="gameDiv" key={game.appid + index}>
+                    <Link
+                      to={"/game/id/" + game.steam_appid}
+                      key={game.steam_appid}
+                    >
                       {" "}
                       {/*-------------------- Old Classname = container ------------*/}
                       <div className="gameGrid">
@@ -92,7 +92,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                                   description for this game
                                 </p>
                               )}
-                              {/*Is short description too large to fit inside of the container?*/}
+                              {/* Is short description too large to fit inside of the container? */}
                               {game?.short_description.length <
                               descriptionMaxLength ? (
                                 <p key={game.short_description}>
@@ -123,8 +123,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                           ></div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </>
               ))}
           </div>

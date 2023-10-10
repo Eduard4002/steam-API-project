@@ -76,6 +76,7 @@
     border: 2px solid rgb(80,90,222);
     background-color: rgb(209,231,248);
     transition: all 100ms ease-in-out;
+    
 }
 .rightNav span:hover {
     background:var(--icon_prof_bkg_hover);
@@ -101,6 +102,7 @@
     font-size: 1.25vw;
     background:var(--popup_bttn);
     transition: all 0.2s ease-in-out;
+    border-radius: 10px;
 }
 .profileMenuBtns > a > div:hover {
     background:var(--popup_bttn_hover);
