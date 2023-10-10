@@ -1,0 +1,37 @@
+.main{
+  margin-top: 10vh;
+    
+}
+
+
+
+.InfoCont{
+    background: var(--aboutUs) ;
+    margin-bottom: 50px;
+    height: 150px;
+    width: 40%;
+    margin-left: 1%;
+    border-radius: 20px;
+
+}
+
+
+.gitBttn{
+    float: right;
+margin-right: 1%;
+color: var(--more_text);
+
+}
+
+
+
+
+
+.InfoGeneralCont{
+    background: var(--aboutBig);
+    width: 100vh;
+    height: 70vh;
+    margin-right: 50px;
+    float: right;
+    border-radius: 20px;
+}
