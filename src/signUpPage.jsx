@@ -8,7 +8,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
-    id: generateUserId(),
+    id: "", 
     email: "",
     username: "",
     password: "",
@@ -18,7 +18,7 @@ function SignUp() {
     const timestamp = Date.now().toString(36);
     const random = Math.random().toString(36).substring(2, 8);
     return `${timestamp}${random}`;
-}
+  }
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,17 +31,22 @@ function SignUp() {
   function storeData(e) {
     e.preventDefault();
 
+    const newUser = {
+      ...userData,
+      id: generateUserId(), // Generate a new id here
+    };
+
     axios
-      .post("http://localhost:3000/signup", userData)
+      .post("http://localhost:3000/signup", newUser)
       .then((response) => {
-        window.localStorage.setItem("CurrLogged", userData.id);
+        window.localStorage.setItem("CurrLogged", newUser.id);
         navigate("/");
-        
       })
       .catch((error) => {
         console.error(error);
       });
   }
+
 
   return (
     <>
