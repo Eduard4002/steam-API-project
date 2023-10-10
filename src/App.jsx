@@ -70,11 +70,41 @@ function App() {
       ).then(() => {
         // Create an array of images based on the displayedGames order
         const tempMapped = result.map((item) => temp[item.appid] || null);
-        // Update the images state with the fetched images
-        window.localStorage.setItem(
-          "DATA",
-          JSON.stringify(tempMapped.filter(Boolean))
-        );
+        const filteredArray = tempMapped.filter(Boolean).map((item) => {
+          if (item) {
+            const {
+              steam_appid,
+              screenshots,
+              name,
+              price_overview,
+              release_date,
+              genres,
+              short_description,
+              pc_requirements,
+              header_image,
+              developers,
+              background,
+            } = item;
+
+            return {
+              steam_appid,
+              screenshots,
+              name,
+              price_overview,
+              release_date,
+              genres,
+              short_description,
+              pc_requirements,
+              header_image,
+              developers,
+              background,
+            };
+          } else {
+            return null;
+          }
+        });
+
+        window.localStorage.setItem("DATA", JSON.stringify(filteredArray));
         localStorage.setItem("LastRefreshed", currentTime.toString());
         setExtraData(tempMapped.filter(Boolean));
       });
