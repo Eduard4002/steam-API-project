@@ -26,10 +26,17 @@
 }
 .leftNav h1 {
     color: var(--logg);
-    margin-left: 1.5vw;
-    font-size: 2.6vw;
+    margin-left: 2vw;
+    font-size: 2.2vw;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
+}
+.hubClass {
+    margin-left: 0.25vw;
+    background-color: var(--games_more);
+    color: black;
+    border-radius: 8px;
+    padding: 0.15vw 0.3vw 0.15vw 0.3vw;
 }
 .middleNav {
     float: left;
