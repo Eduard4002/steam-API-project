@@ -44,7 +44,7 @@ window.addEventListener("click", function (e) {
 function Header() {
   
   function logOut() {
-    localStorage.setItem("CurrLogged", "0");
+    localStorage.removeItem("CurrLogged", "0");
 
 
   }
@@ -57,7 +57,7 @@ function Header() {
             <img src={Logo} alt="Logo" />
           </Link>
           <Link to={""}>
-            <h1>Game API</h1>
+            <h1>Game<span className="hubClass">hub</span></h1>
           </Link>
         </div>
         <div className="middleNav">

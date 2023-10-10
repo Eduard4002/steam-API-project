@@ -7,6 +7,7 @@ import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
 import { DataArray } from "./DataArray";
+import axios from "axios";
 
 function Singlegame({ type }) {
   const { value } = useParams();
@@ -98,6 +99,7 @@ function Singlegame({ type }) {
   if (isLoading) {
     return (
       <>
+      
         <ToggleVisibility>
           <StuckMenu /> {/* Use the Slideshow component */}
         </ToggleVisibility>
@@ -110,8 +112,11 @@ function Singlegame({ type }) {
     //LocalStorage
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && Array.isArray(user.favorites)) {
-      const newItem = itemData.steam_appid;
+      const newItem = {
+        newItem: itemData.steam_appid,
+      };
       const index = user.favorites.findIndex((fav) => fav.appid === newItem);
+
       if (index !== -1) {
         user.favorites.splice(index, 1);
         const updateUser = JSON.stringify(user);
@@ -121,6 +126,13 @@ function Singlegame({ type }) {
 
         console.log(index);
       } else if (index == -1) {
+        axios
+          .post("http://localhost:3000/singlegame", newItem)
+          .then((response) => {})
+          .catch((error) => {
+            console.error(error);
+          });
+
         user.favorites.push({ appid: itemData.steam_appid });
         const updateUser = JSON.stringify(user);
         localStorage.setItem("user", updateUser);
@@ -170,9 +182,10 @@ function Singlegame({ type }) {
   console.log(itemData.screenshots);
   return (
     <>
-      <ToggleVisibility>
-        <StuckMenu /> {/* Use the Slideshow component */}
-      </ToggleVisibility>
+      {/* <ToggleVisibility>
+        <StuckMenu /> 
+      </ToggleVisibility> */}
+<div className="main"> 
       <div
         className="singleGameDiv"
         style={{
@@ -200,6 +213,17 @@ function Singlegame({ type }) {
             <p className="gameInfo">
               Realease date: {itemData.release_date.date}
             </p>
+            <div className="genreList gameInfo">
+              Genres:
+              <span className="smallGameInfo"> Game</span>
+              {itemData.genres.map((item, index) => {
+                return (
+                  <span key={index} className="smallGameInfo">
+                    , {item.description}
+                  </span>
+                );
+              })}
+            </div>
           </div>
           <div className="rightGameDiv">
             <div className="gameImage">
@@ -214,17 +238,37 @@ function Singlegame({ type }) {
                     }}
                   ></div>
                 </div>
-                {itemData.screenshots.map(({ id, path_full }) => (
-                  <div key={id} className="item">
-                    <div className="each-slide-effect">
-                      <div
-                        style={{
-                          backgroundImage: `url(${path_full})`,
-                        }}
-                      ></div>
+                {/* {itemData.movies.length > 0 ? (
+                  itemData.movies.map(({ id, mp4 }) => (
+                    <div key={id} className="item">
+                      <div className="each-slide-effect">
+                        <div>
+                          <video width="100%" height="100%" controls autoPlay>
+                            <source src={mp4.max} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
+                )} */}
+                {itemData.screenshots.length > 0 ? (
+                  itemData.screenshots.slice(0, 5).map(({ id, path_full }) => (
+                    <div key={id} className="item">
+                      <div className="each-slide-effect">
+                        <div
+                          style={{
+                            backgroundImage: `url(${path_full})`,
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div>No screenshots available</div>
+                )}
               </Slide>
             </div>
             <div className="gameDescription">
@@ -304,6 +348,9 @@ function Singlegame({ type }) {
           </div>
         </div> */}
       </div>
+     
+</div>
+
     </>
   );
 }

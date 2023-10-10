@@ -1,7 +1,4 @@
-/* body {
-    background: rgb(53,41,97);
-    background: linear-gradient(180deg, rgba(53,41,97,1) 0%, rgba(29,21,58,1) 100%);
-} */
+
 .signUpDiv {
     background:var(--background_login);
     border-radius: 25px;

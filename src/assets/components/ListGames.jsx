@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
+import ToggleVisibility from "./ToggleVisibility";
+import StuckMenu from "./stuckMenu"; // Import your Slideshow component
 
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
@@ -58,63 +60,68 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     to={"/game/id/" + game.steam_appid}
                     key={game.steam_appid}
                   >
-                    <div className="container" key={game.appid + index}>
-                      {game && (
-                        <img
-                          src={
-                            game.header_image ||
-                            "src/assets/img/placeholder.webp"
-                          }
-                          key={game.header_image}
-                          className="image"
-                        ></img>
-                      )}
-                      <div className="nameAndDescDiv">
-                        <div className="textDiv">
-                          <h2 key={game.name}>{game.name}</h2>
-                          <h2 key={game.appid + 1}>{game.steam_appid}</h2>
+                    <div className="gameDiv" key={game.appid + index}>
+                      {" "}
+                      {/*-------------------- Old Classname = container ------------*/}
+                      <div className="gameGrid">
+                        <div className="gameImageGridItem gameGridItem">
+                          {game && (
+                            <img
+                              src={
+                                game.header_image ||
+                                "src/assets/img/placeholder.webp"
+                              }
+                              key={game.header_image}
+                              className="image"
+                            ></img>
+                          )}
                         </div>
-
-                        {game?.short_description && (
-                          <div
-                            className="description"
-                            key={game?.short_description}
-                          >
-                            {/*Does short description exists*/}
-                            {game?.short_description != "" || (
-                              <p>
-                                There does not appear to be a short description
-                                for this game
-                              </p>
-                            )}
-                            {/*Is short description too large to fit inside of the container?*/}
-                            {game?.short_description.length <
-                            descriptionMaxLength ? (
-                              <p key={game.short_description}>
-                                {game.short_description}
-                              </p>
-                            ) : (
-                              /*Short description is too large to fit inside of the container*/
-                              <p key={game.short_description}>
-                                {game?.short_description.slice(
-                                  0,
-                                  descriptionMaxLength
-                                ) + "..."}
-                              </p>
-                            )}
+                        <div className="gameTextGridItem gameGridItem">
+                          <div className="textDiv">
+                            <h2 key={game.name}>{game.name}</h2>
                           </div>
-                        )}
-                      </div>
-
-                      <div className="buttonsDiv">
-                        <div
-                          className={`star ${
-                            fav.find((item) => item.appid === game.steam_appid)
-                              ? "active"
-                              : "inactive"
-                          }`}
-                          key={game.steam_appid + 2}
-                        ></div>
+                          {game?.short_description && (
+                            <div
+                              className="description"
+                              key={game?.short_description}
+                            >
+                              {/*Does short description exists*/}
+                              {game?.short_description != "" || (
+                                <p>
+                                  There does not appear to be a short
+                                  description for this game
+                                </p>
+                              )}
+                              {/*Is short description too large to fit inside of the container?*/}
+                              {game?.short_description.length <
+                              descriptionMaxLength ? (
+                                <p key={game.short_description}>
+                                  {game.short_description}
+                                </p>
+                              ) : (
+                                /*Short description is too large to fit inside of the container*/
+                                <p key={game.short_description}>
+                                  {game?.short_description.slice(
+                                    0,
+                                    descriptionMaxLength
+                                  ) + "..."}
+                                </p>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <div className="buttonsDiv">
+                          <div
+                            className={`star ${
+                              fav.find(
+                                (item) => item.appid === game.steam_appid
+                              )
+                                ? "active"
+                                : "inactive"
+                            }`}
+                            key={game.steam_appid + 2}
+                          ></div>
+                        </div>
                       </div>
                     </div>
                   </Link>

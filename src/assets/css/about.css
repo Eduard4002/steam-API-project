@@ -1,0 +1,48 @@
+.main{
+  margin-top: 10vh;
+
+}
+
+.aboutGrid{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 0px 7%; 
+}
+
+.InfoCont{
+    background: var(--aboutUs) ;
+    margin-bottom: 50px;
+    height: 150px;
+    margin-left: 1%;
+    border-radius: 20px;
+
+}
+
+
+.gitBttn{
+    float: right;
+margin-right: 1%;
+color: var(--more_text);
+
+}
+
+
+
+
+
+.InfoGeneralCont{
+    background: var(--aboutBig);
+    height: 70vh;
+    margin-right: 50px;
+    float: right;
+    border-radius: 20px;
+}
+
+
+@media screen and (max-width: 750px){
+    .aboutGrid {
+      
+        
+
+    }
+  }

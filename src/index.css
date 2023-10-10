@@ -1,6 +1,7 @@
 html {
   margin: 0;
   padding: 0;
+margin: auto;
 
 }
 :root {
@@ -16,7 +17,7 @@ html {
 
   /* ----------------------------topper/footer----------------------------------------------------- */
   --topper:rgb(1, 1, 25);
-  --logg:rgb(128, 132, 154);
+  --logg:rgb(214, 214, 214);
   --search: rgb(38,32,62);
   --search_text:rgb(209,231,248);
   --links: #646cff ;
@@ -79,9 +80,9 @@ html {
 --settings_fave_div: rgb(31, 27, 60);
 --fave_big_div:rgb(51, 42, 88);
 
-/* ------------------------------------------single game page-------------------------------------------------- */
-
-
+/* ------------------------------------------about-------------------------------------------------- */
+--aboutUs: linear-gradient(to right, #1d0a2e, #281533, #3f2352, #452251, #642e6b);
+--aboutBig:#0e0513;
 
   /* ------------------------------------------------------------------------ */
   font-synthesis: none;
@@ -94,7 +95,7 @@ html {
 
 #root {
   width: 100%;
-  
+  overflow: hidden;
 }
 
 
@@ -110,7 +111,7 @@ html {
 
   /* --------------------general ---------------------------------------- */
   --body_color: rgb(220, 187, 223);
-  --body_background: linear-gradient(180deg, #a7c7f7 0%, rgb(164, 188, 243) 100%);
+  --body_background: radial-gradient(circle, #ecf4ff, #dae9fd, #c9defb, #b8d2f9, #a7c7f7);
   --body_color:  rgb(40, 32, 67);
 
  /* ----------------------------topper/footer----------------------------------------------------- */
@@ -163,7 +164,7 @@ html {
 
 /* ---------------------------------profiles------------------------------------------ */
 
---profile_bkg:rgb(121, 163, 221);
+--profile_bkg:linear-gradient(180deg, rgb(157, 192, 240) 0%, rgb(75, 119, 197) 100%);
 --progile_user:rgb(69, 107, 188);
 --profile_user_text:rgb(232, 228, 255);
 --setting_txt:rgb(255, 255, 255);
@@ -172,11 +173,17 @@ html {
 --setting_txt_input:rgb(239, 239, 237);
 --setting_change:rgb(18, 10, 125);
 --settings_faves: rgb(255, 255, 255);
---settings_fave_div: rgb(89, 109, 206);
---fave_big_div:blue;
+--settings_fave_div: rgb(31, 79, 155);
+--fave_big_div:rgb(71, 102, 196);
+
 
 /* ------------------------------------------single game page-------------------------------------------------- */
 
+
+
+/* ------------------------------------------about-------------------------------------------------- */
+--aboutUs: linear-gradient(to right, #0f0519, #281533, #3f2352, #492754, #642e6b);
+--aboutBig:#120918;
 
 
 }
@@ -198,7 +205,9 @@ body {
   min-width: 320px;
  background: var(--body_background);
  color: var(--body_color);
-
+ text-align: center;
+ height: 100%; 
+ 
   /* min-height: 100vh; */
 }
 
