@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "../src/assets/css/single.css";
+import { DataArray } from "./DataArray";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
-import { DataArray } from "./DataArray";
-import axios from "axios";
 
 function Singlegame({ type }) {
   const { value } = useParams();
@@ -115,6 +115,9 @@ function Singlegame({ type }) {
       const newItem = {
         newItem: itemData.steam_appid,
       };
+      const uid = {
+        uid: localStorage.getItem("CurrLogged")
+      }
       const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
       if (index !== -1) {
@@ -127,7 +130,7 @@ function Singlegame({ type }) {
         console.log(index);
       } else if (index == -1) {
         axios
-          .post("http://localhost:3000/singlegame", newItem)
+          .post("http://localhost:3000/Singlegame", { uid: uid.uid, newItem: newItem.newItem })
           .then((response) => {})
           .catch((error) => {
             console.error(error);
