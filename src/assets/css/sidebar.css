@@ -12,6 +12,7 @@
 .default-container ul {
   list-style: none;
   padding: 0;
+
 }
 
 .default-container .link {
@@ -28,6 +29,7 @@
   cursor: pointer;
   background: var(--sidebar_a_prehover);
   transition: all 0.2s ease-in-out;
+  border-radius: 10px;
 }
 
 .default-container a:hover {
