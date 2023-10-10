@@ -9,79 +9,86 @@ function About(){
         <>
 
 
-<div className="InfoGeneralCont">
-  
-
-    <div className="infoGeneral">
-        <h3 className="names"></h3>
-        <p className="infoText"></p>
-
-    </div>
-
-   </div>
-
+<h1>About Us</h1>
         
 <div className="main">
-   <div className="InfoCont">
-    <img src="" alt="" />
 
-    <div className="infoTextCont">
-        <h3 className="names"></h3>
-        <p className="infoText"></p>
-        <button className="gitBttn"></button>
+
+<div className="InfoGeneralCont">
+
+    <div className="infoGeneral">
+        <h3 className="Textinfo"></h3>
+        <p className="AboutUs"> </p>
+
     </div>
 
-   </div>
+</div>
 
 
-   <div className="InfoCont">
-    <img src="" alt="" />
 
-    <div className="infoTextCont">
-        <h3 className="names"></h3>
-        <p className="infoText"></p>
-        <button className="gitBttn"></button>
+<div className="lables"> 
+
+
+    <div className="InfoCont">
+        <img src="" alt="" />
+
+        <div className="infoTextCont">
+            <h3 className="names"></h3>
+            <p className="infoText"></p>
+            <button className="gitBttn"> GitHub</button>
+        </div>
+
     </div>
 
-   </div>
 
+    <div className="InfoCont">
+        <img src="" alt="" />
 
-   <div className="InfoCont">
-    <img src="" alt="" />
+        <div className="infoTextCont">
+            <h3 className="names"></h3>
+            <p className="infoText"></p>
+            <button className="gitBttn">GitHub</button>
+        </div>
 
-    <div className="infoTextCont">
-        <h3 className="names"></h3>
-        <p className="infoText"></p>
-        <button className="gitBttn"></button>
     </div>
 
-   </div>
 
-   <div className="InfoCont">
-    <img src="" alt="" />
+    <div className="InfoCont">
+        <img src="" alt="" />
 
-    <div className="infoTextCont">
-        <h3 className="names"></h3>
-        <p className="infoText"></p>
-        <button className="gitBttn"></button>
+        <div className="infoTextCont">
+            <h3 className="names"></h3>
+            <p className="infoText"></p>
+            <button className="gitBttn">GitHub</button>
+        </div>
+
     </div>
 
-   </div>
+    <div className="InfoCont">
+        <img src="" alt="" />
 
+        <div className="infoTextCont">
+            <h3 className="names"></h3>
+            <p className="infoText"></p>
+            <button className="gitBttn">GitHub</button>
+        </div>
 
-
-
-   <div className="InfoCont">
-    <img src="" alt="" />
-
-    <div className="infoTextCont">
-        <h3 className="names"></h3>
-        <p className="infoText"></p>
-        <button className="gitBttn"></button>
     </div>
 
-   </div>
 
+
+
+    <div className="InfoCont">
+        <img src="" alt="" />
+
+        <div className="infoTextCont">
+            <h3 className="names"></h3>
+            <p className="infoText"></p>
+            <button className="gitBttn">GitHub</button>
+        </div>
+
+    </div>
+</div>
 
 </div>
 
