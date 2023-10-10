@@ -36,11 +36,13 @@
   transform: scale(1.05);
 }
 .image {
+  aspect-ratio: 16 / 9;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   margin: 10px;
-  width: 300px;
+  width: 20vw;
+  height: 10vw;
   border-radius: 5px;
-  max-height: 150px;
+  max-height: 130px;
 }
 
 .contFlex {
@@ -183,4 +185,10 @@
 }
 .description {
   margin-bottom: 50px;
+}
+
+@media screen and (max-width: 750px) {
+  .description {
+    display: none;
+  }
 }
