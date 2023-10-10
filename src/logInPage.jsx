@@ -2,33 +2,33 @@ import { Link, useNavigate } from "react-router-dom";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/logInPage.css";
+import axios from "axios";
 
 
 function LogIn() {
   const navigate = useNavigate();
 
-  function loggingIn() {
+  function loggingIn(e) {
+    e.preventDefault();
+  
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-
-
-    const usersArr = JSON.parse(localStorage.getItem("users"));
-
-    //Loop through all users saved in localstorage
-    usersArr.map((user) => {
-
-      if (
-        username === user.username &&
-        password === user.password
-      ) {
-        window.localStorage.setItem("CurrLogged", user.id);
-        navigate("/");
-      } else {
-        alert("Wrong details bozo");
-      }
-    })
-
+  
+    axios.post('http://localhost:3000/login', { username, password })
+      .then(response => {
+        const { success } = response.data;
+        if (success) {
+          window.localStorage.setItem("CurrLogged", response.data.userId);
+          navigate("/");
+        } else {
+          alert("Wrong details bozo");
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
+  
 
  /* const loggedInUserId = localStorage.getItem("user");
 
