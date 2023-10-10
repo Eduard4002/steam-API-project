@@ -1,3 +1,6 @@
+* {
+  /* outline: 1px solid red; */
+}
 .mainDiv {
   display: flex;
   flex-direction: row;
@@ -14,12 +17,46 @@
   width: 90%;
   margin: auto;
 }
+.gameDiv {
+  box-shadow: rgba(12, 4, 54, 0.892) 0px 2px 4px,
+    rgba(156, 73, 156, 0.305) 0px 6px 15px -3px,
+    rgba(80, 60, 122, 0.689) 0px -3px 0px inset;
+  /* background: var(--games_div); */
+  background-color: pink;
+  transition: all 0.2s ease-in-out;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  padding: 1vw;
+  border-radius: 15px;
+  max-width: 1300px;
+  max-height: 250px;
+}
+.gameGrid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-template-rows: 1fr;
+  gap: 0px 5%;
+  grid-auto-flow: row;
+  grid-template-areas: ". .";
+}
+.gameGridItem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+}
+.image {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100%;
+}
 
-.container {
+/* .container {
   display: flex;
   flex-direction: row;
 
-  /* box-shadow: rgba(74, 10, 137, 0.378) 0px 13px 27px -5px, rgba(94, 0, 95, 0.559) 0px 8px 16px -8px; */
+  /* box-shadow: rgba(74, 10, 137, 0.378) 0px 13px 27px -5px, rgba(94, 0, 95, 0.559) 0px 8px 16px -8px;
   box-shadow: rgba(12, 4, 54, 0.892) 0px 2px 4px,
     rgba(156, 73, 156, 0.305) 0px 6px 15px -3px,
     rgba(80, 60, 122, 0.689) 0px -3px 0px inset;
@@ -83,8 +120,8 @@
 .buttons {
   display: flex;
   flex-direction: row;
-  justify-content: center; /* Center the div horizontally */
-  align-items: center; /* Center the div vertically */
+  justify-content: center; /* Center the div horizontally 
+  align-items: center; /* Center the div vertically 
   margin-bottom: 50px;
   gap: 15px;
 }
@@ -102,7 +139,7 @@
 
 .activeIndex:focus {
   outline: none;
-}
+} */
 .buttonsDiv {
   position: absolute;
   display: flex;
@@ -111,7 +148,7 @@
   right: 1vw;
   top: 1vw;
 }
-
+/*
 .moreButton {
   width: 65px;
   height: 30px;
@@ -126,7 +163,7 @@
   transform: scale(1.1);
   color: var(--more_text_hover);
   background: var(--more_hover);
-}
+} */
 .five-pointed-star {
   top: 0;
   width: 30px;
@@ -171,7 +208,7 @@
   transform: rotate(-70deg);
   content: "";
 }
-.nameAndDescDiv {
+/* .nameAndDescDiv {
   min-width: 55%;
   display: flex;
   flex-direction: column;
@@ -185,10 +222,16 @@
 }
 .description {
   margin-bottom: 50px;
-}
+} */
 
 @media screen and (max-width: 750px) {
-  .description {
-    display: none;
+  .gameGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 1.1fr;
+    gap: 0px 5%;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      ".";
   }
 }
