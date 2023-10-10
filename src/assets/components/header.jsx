@@ -58,7 +58,7 @@ function Header() {
             <img src={Logo} alt="Logo" />
           </Link>
           <Link to={""}>
-            <h1>Game API</h1>
+            <h1>Game<span className="hubClass">hub</span></h1>
           </Link>
         </div>
         <div className="middleNav">

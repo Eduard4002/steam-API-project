@@ -1,8 +1,7 @@
+import sqlite3 from "better-sqlite3";
 import express from "express";
 // import sqlite3 from "sqlite3";
 var app = express();
-import request from "request";
-import sqlite3 from "better-sqlite3";
 // const db = new sqlite3.Database('./db/db.sqlite')
 const db = sqlite3("db/database.sqlite")
 
@@ -34,7 +33,7 @@ const db = sqlite3("db/database.sqlite")
 // db.close()
 
 db.prepare("CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL)").run()
-db.prepare("CREATE TABLE IF NOT EXISTS favorites (gameid INTEGER NOT NULL)").run()
+db.prepare("CREATE TABLE IF NOT EXISTS favorites (uid TEXT NOT NULL, gameid INTEGER NOT NULL)").run()
 console.log(db.prepare("SELECT * FROM users").all())
 
 /* const user = {
@@ -65,7 +64,7 @@ const findUserStatement = db.prepare("SELECT id FROM users WHERE username = ?")
 
 const createUserStatement = db.prepare("INSERT INTO users (id, email, username, password) VALUES (?, ?, ?, ?)")
 
-const addToFav = db.prepare("INSERT INTO favorites (gameid) VALUES (?)")
+const addToFav = db.prepare("INSERT INTO favorites (uid, gameid) VALUES (?, ?)")
 
   
 
@@ -95,7 +94,7 @@ app.post('/signup', function(req, res){
 
 app.post('/singlegame', function(req, res) {
   console.log(req.body)
-  addToFav.run(req.body.newItem)
+  addToFav.run(req.body.uid, req.body.newItem)
   
   res.status(200).send("OK")
 })
