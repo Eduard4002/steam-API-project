@@ -100,6 +100,21 @@ app.post('/singlegame', function(req, res) {
   res.status(200).send("OK")
 })
 
+app.post('/login', function(req, res){
+  const username = req.body.username;
+  const password = req.body.password;
+
+  // Query the database to find a user with the entered username and password
+  const user = db.prepare("SELECT id FROM users WHERE username = ? AND password = ?").get(username, password);
+
+  if (user) {
+    res.json({ success: true, userId: user.id });
+  } else {
+    res.json({ success: false });
+  }
+});
+
+
 
 
 
