@@ -111,7 +111,7 @@
   margin-top: 20px;
 }
 .star {
-  background-color: black;
+  background-color: rgb(82, 82, 82);
   clip-path: polygon(
     50% 0%,
     61% 35%,
