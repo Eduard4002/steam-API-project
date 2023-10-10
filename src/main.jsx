@@ -76,9 +76,9 @@ const SearchBar = () => {
 };
 
 const SetGames = () => {
-  const data = getRandomGames(20);
+  const data = JSON.parse(localStorage.getItem("DATA"));
   if (data.length === 0) return <h1>Loading</h1>;
-  return <ListGames dataToDisplay={data} />;
+  return <ListGames dataToDisplay={data} gamesPerPage={5} />;
 };
 const router = createBrowserRouter([
   {

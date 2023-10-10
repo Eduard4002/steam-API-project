@@ -30,7 +30,7 @@ function Singlegame({ type }) {
     if (type === "id") {
       gameId = value;
     } else {
-      gameId = data[value].appid;
+      gameId = data[value]?.appid;
     }
     console.log("Game id" + gameId);
 
@@ -46,7 +46,7 @@ function Singlegame({ type }) {
         console.error(error);
         setError(error);
       });
-  }, [data]);
+  }, [value]);
 
   useEffect(() => {
     if (isLoading) {

@@ -12,13 +12,13 @@ function Footer() {
         </div>
         <div className="logoDiv">
           <img src={Logo} alt="Logo" />
-          <h1>Game API</h1>
+          <h1>Game<span className="hubClass">hub</span></h1>
         </div>
         <div>
           <p>Carl Krooks Gata 9, Helsingborg</p>
         </div>
         <div>
-            <span>Copyright &copy; 2023 Game API. All rights reserved.</span>
+            <span>Copyright &copy; 2023 Game Hub. No rights reserved.</span>
         </div>
       </footer>
     </>
