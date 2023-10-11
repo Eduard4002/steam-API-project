@@ -6,6 +6,8 @@ export default function stuckMenu() {
   const randomGameIndex = Math.floor(Math.random() * getDataLength());
   //window.location.href("/game/" + data[randomGameIndex].appid);
 
+
+  
   return (
     <div className="default-container">
       <ul>
