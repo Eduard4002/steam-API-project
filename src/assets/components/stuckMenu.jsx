@@ -6,6 +6,13 @@ export default function stuckMenu() {
   const randomGameIndex = Math.floor(Math.random() * getDataLength());
   //window.location.href("/game/" + data[randomGameIndex].appid);
 
+
+
+  
+
+  console.log("Game index: " + randomGameIndex);
+
+
   return (
     <div className="default-container">
       <ul>
@@ -23,7 +30,6 @@ export default function stuckMenu() {
         <Link to={"/about"} className="link">
           About
         </Link>
-        
       </ul>
     </div>
   );

@@ -44,6 +44,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
   console.log(fav);
+  console.log(dataToDisplay[0]);
   return (
     <>
       <div>
@@ -60,8 +61,15 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     <Link
                       to={"/game/id/" + game.steam_appid}
                       key={game.steam_appid}
+                      onClick={() =>
+                        localStorage.setItem(
+                          "Single game",
+                          JSON.stringify(
+                            dataToDisplay[currentIndex * gamesPerPage + index]
+                          )
+                        )
+                      }
                     >
-                      {" "}
                       {/*-------------------- Old Classname = container ------------*/}
                       <div className="gameGrid">
                         <div className="gameImageGridItem gameGridItem">

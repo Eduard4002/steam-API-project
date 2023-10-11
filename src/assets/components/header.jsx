@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../css/header.css";
 import Logo from "../img/logo.png";
 
@@ -45,6 +45,7 @@ function Header() {
   
   function logOut() {
     localStorage.removeItem("CurrLogged");
+    Navigate("/")
 
 
 
