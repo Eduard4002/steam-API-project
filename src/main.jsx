@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import {
   Link,
@@ -56,21 +56,65 @@ const Test = () => {
 };
 const SearchBar = () => {
   let { value } = useParams();
-  //Filter array with search value
-  const data = DataArray();
-  if (data.length === 0) return <h1>Loading</h1>;
+  const [info, setInfo] = useState([]);
+  //Fetch the required information
+  useEffect(() => {
+    if (info.length > 0) return;
+    console.log("Fetching information from API");
+    DataArray().then((result) => {
+      const filteredData = result.filter((item) => {
+        return item.name.toLowerCase().includes(value.toLowerCase());
+      });
 
-  const filteredData = data.filter((item) => {
-    return item.name.toLowerCase().includes(value.toLowerCase());
-  });
+      console.log(filteredData);
 
-  console.log("Search value is " + value);
-  console.log(filteredData);
-  if (filteredData.length === 0) {
+      if (filteredData.length === 0) {
+        return; //<h1>There does not appear to be any result</h1>;
+      }
+
+      // Create a temporary map to associate extra data with games
+      const temp = {};
+
+      // Use Promise.all to wait for all fetch calls to complete
+      Promise.all(
+        filteredData.map((item, index) => {
+          // Construct the URL for fetching game details
+          let url =
+            "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
+            item.appid;
+          // Perform the fetch request
+          return fetch(url)
+            .then((response) => response.json())
+            .then((json) => {
+              // Check if the JSON response contains an image URL
+              if (json && json[item.appid].success) {
+                // Associate the fetched image URL with its corresponding game
+                temp[item.appid] = json[item.appid].data;
+              }
+            })
+            .catch((error) => {
+              // Handle errors that occur during the fetch
+              console.error(error);
+            });
+        })
+      ).then(() => {
+        // Create an array of images based on the displayedGames order
+        const tempMapped = filteredData.map((item) => temp[item.appid] || null);
+
+        setInfo(tempMapped.filter(Boolean));
+        console.log(tempMapped.filter(Boolean));
+      });
+    });
+  }, [info]);
+  console.log(info);
+  if (info.length === 0) {
     return <h1>There does not appear to be any result</h1>;
   } else {
     return (
-      <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
+      <>
+        <h1>There are {info.length} results</h1>
+        <ListGames dataToDisplay={info} gamesPerPage={10} />
+      </>
     );
   }
 };
@@ -94,7 +138,7 @@ const router = createBrowserRouter([
         element: <Singlegame type={"id"} />,
       },
       {
-        path: "/game/idx/:value",
+        path: "/game/idx/",
         element: <Singlegame type={"index"} />,
       },
       {
