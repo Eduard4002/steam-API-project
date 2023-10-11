@@ -2,12 +2,18 @@ import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
+import axios from "axios";
+import { useState, useEffect } from 'react';
+
+
 
 
 function Profile() {
-  const loggedInUserId = localStorage.getItem("user");
+  const loggedInUserId = localStorage.getItem("CurrLogged");
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   if (!loggedInUserId) {
     return (
@@ -19,8 +25,39 @@ function Profile() {
     );
   }
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+  const uid = {
+    uid: localStorage.getItem("CurrLogged")
+  }
+
+  useEffect(() => {
+    const uid = localStorage.getItem('CurrLogged');
+
+    axios.get(`http://localhost:3000/profile/${uid}`)
+      .then(response => {
+        const username = response.data.username;
+        setUsername(username);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+  function deleteUser() {
+
+    localStorage.removeItem("CurrLogged")
+
+    axios
+      .delete(`http://localhost:3000/profile/${uid.uid}`)
+      .then((response) => {
+        console.log('User deleted successfully');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      
+    
+      navigate("/");
+  }
 
   return (
     <>
@@ -30,7 +67,7 @@ function Profile() {
       
       <div className="profileDiv">
         <div className="profileName">
-          <h1>Hi, {user.username} </h1>
+          <h1>Hi, {username} </h1>
         </div>
         <div className="profileContainer">
           <div className="settingsDiv">
@@ -62,7 +99,7 @@ function Profile() {
               </div>
               <div className="settingsCard">
                 <h5>Delete User:</h5>
-                <input type="button" value="Delete User" />
+                <input type="button" value="Delete User" onClick={deleteUser} />
               </div>
             </div>
           </div>

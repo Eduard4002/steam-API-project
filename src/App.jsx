@@ -120,9 +120,9 @@ function App() {
 
   return (
     <>
-      {/* Other components */}
-      <StuckMenu /> {/* Use the Slideshow component */}
-      {/* Other components */}
+    
+      <StuckMenu /> 
+  
       <div className="appContainer">
         <div className="slideWrapper">
           <Slideshow images={imagesArr} />

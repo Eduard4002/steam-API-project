@@ -5,7 +5,9 @@ export default function ToggleVisibility({ children }) {
 
   
   const [show, setShow] = useState();
+  console.log (window.location.pathname);
 
+  
  
   function toggleShow() {
     setShow(!show);
