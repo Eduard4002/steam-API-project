@@ -39,7 +39,7 @@
 }
 
 .coolbtn {
-  z-index: 99999;
+  z-index: 9;
   display: flex;
   margin-top: 2%;
   margin-left: 1%;
@@ -49,6 +49,7 @@
 }
 
 .coolbtn.move-right {
+  z-index: 9999;
   transform: translateX(21vw);
   transition: transform 0.3s ease;
 }
