@@ -10,6 +10,7 @@ import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow 
 import "./assets/css/slideshow.css";
 
 function Singlegame({ type }) {
+  console.log("----------");
   const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
@@ -17,44 +18,74 @@ function Singlegame({ type }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
+  useEffect(() => {
+    console.log("Setting item data to null");
+    setItemData(null);
+  }, []);
   let data;
+  let gameId = 0;
+  //data = DataArray();
 
-  data = DataArray();
-  console.log("Val " + value);
+  useEffect(() => {
+    if (isLoading && itemData) return;
+    const cachedData = localStorage.getItem("Single game");
+
+    if (cachedData != "" || cachedData != "undefined") {
+      console.log("Getting information from localstorage");
+      setItemData(JSON.parse(localStorage.getItem("Single game")));
+      setLoading(false);
+    } /*
+      console.log(JSON.parse(localStorage.getItem("Single game")));
+      setItemData(JSON.parse(localStorage.getItem("Single game")));
+      setLoading(false);*/
+  }, [isLoading]);
+
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
-    if (data.length === 0) {
+    console.log(itemData);
+    if (isLoading || type != "index" || itemData) {
       return;
     }
-    let gameId;
-    if (type === "id") {
-      gameId = value;
-    } else {
-      gameId = data[value]?.appid;
-    }
-    console.log("Game id" + gameId);
+    console.log("Fetching information from API");
+    DataArray().then((result) => {
+      /*
+      let gameId;
+      if (type === "id") {
+        gameId = value;
+      } else {
+        gameId = data[value]?.appid;
+      }*/
+      gameId = result[value]?.appid;
 
-    fetch(
-      `http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setLoading(false);
-        setItemData(json[gameId].data);
-      })
-      .catch((error) => {
-        console.error(error);
-        setError(error);
-      });
-  }, [value]);
+      console.log("Game id: " + gameId);
+      const url = `http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`;
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((json) => {
+          setItemData(json[gameId].data);
+          localStorage.setItem(
+            "Single game",
+            JSON.stringify(json[gameId].data)
+          );
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setError(error);
+        });
+    });
+  }, [value, isLoading]);
+
+  //itemData = JSON.parse(localStorage.getItem("Single game"));
 
   useEffect(() => {
     if (isLoading) {
       return;
     }
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
-    if (user && Array.isArray(user.favorites)) {
+    //console.log(user);
+    if (user && Array.isArray(user.favorites) && itemData) {
       const newItem = itemData.steam_appid;
       const index = user.favorites.findIndex((fav) => fav.appid === newItem);
       console.log("idx", index);
@@ -67,6 +98,7 @@ function Singlegame({ type }) {
       console.log("User or favorites array not found in localStorage.");
     }
   }, [isLoading]);
+  //localStorage.setItem("Single game", JSON.stringify(itemData));
 
   //   useEffect(() => {
   //     const fetchData = async () => {
@@ -80,7 +112,6 @@ function Singlegame({ type }) {
   //       }
   //     };
 
-  console.log(itemData);
   // console.log(gameId);
   // console.log(isLoading);
 
@@ -96,10 +127,9 @@ function Singlegame({ type }) {
     );
   }
 
-  if (isLoading) {
+  if (isLoading || !itemData) {
     return (
       <>
-      
         <ToggleVisibility>
           <StuckMenu /> {/* Use the Slideshow component */}
         </ToggleVisibility>
@@ -108,6 +138,7 @@ function Singlegame({ type }) {
       </>
     );
   }
+
   function checkAndHandleFavorites() {
     //LocalStorage
     const user = JSON.parse(localStorage.getItem("user"));
@@ -116,8 +147,8 @@ function Singlegame({ type }) {
         newItem: itemData.steam_appid,
       };
       const uid = {
-        uid: localStorage.getItem("CurrLogged")
-      }
+        uid: localStorage.getItem("CurrLogged"),
+      };
       const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
       if (index !== -1) {
@@ -130,7 +161,10 @@ function Singlegame({ type }) {
         console.log(index);
       } else if (index == -1) {
         axios
-          .post("http://localhost:3000/Singlegame", { uid: uid.uid, newItem: newItem.newItem })
+          .post("http://localhost:3000/Singlegame", {
+            uid: uid.uid,
+            newItem: newItem.newItem,
+          })
           .then((response) => {})
           .catch((error) => {
             console.error(error);
@@ -151,7 +185,7 @@ function Singlegame({ type }) {
     }
     console.log("CheckFunction run");
   }
-
+  if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   function favoriteClick() {
     //StarAnim
     setAnimate(true);
@@ -180,68 +214,67 @@ function Singlegame({ type }) {
     ),
   };
 
-  if (itemData.steam_appid === 0) return <h1>Loading</h1>;
-  const gameUrl = "https://store.steampowered.com/app/" + itemData.steam_appid;
+  const gameUrl = "https://store.steampowered.com/app/" + itemData?.steam_appid;
   console.log(itemData.screenshots);
   return (
     <>
       {/* <ToggleVisibility>
         <StuckMenu /> 
       </ToggleVisibility> */}
-<div className="main"> 
-      <div
-        className="singleGameDiv"
-        style={{
-          backgroundImage: `url(${itemData.background})`,
-          backgroundAttachment: "fixed", // Fixed position
-          backgroundSize: "cover", // Cover the entire div
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="gameTopDiv">
-          <div className="leftGameDiv">
-            <button className="gameFavBtn" onClick={favoriteClick}>
-              <p>Favorite</p>
-              <div
-                className={`star ${starActive ? "active" : "inactive"} ${
-                  animate ? "animate" : ""
-                }`}
-              ></div>
-            </button>
-            <h1 className="gameTitle">{itemData.name}</h1>
-            <p className="gamePrice">
-              {itemData.price_overview?.final_formatted || "Free to play"}
-            </p>
-            <p className="gameInfo">Developers: {itemData.developers}</p>
-            <p className="gameInfo">
-              Realease date: {itemData.release_date.date}
-            </p>
-            <div className="genreList gameInfo">
-              Genres:
-              <span className="smallGameInfo"> Game</span>
-              {itemData.genres.map((item, index) => {
-                return (
-                  <span key={index} className="smallGameInfo">
-                    , {item.description}
-                  </span>
-                );
-              })}
+      <div className="main">
+        <div
+          className="singleGameDiv"
+          style={{
+            backgroundImage: `url(${itemData.background})`,
+            backgroundAttachment: "fixed", // Fixed position
+            backgroundSize: "cover", // Cover the entire div
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="gameTopDiv">
+            <div className="leftGameDiv">
+              <button className="gameFavBtn" onClick={favoriteClick}>
+                <p>Favorite</p>
+                <div
+                  className={`star ${starActive ? "active" : "inactive"} ${
+                    animate ? "animate" : ""
+                  }`}
+                ></div>
+              </button>
+              <h1 className="gameTitle">{itemData.name}</h1>
+              <p className="gamePrice">
+                {itemData.price_overview?.final_formatted || "Free to play"}
+              </p>
+              <p className="gameInfo">Developers: {itemData.developers}</p>
+              <p className="gameInfo">
+                Realease date: {itemData.release_date.date}
+              </p>
+              <div className="genreList gameInfo">
+                Genres:
+                <span className="smallGameInfo"> Game</span>
+                {itemData.genres?.map((item, index) => {
+                  return (
+                    <span key={index} className="smallGameInfo">
+                      , {item.description}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div className="rightGameDiv">
-            <div className="gameImage">
-              <Slide {...properties} id="slideContainer">
-                <div className="each-slide-effect">
-                  <div
-                    style={{
-                      backgroundImage: `url(${itemData.header_image})`,
-                      backgroundSize: "contain",
-                      backgroundPosition: "center center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  ></div>
-                </div>
-                {/* {itemData.movies.length > 0 ? (
+            <div className="rightGameDiv">
+              <div className="gameImage">
+                <Slide {...properties} id="slideContainer">
+                  <div className="each-slide-effect">
+                    <div
+                      style={{
+                        backgroundImage: `url(${itemData.header_image})`,
+                        backgroundSize: "contain",
+                        backgroundPosition: "center center",
+                        backgroundRepeat: "no-repeat",
+                      }}
+                    ></div>
+                  </div>
+                  {/* {itemData.movies.length > 0 ? (
                   itemData.movies.map(({ id, mp4 }) => (
                     <div key={id} className="item">
                       <div className="each-slide-effect">
@@ -257,55 +290,57 @@ function Singlegame({ type }) {
                 ) : (
                   <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
                 )} */}
-                {itemData.screenshots.length > 0 ? (
-                  itemData.screenshots.slice(0, 5).map(({ id, path_full }) => (
-                    <div key={id} className="item">
-                      <div className="each-slide-effect">
-                        <div
-                          style={{
-                            backgroundImage: `url(${path_full})`,
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <div>No screenshots available</div>
-                )}
-              </Slide>
-            </div>
-            <div className="gameDescription">
-              <p>{itemData.short_description}</p>
+                  {itemData.screenshots.length > 0 ? (
+                    itemData.screenshots
+                      .slice(0, 5)
+                      .map(({ id, path_full }) => (
+                        <div key={id} className="item">
+                          <div className="each-slide-effect">
+                            <div
+                              style={{
+                                backgroundImage: `url(${path_full})`,
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))
+                  ) : (
+                    <div>No screenshots available</div>
+                  )}
+                </Slide>
+              </div>
+              <div className="gameDescription">
+                <p>{itemData.short_description}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="bottomGameDiv">
-          <h3>System Requirements:</h3>
-          <table>
-            <tbody>
-              <tr>
-                <td
-                  dangerouslySetInnerHTML={{
-                    __html: itemData.pc_requirements.minimum,
-                  }}
-                ></td>
-                <td
-                  dangerouslySetInnerHTML={{
-                    __html: itemData.pc_requirements.recommended,
-                  }}
-                ></td>
-              </tr>
-            </tbody>
-          </table>
-          <h3>
-            Get the Full Experience by{" "}
-            <a href={gameUrl} target="blank">
-              Clicking This Link
-            </a>
-          </h3>
-        </div>
+          <div className="bottomGameDiv">
+            <h3>System Requirements:</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <td
+                    dangerouslySetInnerHTML={{
+                      __html: itemData.pc_requirements.minimum,
+                    }}
+                  ></td>
+                  <td
+                    dangerouslySetInnerHTML={{
+                      __html: itemData.pc_requirements.recommended,
+                    }}
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>
+              Get the Full Experience by{" "}
+              <a href={gameUrl} target="blank">
+                Clicking This Link
+              </a>
+            </h3>
+          </div>
 
-        {/* <div className="singleContainer">
+          {/* <div className="singleContainer">
           <div className="singleInfo">
             <h1>{itemData.name}</h1>
             <h1>{itemData.name}</h1>
@@ -350,10 +385,8 @@ function Singlegame({ type }) {
             </div>
           </div>
         </div> */}
+        </div>
       </div>
-     
-</div>
-
     </>
   );
 }
