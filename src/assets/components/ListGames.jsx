@@ -64,11 +64,12 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                       onClick={() =>
                         localStorage.setItem(
                           "Single game",
-                          JSON.stringify(dataToDisplay[index])
+                          JSON.stringify(
+                            dataToDisplay[currentIndex * gamesPerPage + index]
+                          )
                         )
                       }
                     >
-                      {" "}
                       {/*-------------------- Old Classname = container ------------*/}
                       <div className="gameGrid">
                         <div className="gameImageGridItem gameGridItem">
