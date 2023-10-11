@@ -6,10 +6,8 @@ export default function ToggleVisibility({ children }) {
 
 
 
-let MenuIsOpen = false;
   
   const [show, setShow] = useState();
-  console.log (window.location.pathname);
 
 useEffect(()=>{
   window.addEventListener("click", function (e) {
@@ -25,7 +23,6 @@ useEffect(()=>{
 }
 
 )
-  console.log(show)
  
   function toggleShow() {
     setShow(!show);
