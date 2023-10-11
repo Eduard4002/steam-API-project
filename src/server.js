@@ -1,5 +1,6 @@
 import sqlite3 from "better-sqlite3";
 import express from "express";
+import cors from "cors";
 // import sqlite3 from "sqlite3";
 var app = express();
 // const db = new sqlite3.Database('./db/db.sqlite')
@@ -51,14 +52,7 @@ const favorite = {
 app.set("port", 3000);
 app.use(express.json());
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors())
 
 const findUserStatement = db.prepare("SELECT id FROM users WHERE username = ?")
 
@@ -66,7 +60,7 @@ const createUserStatement = db.prepare("INSERT INTO users (id, email, username, 
 
 const addToFav = db.prepare("INSERT INTO favorites (uid, gameid) VALUES (?, ?)")
 
-  
+
 
 app.post('/signup', function(req, res){
   /* const foundUser = findUserStatement.get(req.body.username)
@@ -122,6 +116,32 @@ app.post('/login', function(req, res){
     res.json({ success: true, userId: user.id });
   } else {
     res.json({ success: false });
+  }
+});
+
+app.get('/profile/:userId', function(req, res) {
+  const userId = req.params.userId;
+
+  const userDetails = db.prepare('SELECT username FROM users WHERE id = ?').get(userId);
+
+  if (userDetails) {
+    res.json({ username: userDetails.username });
+  } else {
+    res.status(404).json({ error: 'User not found' });
+  }
+
+});
+
+app.delete('/profile/:userId', function(req, res) {
+  const userId = req.params.userId;
+
+  const userDetails = db.prepare('SELECT username FROM users WHERE id = ?').get(userId);
+
+  if (userDetails) {
+    db.prepare('DELETE FROM users WHERE id = ?').run(userId);
+    res.json({ message: 'User deleted successfully' });
+  } else {
+    res.status(404).json({ error: 'User not found' });
   }
 });
 
