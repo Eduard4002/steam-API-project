@@ -129,13 +129,37 @@ const SearchBar = () => {
 
 const SetGames = () => {
   const data = JSON.parse(localStorage.getItem("DATA"));
-  console.log(Array.isArray(data));
-  if (data.length === 0) return <h1>Loading</h1>;
+
+  const [sortBy, setSortBy] = useState("name-asc"); // Default sorting by name in ascending order
+
+  // Define a sorting function
+  const sortGames = (data, sortBy) => {
+    const [field, order] = sortBy.split("-");
+    if (field === "name") {
+      return [...data].sort((a, b) => {
+        if (order === "asc") {
+          return a[field].localeCompare(b[field]);
+        } else if (order === "desc") {
+          return b[field].localeCompare(a[field]);
+        }
+        return 0;
+      });
+    }
+  };
+
+  const sortedData = sortGames(data, sortBy);
   return (
     <>
-      <ListGames dataToDisplay={data} gamesPerPage={5} />
-
-      <div className="randomDiv">
+      <div>
+        <label>Sort by:</label>
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+          {/* Add more sorting options here */}
+        </select>
+      </div>
+      <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
+      <div>
         <h2>Still can't find a game you want?</h2>
         <h2>Find a random game here!</h2>
       </div>

@@ -8,7 +8,10 @@ footer{
   background: var( --topper);
   margin-top: auto;
 }
-
+.footLinks {
+  display: inline-flex;
+  font-size: 1.2vw;
+}
 .logoDiv {
   margin-top: 1vw;
   text-align: center;
