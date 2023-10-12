@@ -22,6 +22,7 @@ import { DataArray, getRandomGames } from "./DataArray.jsx";
 import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
 import StuckMenu from "./assets/components/stuckMenu.jsx"; // Import your Slideshow component
 import About from "./About.jsx";
+import RandomGame from "./assets/components/RandomGame.jsx";
 
 // import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
@@ -130,7 +131,16 @@ const SetGames = () => {
   const data = JSON.parse(localStorage.getItem("DATA"));
   console.log(Array.isArray(data));
   if (data.length === 0) return <h1>Loading</h1>;
-  return <ListGames dataToDisplay={data} gamesPerPage={5} />;
+  return (
+    <>
+      <ListGames dataToDisplay={data} gamesPerPage={5} />
+      <div>
+        <h2>Still can't find a game you want?</h2>
+        <h2>Find a random game here!</h2>
+      </div>
+      <RandomGame />
+    </>
+  );
 };
 const router = createBrowserRouter([
   {
