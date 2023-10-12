@@ -130,7 +130,6 @@ function App() {
         <div className="favoriteGrid">
           <div className="favoriteCard" style={{}}></div>
           <div className="favoriteCard" style={{}}></div>
-          <div className="favoriteCard" style={{}}></div>
         </div>
       </div>
     </>
