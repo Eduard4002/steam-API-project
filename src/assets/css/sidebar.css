@@ -12,15 +12,14 @@
 .default-container ul {
   list-style: none;
   padding: 0;
-
 }
 
 .default-container .link {
   margin-bottom: 30px;
 }
 
-.default-container a {
-  font-size: 1.5vw;
+.default-container a, .randomBtn {
+  font-size: 1.5em; /* Adjust the font size to a common value in 'em' units */
   text-decoration: none;
   color: var(--sidebar_text);
   display: block;
@@ -32,11 +31,18 @@
   border-radius: 10px;
 }
 
-.default-container a:hover {
+.default-container a:hover, .randomBtn:hover {
   background: var(--sidebar_a_hover);
   color: var(--sidebar_text_hover);
   transform: scale(1.05);
 }
+
+.randomBtn {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
 
 .coolbtn {
   z-index: 9;
@@ -63,7 +69,12 @@
   .default-container a {
     font-size: 5vw;
   }
+  .randomBtn {
+    font-size: 5vw;
+    padding-bottom: 2vw;
+  }
   .coolbtn {
+    z-index: 999;
     float: none;
   }
   .coolbtn.move-right {

@@ -2,13 +2,11 @@ import "./assets/css/profile.css";
 import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ToggleVisibility from "./assets/components/ToggleVisibility";
+import ListGames from "./assets/components/ListGames";
 import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
 import axios from "axios";
 import { useState, useEffect } from 'react';
-
-
-
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("CurrLogged");
@@ -106,44 +104,7 @@ function Profile() {
           <div className="favoritesDiv">
             <h3>Recent favorites</h3>
             <div className="favoritesGrid">
-              <div className="favoritesCard">
-                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <div className="favoritesText">
-                  <h3>Game Title</h3>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolores odio placeat, molestias ratione facere maiores
-                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
-                    ratione, provident itaque minus quidem mollitia earum!
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="favoritesCard">
-                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <div className="favoritesText">
-                  <h3>Game Title</h3>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolores odio placeat, molestias ratione facere maiores
-                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
-                    ratione, provident itaque minus quidem mollitia earum!
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="favoritesCard">
-                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <div className="favoritesText">
-                  <h3>Game Title</h3>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolores odio placeat, molestias ratione facere maiores
-                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
-                    ratione, provident itaque minus quidem mollitia earum!
-                  </p>
-                </div>
-              </div>
+              <ListGames />
             </div>
           </div>
         </div>

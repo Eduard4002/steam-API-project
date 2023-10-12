@@ -259,18 +259,7 @@ function Singlegame({ type }) {
             </div>
             <div className="rightGameDiv">
               <div className="gameImage">
-                <Slide {...properties} id="slideContainer">
-                  <div className="each-slide-effect">
-                    <div
-                      style={{
-                        backgroundImage: `url(${itemData.header_image})`,
-                        backgroundSize: "contain",
-                        backgroundPosition: "center center",
-                        backgroundRepeat: "no-repeat",
-                      }}
-                    ></div>
-                  </div>
-                  {/* {itemData.movies.length > 0 ? (
+                {/* {itemData.movies.length > 0 ? (
                   itemData.movies.map(({ id, mp4 }) => (
                     <div key={id} className="item">
                       <div className="each-slide-effect">
@@ -286,8 +275,19 @@ function Singlegame({ type }) {
                 ) : (
                   <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
                 )} */}
-                  {itemData.screenshots?.length > 0 ? (
-                    itemData.screenshots
+                {itemData.screenshots?.length > 0 ? (
+                  <Slide {...properties} id="slideContainer">
+                    <div className="each-slide-effect">
+                      <div
+                        style={{
+                          backgroundImage: `url(${itemData.header_image})`,
+                          backgroundSize: "contain",
+                          backgroundPosition: "center center",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                      ></div>
+                    </div>
+                    {itemData.screenshots
                       .slice(0, 5)
                       .map(({ id, path_full }) => (
                         <div key={id} className="item">
@@ -299,11 +299,15 @@ function Singlegame({ type }) {
                             ></div>
                           </div>
                         </div>
-                      ))
-                  ) : (
-                    <div>No screenshots available</div>
-                  )}
-                </Slide>
+                      ))}
+                  </Slide>
+                ) : (
+                  <img
+                    src={itemData.header_image}
+                    alt="Image of Game"
+                    className="gameImage"
+                  />
+                )}
               </div>
               <div className="gameDescription">
                 <p>{itemData.short_description}</p>
