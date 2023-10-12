@@ -135,8 +135,22 @@ function App() {
           <Slideshow images={imagesArr} />
         </div>
         <div className="favoriteGrid">
-          <div className="favoriteCard" style={{}}></div>
-          <div className="favoriteCard" style={{}}></div>
+          <div
+            className="favoriteCard"
+            style={{
+              backgroundImage: `url(${
+                extraData[slideshowAmount + 1].header_image
+              })`,
+            }}
+          ></div>
+          <div
+            className="favoriteCard"
+            style={{
+              backgroundImage: `url(${
+                extraData[slideshowAmount + 2].header_image
+              })`,
+            }}
+          ></div>
         </div>
       </div>
     </>
