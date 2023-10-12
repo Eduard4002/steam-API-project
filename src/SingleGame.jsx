@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "../src/assets/css/single.css";
-import { DataArray } from "./DataArray";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
