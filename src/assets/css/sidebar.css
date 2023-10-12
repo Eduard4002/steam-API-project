@@ -84,6 +84,7 @@
     font-size: 5vw;
   }
   .coolbtn {
+    z-index: 999;
     float: none;
   }
   .coolbtn.move-right {
