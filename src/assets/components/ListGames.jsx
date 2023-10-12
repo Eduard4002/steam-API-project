@@ -116,7 +116,12 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                             </div>
                           )}
                         </div>
-                        <div className="buttonsDiv">
+                    
+                      </div>
+                    </Link>
+
+                    
+                    <div className="buttonsDiv">
                           <div
                             className={`star ${
                               fav.find(
@@ -128,8 +133,9 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                             key={game.steam_appid + 2}
                           ></div>
                         </div>
-                      </div>
-                    </Link>
+
+
+
                   </div>
                 </>
               ))}
