@@ -18,19 +18,16 @@ function Singlegame({ type }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  useEffect(() => {
-    console.log("Setting item data to null");
-    setItemData(null);
-  }, []);
+
   let data;
   let gameId = 0;
   //data = DataArray();
 
   useEffect(() => {
-    if (isLoading && itemData) return;
+    if (itemData) return;
     const cachedData = localStorage.getItem("Single game");
 
-    if (cachedData != "" || cachedData != "undefined") {
+    if (cachedData && cachedData != "" && cachedData != "undefined") {
       console.log("Getting information from localstorage");
       setItemData(JSON.parse(localStorage.getItem("Single game")));
       setLoading(false);
@@ -38,8 +35,8 @@ function Singlegame({ type }) {
       console.log(JSON.parse(localStorage.getItem("Single game")));
       setItemData(JSON.parse(localStorage.getItem("Single game")));
       setLoading(false);*/
-  }, [isLoading]);
-
+  }, []);
+  /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
     console.log(itemData);
@@ -54,7 +51,7 @@ function Singlegame({ type }) {
         gameId = value;
       } else {
         gameId = data[value]?.appid;
-      }*/
+      }
       gameId = result[value]?.appid;
 
       console.log("Game id: " + gameId);
@@ -75,7 +72,7 @@ function Singlegame({ type }) {
           setError(error);
         });
     });
-  }, [value, isLoading]);
+  }, [value, isLoading]);*/
 
   //itemData = JSON.parse(localStorage.getItem("Single game"));
 
@@ -215,7 +212,6 @@ function Singlegame({ type }) {
   };
 
   const gameUrl = "https://store.steampowered.com/app/" + itemData?.steam_appid;
-  console.log(itemData.screenshots);
   return (
     <>
       {/* <ToggleVisibility>
@@ -263,18 +259,7 @@ function Singlegame({ type }) {
             </div>
             <div className="rightGameDiv">
               <div className="gameImage">
-                <Slide {...properties} id="slideContainer">
-                  <div className="each-slide-effect">
-                    <div
-                      style={{
-                        backgroundImage: `url(${itemData.header_image})`,
-                        backgroundSize: "contain",
-                        backgroundPosition: "center center",
-                        backgroundRepeat: "no-repeat",
-                      }}
-                    ></div>
-                  </div>
-                  {/* {itemData.movies.length > 0 ? (
+                {/* {itemData.movies.length > 0 ? (
                   itemData.movies.map(({ id, mp4 }) => (
                     <div key={id} className="item">
                       <div className="each-slide-effect">
@@ -290,8 +275,19 @@ function Singlegame({ type }) {
                 ) : (
                   <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
                 )} */}
-                  {itemData.screenshots.length > 0 ? (
-                    itemData.screenshots
+                {itemData.screenshots?.length > 0 ? (
+                  <Slide {...properties} id="slideContainer">
+                    <div className="each-slide-effect">
+                      <div
+                        style={{
+                          backgroundImage: `url(${itemData.header_image})`,
+                          backgroundSize: "contain",
+                          backgroundPosition: "center center",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                      ></div>
+                    </div>
+                    {itemData.screenshots
                       .slice(0, 5)
                       .map(({ id, path_full }) => (
                         <div key={id} className="item">
@@ -303,11 +299,15 @@ function Singlegame({ type }) {
                             ></div>
                           </div>
                         </div>
-                      ))
-                  ) : (
-                    <div>No screenshots available</div>
-                  )}
-                </Slide>
+                      ))}
+                  </Slide>
+                ) : (
+                  <img
+                    src={itemData.header_image}
+                    alt="Image of Game"
+                    className="gameImage"
+                  />
+                )}
               </div>
               <div className="gameDescription">
                 <p>{itemData.short_description}</p>

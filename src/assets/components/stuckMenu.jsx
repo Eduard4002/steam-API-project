@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom";
-import { getDataLength } from "../../DataArray.jsx";
 import React from "react";
+import RandomGame from "./RandomGame.jsx";
 import "../css/sidebar.css";
 export default function stuckMenu() {
-  const randomGameIndex = Math.floor(Math.random() * getDataLength());
   //window.location.href("/game/" + data[randomGameIndex].appid);
-
-
-
-  
-
-  console.log("Game index: " + randomGameIndex);
-
 
   return (
     <div className="default-container" id="bitch">
@@ -22,11 +14,7 @@ export default function stuckMenu() {
         <Link to={"/games"} className="link">
           Games
         </Link>
-
-        <Link to={"/game/idx/" + randomGameIndex} className="link">
-          Random
-        </Link>
-
+        <RandomGame />
         <Link to={"/about"} className="link">
           About
         </Link>

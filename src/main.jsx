@@ -22,6 +22,7 @@ import { DataArray, getRandomGames } from "./DataArray.jsx";
 import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
 import StuckMenu from "./assets/components/stuckMenu.jsx"; // Import your Slideshow component
 import About from "./About.jsx";
+import RandomGame from "./assets/components/RandomGame.jsx";
 
 // import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
@@ -77,7 +78,7 @@ const SearchBar = () => {
 
       // Use Promise.all to wait for all fetch calls to complete
       Promise.all(
-        filteredData.map((item, index) => {
+        filteredData.slice(0, 50).map((item, index) => {
           // Construct the URL for fetching game details
           let url =
             "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
@@ -99,13 +100,20 @@ const SearchBar = () => {
         })
       ).then(() => {
         // Create an array of images based on the displayedGames order
-        const tempMapped = filteredData.map((item) => temp[item.appid] || null);
+        // Sort the games based on the "type" property
+        const sortedInfo = filteredData
+          .map((item) => temp[item.appid] || null)
+          .filter(Boolean)
+          .sort((a, b) => {
+            const typeOrder = { game: 0, dlc: 1, music: 2 };
+            return typeOrder[a.type] - typeOrder[b.type];
+          });
 
-        setInfo(tempMapped.filter(Boolean));
-        console.log(tempMapped.filter(Boolean));
+        setInfo(sortedInfo);
+        console.log(sortedInfo);
       });
     });
-  }, [info]);
+  }, []);
   console.log(info);
   if (info.length === 0) {
     return <h1>There does not appear to be any result</h1>;
@@ -123,7 +131,16 @@ const SetGames = () => {
   const data = JSON.parse(localStorage.getItem("DATA"));
   console.log(Array.isArray(data));
   if (data.length === 0) return <h1>Loading</h1>;
-  return <ListGames dataToDisplay={data} gamesPerPage={5} />;
+  return (
+    <>
+      <ListGames dataToDisplay={data} gamesPerPage={5} />
+      <div>
+        <h2>Still can't find a game you want?</h2>
+        <h2>Find a random game here!</h2>
+      </div>
+      <RandomGame />
+    </>
+  );
 };
 const router = createBrowserRouter([
   {

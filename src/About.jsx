@@ -118,9 +118,14 @@ function About(){
     <div className="InfoGeneralCont">
     
     <div className="infoGeneral">
-        <h3 className="Textinfo">Game API</h3>
-        <p className="AboutUs"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ipsam ut rem omnis corporis voluptatem esse. Nulla dolorum vel ea, inventore nam officia pariatur sed similique dolorem velit porro perferendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ab quod ad illo ea similique eos quibusdam? Atque ipsam omnis maiores, pariatur consequuntur iusto fuga facilis ad nemo, dicta voluptat Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam corporis saepe consectetur exercitationem blanditiis ex, aliquid quas nam delectus reprehenderit voluptatibus similique aliquam unde ducimus repellat culpa fuga ad rerum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt qui nobis nesciunt repellat, earum recusandae sint cupiditate suscipit molestias? Quisquam atque impedit quae, nesciunt ad commodi maiores odit veritatis libero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, sint! Placeat vero, illo enim ad quaerat sit iusto, voluptatum, in adipisci molestiae voluptatem reprehenderit est deleniti saepe voluptate fugiat quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad cupiditate officiis repudiandae quos consequuntur, ut voluptate eius odit deleniti molestias atque soluta maxime corporis animi pariatur placeat. Odit, at in?</p>
-
+        <h3 className="Textinfo">Game Hub</h3>
+        <p className="AboutUs"> 
+        Game Hub är ett spännande projekt som sätter användarupplevelsen i fokus. Här kan användare utforska och söka efter sina favoritspel från Steam, samt enkelt lägga till dem som favoriter för snabb och bekväm åtkomst. För att ta del av alla funktioner erbjuder vi användarna möjligheten att logga in eller skapa ett konto, vilket inte bara ger personlig åtkomst utan också möjlighet att hålla koll på sina älsklingsspel.</p>
+<p className="AboutUs">
+Upptäckning av nya spel är också en central del av Game Hub. Vår huvudsida ger användare möjlighet att utforska och hitta nya spel som passar deras intressen. Dessutom finns en slumpmässig alternativfunktion som tar användaren till ett helt nytt och spännande spel varje gång.
+</p> <p className="AboutUs">
+Vi använder en kraftfull API för att hämta information från Steam, vilket ger våra användare tillgång till aktuell och pålitlig data om deras favoritspel. För de som önskar köpa spelen erbjuder vår sida även en smidig övergång till Steam för köptransaktioner
+</p>
     </div>
 
 </div>
