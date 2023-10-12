@@ -9,7 +9,6 @@ import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow 
 import "./assets/css/slideshow.css";
 
 function Singlegame({ type }) {
-  console.log("----------");
   const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
@@ -75,25 +74,7 @@ function Singlegame({ type }) {
 
   //itemData = JSON.parse(localStorage.getItem("Single game"));
 
-  useEffect(() => {
-    if (isLoading) {
-      return;
-    }
-    const user = JSON.parse(localStorage.getItem("user"));
-    //console.log(user);
-    if (user && Array.isArray(user.favorites) && itemData) {
-      const newItem = itemData.steam_appid;
-      const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-      console.log("idx", index);
-      if (index == -1) {
-        setStarActive(false);
-      } else {
-        setStarActive(true);
-      }
-    } else {
-      console.log("User or favorites array not found in localStorage.");
-    }
-  }, [isLoading]);
+  
   //localStorage.setItem("Single game", JSON.stringify(itemData));
 
   //   useEffect(() => {
@@ -146,39 +127,18 @@ function Singlegame({ type }) {
         uid: localStorage.getItem("CurrLogged"),
       };
       const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-
-      if (index !== -1) {
-        user.favorites.splice(index, 1);
-        const updateUser = JSON.stringify(user);
-        localStorage.setItem("user", updateUser);
-        console.log("Removed Item:", newItem);
-        setStarActive(false);
-
-        console.log(index);
-      } else if (index == -1) {
-        axios
-          .post("http://localhost:3000/Singlegame", {
-            uid: uid.uid,
-            newItem: newItem.newItem,
-          })
-          .then((response) => {})
-          .catch((error) => {
-            console.error(error);
-          });
-
-        user.favorites.push({ appid: itemData.steam_appid });
-        const updateUser = JSON.stringify(user);
-        localStorage.setItem("user", updateUser);
-        console.log("Added Item:", newItem);
-        setStarActive(true);
-
-        console.log(index);
-      } else {
-        console.log(index);
-      }
-    } else {
-      console.log("User or favorites array not found in localStorage.");
+      axios
+        .post("http://localhost:3000/Singlegame", {
+          uid: uid.uid,
+          newItem: newItem.newItem,
+        })
+        .then((response) => {})
+        .catch((error) => {
+          console.error(error);
+        });
     }
+    setStarActive(!starActive);
+    console.log(starActive);
     console.log("CheckFunction run");
   }
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
@@ -196,7 +156,7 @@ function Singlegame({ type }) {
     border: "0px",
     padding: "0",
   };
-
+  
   const properties = {
     prevArrow: (
       <button className="left" style={{ ...buttonStyle }}>
