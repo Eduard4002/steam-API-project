@@ -1,6 +1,6 @@
 import sqlite3 from "better-sqlite3";
-import express from "express";
 import cors from "cors";
+import express from "express";
 // import sqlite3 from "sqlite3";
 var app = express();
 // const db = new sqlite3.Database('./db/db.sqlite')
@@ -145,12 +145,26 @@ app.delete('/profile/:userId', function(req, res) {
   }
 });
 
+app.get('/favorites/:userId', function (req, res) {
+  const userId = req.params.userId;
+
+  // Query the database to get the list of game IDs in the user's favorites
+  const favorites = db.prepare('SELECT gameid FROM favorites WHERE uid = ?').all(userId);
+
+  // Extract the game IDs from the result
+  const gameIds = favorites.map(favorite => favorite.gameid);
+
+  res.json(gameIds);
+  
+});
 
 
 
 
 
-app.get("/api", function (req, res) {
+
+
+app.get("/api", async function (req, res) {
   const apiURL = req.query.url; // Get the API URL from the query parameters
 
   if (!apiURL) {
@@ -173,10 +187,10 @@ app.get("/api", function (req, res) {
       ":" +
       seconds
   );
-  fetch(apiURL)
-    .then((res) => res.json())
-    .then((data) => res.json(data))
+  const data = await fetch(apiURL)
     .catch((error) => console.error(error));
+  
+  res.json(data)
 });
 app.listen(app.get("port"), function () {
   console.log(

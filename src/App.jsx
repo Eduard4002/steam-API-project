@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import { getRandomGames } from "./DataArray";
 import "./assets/components/Default";
 import "./assets/components/ToggleVisibility";
 import Slideshow from "./assets/components/slideshow";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import { getRandomGames } from "./DataArray";
 
 function App() {
   const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
