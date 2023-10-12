@@ -1,7 +1,7 @@
 .default-container {
   width: 19.531vw;
   background: var(--sidebar);
-  padding: 20px;
+  padding: 30px;
   float: left;
   position: fixed;
   height: 100%;
