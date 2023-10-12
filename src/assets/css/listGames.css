@@ -12,16 +12,18 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  
 }
 .contFlex > a {
   position: relative;
   width: 90%;
   margin: auto;
+
 }
 .gameDiv {
   box-shadow: rgba(12, 4, 54, 0.892) 0px 2px 4px,
-    rgba(156, 73, 156, 0.305) 0px 6px 15px -3px,
-    rgba(80, 60, 122, 0.689) 0px -3px 0px inset;
+    rgba(156, 73, 156, 0.511) 0px 6px 15px -3px,
+    rgba(80, 60, 122, 0.784) 0px -3px 0px inset;
   background: var(--games_div);
   transition: all 0.2s ease-in-out;
   margin: auto;
@@ -32,7 +34,16 @@
   max-width: 950px;
   /* max-height: 200px; */
   margin-bottom: 1vw;
+  transition: all 0.2s ease-in-out;
 }
+
+.gameDiv:hover{
+  transform: scale(1.05);
+  box-shadow: rgba(113, 12, 156, 0.892) 0px 2px 4px,
+    rgba(233, 77, 217, 0.642) 0px 6px 15px -3px,
+    rgba(255, 75, 237, 0.773) 0px -3px 0px inset;
+}
+
 .gameGrid {
   display: grid;
   grid-template-columns: 0.7fr 1.3fr 20px;
@@ -58,6 +69,7 @@
   width: 90%;
   white-space: nowrap;
   overflow: hidden;
+  color: var(--more_text);
   text-overflow: ellipsis;
 }
 .gameDescription > p {
