@@ -18,7 +18,7 @@
   margin-bottom: 30px;
 }
 
-.default-container a, .randomBtn {
+#bitch a, .button {
   font-size: 1.5em; /* Adjust the font size to a common value in 'em' units */
   text-decoration: none;
   color: var(--sidebar_text);
@@ -31,13 +31,13 @@
   border-radius: 10px;
 }
 
-.default-container a:hover, .default-container > ul > .randomBtn:hover {
+#bitch a:hover, .default-container > ul > .button:hover {
   background: var(--sidebar_a_hover);
   color: var(--sidebar_text_hover);
   transform: scale(1.05);
 }
 
-.default-container > ul > .randomBtn {
+#bitch > ul > .button {
   height: 50px;
   width: 100%;
   margin-bottom: 35px;
