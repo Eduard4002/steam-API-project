@@ -31,13 +31,13 @@
   border-radius: 10px;
 }
 
-.default-container a:hover, .randomBtn:hover {
+.default-container a:hover, .default-container > ul > .randomBtn:hover {
   background: var(--sidebar_a_hover);
   color: var(--sidebar_text_hover);
   transform: scale(1.05);
 }
 
-.randomBtn {
+.default-container > ul > .randomBtn {
   height: 50px;
   width: 100%;
   margin-bottom: 35px;
