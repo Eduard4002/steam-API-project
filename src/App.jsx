@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { getRandomGames } from "./DataArray";
+import { Link } from "react-router-dom";
 import "./assets/components/Default";
 import "./assets/components/ToggleVisibility";
 import Slideshow from "./assets/components/slideshow";
@@ -123,7 +124,7 @@ function App() {
     (extraData.length < slideshowAmount ? extraData.length : slideshowAmount);
     i++
   ) {
-    imagesArr.push(extraData[i]?.header_image);
+    imagesArr.push(extraData[i]);
   }
 
   return (
@@ -137,22 +138,44 @@ function App() {
           <Slideshow images={imagesArr} />
         </div>
         <div className="favoriteGrid">
-          <div
-            className="favoriteCard"
-            style={{
-              backgroundImage: `url(${
-                extraData[slideshowAmount + 1].header_image
-              })`,
-            }}
-          ></div>
-          <div
-            className="favoriteCard"
-            style={{
-              backgroundImage: `url(${
-                extraData[slideshowAmount + 2].header_image
-              })`,
-            }}
-          ></div>
+          <Link
+            to={"/game/id/" + extraData[slideshowAmount + 1].steam_appid}
+            key={extraData[slideshowAmount + 1].steam_appid}
+            onClick={() =>
+              localStorage.setItem(
+                "Single game",
+                JSON.stringify(extraData[slideshowAmount + 1])
+              )
+            }
+          >
+            <div
+              className="favoriteCard"
+              style={{
+                backgroundImage: `url(${
+                  extraData[slideshowAmount + 1].header_image
+                })`,
+              }}
+            ></div>
+          </Link>
+          <Link
+            to={"/game/id/" + extraData[slideshowAmount + 2].steam_appid}
+            key={extraData[slideshowAmount + 2].steam_appid}
+            onClick={() =>
+              localStorage.setItem(
+                "Single game",
+                JSON.stringify(extraData[slideshowAmount + 2])
+              )
+            }
+          >
+            <div
+              className="favoriteCard"
+              style={{
+                backgroundImage: `url(${
+                  extraData[slideshowAmount + 2].header_image
+                })`,
+              }}
+            ></div>
+          </Link>
         </div>
       </div>
     </>
