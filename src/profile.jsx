@@ -6,7 +6,7 @@ import ListGames from "./assets/components/ListGames";
 import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
 import axios from "axios";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("CurrLogged");
@@ -24,45 +24,44 @@ function Profile() {
   }
 
   const uid = {
-    uid: localStorage.getItem("CurrLogged")
-  }
+    uid: localStorage.getItem("CurrLogged"),
+  };
 
   useEffect(() => {
-    const uid = localStorage.getItem('CurrLogged');
+    const uid = localStorage.getItem("CurrLogged");
 
-    axios.get(`http://localhost:3000/profile/${uid}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:3000/profile/${uid}`)
+      .then((response) => {
         const username = response.data.username;
         setUsername(username);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, []);
 
   function deleteUser() {
-
-    localStorage.removeItem("CurrLogged")
+    localStorage.removeItem("CurrLogged");
 
     axios
       .delete(`http://localhost:3000/profile/${uid.uid}`)
       .then((response) => {
-        console.log('User deleted successfully');
+        console.log("User deleted successfully");
       })
       .catch((error) => {
         console.error(error);
       });
-      
-    
-      navigate("/");
+
+    navigate("/");
   }
 
   return (
     <>
       {/* <ToggleVisibility> */}
-        {/* <StuckMenu /> 
+      {/* <StuckMenu /> 
       </ToggleVisibility> */}
-      
+
       <div className="profileDiv">
         <div className="profileName">
           <h1>Hi, {username} </h1>
@@ -75,12 +74,12 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-            <DarkMode/>
-              {/* <DarkModeToggle /> */}
-                              {/* <input type="checkbox" name="" id="" />
+                <DarkMode />
+                {/* <DarkModeToggle /> */}
+                {/* <input type="checkbox" name="" id="" />
                               <label>DarkMode</label> */}
-                            </div>
-                            {/* <div className="settingsCard">
+              </div>
+              {/* <div className="settingsCard">
                               <input type="checkbox" name="" id="" checked />
                               <label>Något annat</label>
                             </div> */}
@@ -104,7 +103,7 @@ function Profile() {
           <div className="favoritesDiv">
             <h3>Recent favorites</h3>
             <div className="favoritesGrid">
-              <ListGames />
+              <ListGames dataToDisplay={[]} />
             </div>
           </div>
         </div>
@@ -112,7 +111,5 @@ function Profile() {
     </>
   );
 }
-
-
 
 export default Profile;
