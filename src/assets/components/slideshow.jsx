@@ -28,7 +28,6 @@ const Slideshow = ({ images }) => {
     <>
       <Slide {...properties}>
         {images.map((image, index) => {
-          console.log("Index:", index); // Log the index value
           return (
             <Link
               to={"/game/id/" + image.steam_appid}
