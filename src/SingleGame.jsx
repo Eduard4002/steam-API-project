@@ -18,19 +18,16 @@ function Singlegame({ type }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  useEffect(() => {
-    console.log("Setting item data to null");
-    setItemData(null);
-  }, []);
+
   let data;
   let gameId = 0;
   //data = DataArray();
 
   useEffect(() => {
-    if (isLoading && itemData) return;
+    if (itemData) return;
     const cachedData = localStorage.getItem("Single game");
 
-    if (cachedData != "" || cachedData != "undefined") {
+    if (cachedData && cachedData != "" && cachedData != "undefined") {
       console.log("Getting information from localstorage");
       setItemData(JSON.parse(localStorage.getItem("Single game")));
       setLoading(false);
@@ -38,8 +35,8 @@ function Singlegame({ type }) {
       console.log(JSON.parse(localStorage.getItem("Single game")));
       setItemData(JSON.parse(localStorage.getItem("Single game")));
       setLoading(false);*/
-  }, [isLoading]);
-
+  }, []);
+  /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
     console.log(itemData);
@@ -54,7 +51,7 @@ function Singlegame({ type }) {
         gameId = value;
       } else {
         gameId = data[value]?.appid;
-      }*/
+      }
       gameId = result[value]?.appid;
 
       console.log("Game id: " + gameId);
@@ -75,7 +72,7 @@ function Singlegame({ type }) {
           setError(error);
         });
     });
-  }, [value, isLoading]);
+  }, [value, isLoading]);*/
 
   //itemData = JSON.parse(localStorage.getItem("Single game"));
 
@@ -215,7 +212,6 @@ function Singlegame({ type }) {
   };
 
   const gameUrl = "https://store.steampowered.com/app/" + itemData?.steam_appid;
-  console.log(itemData.screenshots);
   return (
     <>
       {/* <ToggleVisibility>

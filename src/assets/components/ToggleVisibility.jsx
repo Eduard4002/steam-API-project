@@ -12,7 +12,7 @@ export default function ToggleVisibility({ children }) {
 useEffect(()=>{
   window.addEventListener("click", function (e) {
     if (show) {
-      if (e.target.id != "me") {
+      if (e.target.id != "me" && e.target.id != "bitch") {
        
 
       setShow(false);
