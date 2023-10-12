@@ -43,8 +43,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const fav = user.favorites;
   // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
-  console.log(fav);
-  console.log(dataToDisplay[0]);
   return (
     <>
       <div>
