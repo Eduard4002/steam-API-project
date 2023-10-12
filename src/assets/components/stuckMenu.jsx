@@ -62,7 +62,7 @@ export default function stuckMenu() {
         <Link to={"/games"} className="link">
           Games
         </Link>
-        <button onClick={getRandomGame}>Random</button>
+        <button onClick={getRandomGame} className="randomBtn">Random</button>
 
         <Link to={"/about"} className="link">
           About

@@ -12,7 +12,6 @@
 .default-container ul {
   list-style: none;
   padding: 0;
-
 }
 
 .default-container .link {
@@ -33,6 +32,27 @@
 }
 
 .default-container a:hover {
+  background: var(--sidebar_a_hover);
+  color: var(--sidebar_text_hover);
+  transform: scale(1.05);
+}
+
+.randomBtn {
+  width: 100%;
+  font-size: 1.5vw;
+  text-decoration: none;
+  color: var(--sidebar_text);
+  display: block;
+  padding: 5px;
+  margin-bottom: 35px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  background: var(--sidebar_a_prehover);
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+}
+
+.randomBtn:hover {
   background: var(--sidebar_a_hover);
   color: var(--sidebar_text_hover);
   transform: scale(1.05);
