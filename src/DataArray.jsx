@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-import { useEffect, useState } from "react";
 
 function DataArray() {
   //const [data, setData] = useState([]);
@@ -33,8 +31,9 @@ function DataArray() {
       return response.json();
     })
     .then((json) => {
-      const games = json.applist.apps;
+      console.log(json);
 
+      const games = json.applist.apps;
       const allowedCharactersRegex = /^[ A-Za-z0-9_@./#&+-:]*$/;
       const filteredData = games.filter((item) => {
         return item.name && allowedCharactersRegex.test(item.name);
@@ -137,4 +136,5 @@ function getRandomGames(amount) {
 function getDataLength() {
   return 146994;
 }
-export { DataArray, getRandomGames, getDataLength };
+export { DataArray, getDataLength, getRandomGames };
+

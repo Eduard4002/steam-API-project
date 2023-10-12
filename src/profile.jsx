@@ -1,12 +1,9 @@
-import "./assets/css/profile.css";
-import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
-import ToggleVisibility from "./assets/components/ToggleVisibility";
-import ListGames from "./assets/components/ListGames";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import "./assets/css/profile.css";
+import Favorites from "./favorites";
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("CurrLogged");
@@ -103,7 +100,8 @@ function Profile() {
           <div className="favoritesDiv">
             <h3>Recent favorites</h3>
             <div className="favoritesGrid">
-              <ListGames dataToDisplay={[]} />
+              <Favorites>
+              </Favorites>
             </div>
           </div>
         </div>

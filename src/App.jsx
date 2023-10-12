@@ -85,6 +85,7 @@ function App() {
               header_image,
               developers,
               background,
+              type,
             } = item;
 
             return {
@@ -99,6 +100,7 @@ function App() {
               header_image,
               developers,
               background,
+              type,
             };
           } else {
             return null;
