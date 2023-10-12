@@ -1,14 +1,11 @@
-
 .appContainer {
   margin-left: 19.531vw;
-  
 }
 .slideWrapper {
   margin-inline: auto;
   margin-top: 3vw;
   width: 60vw;
   height: 35vw;
-  
 }
 .favoriteGrid {
   margin: auto;
@@ -22,7 +19,6 @@
   grid-template-areas: ". .";
 }
 .favoriteCard {
-  
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,22 +26,28 @@
 }
 .favoriteStar {
   position: absolute;
-  color:var(--starfave);
+  color: var(--starfave);
   top: 1vw;
   right: 1vw;
-  
 }
 .favoriteStar:hover {
   color: var(--starfave_hover);
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 750px) {
+  .appMenu {
+    display: none;
+  }
+  .appContainer {
+    margin-left: 0;
+  }
+  .slideWrapper {
+    width: 80vw;
+  }
   .favoriteGrid {
-    
-
-    width: 50vw;
+    width: 60vw;
     height: 45vw;
-  
+
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0px 5%;
@@ -53,7 +55,5 @@
     grid-template-areas:
       "."
       ".";
-
-      
   }
 }
