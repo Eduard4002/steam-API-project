@@ -77,7 +77,7 @@ const SearchBar = () => {
 
       // Use Promise.all to wait for all fetch calls to complete
       Promise.all(
-        filteredData.map((item, index) => {
+        filteredData.slice(0, 50).map((item, index) => {
           // Construct the URL for fetching game details
           let url =
             "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
