@@ -129,9 +129,17 @@ const SearchBar = () => {
 };
 
 const SetGames = () => {
-  const data = JSON.parse(localStorage.getItem("DATA"));
+  const cached = localStorage.getItem("DATA");
+  let data;
+  if (cached) {
+    data = JSON.parse(cached);
+  } else {
+    window.location.href = "/";
+  }
 
   const [sortBy, setSortBy] = useState("default");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(50); // Set your initial max price value
   const [selectedTypes, setSelectedTypes] = useState([
     "game",
     "dlc",
@@ -166,30 +174,53 @@ const SetGames = () => {
     return [];
   };
   const filteredData = data.filter((item) => selectedTypes.includes(item.type));
-  const sortedData = sortGames(filteredData, sortBy);
+  // Filter data based on custom price range
+  const customFilteredData = filteredData.filter((item) => {
+    if (!item.price_overview) return false; // Filter out items with no price data
+    const price = item.price_overview.final;
+    return price >= minPrice * 100 && price <= maxPrice * 100;
+  });
+  const sortedData = sortGames(customFilteredData, sortBy);
   console.log(sortedData);
-  /*
-  // Update the displayed data when the selected types or sorting method change
-  useEffect(() => {
-    const filteredData = data.filter((item) =>
-      selectedTypes.includes(item.type)
-    );
-    const sortedData = sortGames(filteredData, sortBy);
-    setSortedData(sortedData);
-  }, [selectedTypes, sortBy]);*/
 
   return (
     <>
       <div>
-        <label>Sort by:</label>
+        <label>Name:</label>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="default">Default</option>
           <option value="name-asc">Name: A-Z</option>
           <option value="name-desc">Name: Z-A</option>
-          <option value="price-asc">Price: Least Expensive</option>
-          <option value="price-desc">Price: Most Expensive</option>
+
           {/* Add more sorting options here */}
         </select>
+
+        <div>
+          <label>Price:</label>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="default">Default</option>
+            <option value="price-custom">Custom</option>
+
+            <option value="price-asc">Price: Least Expensive</option>
+            <option value="price-desc">Price: Most Expensive</option>
+          </select>
+          {sortBy === "price-custom" && (
+            <div>
+              <label>Min Price €:</label>
+              <input
+                type="number"
+                value={minPrice}
+                onChange={(e) => setMinPrice(parseFloat(e.target.value))}
+              />
+              <label>Max Price €:</label>
+              <input
+                type="number"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(parseFloat(e.target.value))}
+              />
+            </div>
+          )}
+        </div>
       </div>
       <div>
         <label>Filter by Type:</label>
