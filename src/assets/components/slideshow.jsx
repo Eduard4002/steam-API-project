@@ -1,6 +1,7 @@
 import { Slide } from "react-slideshow-image";
 import "../css/slideshow.css";
 import ImagePlaceholder from "../img/imgPlaceholder.jpg";
+import { Link } from "react-router-dom";
 
 const buttonStyle = {
   width: "30px",
@@ -26,11 +27,24 @@ const Slideshow = ({ images }) => {
   return (
     <>
       <Slide {...properties}>
-        {images?.map((image, index) => (
-          <div key={index} className="each-slide-effect">
-            <div style={{ backgroundImage: `url(${image})` }}></div>
-          </div>
-        ))}
+        {images.map((image, index) => {
+          console.log("Index:", index); // Log the index value
+          return (
+            <Link
+              to={"/game/id/" + image.steam_appid}
+              key={image.steam_appid}
+              onClick={() =>
+                localStorage.setItem("Single game", JSON.stringify(image))
+              }
+            >
+              <div key={index} className="each-slide-effect">
+                <div
+                  style={{ backgroundImage: `url(${image.header_image})` }}
+                ></div>
+              </div>
+            </Link>
+          );
+        })}
       </Slide>
     </>
   );

@@ -121,7 +121,7 @@ function App() {
     (extraData.length < slideshowAmount ? extraData.length : slideshowAmount);
     i++
   ) {
-    imagesArr.push(extraData[i]?.header_image);
+    imagesArr.push(extraData[i]);
   }
 
   return (
