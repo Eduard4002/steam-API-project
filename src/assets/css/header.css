@@ -1,114 +1,147 @@
 #root {
-    margin-top: 8.3vw !important;
+  margin-top: 8.3vw !important;
 }
-
 .navBar {
-    z-index: 99;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 8.3vw;
-    background:var(--topper);
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 8.3vw;
+  background: var(--topper);
 }
 .leftNav {
-    text-align: center;
-    float: left;
-    width: 25vw;
-    height: 8.3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  float: left;
+  width: 25vw;
+  height: 8.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .leftNav img {
-    width: 5vw;
-    height: 5vw;
+  width: 5vw;
+  height: 5vw;
 }
 .leftNav h1 {
-    color: var(--logg);
-    margin-left: 2vw;
-    font-size: 2.2vw;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
+  color: var(--logg);
+  margin-left: 2vw;
+  font-size: 2.2vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
 }
 .hubClass {
-    margin-left: 0.25vw;
-    background-color: var(--games_more);
-    color: black;
-    border-radius: 8px;
-    padding: 0.15vw 0.3vw 0.15vw 0.3vw;
+  margin-left: 0.25vw;
+  background-color: var(--games_more);
+  color: black;
+  border-radius: 8px;
+  padding: 0.15vw 0.3vw 0.15vw 0.3vw;
 }
 .middleNav {
-    float: left;
-    width: 50vw;
-    height: 8.3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  float: left;
+  width: 50vw;
+  height: 8.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #searchInput {
-    padding: 1vw;
-    padding-left: 2vw;
-    width: 30vw;
-    border-radius: 90px;
-    font-size: 1.2vw;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color:var(--search);
-    color: var(--search_text);
-    border: none;
+  padding: 1vw;
+  padding-left: 2vw;
+  width: 30vw;
+  border-radius: 90px;
+  font-size: 1.2vw;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--search);
+  color: var(--search_text);
+  border: none;
 }
 .rightNav {
-    float: right;
-    width: 25vw;
-    height: 8.3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  float: right;
+  width: 25vw;
+  height: 8.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rightNav span {
-    cursor: pointer;
-    margin-left: 2vw;
-    padding: 0.5vw;
-    border-radius: 99px;
-    font-size: 2vw;
-    text-align: center;
-    color: var(--icon_prof);
-    border: 2px solid rgb(80,90,222);
-    background-color: rgb(209,231,248);
-    transition: all 100ms ease-in-out;
-    
+  cursor: pointer;
+  margin-left: 2vw;
+  padding: 0.5vw;
+  border-radius: 99px;
+  font-size: 2vw;
+  text-align: center;
+  color: var(--icon_prof);
+  border: 2px solid rgb(80, 90, 222);
+  background-color: rgb(209, 231, 248);
+  transition: all 100ms ease-in-out;
 }
 .rightNav span:hover {
-    background:var(--icon_prof_bkg_hover);
-    color: var(--icon_prof_hover);
+  background: var(--icon_prof_bkg_hover);
+  color: var(--icon_prof_hover);
 }
 .profileMenu {
-    position: relative;
-    display: none;
-    position: fixed;
-    top: 8.3vw;
-    background:var(--popup_bkg);
-    width: 25vw;
-    height: 27.5vw;
+  position: relative;
+  display: none;
+  position: fixed;
+  top: 8.3vw;
+  background: var(--popup_bkg);
+  width: 25vw;
+  height: 27.5vw;
 }
 .profileMenu * {
-    margin: auto;
-    color: rgb(209,231,248);
+  margin: auto;
+  color: rgb(209, 231, 248);
 }
 .profileMenuBtns div {
-    margin-top: 2vw;
-    padding: 0.5vw;
-    width: 80%;
-    font-size: 1.25vw;
-    background:var(--popup_bttn);
-    transition: all 0.2s ease-in-out;
-    border-radius: 10px;
+  margin-top: 2vw;
+  padding: 0.5vw;
+  width: 80%;
+  font-size: 1.25vw;
+  background: var(--popup_bttn);
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
 }
 .profileMenuBtns > a > div:hover {
-    background:var(--popup_bttn_hover);
-    transform: scale(1.05);
+  background: var(--popup_bttn_hover);
+  transform: scale(1.05);
 }
 .profileMenu > p {
-    font-size: 1vw;
-    margin-top: 5vw;
+  font-size: 1vw;
+  margin-top: 5vw;
+}
+
+@media screen and (max-width: 750px) {
+  #root {
+    margin-top: 15vw !important;
+  }
+  .navBar {
+    height: 15vw;
+  }
+  .leftNav {
+    height: 15vw;
+  }
+  .leftNav img {
+    width: 12vw;
+    height: 12vw;
+  }
+  .logoh1 {
+    display: none;
+  }
+  .middleNav {
+    height: 15vw;
+  }
+  #searchInput {
+    padding: 2.25vw;
+    padding-left: 3vw;
+    width: 45vw;
+    font-size: 2.5vw;
+  }
+  .rightNav {
+    height: 15vw;
+  }
+  .rightNav span {
+    padding: 1vw;
+    font-size: 4vw;
+  }
 }
