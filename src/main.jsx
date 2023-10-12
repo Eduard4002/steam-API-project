@@ -23,6 +23,7 @@ import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
 import StuckMenu from "./assets/components/stuckMenu.jsx"; // Import your Slideshow component
 import About from "./About.jsx";
 import RandomGame from "./assets/components/RandomGame.jsx";
+import "./assets/css/random.css";
 
 // import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
@@ -215,7 +216,7 @@ const SetGames = () => {
       ) : (
         <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
       )}
-      <div>
+      <div className="randomDiv">
         <h2>Still can't find a game you want?</h2>
         <h2>Find a random game here!</h2>
       </div>
