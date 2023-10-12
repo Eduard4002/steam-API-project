@@ -33,7 +33,7 @@
 }
 .hubClass {
     margin-left: 0.25vw;
-    background-color: orange;
+    background-color: var(--games_more);
     color: black;
     border-radius: 8px;
     padding: 0.15vw 0.3vw 0.15vw 0.3vw;
