@@ -18,7 +18,7 @@ margin-top: 2%;
 
 
 
-.button {
+.randomDiv > .button {
   height: 55px;
   width: 250px;
   margin: auto;
@@ -45,7 +45,7 @@ margin-top: 2%;
 
 }
 
-.button:hover {
+.randomDiv > .button:hover {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(155, 0, 194, 0.9);
   -moz-box-shadow: 0px 0px 15px 0px rgba(155, 0, 194, 0.9);
   box-shadow: 0px 0px 15px 0px rgba(155, 0, 194, 0.9);
@@ -59,13 +59,13 @@ margin-top: 2%;
   animation: animate 7s cubic-bezier(0.75, 0.75, 0.75, 0.75) infinite,
 }
 
-.button:hover:before {
+.randomDiv > .button:hover:before {
   filter: blur(20px);
   opacity: 1;
   animation: animate 8s linear infinite;
 }
 
-@keyframes animate {
+.randomDiv > @keyframes animate {
   0% {
     background-position: 0%;
   }
