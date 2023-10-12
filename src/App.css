@@ -13,15 +13,16 @@
 .favoriteGrid {
   margin: auto;
   width: 60vw;
-  height: 15vw;
+  height: 18vw;
   margin-bottom: 5vw;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 3%;
-  grid-template-areas: ". . .";
+  grid-template-areas: ". .";
 }
 .favoriteCard {
+  
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,3 +39,21 @@
   color: var(--starfave_hover);
 }
 
+@media screen and (max-width: 800px){
+  .favoriteGrid {
+    
+
+    width: 50vw;
+    height: 45vw;
+  
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 5%;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      ".";
+
+      
+  }
+}

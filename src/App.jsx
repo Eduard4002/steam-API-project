@@ -126,14 +126,15 @@ function App() {
 
   return (
     <>
-      <StuckMenu />
+      <div className="appMenu">
+        <StuckMenu />
+      </div>
 
       <div className="appContainer">
         <div className="slideWrapper">
           <Slideshow images={imagesArr} />
         </div>
         <div className="favoriteGrid">
-          <div className="favoriteCard" style={{}}></div>
           <div className="favoriteCard" style={{}}></div>
           <div className="favoriteCard" style={{}}></div>
         </div>
