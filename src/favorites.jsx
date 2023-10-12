@@ -55,7 +55,7 @@ function Favorites() {
         ) : ( */}
 
         {data.map((game) => (
-          <div key={game} className="yeet">
+          <div key={game.steam_appid}>
             <p key={game.name}>{game.name}</p>
             <img src={game.header_image} alt="a" />
             <p key={game.short_description}>{game.short_description}</p>
