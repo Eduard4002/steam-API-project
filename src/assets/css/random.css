@@ -1,13 +1,24 @@
 
 
-.randomDiv{
 
+.randomDiv{
+width: 50vh;
+height: 20vh;
+margin: auto;
+margin-bottom: 5%;
+margin-top: 2%;
+  background: rgba(74, 27, 69, 0.267);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(143, 30, 120, 0.171);
+  backdrop-filter: blur(5.2px);
+  -webkit-backdrop-filter: blur(5.2px);
+  border: 1px solid rgba(116, 5, 116, 0.692);
 }
 
 
 
 
-.button {
+.randomDiv > .button {
   height: 55px;
   width: 250px;
   margin: auto;
@@ -34,7 +45,7 @@
 
 }
 
-.button:hover {
+.randomDiv > .button:hover {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(155, 0, 194, 0.9);
   -moz-box-shadow: 0px 0px 15px 0px rgba(155, 0, 194, 0.9);
   box-shadow: 0px 0px 15px 0px rgba(155, 0, 194, 0.9);
@@ -48,7 +59,7 @@
   animation: animate 7s cubic-bezier(0.75, 0.75, 0.75, 0.75) infinite,
 }
 
-.button:hover:before {
+.randomDiv > .button:hover:before {
   filter: blur(20px);
   opacity: 1;
   animation: animate 8s linear infinite;
