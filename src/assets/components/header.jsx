@@ -59,7 +59,7 @@ function Header() {
             <img src={Logo} alt="Logo" />
           </Link>
           <Link to={""}>
-            <h1>Game<span className="hubClass">hub</span></h1>
+            <h1 className="logoh1">Game<span className="hubClass">hub</span></h1>
           </Link>
         </div>
         <div className="middleNav">

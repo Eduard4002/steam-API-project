@@ -16,6 +16,7 @@ function App() {
   const lastRefreshedTime = parseInt(localStorage.getItem("LastRefreshed"), 10);
   const timer = 3 * 60 * 60 * 1000; // 3 hours in miliseconds
   const amountOfGames = 20; // How many games should we fetch / store
+  const slideshowAmount = 3; //How many games should we show inside of the slideshow
 
   const getCachedData = () => {
     if (currentTime - lastRefreshedTime < timer) {
@@ -114,15 +115,21 @@ function App() {
   if (extraData.length === 0) return;
 
   let imagesArr = [];
-  for (let i = 0; i < 3; i++) {
+  for (
+    let i = 0;
+    i <
+    (extraData.length < slideshowAmount ? extraData.length : slideshowAmount);
+    i++
+  ) {
     imagesArr.push(extraData[i]?.header_image);
   }
 
   return (
     <>
-    
-      <StuckMenu /> 
-  
+      <div className="appMenu">
+        <StuckMenu />
+      </div>
+
       <div className="appContainer">
         <div className="slideWrapper">
           <Slideshow images={imagesArr} />

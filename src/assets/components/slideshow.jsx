@@ -28,9 +28,7 @@ const Slideshow = ({ images }) => {
       <Slide {...properties}>
         {images?.map((image, index) => (
           <div key={index} className="each-slide-effect">
-            <div style={{ backgroundImage: `url(${image})` }}>
-              <span>Game {index + 1}</span>
-            </div>
+            <div style={{ backgroundImage: `url(${image})` }}></div>
           </div>
         ))}
       </Slide>

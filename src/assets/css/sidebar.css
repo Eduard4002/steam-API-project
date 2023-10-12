@@ -61,7 +61,7 @@
 }
 @media screen and (max-width: 750px) {
   .default-container {
-    width: 95vw;
+    width: 100vw;
   }
   .default-container ul {
     padding-top: 5vw;
