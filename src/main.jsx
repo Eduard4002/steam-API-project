@@ -99,13 +99,20 @@ const SearchBar = () => {
         })
       ).then(() => {
         // Create an array of images based on the displayedGames order
-        const tempMapped = filteredData.map((item) => temp[item.appid] || null);
+        // Sort the games based on the "type" property
+        const sortedInfo = filteredData
+          .map((item) => temp[item.appid] || null)
+          .filter(Boolean)
+          .sort((a, b) => {
+            const typeOrder = { game: 0, dlc: 1, music: 2 };
+            return typeOrder[a.type] - typeOrder[b.type];
+          });
 
-        setInfo(tempMapped.filter(Boolean));
-        console.log(tempMapped.filter(Boolean));
+        setInfo(sortedInfo);
+        console.log(sortedInfo);
       });
     });
-  }, [info]);
+  }, []);
   console.log(info);
   if (info.length === 0) {
     return <h1>There does not appear to be any result</h1>;
