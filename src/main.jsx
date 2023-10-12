@@ -219,8 +219,8 @@ const SetGames = () => {
       <div className="randomDiv">
         <h2>Still can't find a game you want?</h2>
         <h2>Find a random game here!</h2>
+        <RandomGame />
       </div>
-      <RandomGame />
     </>
   );
 };
