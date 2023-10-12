@@ -65,7 +65,7 @@ margin-top: 2%;
   animation: animate 8s linear infinite;
 }
 
-.randomDiv > @keyframes animate {
+@keyframes animate {
   0% {
     background-position: 0%;
   }
