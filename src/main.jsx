@@ -130,35 +130,91 @@ const SearchBar = () => {
 const SetGames = () => {
   const data = JSON.parse(localStorage.getItem("DATA"));
 
-  const [sortBy, setSortBy] = useState("name-asc"); // Default sorting by name in ascending order
+  const [sortBy, setSortBy] = useState("default");
+  const [selectedTypes, setSelectedTypes] = useState([
+    "game",
+    "dlc",
+    "music",
+    "demo",
+  ]);
 
-  // Define a sorting function
   const sortGames = (data, sortBy) => {
     const [field, order] = sortBy.split("-");
+    if (field === "default") return data;
+
     if (field === "name") {
       return [...data].sort((a, b) => {
         if (order === "asc") {
-          return a[field].localeCompare(b[field]);
+          return a["name"].localeCompare(b["name"]);
         } else if (order === "desc") {
-          return b[field].localeCompare(a[field]);
+          return b["name"].localeCompare(a["name"]);
         }
-        return 0;
+      });
+    } else if (field === "price") {
+      return [...data].sort((a, b) => {
+        const priceA = a["price_overview"] ? a["price_overview"]["final"] : 0;
+        const priceB = b["price_overview"] ? b["price_overview"]["final"] : 0;
+        if (order === "asc") {
+          return priceA - priceB;
+        } else if (order === "desc") {
+          return priceB - priceA;
+        }
       });
     }
-  };
 
-  const sortedData = sortGames(data, sortBy);
+    return [];
+  };
+  const filteredData = data.filter((item) => selectedTypes.includes(item.type));
+  const sortedData = sortGames(filteredData, sortBy);
+  console.log(sortedData);
+  /*
+  // Update the displayed data when the selected types or sorting method change
+  useEffect(() => {
+    const filteredData = data.filter((item) =>
+      selectedTypes.includes(item.type)
+    );
+    const sortedData = sortGames(filteredData, sortBy);
+    setSortedData(sortedData);
+  }, [selectedTypes, sortBy]);*/
+
   return (
     <>
       <div>
         <label>Sort by:</label>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="name-asc">Name (A-Z)</option>
-          <option value="name-desc">Name (Z-A)</option>
+          <option value="default">Default</option>
+          <option value="name-asc">Name: A-Z</option>
+          <option value="name-desc">Name: Z-A</option>
+          <option value="price-asc">Price: Least Expensive</option>
+          <option value="price-desc">Price: Most Expensive</option>
           {/* Add more sorting options here */}
         </select>
       </div>
-      <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
+      <div>
+        <label>Filter by Type:</label>
+        {["game", "dlc", "music", "demo"].map((type) => (
+          <label key={type}>
+            <input
+              type="checkbox"
+              value={type}
+              checked={selectedTypes.includes(type)}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setSelectedTypes([...selectedTypes, type]);
+                } else {
+                  setSelectedTypes(selectedTypes.filter((t) => t !== type));
+                }
+              }}
+            />
+            {type}
+          </label>
+        ))}
+      </div>
+      {sortedData.length === 0 ? (
+        <h1>There are no games currently with this filter</h1>
+      ) : (
+        <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
+      )}
       <div>
         <h2>Still can't find a game you want?</h2>
         <h2>Find a random game here!</h2>
