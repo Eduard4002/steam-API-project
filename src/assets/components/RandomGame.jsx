@@ -1,6 +1,6 @@
 import React from "react";
 import { DataArray, getDataLength } from "../../DataArray.jsx";
-import "../css/random.css"
+import "../css/random.css";
 
 function RandomGame() {
   const getRandomGame = () => {
@@ -52,7 +52,7 @@ function RandomGame() {
     });
   };
   return (
-    <button onClick={getRandomGame}     class="button"  >
+    <button onClick={getRandomGame} className="button">
       Generate
     </button>
   );
