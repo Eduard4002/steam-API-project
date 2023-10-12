@@ -126,7 +126,9 @@ function App() {
 
   return (
     <>
-      <StuckMenu />
+      <div className="appMenu">
+        <StuckMenu />
+      </div>
 
       <div className="appContainer">
         <div className="slideWrapper">

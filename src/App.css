@@ -38,3 +38,8 @@
   color: var(--starfave_hover);
 }
 
+@media screen and (max-width: 750px) {
+  .appMenu {
+    display: none;
+  }
+}
