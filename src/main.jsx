@@ -24,6 +24,7 @@ import StuckMenu from "./assets/components/stuckMenu.jsx"; // Import your Slides
 import About from "./About.jsx";
 import RandomGame from "./assets/components/RandomGame.jsx";
 import "./assets/css/random.css";
+import "./assets/css/filter.css";
 
 // import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
@@ -140,13 +141,27 @@ const SetGames = () => {
   const [sortBy, setSortBy] = useState("default");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(50); // Set your initial max price value
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedTypes, setSelectedTypes] = useState([
     "game",
     "dlc",
     "music",
     "demo",
   ]);
-
+  useEffect(() => {
+    const cachedFilter = localStorage.getItem("Filter");
+    if (cachedFilter) {
+      const filter = JSON.parse(cachedFilter);
+      setSortBy(filter[0].sortBy);
+      setSelectedTypes(filter[0].selectedTypes);
+      setMinPrice(filter[0].minPrice);
+      setMaxPrice(filter[0].maxPrice);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  }, [isLoading]);
+  if (isLoading) return;
   const sortGames = (data, sortBy) => {
     const [field, order] = sortBy.split("-");
     if (field === "default") return data;
@@ -174,11 +189,14 @@ const SetGames = () => {
     return [];
   };
   const filteredData = data.filter((item) => selectedTypes.includes(item.type));
-  console.log("----------");
   // Filter data based on custom price range
   const customFilteredData = filteredData.filter((item) => {
-    console.log(item?.price_overview);
-
+    //Only return items that do not have the price_overview property
+    if (sortBy === "price-free") {
+      return !item.price_overview;
+    }
+    //If we are not using the custom prices then return all games
+    if (sortBy !== "price-custom") return true;
     if (item.price_overview) {
       const price = item.price_overview.final;
       return price >= minPrice * 100 && price <= maxPrice * 100;
@@ -191,74 +209,94 @@ const SetGames = () => {
     }
   });
   const sortedData = sortGames(customFilteredData, sortBy);
-  console.log(sortedData.length);
+
+  const filterArr = [
+    {
+      sortBy: sortBy,
+      selectedTypes: selectedTypes,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+    },
+  ];
+  localStorage.setItem("Filter", JSON.stringify(filterArr));
+
   return (
     <>
-      <div>
-        <label>Name:</label>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="default">Default</option>
-          <option value="name-asc">Name: A-Z</option>
-          <option value="name-desc">Name: Z-A</option>
-
-          {/* Add more sorting options here */}
-        </select>
-
-        <div>
-          <label>Price:</label>
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="default">Default</option>
-            <option value="price-free">Free to play</option>
-            <option value="price-custom">Custom</option>
-            <option value="price-asc">Price: Least Expensive</option>
-            <option value="price-desc">Price: Most Expensive</option>
-          </select>
-          {sortBy === "price-custom" && (
-            <div>
-              <label>Min Price €:</label>
-              <input
-                type="number"
-                value={minPrice}
-                onChange={(e) => {
-                  e.preventDefault();
-                  setMinPrice(parseFloat(e.target.value));
-                }}
-              />
-              <label>Max Price €:</label>
-              <input
-                type="number"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(parseFloat(e.target.value))}
-              />
-            </div>
+      <div className="parent">
+        <div className="games-parent">
+          {sortedData.length === 0 ? (
+            <h1>There are no games currently with this filter</h1>
+          ) : (
+            <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
           )}
         </div>
+
+        <div className="filter-parent">
+          <div>
+            <label>Name:</label>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="default">Default</option>
+              <option value="name-asc">Name: A-Z</option>
+              <option value="name-desc">Name: Z-A</option>
+
+              {/* Add more sorting options here */}
+            </select>
+
+            <div>
+              <label>Price:</label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="default">Default</option>
+                <option value="price-free">Free to play</option>
+                <option value="price-custom">Custom</option>
+                <option value="price-asc">Price: Least Expensive</option>
+                <option value="price-desc">Price: Most Expensive</option>
+              </select>
+              {sortBy === "price-custom" && (
+                <div>
+                  <label>Min Price €:</label>
+                  <input
+                    type="number"
+                    value={minPrice}
+                    onChange={(e) => {
+                      setMinPrice(parseFloat(e.target.value));
+                    }}
+                  />
+                  <label>Max Price €:</label>
+                  <input
+                    type="number"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(parseFloat(e.target.value))}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+          <div>
+            <label>Filter by Type:</label>
+            {["game", "dlc", "music", "demo"].map((type) => (
+              <label key={type}>
+                <input
+                  type="checkbox"
+                  value={type}
+                  checked={selectedTypes.includes(type)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedTypes([...selectedTypes, type]);
+                    } else {
+                      setSelectedTypes(selectedTypes.filter((t) => t !== type));
+                    }
+                  }}
+                />
+                {type}
+              </label>
+            ))}
+          </div>
+        </div>
       </div>
-      <div>
-        <label>Filter by Type:</label>
-        {["game", "dlc", "music", "demo"].map((type) => (
-          <label key={type}>
-            <input
-              type="checkbox"
-              value={type}
-              checked={selectedTypes.includes(type)}
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setSelectedTypes([...selectedTypes, type]);
-                } else {
-                  setSelectedTypes(selectedTypes.filter((t) => t !== type));
-                }
-              }}
-            />
-            {type}
-          </label>
-        ))}
-      </div>
-      {sortedData.length === 0 ? (
-        <h1>There are no games currently with this filter</h1>
-      ) : (
-        <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
-      )}
+
       <div className="randomDiv">
         <h2>Still can't find a game you want?</h2>
         <h2>Find a random game here!</h2>

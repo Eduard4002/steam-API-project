@@ -1,0 +1,22 @@
+.parent{
+   position: relative
+}
+.games-parent{
+    width: 60%;
+    margin: auto;
+}
+.filter-parent{
+    position: absolute;
+    top:40px;
+    right: 50px;
+    width: 20%;
+    height: 100%;
+    margin: auto;
+    
+      background: rgba(74, 27, 69, 0.267);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(143, 30, 120, 0.171);
+      backdrop-filter: blur(5.2px);
+      -webkit-backdrop-filter: blur(5.2px);
+      border: 1px solid rgba(116, 5, 116, 0.692);
+}
