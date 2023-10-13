@@ -97,11 +97,10 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className="favoritesDiv">
+          <div className="proFavoritesDiv">
             <h3>Recent favorites</h3>
             <div className="favoritesGrid">
-              <Favorites>
-              </Favorites>
+              <Favorites displayFavorites = {false}/>
             </div>
           </div>
         </div>
