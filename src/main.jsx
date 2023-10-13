@@ -174,15 +174,24 @@ const SetGames = () => {
     return [];
   };
   const filteredData = data.filter((item) => selectedTypes.includes(item.type));
+  console.log("----------");
   // Filter data based on custom price range
   const customFilteredData = filteredData.filter((item) => {
-    if (!item.price_overview) return false; // Filter out items with no price data
-    const price = item.price_overview.final;
-    return price >= minPrice * 100 && price <= maxPrice * 100;
+    console.log(item?.price_overview);
+
+    if (item.price_overview) {
+      const price = item.price_overview.final;
+      return price >= minPrice * 100 && price <= maxPrice * 100;
+    }
+    // Handle the case where price_overview doesn't exist or is not an object
+    if (minPrice === 0 || minPrice === NaN) {
+      return true; // Include the item if minPrice is 0
+    } else {
+      return false; // Exclude the item if price information is missing
+    }
   });
   const sortedData = sortGames(customFilteredData, sortBy);
-  console.log(sortedData);
-
+  console.log(sortedData.length);
   return (
     <>
       <div>
@@ -199,8 +208,8 @@ const SetGames = () => {
           <label>Price:</label>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="default">Default</option>
+            <option value="price-free">Free to play</option>
             <option value="price-custom">Custom</option>
-
             <option value="price-asc">Price: Least Expensive</option>
             <option value="price-desc">Price: Most Expensive</option>
           </select>
@@ -210,7 +219,10 @@ const SetGames = () => {
               <input
                 type="number"
                 value={minPrice}
-                onChange={(e) => setMinPrice(parseFloat(e.target.value))}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setMinPrice(parseFloat(e.target.value));
+                }}
               />
               <label>Max Price €:</label>
               <input
