@@ -177,8 +177,11 @@ const SetGames = () => {
   console.log("----------");
   // Filter data based on custom price range
   const customFilteredData = filteredData.filter((item) => {
-    console.log(item?.price_overview);
-
+    console.log(item.price_overview);
+    if (sortBy === "price-free") {
+      // Filter for "Free to play" option
+      return !item.price_overview;
+    }
     if (item.price_overview) {
       const price = item.price_overview.final;
       return price >= minPrice * 100 && price <= maxPrice * 100;
