@@ -86,56 +86,48 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                           <div className="gameTextDiv">
                             <h2 key={game.name}>{game.name}</h2>
                           </div>
-                          {game?.short_description && (
-                            <div
-                              className="description"
-                              key={game?.short_description}
-                            >
-                              {/*Does short description exists*/}
-                              {game?.short_description != "" || (
-                                <p>
-                                  There does not appear to be a short
-                                  description for this game
-                                </p>
-                              )}
-                              {/* Is short description too large to fit inside of the container? */}
-                              {game?.short_description.length <
-                              descriptionMaxLength ? (
-                                <p key={game.short_description}>
-                                  {game.short_description}
-                                </p>
-                              ) : (
-                                /*Short description is too large to fit inside of the container*/
-                                <p key={game.short_description}>
-                                  {game?.short_description.slice(
-                                    0,
-                                    descriptionMaxLength
-                                  ) + "..."}
-                                </p>
-                              )}
-                            </div>
-                          )}
+
+                          <div
+                            className="description"
+                            key={game?.short_description}
+                          >
+                            {/*Does short description exists*/}
+                            {game?.short_description === "" && (
+                              <p>
+                                There does not appear to be a short description
+                                for this game
+                              </p>
+                            )}
+                            {/* Is short description too large to fit inside of the container? */}
+                            {game?.short_description.length <
+                            descriptionMaxLength ? (
+                              <p key={game.short_description}>
+                                {game.short_description}
+                              </p>
+                            ) : (
+                              /*Short description is too large to fit inside of the container*/
+                              <p key={game.short_description}>
+                                {game?.short_description.slice(
+                                  0,
+                                  descriptionMaxLength
+                                ) + "..."}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                    
                       </div>
                     </Link>
 
-                    
                     <div className="buttonsDiv">
-                          <div
-                            className={`star ${
-                              fav.find(
-                                (item) => item.appid === game.steam_appid
-                              )
-                                ? "active"
-                                : "inactive"
-                            }`}
-                            key={game.steam_appid + 2}
-                          ></div>
-                        </div>
-
-
-
+                      <div
+                        className={`star ${
+                          fav.find((item) => item.appid === game.steam_appid)
+                            ? "active"
+                            : "inactive"
+                        }`}
+                        key={game.steam_appid + 2}
+                      ></div>
+                    </div>
                   </div>
                 </>
               ))}

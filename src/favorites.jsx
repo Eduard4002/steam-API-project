@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./assets/css/favorites.css";
 
-function Favorites() {
+function Favorites({ displayFavorites = true }) {
+
   const [favoriteGameIds, setFavoriteGameIds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -41,7 +42,7 @@ function Favorites() {
       )
     ).then((outData) => {
       setData(outData.filter(Boolean));
-      console.log("outdata", outData)
+      console.log("outdata", outData);
     });
   }, [favoriteGameIds]);
 
@@ -55,26 +56,30 @@ function Favorites() {
         ) : ( */}
 
         {data.map((game) => (
-          <div key={game.steam_appid}>
-            <p key={game.name}>{game.name}</p>
-            <img src={game.header_image} alt="a" />
-            <p key={game.short_description}>{game.short_description}</p>
-          </div>
+          <span key={game.steam_appid}>
+            <Link
+              to={"/game/id/" + game.steam_appid}
+              key={game.steam_appid}
+              onClick={() =>
+                localStorage.setItem("Single game", JSON.stringify(game))
+              }
+            >
+              <div className="favoriteCard">
+                <img src={game.header_image} alt="Game header_image" />
+                <div className="favoriteText">
+                  <h3 key={game.name}>{game.name}</h3>
+                  <p key={game.short_description}>{game.short_description}</p>
+                </div>
+                {displayFavorites ? (
+                  // Your content for the Favorites component
+                  <div className="favoriteSettings">
+                    <span className="material-symbols-outlined">grade</span>
+                  </div>
+                ) : null}
+              </div>
+            </Link>
+          </span>
         ))}
-        
-        {/* )} */}
-        <template>
-          <Link to={""}>
-            <div className="favoriteCard">
-              <div className="favoriteText">
-                <p>Hejsan på digsan</p>
-              </div>
-              <div className="favoriteSettings">
-                <span className="material-symbols-outlined">grade</span>
-              </div>
-            </div>
-          </Link>
-        </template>
       </div>
     </>
   );

@@ -1,20 +1,12 @@
 .favoritesDiv {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
-  backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-  border-radius: 10px !important;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px !important;
+  background-color: var(--setting_div);
+  border-radius: 5px;
   margin: auto;
   padding: 1vw;
-  margin-top: 3vw !important;
+  margin-top: 2vw !important;
   margin-bottom: 2vw;
   padding-bottom: 3vw;
-  width: 80% !important;
-}
-.favoritesDiv > h1 {
-  color: var(--progile_user);
+  width: 90%;
 }
 .favoriteCard {
   color: rgb(228, 223, 255);
@@ -47,12 +39,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   height: 3vw;
-  width: 17.5vw;
+  width: 60%;
   margin: 0;
   margin-left: 1vw;
+  margin-top: 1vw;
   font-size: 1.1vw;
 }
-.favoriteSettings > span {
+.favoriteSettings span {
   color: goldenrod;
   cursor: pointer;
 }
