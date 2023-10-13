@@ -140,13 +140,29 @@ const SetGames = () => {
   const [sortBy, setSortBy] = useState("default");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(50); // Set your initial max price value
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedTypes, setSelectedTypes] = useState([
     "game",
     "dlc",
     "music",
     "demo",
   ]);
-
+  useEffect(() => {
+    console.log("calling useEffect");
+    const cachedFilter = localStorage.getItem("Filter");
+    if (cachedFilter) {
+      const filter = JSON.parse(cachedFilter);
+      console.log(filter);
+      setSortBy(filter[0].sortBy);
+      setSelectedTypes(filter[0].selectedTypes);
+      setMinPrice(filter[0].minPrice);
+      setMaxPrice(filter[0].maxPrice);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  }, [isLoading]);
+  if (isLoading) return;
   const sortGames = (data, sortBy) => {
     const [field, order] = sortBy.split("-");
     if (field === "default") return data;
@@ -177,11 +193,12 @@ const SetGames = () => {
   console.log("----------");
   // Filter data based on custom price range
   const customFilteredData = filteredData.filter((item) => {
-    console.log(item.price_overview);
+    //Only return items that do not have the price_overview property
     if (sortBy === "price-free") {
-      // Filter for "Free to play" option
       return !item.price_overview;
     }
+    //If we are not using the custom prices then return all games
+    if (sortBy !== "price-custom") return true;
     if (item.price_overview) {
       const price = item.price_overview.final;
       return price >= minPrice * 100 && price <= maxPrice * 100;
@@ -194,7 +211,19 @@ const SetGames = () => {
     }
   });
   const sortedData = sortGames(customFilteredData, sortBy);
-  console.log(sortedData.length);
+
+  const filterArr = [
+    {
+      sortBy: sortBy,
+      selectedTypes: selectedTypes,
+      minPrice,
+      minPrice,
+      maxPrice,
+      maxPrice,
+    },
+  ];
+  localStorage.setItem("Filter", JSON.stringify(filterArr));
+
   return (
     <>
       <div>
@@ -223,7 +252,6 @@ const SetGames = () => {
                 type="number"
                 value={minPrice}
                 onChange={(e) => {
-                  e.preventDefault();
                   setMinPrice(parseFloat(e.target.value));
                 }}
               />
