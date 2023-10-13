@@ -117,16 +117,15 @@ function Singlegame({ type }) {
   }
 
   function checkAndHandleFavorites() {
-    //LocalStorage
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user && Array.isArray(user.favorites)) {
+    
+    //Push to database
       const newItem = {
         newItem: itemData.steam_appid,
       };
       const uid = {
         uid: localStorage.getItem("CurrLogged"),
-      };
-      const index = user.favorites.findIndex((fav) => fav.appid === newItem);
+    };
+    console.log("check")
       axios
         .post("http://localhost:3000/Singlegame", {
           uid: uid.uid,
@@ -136,11 +135,12 @@ function Singlegame({ type }) {
         .catch((error) => {
           console.error(error);
         });
-    }
+    
     setStarActive(!starActive);
     console.log(starActive);
     console.log("CheckFunction run");
   }
+
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
   function favoriteClick() {
     //StarAnim
@@ -174,7 +174,7 @@ function Singlegame({ type }) {
   return (
     <>
       {/* <ToggleVisibility>
-        <StuckMenu /> 
+        <StuckMenu />
       </ToggleVisibility> */}
       <div className="main">
         <div
