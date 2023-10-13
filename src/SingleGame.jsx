@@ -19,8 +19,43 @@ function Singlegame({ type }) {
 
   let data;
   let gameId = 0;
+
+  const uid = {
+    uid: localStorage.getItem("CurrLogged"),
+  };
+
   //data = DataArray();
 
+  // Function to check if the game is in the user's favorites
+  const checkFavorite = async (userId, gameId) => {
+    try {
+      const response = await axios.post("http://localhost:3000/checkFavorite", {
+        userId,
+        gameId,
+      });
+      setStarActive(response.data.isFavorite);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getExistingFavoriteBool = (uid, gameId) => {
+    return axios
+      .post("http://localhost:3000/singlegame/is-fav", {
+        uid: uid,
+        newItem: gameId
+      })
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  
+  
+  
   useEffect(() => {
     if (itemData) return;
     const cachedData = localStorage.getItem("Single game");
@@ -30,10 +65,20 @@ function Singlegame({ type }) {
       setItemData(JSON.parse(localStorage.getItem("Single game")));
       setLoading(false);
     } /*
-      console.log(JSON.parse(localStorage.getItem("Single game")));
-      setItemData(JSON.parse(localStorage.getItem("Single game")));
-      setLoading(false);*/
+    console.log(JSON.parse(localStorage.getItem("Single game")));
+    setItemData(JSON.parse(localStorage.getItem("Single game")));
+    setLoading(false);*/
   }, []);
+
+  useEffect(() => {
+    if (!itemData) return;
+    
+    getExistingFavoriteBool(uid.uid, itemData.steam_appid)
+      .then(isFavorite => {
+        console.log(isFavorite);
+        setStarActive(isFavorite)
+      });
+  }, [itemData])
   /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
@@ -74,7 +119,6 @@ function Singlegame({ type }) {
 
   //itemData = JSON.parse(localStorage.getItem("Single game"));
 
-  
   //localStorage.setItem("Single game", JSON.stringify(itemData));
 
   //   useEffect(() => {
@@ -116,47 +160,44 @@ function Singlegame({ type }) {
     );
   }
 
-  function checkAndHandleFavorites() {
-    
-    //Push to database
-      const newItem = {
-        newItem: itemData.steam_appid,
-      };
-      const uid = {
-        uid: localStorage.getItem("CurrLogged"),
-    };
-    console.log("check")
-      axios
-        .post("http://localhost:3000/Singlegame", {
-          uid: uid.uid,
-          newItem: newItem.newItem,
-        })
-        .then((response) => {})
-        .catch((error) => {
-          console.error(error);
-        });
-    
-    setStarActive(!starActive);
-    console.log(starActive);
-    console.log("CheckFunction run");
-  }
-
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
+
   function favoriteClick() {
     //StarAnim
     setAnimate(true);
     setTimeout(() => setAnimate(false), 200);
-    checkAndHandleFavorites();
-  }
-  // Example usage:
 
+    
+    const newItem = {
+      newItem: itemData.steam_appid,
+    };
+
+    console.log("check");
+
+    //post Request
+    axios
+      .post("http://localhost:3000/singlegame", {
+        uid: uid.uid,
+        newItem: newItem.newItem,
+      })
+      .then((response) => {
+        setStarActive(!starActive);
+        
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    console.log("CheckFunction run");
+  }
+
+  // Example usage:
   const buttonStyle = {
     width: "30px",
     background: "none",
     border: "0px",
     padding: "0",
   };
-  
+
   const properties = {
     prevArrow: (
       <button className="left" style={{ ...buttonStyle }}>
