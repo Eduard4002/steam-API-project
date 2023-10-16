@@ -186,6 +186,8 @@ const SetGames = () => {
   return (
     <>
       <div>
+
+<h3>Add Filter</h3>
         <label>Name:</label>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="default">Default</option>
