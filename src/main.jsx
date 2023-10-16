@@ -247,17 +247,17 @@ const SetGames = () => {
                 <option value="price-desc">Price: Most Expensive</option>
               </select>
               {sortBy === "price-custom" && (
-                <div>
-                  <label>Min Price €:</label>
-                  <input
+                <div className="price-div">
+                  <label >Min Price €:</label>
+                  <input  className="price-lable"
                     type="number"
                     value={minPrice}
                     onChange={(e) => {
                       setMinPrice(parseFloat(e.target.value));
                     }}
                   />
-                  <label>Max Price €:</label>
-                  <input
+                  <label >Max Price €:</label>
+                  <input  className="price-lable"
                     type="number"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(parseFloat(e.target.value))}
