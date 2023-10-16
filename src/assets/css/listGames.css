@@ -10,7 +10,7 @@
 }
 .contFlex {
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   
 }
