@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "../css/star.css";
+import { useNavigate, useParams } from "react-router-dom";
+import "../css/single.css";
 
-function Star({ type }) {
+function Star({ type, gameId }) {
   const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
@@ -12,9 +12,9 @@ function Star({ type }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
+  const navigate = useNavigate()
 
   let data;
-  let gameId = 0;
 
   const uid = {
     uid: localStorage.getItem("CurrLogged"),
@@ -66,13 +66,12 @@ function Star({ type }) {
   useEffect(() => {
     if (!itemData) return;
 
-        getExistingFavoriteBool(uid.uid, itemData.steam_appid)
-        .then(
-        (isFavorite) => {
-            console.log(isFavorite);
-            setStarActive(isFavorite);
-        }
-        );
+    getExistingFavoriteBool(uid.uid, gameId).then(
+      (isFavorite) => {
+        console.log(isFavorite);
+        setStarActive(isFavorite);
+      }
+    );
   }, [itemData]);
   /*
   //const gameId = data[randomIndex].appid;
@@ -155,32 +154,36 @@ function Star({ type }) {
   //     );
   //   }
 
-//   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
+  //   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
 
   function favoriteClick() {
-    //StarAnim
-    setAnimate(true);
-    setTimeout(() => setAnimate(false), 200);
+    if (localStorage.getItem("CurrLogged")) {
+      //StarAnim
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 200);
 
-    const newItem = {
-      newItem: itemData.steam_appid,
-    };
+      const newItem = {
+        newItem: gameId,
+      };
 
-    console.log("check");
+      console.log("check");
 
-    //post Request
-    axios
-      .post("http://localhost:3000/singlegame", {
-        uid: uid.uid,
-        newItem: newItem.newItem,
-      })
-      .then((response) => {
-        setStarActive(!starActive);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    console.log("CheckFunction run");
+      //post Request
+      axios
+        .post("http://localhost:3000/singlegame", {
+          uid: uid.uid,
+          newItem: gameId,
+        })
+        .then((response) => {
+          setStarActive(!starActive);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      console.log("CheckFunction run");
+    } else {
+        navigate("/")
+    }
   }
 
   // Example usage:
@@ -194,14 +197,12 @@ function Star({ type }) {
   const gameUrl = "https://store.steampowered.com/app/" + itemData?.steam_appid;
   return (
     <>
-      
-        <div
-          className={`star ${starActive ? "active" : "inactive"} ${
-            animate ? "animate" : ""
-          }`}
-          onClick={favoriteClick}
-        ></div>
-      
+      <div
+        className={`star ${starActive ? "active" : "inactive"} ${
+          animate ? "animate" : ""
+        }`}
+        onClick={favoriteClick}
+      ></div>
     </>
   );
 }
