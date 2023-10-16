@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/single.css";
+import SignUp from "../../signUpPage";
 
 function Star({ type, gameId, refreshLink }) {
   const { value } = useParams();
@@ -181,7 +182,7 @@ function Star({ type, gameId, refreshLink }) {
         });
       console.log("CheckFunction run");
     } else {
-      navigate("/signup");
+      alert("You need to Sign Up to favorite a game!");
     }
   }
   return (
