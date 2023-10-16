@@ -1,10 +1,14 @@
 import sqlite3 from "better-sqlite3";
 import cors from "cors";
 import express from "express";
+import md5 from "md5";
+
 // import sqlite3 from "sqlite3";
 var app = express();
+
 // const db = new sqlite3.Database('./db/db.sqlite')
 const db = sqlite3("db/database.sqlite");
+ 
 
 // db.serialize(() => {
 //   db.run('CREATE TABLE [IF NOT EXISTS] [schema_name].table_name' (
@@ -67,8 +71,8 @@ const addToFav = db.prepare(
   "INSERT INTO favorites (uid, gameid) VALUES (?, ?)"
 );
 
-app.post("/signup", function (req, res) {
-  /* const foundUser = findUserStatement.get(req.body.username)
+app.post("/signup", async function (req, res) {
+  const foundUser = findUserStatement.get(req.body.username)
 
   const foundEmail = findUserStatement.get(req.body.email)
 
@@ -82,7 +86,7 @@ app.post("/signup", function (req, res) {
     res.status(409)
     res.send("Email already in use")
     return
-  } */
+  } 
 
   console.log(req.body);
 
@@ -92,7 +96,7 @@ app.post("/signup", function (req, res) {
     req.body.id,
     req.body.email,
     req.body.username,
-    req.body.password
+    md5(req.body.password)
   );
 });
 
@@ -139,7 +143,7 @@ app.post("/singlegame/is-fav", function (req, res) {
 
 app.post("/login", function (req, res) {
   const username = req.body.username;
-  const password = req.body.password;
+  const password = md5(req.body.password);
 
   // Query the database to find a user with the entered username and password
   const user = db
