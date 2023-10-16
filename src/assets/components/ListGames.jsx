@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/listGames.css";
 import "../css/single.css";
+import Star from "./star";
 
 function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   const [currentIndex, setCurrentIndex] = useState(0); // Start at 0
@@ -118,10 +119,9 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
                     <div className="buttonsDiv">
                       <button className="starButton">
-                        <div
-                          className={`star active`}
-                          key={game.steam_appid + 2}
-                        ></div>
+                        <Star>
+
+                        </Star>
                       </button>
                     </div>
                   </div>
