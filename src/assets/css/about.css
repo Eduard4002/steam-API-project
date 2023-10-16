@@ -17,7 +17,7 @@
   -webkit-backdrop-filter: blur(8.7px);
   border: 1px solid rgba(132, 79, 187, 0.63);
   height: 24vw;
-  width: 80vw;
+  /* width: 80vw; */
   padding: 2vw;
   border-radius: 20px;
   margin: auto;
