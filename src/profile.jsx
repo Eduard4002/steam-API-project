@@ -1,14 +1,9 @@
-import "./assets/css/profile.css";
-import imagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
-import ToggleVisibility from "./assets/components/ToggleVisibility";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
-import axios from "axios";
-import { useState, useEffect } from 'react';
-
-
-
+import "./assets/css/profile.css";
+import Favorites from "./favorites";
 
 function Profile() {
   const loggedInUserId = localStorage.getItem("CurrLogged");
@@ -26,45 +21,44 @@ function Profile() {
   }
 
   const uid = {
-    uid: localStorage.getItem("CurrLogged")
-  }
+    uid: localStorage.getItem("CurrLogged"),
+  };
 
   useEffect(() => {
-    const uid = localStorage.getItem('CurrLogged');
+    const uid = localStorage.getItem("CurrLogged");
 
-    axios.get(`http://localhost:3000/profile/${uid}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:3000/profile/${uid}`)
+      .then((response) => {
         const username = response.data.username;
         setUsername(username);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, []);
 
   function deleteUser() {
-
-    localStorage.removeItem("CurrLogged")
+    localStorage.removeItem("CurrLogged");
 
     axios
       .delete(`http://localhost:3000/profile/${uid.uid}`)
       .then((response) => {
-        console.log('User deleted successfully');
+        console.log("User deleted successfully");
       })
       .catch((error) => {
         console.error(error);
       });
-      
-    
-      navigate("/");
+
+    navigate("/");
   }
 
   return (
     <>
       {/* <ToggleVisibility> */}
-        {/* <StuckMenu /> 
+      {/* <StuckMenu /> 
       </ToggleVisibility> */}
-      
+
       <div className="profileDiv">
         <div className="profileName">
           <h1>Hi, {username} </h1>
@@ -77,12 +71,12 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-            <DarkMode/>
-              {/* <DarkModeToggle /> */}
-                              {/* <input type="checkbox" name="" id="" />
+                <DarkMode />
+                {/* <DarkModeToggle /> */}
+                {/* <input type="checkbox" name="" id="" />
                               <label>DarkMode</label> */}
-                            </div>
-                            {/* <div className="settingsCard">
+              </div>
+              {/* <div className="settingsCard">
                               <input type="checkbox" name="" id="" checked />
                               <label>Något annat</label>
                             </div> */}
@@ -103,47 +97,10 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className="favoritesDiv">
+          <div className="proFavoritesDiv">
             <h3>Recent favorites</h3>
             <div className="favoritesGrid">
-              <div className="favoritesCard">
-                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <div className="favoritesText">
-                  <h3>Game Title</h3>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolores odio placeat, molestias ratione facere maiores
-                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
-                    ratione, provident itaque minus quidem mollitia earum!
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="favoritesCard">
-                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <div className="favoritesText">
-                  <h3>Game Title</h3>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolores odio placeat, molestias ratione facere maiores
-                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
-                    ratione, provident itaque minus quidem mollitia earum!
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="favoritesCard">
-                <img src={imagePlaceholder} alt="Picture of Favorite Game" />
-                <div className="favoritesText">
-                  <h3>Game Title</h3>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolores odio placeat, molestias ratione facere maiores
-                    totam. Saepe minima, ducimus ipsa fugit omnis eveniet
-                    ratione, provident itaque minus quidem mollitia earum!
-                  </p>
-                </div>
-              </div>
+              <Favorites displayFavorites = {false}/>
             </div>
           </div>
         </div>
@@ -151,7 +108,5 @@ function Profile() {
     </>
   );
 }
-
-
 
 export default Profile;

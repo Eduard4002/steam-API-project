@@ -4,13 +4,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "../src/assets/css/single.css";
-import { DataArray } from "./DataArray";
 import ToggleVisibility from "./assets/components/ToggleVisibility";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import "./assets/css/slideshow.css";
 
 function Singlegame({ type }) {
-  console.log("----------");
   const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
@@ -18,28 +16,70 @@ function Singlegame({ type }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  useEffect(() => {
-    console.log("Setting item data to null");
-    setItemData(null);
-  }, []);
+
   let data;
   let gameId = 0;
+
+  const uid = {
+    uid: localStorage.getItem("CurrLogged"),
+  };
+
   //data = DataArray();
 
+  // Function to check if the game is in the user's favorites
+  const checkFavorite = async (userId, gameId) => {
+    try {
+      const response = await axios.post("http://localhost:3000/checkFavorite", {
+        userId,
+        gameId,
+      });
+      setStarActive(response.data.isFavorite);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getExistingFavoriteBool = (uid, gameId) => {
+    return axios
+      .post("http://localhost:3000/singlegame/is-fav", {
+        uid: uid,
+        newItem: gameId
+      })
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  
+  
+  
   useEffect(() => {
-    if (isLoading && itemData) return;
+    if (itemData) return;
     const cachedData = localStorage.getItem("Single game");
 
-    if (cachedData != "" || cachedData != "undefined") {
+    if (cachedData && cachedData != "" && cachedData != "undefined") {
       console.log("Getting information from localstorage");
       setItemData(JSON.parse(localStorage.getItem("Single game")));
       setLoading(false);
     } /*
-      console.log(JSON.parse(localStorage.getItem("Single game")));
-      setItemData(JSON.parse(localStorage.getItem("Single game")));
-      setLoading(false);*/
-  }, [isLoading]);
+    console.log(JSON.parse(localStorage.getItem("Single game")));
+    setItemData(JSON.parse(localStorage.getItem("Single game")));
+    setLoading(false);*/
+  }, []);
 
+  useEffect(() => {
+    if (!itemData) return;
+    
+    getExistingFavoriteBool(uid.uid, itemData.steam_appid)
+      .then(isFavorite => {
+        console.log(isFavorite);
+        setStarActive(isFavorite)
+      });
+  }, [itemData])
+  /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
     console.log(itemData);
@@ -54,7 +94,7 @@ function Singlegame({ type }) {
         gameId = value;
       } else {
         gameId = data[value]?.appid;
-      }*/
+      }
       gameId = result[value]?.appid;
 
       console.log("Game id: " + gameId);
@@ -75,29 +115,10 @@ function Singlegame({ type }) {
           setError(error);
         });
     });
-  }, [value, isLoading]);
+  }, [value, isLoading]);*/
 
   //itemData = JSON.parse(localStorage.getItem("Single game"));
 
-  useEffect(() => {
-    if (isLoading) {
-      return;
-    }
-    const user = JSON.parse(localStorage.getItem("user"));
-    //console.log(user);
-    if (user && Array.isArray(user.favorites) && itemData) {
-      const newItem = itemData.steam_appid;
-      const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-      console.log("idx", index);
-      if (index == -1) {
-        setStarActive(false);
-      } else {
-        setStarActive(true);
-      }
-    } else {
-      console.log("User or favorites array not found in localStorage.");
-    }
-  }, [isLoading]);
   //localStorage.setItem("Single game", JSON.stringify(itemData));
 
   //   useEffect(() => {
@@ -139,61 +160,37 @@ function Singlegame({ type }) {
     );
   }
 
-  function checkAndHandleFavorites() {
-    //LocalStorage
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user && Array.isArray(user.favorites)) {
-      const newItem = {
-        newItem: itemData.steam_appid,
-      };
-      const uid = {
-        uid: localStorage.getItem("CurrLogged"),
-      };
-      const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-
-      if (index !== -1) {
-        user.favorites.splice(index, 1);
-        const updateUser = JSON.stringify(user);
-        localStorage.setItem("user", updateUser);
-        console.log("Removed Item:", newItem);
-        setStarActive(false);
-
-        console.log(index);
-      } else if (index == -1) {
-        axios
-          .post("http://localhost:3000/Singlegame", {
-            uid: uid.uid,
-            newItem: newItem.newItem,
-          })
-          .then((response) => {})
-          .catch((error) => {
-            console.error(error);
-          });
-
-        user.favorites.push({ appid: itemData.steam_appid });
-        const updateUser = JSON.stringify(user);
-        localStorage.setItem("user", updateUser);
-        console.log("Added Item:", newItem);
-        setStarActive(true);
-
-        console.log(index);
-      } else {
-        console.log(index);
-      }
-    } else {
-      console.log("User or favorites array not found in localStorage.");
-    }
-    console.log("CheckFunction run");
-  }
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
+
   function favoriteClick() {
     //StarAnim
     setAnimate(true);
     setTimeout(() => setAnimate(false), 200);
-    checkAndHandleFavorites();
-  }
-  // Example usage:
 
+    
+    const newItem = {
+      newItem: itemData.steam_appid,
+    };
+
+    console.log("check");
+
+    //post Request
+    axios
+      .post("http://localhost:3000/singlegame", {
+        uid: uid.uid,
+        newItem: newItem.newItem,
+      })
+      .then((response) => {
+        setStarActive(!starActive);
+        
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    console.log("CheckFunction run");
+  }
+
+  // Example usage:
   const buttonStyle = {
     width: "30px",
     background: "none",
@@ -215,11 +212,10 @@ function Singlegame({ type }) {
   };
 
   const gameUrl = "https://store.steampowered.com/app/" + itemData?.steam_appid;
-  console.log(itemData.screenshots);
   return (
     <>
       {/* <ToggleVisibility>
-        <StuckMenu /> 
+        <StuckMenu />
       </ToggleVisibility> */}
       <div className="main">
         <div
@@ -263,18 +259,7 @@ function Singlegame({ type }) {
             </div>
             <div className="rightGameDiv">
               <div className="gameImage">
-                <Slide {...properties} id="slideContainer">
-                  <div className="each-slide-effect">
-                    <div
-                      style={{
-                        backgroundImage: `url(${itemData.header_image})`,
-                        backgroundSize: "contain",
-                        backgroundPosition: "center center",
-                        backgroundRepeat: "no-repeat",
-                      }}
-                    ></div>
-                  </div>
-                  {/* {itemData.movies.length > 0 ? (
+                {/* {itemData.movies.length > 0 ? (
                   itemData.movies.map(({ id, mp4 }) => (
                     <div key={id} className="item">
                       <div className="each-slide-effect">
@@ -290,8 +275,19 @@ function Singlegame({ type }) {
                 ) : (
                   <div>No videos available</div> //          -------------------------------------Videos?-----------------------------------
                 )} */}
-                  {itemData.screenshots.length > 0 ? (
-                    itemData.screenshots
+                {itemData.screenshots?.length > 0 ? (
+                  <Slide {...properties} id="slideContainer">
+                    <div className="each-slide-effect">
+                      <div
+                        style={{
+                          backgroundImage: `url(${itemData.header_image})`,
+                          backgroundSize: "contain",
+                          backgroundPosition: "center center",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                      ></div>
+                    </div>
+                    {itemData.screenshots
                       .slice(0, 5)
                       .map(({ id, path_full }) => (
                         <div key={id} className="item">
@@ -303,11 +299,15 @@ function Singlegame({ type }) {
                             ></div>
                           </div>
                         </div>
-                      ))
-                  ) : (
-                    <div>No screenshots available</div>
-                  )}
-                </Slide>
+                      ))}
+                  </Slide>
+                ) : (
+                  <img
+                    src={itemData.header_image}
+                    alt="Image of Game"
+                    className="gameImage"
+                  />
+                )}
               </div>
               <div className="gameDescription">
                 <p>{itemData.short_description}</p>

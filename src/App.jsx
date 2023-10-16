@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import { getRandomGames } from "./DataArray";
+import { Link } from "react-router-dom";
 import "./assets/components/Default";
 import "./assets/components/ToggleVisibility";
 import Slideshow from "./assets/components/slideshow";
 import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
 import ImagePlaceholder from "./assets/img/imgPlaceholder.jpg";
-import { getRandomGames } from "./DataArray";
 
 function App() {
   const images = [ImagePlaceholder, ImagePlaceholder, ImagePlaceholder];
@@ -16,6 +17,7 @@ function App() {
   const lastRefreshedTime = parseInt(localStorage.getItem("LastRefreshed"), 10);
   const timer = 3 * 60 * 60 * 1000; // 3 hours in miliseconds
   const amountOfGames = 20; // How many games should we fetch / store
+  const slideshowAmount = 3; //How many games should we show inside of the slideshow
 
   const getCachedData = () => {
     if (currentTime - lastRefreshedTime < timer) {
@@ -84,6 +86,7 @@ function App() {
               header_image,
               developers,
               background,
+              type,
             } = item;
 
             return {
@@ -98,6 +101,7 @@ function App() {
               header_image,
               developers,
               background,
+              type,
             };
           } else {
             return null;
@@ -114,23 +118,64 @@ function App() {
   if (extraData.length === 0) return;
 
   let imagesArr = [];
-  for (let i = 0; i < 3; i++) {
-    imagesArr.push(extraData[i]?.header_image);
+  for (
+    let i = 0;
+    i <
+    (extraData.length < slideshowAmount ? extraData.length : slideshowAmount);
+    i++
+  ) {
+    imagesArr.push(extraData[i]);
   }
 
   return (
     <>
-      {/* Other components */}
-      <StuckMenu /> {/* Use the Slideshow component */}
-      {/* Other components */}
+      <div className="appMenu">
+        <StuckMenu />
+      </div>
+
       <div className="appContainer">
         <div className="slideWrapper">
           <Slideshow images={imagesArr} />
         </div>
         <div className="favoriteGrid">
-          <div className="favoriteCard" style={{}}></div>
-          <div className="favoriteCard" style={{}}></div>
-          <div className="favoriteCard" style={{}}></div>
+          <Link
+            to={"/game/id/" + extraData[slideshowAmount + 1].steam_appid}
+            key={extraData[slideshowAmount + 1].steam_appid}
+            onClick={() =>
+              localStorage.setItem(
+                "Single game",
+                JSON.stringify(extraData[slideshowAmount + 1])
+              )
+            }
+          >
+            <div
+              className="favoriteCard"
+              style={{
+                backgroundImage: `url(${
+                  extraData[slideshowAmount + 1].header_image
+                })`,
+              }}
+            ></div>
+          </Link>
+          <Link
+            to={"/game/id/" + extraData[slideshowAmount + 2].steam_appid}
+            key={extraData[slideshowAmount + 2].steam_appid}
+            onClick={() =>
+              localStorage.setItem(
+                "Single game",
+                JSON.stringify(extraData[slideshowAmount + 2])
+              )
+            }
+          >
+            <div
+              className="favoriteCard"
+              style={{
+                backgroundImage: `url(${
+                  extraData[slideshowAmount + 2].header_image
+                })`,
+              }}
+            ></div>
+          </Link>
         </div>
       </div>
     </>

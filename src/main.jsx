@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import {
   Link,
@@ -22,6 +22,9 @@ import { DataArray, getRandomGames } from "./DataArray.jsx";
 import ToggleVisibility from "./assets/components/ToggleVisibility.jsx";
 import StuckMenu from "./assets/components/stuckMenu.jsx"; // Import your Slideshow component
 import About from "./About.jsx";
+import RandomGame from "./assets/components/RandomGame.jsx";
+import "./assets/css/random.css";
+import "./assets/css/filter.css";
 
 // import theme_music from "./assets/theme.mp3";
 // import DarkMode from "./assets/components/DarkMode.jsx"
@@ -56,30 +59,266 @@ const Test = () => {
 };
 const SearchBar = () => {
   let { value } = useParams();
-  //Filter array with search value
-  const data = DataArray();
-  if (data.length === 0) return <h1>Loading</h1>;
+  const [info, setInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  //Fetch the required information
+  useEffect(() => {
+    if (info.length > 0) return;
+    console.log("Fetching information from API");
+    DataArray().then((result) => {
+      const filteredData = result.filter((item) => {
+        return item.name.toLowerCase().includes(value.toLowerCase());
+      });
 
-  const filteredData = data.filter((item) => {
-    return item.name.toLowerCase().includes(value.toLowerCase());
-  });
+      if (filteredData.length === 0) {
+        setIsLoading(false);
+        return;
+      }
+      console.log("Filtered");
+      console.log(filteredData);
+      // Create a temporary map to associate extra data with games
+      const temp = {};
 
-  console.log("Search value is " + value);
-  console.log(filteredData);
-  if (filteredData.length === 0) {
+      // Use Promise.all to wait for all fetch calls to complete
+      Promise.all(
+        filteredData.slice(0, 50).map((item, index) => {
+          // Construct the URL for fetching game details
+          let url =
+            "http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=" +
+            item.appid;
+          // Perform the fetch request
+          return fetch(url)
+            .then((response) => response.json())
+            .then((json) => {
+              if (json && json[item.appid].success) {
+                temp[item.appid] = json[item.appid].data;
+              }
+            })
+            .catch((error) => {
+              // Handle errors that occur during the fetch
+              console.error(error);
+            });
+        })
+      ).then(() => {
+        // Create an array of images based on the displayedGames order
+        // Sort the games based on the "type" property
+        console.log("Temp arr");
+        console.log(temp);
+        const sortedInfo = filteredData
+          .map((item) => temp[item.appid] || null)
+          .filter(Boolean)
+          .sort((a, b) => {
+            const typeOrder = {
+              game: 0,
+              dlc: 1,
+              demo: 2,
+              music: 3,
+              episode: 4,
+            };
+            return typeOrder[a.type] - typeOrder[b.type];
+          });
+
+        setInfo(sortedInfo);
+        setIsLoading(false);
+      });
+    });
+  }, [isLoading]);
+  if (isLoading) return <h1>Loading...</h1>;
+  console.log("Info");
+  console.log(info);
+  if (info.length === 0) {
     return <h1>There does not appear to be any result</h1>;
   } else {
     return (
-      <ListGames dataToDisplay={filteredData} maxGames={20} gamesPerPage={10} />
+      <>
+        <h1>There are {info.length} results</h1>
+        <ListGames dataToDisplay={info} gamesPerPage={10} />
+      </>
     );
   }
 };
 
 const SetGames = () => {
-  const data = JSON.parse(localStorage.getItem("DATA"));
-  console.log(Array.isArray(data));
-  if (data.length === 0) return <h1>Loading</h1>;
-  return <ListGames dataToDisplay={data} gamesPerPage={5} />;
+  const cached = localStorage.getItem("DATA");
+  let data;
+  if (cached) {
+    data = JSON.parse(cached);
+  } else {
+    window.location.href = "/";
+  }
+
+  const [sortBy, setSortBy] = useState("default");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(50); // Set your initial max price value
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedTypes, setSelectedTypes] = useState([
+    "game",
+    "dlc",
+    "music",
+    "demo",
+  ]);
+  useEffect(() => {
+    const cachedFilter = localStorage.getItem("Filter");
+    if (cachedFilter) {
+      const filter = JSON.parse(cachedFilter);
+      setSortBy(filter[0].sortBy);
+      setSelectedTypes(filter[0].selectedTypes);
+      setMinPrice(filter[0].minPrice);
+      setMaxPrice(filter[0].maxPrice);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  }, [isLoading]);
+  if (isLoading) return;
+  const sortGames = (data, sortBy) => {
+    const [field, order] = sortBy.split("-");
+    if (field === "default") return data;
+
+    if (field === "name") {
+      return [...data].sort((a, b) => {
+        if (order === "asc") {
+          return a["name"].localeCompare(b["name"]);
+        } else if (order === "desc") {
+          return b["name"].localeCompare(a["name"]);
+        }
+      });
+    } else if (field === "price") {
+      return [...data].sort((a, b) => {
+        const priceA = a["price_overview"] ? a["price_overview"]["final"] : 0;
+        const priceB = b["price_overview"] ? b["price_overview"]["final"] : 0;
+        if (order === "asc") {
+          return priceA - priceB;
+        } else if (order === "desc") {
+          return priceB - priceA;
+        }
+      });
+    }
+
+    return [];
+  };
+  const filteredData = data.filter((item) => selectedTypes.includes(item.type));
+  // Filter data based on custom price range
+  const customFilteredData = filteredData.filter((item) => {
+    //Only return items that do not have the price_overview property
+    if (sortBy === "price-free") {
+      return !item.price_overview;
+    }
+    //If we are not using the custom prices then return all games
+    if (sortBy !== "price-custom") return true;
+    if (item.price_overview) {
+      const price = item.price_overview.final;
+      return price >= minPrice * 100 && price <= maxPrice * 100;
+    }
+    // Handle the case where price_overview doesn't exist or is not an object
+    if (minPrice === 0 || minPrice === NaN) {
+      return true; // Include the item if minPrice is 0
+    } else {
+      return false; // Exclude the item if price information is missing
+    }
+  });
+  const sortedData = sortGames(customFilteredData, sortBy);
+
+  const filterArr = [
+    {
+      sortBy: sortBy,
+      selectedTypes: selectedTypes,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+    },
+  ];
+  localStorage.setItem("Filter", JSON.stringify(filterArr));
+
+  return (
+    <>
+      <div className="parent">
+        <div className="filter-parent">
+          <div>
+            <label>Name:</label><br></br>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="default">Default</option>
+              <option value="name-asc">Name: A-Z</option>
+              <option value="name-desc">Name: Z-A</option>
+
+              {/* Add more sorting options here */}
+            </select>
+
+            <div>
+              <label>Price:</label><br></br>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="default">Default</option>
+                <option value="price-free">Free to play</option>
+                <option value="price-custom">Custom</option>
+                <option value="price-asc">Price: Least Expensive</option>
+                <option value="price-desc">Price: Most Expensive</option>
+              </select>
+              {sortBy === "price-custom" && (
+                <div>
+                  <label>Min Price €:</label>
+                  <input
+                    type="number"
+                    value={minPrice}
+                    onChange={(e) => {
+                      setMinPrice(parseFloat(e.target.value));
+                    }}
+                  />
+                  <label>Max Price €:</label>
+                  <input
+                    type="number"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(parseFloat(e.target.value))}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="typeFilter">
+            <label>Filter by Type:</label>
+            <br></br>
+            {["game", "dlc", "music", "demo"].map((type) => (
+              <span key={type}>
+                <label>
+                  <input
+                    type="checkbox"
+                    value={type}
+                    checked={selectedTypes.includes(type)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedTypes([...selectedTypes, type]);
+                      } else {
+                        setSelectedTypes(
+                          selectedTypes.filter((t) => t !== type)
+                        );
+                      }
+                    }}
+                  />
+                  {type.toUpperCase()}
+                </label>
+                <br></br>
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="games-parent">
+          {sortedData.length === 0 ? (
+            <h1>There are no games currently with this filter</h1>
+          ) : (
+            <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
+          )}
+        </div>
+        <div className="empty-parent"></div>
+      </div>
+
+      <div className="randomDiv">
+        <h2>Still can't find a game you want?</h2>
+        <h2>Find a random game here!</h2>
+        <RandomGame />
+      </div>
+    </>
+  );
 };
 const router = createBrowserRouter([
   {
@@ -94,7 +333,7 @@ const router = createBrowserRouter([
         element: <Singlegame type={"id"} />,
       },
       {
-        path: "/game/idx/:value",
+        path: "/game/idx/",
         element: <Singlegame type={"index"} />,
       },
       {

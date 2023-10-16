@@ -4,7 +4,6 @@ body{
  background-color: var(--body_background);
 } */
 
-
 .profileDiv {
   background: var(--profile_bkg);
   border-radius: 10px;
@@ -13,7 +12,7 @@ body{
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding-bottom: 3vw;
-  width: 80%;
+  width: 90%;
 }
 .profileName {
   border-radius: 5px;
@@ -31,14 +30,18 @@ body{
   font-size: 4vw;
 }
 .profileContainer {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 60%;
+  grid-template-rows: 1fr;
+  gap: 0px 5%;
+  grid-template-areas: ". .";
   margin: auto;
   width: 90%;
   color: var(--profile_user_text);
 }
 .settingsDiv {
   margin-top: 2vw;
-  width: 110%;
 }
 .settingsDiv > h3 {
   color: var(--setting_txt);
@@ -87,7 +90,7 @@ body{
   font-size: 1.5vw;
 }
 .profileDiv input[type="submit"] {
-  width: 50%;
+  width: 70%;
   border-radius: 5px;
   padding: 12px 10px;
   margin: 8px 0;
@@ -116,14 +119,11 @@ body{
   background-color: rgb(185, 80, 19);
 }
 
-.favoritesDiv {
-  position: relative;
-  margin-left: 5%;
-  margin-top: 1vw !important;
-  width: 38vw !important;
-  background: transparent !important;
+.proFavoritesDiv {
+  margin-top: 2vw;
+  background: transparent;
 }
-.favoritesDiv > h3 {
+.proFavoritesDiv > h3 {
   color: var(--settings_faves);
   font-weight: 400;
   font-size: 2.25vw;
@@ -131,17 +131,16 @@ body{
   text-align: left;
   margin-left: 1vw;
 }
-.contFlex {
-  width: 100% !important;
-}
 .favoritesGrid {
   padding-top: 0.5vw;
   padding-bottom: 0.1vw;
-  position: relative;
-  width: 40vw;
+  position: relative !important;
   background-color: var(--setting_div);
   border-radius: 5px;
 }
+/* .favoritesGrid h1 {
+  color: var(--profile_user_text) !important;
+} */
 .favoritesCard {
   display: flex;
   padding: 1.5vw;
@@ -171,8 +170,39 @@ body{
   overflow: hidden;
   text-overflow: ellipsis;
   height: 3vw;
-  width: 17.5vw;
   margin: 0;
   margin-left: 1vw;
   font-size: 1.1vw;
+}
+
+@media screen and (max-width: 1350px) {
+  .profileContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5% 5%;
+    grid-template-areas:
+      "."
+      ".";
+  }
+  .profileContainer h3 {
+    font-size: 3vw;
+  }
+  .profileContainer h5 {
+    font-size: 2vw;
+  }
+  .settingsDiv {
+    width: 48%;
+  }
+  .settingsDiv label {
+    font-size: 2vw;
+  }
+  .profileDiv input[type="password"] {
+    width: 97%;
+  }
+  .profileDiv input[type="submit"] {
+    width: 97%;
+  }
+  .favoritesGrid {
+    width: 48%;
+  }
 }

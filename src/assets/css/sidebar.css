@@ -1,7 +1,7 @@
 .default-container {
   width: 19.531vw;
   background: var(--sidebar);
-  padding: 20px;
+  padding: 30px;
   float: left;
   position: fixed;
   height: 100%;
@@ -12,15 +12,14 @@
 .default-container ul {
   list-style: none;
   padding: 0;
-
 }
 
 .default-container .link {
   margin-bottom: 30px;
 }
 
-.default-container a {
-  font-size: 1.5vw;
+#bitch a, .button {
+  font-size: 1.5em; /* Adjust the font size to a common value in 'em' units */
   text-decoration: none;
   color: var(--sidebar_text);
   display: block;
@@ -32,14 +31,21 @@
   border-radius: 10px;
 }
 
-.default-container a:hover {
+#bitch a:hover, .default-container > ul > .button:hover {
   background: var(--sidebar_a_hover);
   color: var(--sidebar_text_hover);
   transform: scale(1.05);
 }
 
+#bitch > ul > .button {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+
 .coolbtn {
-  z-index: 99999;
+  z-index: 9;
   display: flex;
   margin-top: 2%;
   margin-left: 1%;
@@ -49,12 +55,13 @@
 }
 
 .coolbtn.move-right {
+  z-index: 9999;
   transform: translateX(21vw);
   transition: transform 0.3s ease;
 }
 @media screen and (max-width: 750px) {
   .default-container {
-    width: 95vw;
+    width: 100vw;
   }
   .default-container ul {
     padding-top: 5vw;
@@ -62,7 +69,12 @@
   .default-container a {
     font-size: 5vw;
   }
+  .randomBtn {
+    font-size: 5vw;
+    padding-bottom: 2vw;
+  }
   .coolbtn {
+    z-index: 999;
     float: none;
   }
   .coolbtn.move-right {
