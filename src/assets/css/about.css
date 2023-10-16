@@ -1,12 +1,13 @@
 .main{
   margin-top: 10vh;
-margin-bottom: 10vh;
+margin-bottom: 40vh;
 }
 
 .aboutGrid{
     display: grid; 
     grid-template-columns: 0.8fr 1fr; 
     gap: 0px 7%; 
+    margin-bottom: 3vw;
 }
 
 .InfoCont{
@@ -19,6 +20,7 @@ margin-bottom: 10vh;
     height: 150px;
     border-radius: 20px;
     margin:0px 20px 40px 20px;
+    margin-bottom: 30px;
 
 }
 .names{
