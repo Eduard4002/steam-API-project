@@ -86,7 +86,6 @@ function Header() {
       window.removeEventListener("click", handleWindowClick);
     };
   }, [logInOpen, isLoading, storedLogin]);
-  console.log(isLoading);
   if (isLoading) return;
   return (
     <>
