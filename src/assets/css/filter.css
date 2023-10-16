@@ -1,0 +1,55 @@
+.parent {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.6fr 1.8fr 0.6fr;
+  grid-template-rows: 1fr;
+  gap: 5% 2%;
+  grid-template-areas: ". . .";
+}
+.games-parent {
+  width: 100%;
+  margin: auto;
+}
+.filter-parent {
+  margin: auto;
+  width: 90%;
+  padding: 2vw;
+  margin-top: 10vw;
+
+  background: rgba(74, 27, 69, 0.267);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(143, 30, 120, 0.171);
+  backdrop-filter: blur(5.2px);
+  -webkit-backdrop-filter: blur(5.2px);
+  border: 1px solid rgba(116, 5, 116, 0.692);
+}
+.filter-parent * {
+  text-align: left;
+  color: var(--more_text);
+  font-size: 1.2vw;
+}
+.filter-parent select {
+  margin-left: 0.2vw;
+  width: 70%;
+}
+.typeFilter {
+  margin-top: 2vw;
+}
+.typeFilter input {
+  font-size: 2vw;
+}
+.typeFilter > label:nth-child(1) {
+  font-size: 1.5vw;
+}
+
+@media screen and (max-width: 1350px) {
+  .filter-parent {
+    margin-top: 15vw;
+  }
+  .filter-parent select {
+    width: 90%;
+  }
+  .typeFilter input {
+    font-size: 1vw;
+  }
+}
