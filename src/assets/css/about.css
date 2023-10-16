@@ -1,60 +1,74 @@
-.main{
+.main {
   margin-top: 10vh;
-margin-bottom: 10vh;
+  margin-bottom: 10vh;
 }
 
-.aboutGrid{
-    display: grid; 
-    grid-template-columns: 0.8fr 1fr; 
-    gap: 0px 7%; 
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  gap: 0px 7%;
 }
 
-.InfoCont{
-    background: rgba(100, 65, 187, 0.279);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8.7px);
-    -webkit-backdrop-filter: blur(8.7px);
-    border: 1px solid rgba(132, 79, 187, 0.63);
-    height: 150px;
-    border-radius: 20px;
-    margin:0px 20px 40px 20px;
-
+.InfoCont {
+  background: rgba(100, 65, 187, 0.279);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.7px);
+  -webkit-backdrop-filter: blur(8.7px);
+  border: 1px solid rgba(132, 79, 187, 0.63);
+  height: 24vw;
+  width: 80vw;
+  padding: 2vw;
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 2vw;
 }
-.names{
-    float: left;
+.InfoCont > img {
+  float: left;
+  width: 20vw;
+  height: 20vw;
+  margin-left: 2vw;
+  border-radius: 15px;
 }
-
-
-.infoTextCont{
-    margin-left: 20vw;
-    
-    
+.names {
+  float: left;
 }
-.infoText{
-    
+.infoTextCont {
+  width: 40vw;
+  display: table-row;
+  margin-left: 2vw;
 }
-
-.Textinfo{
-    font-size: xx-large;
+.infoTextCont > h3 {
+  text-align: left;
+  width: 100%;
+  font-size: 3.5vw;
+  margin-bottom: 0vw;
 }
-
-
-.AboutUs{
-margin: 50px;
-   font-size:x-large;
+.infoTextCont > p {
+  float: left;
+  font-size: 1.2vw;
 }
-
-
-.thisA{
-    color: white;
-}
-
-.thisA:hover{
-    color: rgb(193, 136, 255);
+.infoText {
 }
 
-/*-------------------------------------------- CSS For buttons ------------------------------------------------*/ 
+.Textinfo {
+  font-size: 10vw !important;
+}
+
+.AboutUs {
+  margin: 50px;
+  font-size: x-large;
+}
+
+.thisA {
+  color: white;
+}
+
+.thisA:hover {
+  color: rgb(193, 136, 255);
+}
+
+/*-------------------------------------------- CSS For buttons ------------------------------------------------*/
 .button-82-pushable {
   position: relative;
   border: none;
@@ -80,10 +94,7 @@ margin: 50px;
   background: hsl(0deg 0% 0% / 0.25);
   will-change: transform;
   transform: translateY(2px);
-  transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
 .button-82-edge {
@@ -112,10 +123,7 @@ margin: 50px;
   background: hsl(253, 41%, 40%);
   will-change: transform;
   transform: translateY(-4px);
-  transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
 @media (min-width: 768px) {
@@ -132,10 +140,7 @@ margin: 50px;
 
 .button-82-pushable:hover .button-82-front {
   transform: translateY(-6px);
-  transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 .button-82-pushable:active .button-82-front {
@@ -145,10 +150,7 @@ margin: 50px;
 
 .button-82-pushable:hover .button-82-shadow {
   transform: translateY(4px);
-  transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 .button-82-pushable:active .button-82-shadow {
@@ -160,34 +162,28 @@ margin: 50px;
   outline: none;
 }
 
-.infoTextCont{
-float: left;
-
+.infoTextCont {
+  float: left;
 }
 /* -------------------------------------------------------------------------------------* */
 
-.InfoGeneralCont{
-/* From https://css.glass */
-background: rgba(129, 57, 143, 0.279);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(8.7px);
--webkit-backdrop-filter: blur(8.7px);
-border: 1px solid rgba(132, 79, 187, 0.63);
+.InfoGeneralCont {
+  /* From https://css.glass */
+  background: rgba(129, 57, 143, 0.279);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.7px);
+  -webkit-backdrop-filter: blur(8.7px);
+  border: 1px solid rgba(132, 79, 187, 0.63);
 
-    margin:0px 50px 0px 50px;
-    float: right;
-    border-radius: 20px;
+  margin: 0px 50px 0px 50px;
+  float: right;
+  border-radius: 20px;
 }
 
-
-@media screen and (max-width: 1800px){
-    .aboutGrid {
-      
-        display: grid; 
-        grid-template-columns: 1fr;
-
-         
-        
-    }
+@media screen and (max-width: 1800px) {
+  .aboutGrid {
+    display: grid;
+    grid-template-columns: 1fr;
   }
+}
