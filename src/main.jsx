@@ -60,6 +60,7 @@ const Test = () => {
 const SearchBar = () => {
   let { value } = useParams();
   const [info, setInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   //Fetch the required information
   useEffect(() => {
     if (info.length > 0) return;
@@ -69,12 +70,12 @@ const SearchBar = () => {
         return item.name.toLowerCase().includes(value.toLowerCase());
       });
 
-      console.log(filteredData);
-
       if (filteredData.length === 0) {
-        return; //<h1>There does not appear to be any result</h1>;
+        setIsLoading(false);
+        return;
       }
-
+      console.log("Filtered");
+      console.log(filteredData);
       // Create a temporary map to associate extra data with games
       const temp = {};
 
@@ -89,9 +90,7 @@ const SearchBar = () => {
           return fetch(url)
             .then((response) => response.json())
             .then((json) => {
-              // Check if the JSON response contains an image URL
               if (json && json[item.appid].success) {
-                // Associate the fetched image URL with its corresponding game
                 temp[item.appid] = json[item.appid].data;
               }
             })
@@ -103,19 +102,29 @@ const SearchBar = () => {
       ).then(() => {
         // Create an array of images based on the displayedGames order
         // Sort the games based on the "type" property
+        console.log("Temp arr");
+        console.log(temp);
         const sortedInfo = filteredData
           .map((item) => temp[item.appid] || null)
           .filter(Boolean)
           .sort((a, b) => {
-            const typeOrder = { game: 0, dlc: 1, music: 2 };
+            const typeOrder = {
+              game: 0,
+              dlc: 1,
+              demo: 2,
+              music: 3,
+              episode: 4,
+            };
             return typeOrder[a.type] - typeOrder[b.type];
           });
 
         setInfo(sortedInfo);
-        console.log(sortedInfo);
+        setIsLoading(false);
       });
     });
-  }, []);
+  }, [isLoading]);
+  if (isLoading) return <h1>Loading...</h1>;
+  console.log("Info");
   console.log(info);
   if (info.length === 0) {
     return <h1>There does not appear to be any result</h1>;

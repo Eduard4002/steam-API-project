@@ -120,7 +120,7 @@ app.post("/singlegame", function (req, res) {
       userId,
       gameId
     );
-    res.json({message: "Game added to favorites"})
+    res.json({ message: "Game added to favorites" });
   }
 });
 
@@ -128,13 +128,13 @@ app.post("/singlegame/is-fav", function (req, res) {
   const userId = req.body.uid; // Assuming you have the user's ID
   const gameId = req.body.newItem;
 
-  console.log({userId, gameId})
+  console.log({ userId, gameId });
   // Check if the game ID exists for the specific user in the favorites
   const existingFavorite = db
     .prepare("SELECT * FROM favorites WHERE uid = ? AND gameid = ?")
     .get(userId, gameId);
 
-  res.send(!!existingFavorite)
+  res.send(!!existingFavorite);
 });
 
 app.post("/login", function (req, res) {
