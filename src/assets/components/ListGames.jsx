@@ -117,10 +117,12 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                     </Link>
 
                     <div className="buttonsDiv">
-                      <div
-                        className={`star active`}
-                        key={game.steam_appid + 2}
-                      ></div>
+                      <button className="starButton">
+                        <div
+                          className={`star active`}
+                          key={game.steam_appid + 2}
+                        ></div>
+                      </button>
                     </div>
                   </div>
                 </>
