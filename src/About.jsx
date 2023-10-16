@@ -1,6 +1,8 @@
 import "../src/assets/css/about.css";
 import margo from "./assets/img/margo.jpg";
 import jonte from "./assets/img/jonte.jpg";
+import eduard from "./assets/img/eduard.jpg";
+import gustaf from "./assets/img/gustaf.jpg";
 
 function About() {
   return (
@@ -61,7 +63,7 @@ function About() {
             </div>
 
             <div className="InfoCont">
-              <img src="" alt="" />
+              <img src={eduard} alt="Picture of Eduard" />
 
               <div className="infoTextCont">
                 <h3 className="names">Eduard</h3>
@@ -86,7 +88,7 @@ function About() {
             </div>
 
             <div className="InfoCont">
-              <img src="" alt="" />
+              <img src={gustaf} alt="Picture of Gustaf" />
 
               <div className="infoTextCont">
                 <h3 className="names">Gustaf</h3>
