@@ -119,7 +119,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
                     <div className="buttonsDiv">
                       <button className="starButton">
-                        <Star>
+                        <Star gameId={game.steam_appid}>
 
                         </Star>
                       </button>

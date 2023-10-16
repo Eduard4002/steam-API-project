@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import "./assets/css/signUpPage.css";
 import axios from "axios";
 
+
 function SignUp() {
   const navigate = useNavigate();
 
@@ -33,7 +34,8 @@ function SignUp() {
 
     const newUser = {
       ...userData,
-      id: generateUserId(), // Generate a new id here
+      id: generateUserId(), 
+      
     };
 
     axios
