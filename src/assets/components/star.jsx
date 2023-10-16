@@ -12,7 +12,7 @@ function Star({ type, gameId }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   let data;
 
@@ -66,12 +66,10 @@ function Star({ type, gameId }) {
   useEffect(() => {
     if (!itemData) return;
 
-    getExistingFavoriteBool(uid.uid, gameId).then(
-      (isFavorite) => {
-        console.log(isFavorite);
-        setStarActive(isFavorite);
-      }
-    );
+    getExistingFavoriteBool(uid.uid, gameId).then((isFavorite) => {
+      console.log(isFavorite);
+      setStarActive(isFavorite);
+    });
   }, [itemData]);
   /*
   //const gameId = data[randomIndex].appid;
@@ -182,7 +180,8 @@ function Star({ type, gameId }) {
         });
       console.log("CheckFunction run");
     } else {
-        navigate("/")
+      //window.location.href = "/signup";
+      navigate("/signup");
     }
   }
 
