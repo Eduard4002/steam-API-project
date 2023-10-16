@@ -12,7 +12,7 @@ function Star({ type, gameId }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   let data;
 
@@ -64,13 +64,17 @@ function Star({ type, gameId }) {
   //   }, []);
 
   useEffect(() => {
-    if (!itemData) return;
+    if (!gameId) return;
 
-    getExistingFavoriteBool(uid.uid, gameId).then((isFavorite) => {
-      console.log(isFavorite);
-      setStarActive(isFavorite);
-    });
-  }, [itemData]);
+    getExistingFavoriteBool(uid.uid, gameId).then(
+      (isFavorite) => {
+        console.log(isFavorite);
+        setStarActive(isFavorite);
+      }
+    );
+  }, [gameId]);
+    
+    
   /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
@@ -154,45 +158,35 @@ function Star({ type, gameId }) {
 
   //   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
 
-  function favoriteClick() {
-    if (localStorage.getItem("CurrLogged")) {
-      //StarAnim
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 200);
+    function favoriteClick() {
+        if (localStorage.getItem("CurrLogged")) {
+            //StarAnim
+            setAnimate(true);
+            setTimeout(() => setAnimate(false), 200);
 
-      const newItem = {
-        newItem: gameId,
-      };
+            const newItem = {
+                newItem: gameId,
+            };
 
-      console.log("check");
+            console.log("check");
 
-      //post Request
-      axios
-        .post("http://localhost:3000/singlegame", {
-          uid: uid.uid,
-          newItem: gameId,
-        })
-        .then((response) => {
-          setStarActive(!starActive);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      console.log("CheckFunction run");
-    } else {
-      navigate("/signup");
+            //post Request
+            axios
+                .post("http://localhost:3000/singlegame", {
+                    uid: uid.uid,
+                    newItem: gameId,
+                })
+                .then((response) => {
+                    setStarActive(!starActive);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+            console.log("CheckFunction run");
+        } else {
+            navigate("/signup");
+        }
     }
-  }
-
-  // Example usage:
-  const buttonStyle = {
-    width: "30px",
-    background: "none",
-    border: "0px",
-    padding: "0",
-  };
-
-  const gameUrl = "https://store.steampowered.com/app/" + itemData?.steam_appid;
   return (
     <>
       <div
