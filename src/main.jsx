@@ -271,8 +271,8 @@ const SetGames = () => {
             <br></br>
             {["game", "dlc", "music", "demo"].map((type) => (
               <span key={type}>
-                <label>
-                  <input
+                <label> 
+                  <input className="ui-checkbox"
                     type="checkbox"
                     value={type}
                     checked={selectedTypes.includes(type)}
