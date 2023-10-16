@@ -1,33 +1,5 @@
 .main {
   margin-top: 10vh;
-<<<<<<< HEAD
-margin-bottom: 40vh;
-}
-
-.aboutGrid{
-    display: grid; 
-    grid-template-columns: 0.8fr 1fr; 
-    gap: 0px 7%; 
-    margin-bottom: 3vw;
-.aboutGrid {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: 0px 7%;
-}
-
-.InfoCont{
-    background: rgba(100, 65, 187, 0.279);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8.7px);
-    -webkit-backdrop-filter: blur(8.7px);
-    border: 1px solid rgba(132, 79, 187, 0.63);
-    height: 150px;
-    border-radius: 20px;
-    margin:0px 20px 40px 20px;
-    margin-bottom: 30px;
-
-
   margin-bottom: 10vh;
 }
 
@@ -50,7 +22,6 @@ margin-bottom: 40vh;
   border-radius: 20px;
   margin: auto;
   margin-bottom: 2vw;
->>>>>>> e2aa12be299445f0193ad4b3e572eed3feba712d
 }
 .InfoCont > img {
   float: left;
