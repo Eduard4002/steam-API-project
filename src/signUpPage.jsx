@@ -33,7 +33,8 @@ function SignUp() {
 
     const newUser = {
       ...userData,
-      id: generateUserId(), // Generate a new id here
+      id: generateUserId(), 
+      
     };
 
     axios
