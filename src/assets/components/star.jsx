@@ -64,7 +64,7 @@ function Star({ type, gameId }) {
   //   }, []);
 
   useEffect(() => {
-    if (!itemData) return;
+    if (!gameId) return;
 
     getExistingFavoriteBool(uid.uid, gameId).then(
       (isFavorite) => {
@@ -72,7 +72,9 @@ function Star({ type, gameId }) {
         setStarActive(isFavorite);
       }
     );
-  }, [itemData]);
+  }, [gameId]);
+    
+    
   /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
