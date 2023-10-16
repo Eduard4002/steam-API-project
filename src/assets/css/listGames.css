@@ -10,7 +10,7 @@
 }
 .contFlex {
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   
 }
@@ -175,6 +175,17 @@
   gap: 30px;
   right: 1vw;
   top: 1vw;
+}
+.starButton {
+  background-color: transparent;
+}
+.starButton:hover {
+  border: none !important;
+  outline: none;
+}
+.starButton:focus {
+  border: none !important;
+  outline: none;
 }
 /*
 .moreButton {
