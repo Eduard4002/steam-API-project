@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./assets/css/favorites.css";
+import Star from "./assets/components/star";
+import "./assets/css/listGames.css";
 
 function Favorites({ displayFavorites = true }) {
-
   const [favoriteGameIds, setFavoriteGameIds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const descriptionMaxLength = 130;
 
   useEffect(() => {
     // Fetch user's favorite game IDs from the server
@@ -55,30 +57,71 @@ function Favorites({ displayFavorites = true }) {
           <p>Loading...</p>
         ) : ( */}
 
-        {data.map((game) => (
-          <span key={game.steam_appid}>
+        {data.map((game, index) => (
+          <div className="gameDiv" key={game.appid + index}>
             <Link
               to={"/game/id/" + game.steam_appid}
               key={game.steam_appid}
               onClick={() =>
-                localStorage.setItem("Single game", JSON.stringify(game))
+                localStorage.setItem(
+                  "Single game",
+                  JSON.stringify(
+                    dataToDisplay[currentIndex * gamesPerPage + index]
+                  )
+                )
               }
             >
-              <div className="favoriteCard">
-                <img src={game.header_image} alt="Game header_image" />
-                <div className="favoriteText">
-                  <h3 key={game.name}>{game.name}</h3>
-                  <p key={game.short_description}>{game.short_description}</p>
+              {/*-------------------- Old Classname = container ------------*/}
+              <div className="gameGrid">
+                <div className="gameImageGridItem gameGridItem">
+                  {game && (
+                    <img
+                      src={
+                        game.header_image || "src/assets/img/placeholder.webp"
+                      }
+                      key={game.header_image}
+                      className="image"
+                    ></img>
+                  )}
                 </div>
-                {displayFavorites ? (
-                  // Your content for the Favorites component
-                  <div className="favoriteSettings">
-                    <span className="material-symbols-outlined">grade</span>
+                <div className="gameTextGridItem gameGridItem">
+                  <div className="gameTextDiv">
+                    <h2 key={game.name}>{game.name}</h2>
                   </div>
-                ) : null}
+
+                  <div className="description" key={game?.short_description}>
+                    {/*Does short description exists*/}
+                    {game?.short_description === "" && (
+                      <p>
+                        There does not appear to be a short description for this
+                        game
+                      </p>
+                    )}
+                    {/* Is short description too large to fit inside of the container? */}
+                    {game?.short_description.length < descriptionMaxLength ? (
+                      <p key={game.short_description}>
+                        {game.short_description}
+                      </p>
+                    ) : (
+                      /*Short description is too large to fit inside of the container*/
+                      <p key={game.short_description}>
+                        {game?.short_description.slice(
+                          0,
+                          descriptionMaxLength
+                        ) + "..."}
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
             </Link>
-          </span>
+
+            <div className="buttonsDiv">
+              <button className="starButton">
+                <Star gameId={game.steam_appid}></Star>
+              </button>
+            </div>
+          </div>
         ))}
       </div>
     </>
