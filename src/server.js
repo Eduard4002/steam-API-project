@@ -93,7 +93,7 @@ app.post("/signup", async function (req, res) {
   res.status(200).send("User created successfully");
 
   createUserStatement.run(
-    req.body.id,
+    md5(req.body.id),
     req.body.email,
     req.body.username,
     md5(req.body.password)
