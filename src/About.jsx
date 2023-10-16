@@ -7,7 +7,7 @@ import gustaf from "./assets/img/gustaf.jpg";
 function About() {
   return (
     <>
-      <h1>About Us</h1>
+      <h1 className="About">About Us</h1>
 
       <div className="main">
         <div className="aboutGrid">
