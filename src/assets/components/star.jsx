@@ -180,7 +180,6 @@ function Star({ type, gameId }) {
         });
       console.log("CheckFunction run");
     } else {
-      //window.location.href = "/signup";
       navigate("/signup");
     }
   }
