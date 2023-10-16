@@ -88,8 +88,6 @@ function Header() {
   }, [logInOpen, isLoading, storedLogin]);
   console.log(isLoading);
   if (isLoading) return;
-  console.log(storedLogin);
-  console.log(logInOpen);
   return (
     <>
       <nav className="navBar">
