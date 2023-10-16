@@ -8,7 +8,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
-    id: "", 
+    id: "",
     email: "",
     username: "",
     password: "",
@@ -41,13 +41,12 @@ function SignUp() {
       .post("http://localhost:3000/signup", newUser)
       .then((response) => {
         window.localStorage.setItem("CurrLogged", newUser.id);
-        navigate("/");
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error(error);
       });
   }
-
 
   return (
     <>

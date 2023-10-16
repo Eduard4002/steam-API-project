@@ -47,6 +47,7 @@ const Wrapper = () => (
     <Footer />
   </>
 );
+
 const Test = () => {
   let { gameId } = useParams();
 
@@ -157,6 +158,7 @@ const SetGames = () => {
     "music",
     "demo",
   ]);
+  const [openFilter, setOpenFilter] = useState(false);
   useEffect(() => {
     const cachedFilter = localStorage.getItem("Filter");
     if (cachedFilter) {
@@ -229,12 +231,23 @@ const SetGames = () => {
   ];
   localStorage.setItem("Filter", JSON.stringify(filterArr));
 
+  const changeFilterState = () => {
+    console.log("Clicked...");
+    setOpenFilter(!openFilter);
+  };
+
   return (
     <>
+      <div className={`filterButton`} onClick={changeFilterState}>
+        <span className="filterIcon material-symbols-outlined">
+          {openFilter ? "close" : "tune"}
+        </span>
+      </div>
       <div className="parent">
-        <div className="filter-parent">
+        <div className={`filter-parent ${openFilter ? "open" : ""}`}>
           <div>
-            <label>Name:</label><br></br>
+            <label>Name:</label>
+            <br></br>
             <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
               <option value="default">Default</option>
               <option value="name-asc">Name: A-Z</option>
@@ -244,7 +257,8 @@ const SetGames = () => {
             </select>
 
             <div>
-              <label>Price:</label><br></br>
+              <label>Price:</label>
+              <br></br>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -256,9 +270,10 @@ const SetGames = () => {
                 <option value="price-desc">Price: Most Expensive</option>
               </select>
               {sortBy === "price-custom" && (
-                <div>
+                <div className="price-div">
                   <label>Min Price €:</label>
                   <input
+                    className="price-lable"
                     type="number"
                     value={minPrice}
                     onChange={(e) => {
@@ -267,6 +282,7 @@ const SetGames = () => {
                   />
                   <label>Max Price €:</label>
                   <input
+                    className="price-lable"
                     type="number"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(parseFloat(e.target.value))}
@@ -282,6 +298,7 @@ const SetGames = () => {
               <span key={type}>
                 <label>
                   <input
+                    className="ui-checkbox"
                     type="checkbox"
                     value={type}
                     checked={selectedTypes.includes(type)}

@@ -10,7 +10,35 @@
   width: 100%;
   margin: auto;
 }
+.filterButton {
+  cursor: pointer;
+  z-index: 9999;
+  position: absolute;
+  position: fixed;
+  display: none !important;
+  left: 1vw;
+  bottom: 1vw;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 99%;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--popup_bkg);
+  border: #8d3bb9 1px solid;
+}
+.filterButton:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(113, 12, 156, 0.892) 0px 2px 4px,
+    rgba(233, 77, 217, 0.642) 0px 6px 15px -3px,
+    rgba(255, 75, 237, 0.773) 0px -3px 0px inset;
+}
+.filterIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .filter-parent {
+  display: block;
   margin: auto;
   width: 90%;
   padding: 2vw;
@@ -27,29 +55,165 @@
   text-align: left;
   color: var(--more_text);
   font-size: 1.2vw;
+
+  padding: 10px;
+  border-radius: 15px;
 }
 .filter-parent select {
   margin-left: 0.2vw;
   width: 70%;
+  background-color: rgb(38, 13, 36);
+  border: solid rgb(68, 17, 65) 2px;
+  cursor: pointer;
 }
+
+.filter-parent select:hover {
+  background-color: rgb(38, 13, 36);
+}
+
+.price-lable {
+  background-color: #21031b;
+  border: solid rgb(68, 17, 65) 2px;
+}
+
+.price-div {
+  margin-top: 3vw;
+}
+
 .typeFilter {
   margin-top: 2vw;
 }
+
 .typeFilter input {
   font-size: 2vw;
 }
+
 .typeFilter > label:nth-child(1) {
   font-size: 1.5vw;
 }
 
+/* ----------------checkbox css---------------------------------- */
+.ui-checkbox {
+  --primary-color: #8d3bb9;
+  --secondary-color: #fff;
+  --primary-hover-color: #4096ff;
+  /* checkbox */
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #e3e3e3;
+  height: 25px;
+  width: 25px;
+  --checkbox-border-style: solid;
+  /* checkmark */
+  --checkmark-size: 1.2;
+  margin-right: 26px;
+  margin-block-end: -2px;
+}
+
+.ui-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: var(--checkbox-border-radius);
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style)
+    var(--checkbox-border-color);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.ui-checkbox::after {
+  content: "";
+  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5)
+    var(--primary-color);
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius: inherit;
+  opacity: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+.ui-checkbox::before {
+  top: 40%;
+  left: 50%;
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 7px;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),
+    opacity 0.1s;
+  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+}
+
+/* actions */
+
+.ui-checkbox:hover {
+  border-color: var(--primary-color);
+}
+
+.ui-checkbox:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+.ui-checkbox:checked::before {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg)
+    scale(var(--checkmark-size));
+  -ms-transform: translate(-50%, -50%) rotate(45deg)
+    scale(var(--checkmark-size));
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+
+/* ------------------------------------------------------------------------------ */
+
 @media screen and (max-width: 1350px) {
+  .parent {
+    display: flex;
+  }
   .filter-parent {
-    margin-top: 15vw;
+    padding-top: 2vw;
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    display: none !important;
+  }
+  .filter-parent.open {
+  display: block !important;
   }
   .filter-parent select {
-    width: 90%;
+    width: 100%;
   }
   .typeFilter input {
     font-size: 1vw;
+  }
+  .filterButton {
+    display: flex !important;
+  }
+}
+@media screen and (max-width: 750px) {
+  .filterButton {
+    height: 10vw;
+    width: 10vw;
+    border: #8d3bb9 solid 3px;
+  }
+  .filterButton > span {
+    font-size: 8.5vw;
   }
 }

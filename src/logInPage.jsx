@@ -4,33 +4,33 @@ import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow 
 import "./assets/css/logInPage.css";
 import axios from "axios";
 
-
 function LogIn() {
   const navigate = useNavigate();
 
   function loggingIn(e) {
     e.preventDefault();
-  
+
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-  
-    axios.post('http://localhost:3000/login', { username, password })
-      .then(response => {
+
+    axios
+      .post("http://localhost:3000/login", { username, password })
+      .then((response) => {
         const { success } = response.data;
         if (success) {
           window.localStorage.setItem("CurrLogged", response.data.userId);
-          navigate("/");
+          //navigate("/");
+          window.location.href = "/";
         } else {
           alert("Wrong details bozo");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }
-  
 
- /* const loggedInUserId = localStorage.getItem("user");
+  /* const loggedInUserId = localStorage.getItem("user");
 
   if (loggedInUserId) {
     return (
@@ -43,8 +43,6 @@ function LogIn() {
 
   return (
     <>
- 
-
       {/* <ToggleVisibility>
         <StuckMenu /> 
       </ToggleVisibility> */}
