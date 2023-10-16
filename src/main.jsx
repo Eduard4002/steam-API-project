@@ -232,17 +232,9 @@ const SetGames = () => {
   return (
     <>
       <div className="parent">
-        <div className="games-parent">
-          {sortedData.length === 0 ? (
-            <h1>There are no games currently with this filter</h1>
-          ) : (
-            <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
-          )}
-        </div>
-
         <div className="filter-parent">
           <div>
-            <label>Name:</label>
+            <label>Name:</label><br></br>
             <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
               <option value="default">Default</option>
               <option value="name-asc">Name: A-Z</option>
@@ -252,7 +244,7 @@ const SetGames = () => {
             </select>
 
             <div>
-              <label>Price:</label>
+              <label>Price:</label><br></br>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -283,27 +275,41 @@ const SetGames = () => {
               )}
             </div>
           </div>
-          <div>
+          <div className="typeFilter">
             <label>Filter by Type:</label>
+            <br></br>
             {["game", "dlc", "music", "demo"].map((type) => (
-              <label key={type}>
-                <input
-                  type="checkbox"
-                  value={type}
-                  checked={selectedTypes.includes(type)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setSelectedTypes([...selectedTypes, type]);
-                    } else {
-                      setSelectedTypes(selectedTypes.filter((t) => t !== type));
-                    }
-                  }}
-                />
-                {type}
-              </label>
+              <span key={type}>
+                <label>
+                  <input
+                    type="checkbox"
+                    value={type}
+                    checked={selectedTypes.includes(type)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedTypes([...selectedTypes, type]);
+                      } else {
+                        setSelectedTypes(
+                          selectedTypes.filter((t) => t !== type)
+                        );
+                      }
+                    }}
+                  />
+                  {type.toUpperCase()}
+                </label>
+                <br></br>
+              </span>
             ))}
           </div>
         </div>
+        <div className="games-parent">
+          {sortedData.length === 0 ? (
+            <h1>There are no games currently with this filter</h1>
+          ) : (
+            <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
+          )}
+        </div>
+        <div className="empty-parent"></div>
       </div>
 
       <div className="randomDiv">

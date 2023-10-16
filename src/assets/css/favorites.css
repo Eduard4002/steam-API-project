@@ -28,6 +28,9 @@
 }
 .favoriteText > h3 {
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70%;
   margin: 0;
   margin-top: 1.25vw;
   margin-bottom: 0.5vw;
