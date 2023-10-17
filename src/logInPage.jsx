@@ -5,6 +5,11 @@ import "./assets/css/logInPage.css";
 function LogIn() {
   const navigate = useNavigate();
 
+  function failed() {
+
+
+  }
+
   function loggingIn(e) {
     e.preventDefault();
 
@@ -14,10 +19,11 @@ function LogIn() {
     axios
       .post("http://localhost:3000/login", { username, password })
       .then((response) => {
-        if (response.data) {
+        const { success } = response.data;
+        if (success) {
           window.localStorage.setItem("CurrLogged", response.data.userId);
-          //navigate("/");
-          window.location.href = "/";
+          navigate("/");
+          //window.location.href = "/";
         } else {
           alert("Wrong details bozo");
         }
@@ -45,6 +51,7 @@ function LogIn() {
       </ToggleVisibility> */}
 
       <div className="logInDiv">
+        
         <h3>Log In</h3>
         <form onSubmit={loggingIn} className="logInForm">
           <label>Username:</label>
