@@ -87,18 +87,6 @@ function Star({ type, gameId, refreshLink }) {
     } else {
       const dialogThing = document.getElementById("dialogThing");
       dialogThing.showModal();
-
-      dialogThing.addEventListener("click", (e) => {
-        const dialogDimensions = dialogThing.getBoundingClientRect();
-        if (
-          e.clientX < dialogDimensions.left ||
-          e.clientX > dialogDimensions.right ||
-          e.clientY < dialogDimensions.top ||
-          e.clientY > dialogDimensions.bottom
-        ) {
-          dialogThing.close()
-        }
-      });
     }
   }
   return (
