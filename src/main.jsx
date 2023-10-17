@@ -147,7 +147,11 @@ const SearchBar = () => {
             {sortedData.length === 0 ? (
               <h1>There are no games currently with this filter</h1>
             ) : (
-              <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
+              <ListGames
+                dataToDisplay={sortedData}
+                gamesPerPage={10}
+                key={sortedData.length}
+              />
             )}
           </div>
         </div>
@@ -179,7 +183,11 @@ const SetGames = () => {
           {sortedData.length === 0 ? (
             <h1>There are no games currently with this filter</h1>
           ) : (
-            <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
+            <ListGames
+              dataToDisplay={sortedData}
+              gamesPerPage={10}
+              key={sortedData.length}
+            />
           )}
         </div>
         <div className="empty-parent"></div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/single.css";
 import SignUp from "../../signUpPage";
+// import ShowAlert, { showSignupAlert } from "./alerts";
 
 function Star({ type, gameId, refreshLink }) {
   const { value } = useParams();
@@ -181,7 +182,7 @@ function Star({ type, gameId, refreshLink }) {
         });
       console.log("CheckFunction run");
     } else {
-      alert("You need to Sign Up to favorite a game!");
+      alert("You need to Sign Up to favorite a Game");
     }
   }
   return (
