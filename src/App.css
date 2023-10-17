@@ -27,14 +27,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.topper{
 
-  background: var(--gradient);
-  padding: 0.1vw;
-  color: var(--more_text);
-  font-size: 0.6vw;
-  margin-bottom: 4vw;
-}
 
 .par_pop{
 
