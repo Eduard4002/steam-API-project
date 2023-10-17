@@ -49,6 +49,7 @@ html {
 
 --starfave:rgb(255, 231, 154);
 --starfave_hover:rgb(255, 195, 0);
+--gradient: linear-gradient(318deg, rgb(101, 35, 108) 0%, rgb(45, 1, 61) 48%, rgb(31, 20, 83) 100%);
 
 
 /* ----------------------------login page----------------------------------- */
@@ -116,6 +117,8 @@ html {
 
 [data-theme= "light"]{
 
+
+  --gradient: linear-gradient(318deg, rgb(82, 118, 209) 0%, rgb(64, 75, 158) 48%,rgb(68, 66, 166));
   /* --------------------general ---------------------------------------- */
   --body_color: rgb(220, 187, 223);
   --body_background: radial-gradient(circle, #ecf4ff, #dae9fd, #c9defb, #b8d2f9, #a7c7f7);
