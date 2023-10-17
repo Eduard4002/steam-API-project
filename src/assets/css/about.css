@@ -60,7 +60,8 @@
 }
 
 .AboutUs {
-  margin: 50px;
+  font-size: 2vw !important;
+  margin: 2vw 5vw;
   font-size: x-large;
 }
 
