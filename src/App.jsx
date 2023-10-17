@@ -23,7 +23,6 @@ function App() {
     if (currentTime - lastRefreshedTime < timer) {
       const cachedData = JSON.parse(window.localStorage.getItem("DATA"));
       if (cachedData && cachedData.length > 0) {
-        console.log("Fetching information from localstorage");
         return cachedData;
       }
     }
@@ -134,9 +133,15 @@ function App() {
       </div>
 
       <div className="appContainer">
+        <div className="topper">
+          <h1></h1>
+        </div>
+        <p className="par_pop">Popular and recommended</p>
+
         <div className="slideWrapper">
           <Slideshow images={imagesArr} />
         </div>
+
         <div className="favoriteGrid">
           <Link
             to={"/game/id/" + extraData[slideshowAmount + 1].steam_appid}
@@ -157,6 +162,7 @@ function App() {
               }}
             ></div>
           </Link>
+
           <Link
             to={"/game/id/" + extraData[slideshowAmount + 2].steam_appid}
             key={extraData[slideshowAmount + 2].steam_appid}

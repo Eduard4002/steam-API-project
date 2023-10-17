@@ -1,12 +1,12 @@
 import "../src/assets/css/about.css";
 import margo from "./assets/img/margo.jpg";
 import jonte from "./assets/img/jonte.jpg";
-import eduard from "./assets/img/eduard.jpg";
 import gustaf from "./assets/img/gustaf.jpg";
-
+import eduardLogo from "./assets/img/eduardLogo.jpg";
 function About() {
   return (
     <>
+      <div className="topper"> </div>
       <h1 className="About">About Us</h1>
 
       <div className="main">
@@ -63,7 +63,7 @@ function About() {
             </div>
 
             <div className="InfoCont">
-              <img src={eduard} alt="Picture of Eduard" />
+              <img src={eduardLogo} alt="Picture of Eduard" />
 
               <div className="infoTextCont">
                 <h3 className="names">Eduard</h3>

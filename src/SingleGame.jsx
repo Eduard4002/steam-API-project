@@ -43,19 +43,16 @@ function Singlegame({ type }) {
     return axios
       .post("http://localhost:3000/singlegame/is-fav", {
         uid: uid,
-        newItem: gameId
+        newItem: gameId,
       })
-      .then(response => {
+      .then((response) => {
         return response.data;
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   };
 
-  
-  
-  
   useEffect(() => {
     if (itemData) return;
     const cachedData = localStorage.getItem("Single game");
@@ -72,13 +69,14 @@ function Singlegame({ type }) {
 
   useEffect(() => {
     if (!itemData) return;
-    
-    getExistingFavoriteBool(uid.uid, itemData.steam_appid)
-      .then(isFavorite => {
+
+    getExistingFavoriteBool(uid.uid, itemData.steam_appid).then(
+      (isFavorite) => {
         console.log(isFavorite);
-        setStarActive(isFavorite)
-      });
-  }, [itemData])
+        setStarActive(isFavorite);
+      }
+    );
+  }, [itemData]);
   /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
@@ -167,7 +165,6 @@ function Singlegame({ type }) {
     setAnimate(true);
     setTimeout(() => setAnimate(false), 200);
 
-    
     const newItem = {
       newItem: itemData.steam_appid,
     };
@@ -182,7 +179,6 @@ function Singlegame({ type }) {
       })
       .then((response) => {
         setStarActive(!starActive);
-        
       })
       .catch((error) => {
         console.error(error);
@@ -310,7 +306,11 @@ function Singlegame({ type }) {
                 )}
               </div>
               <div className="gameDescription">
-                <p>{itemData.short_description}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: itemData.short_description,
+                  }}
+                />
               </div>
             </div>
           </div>

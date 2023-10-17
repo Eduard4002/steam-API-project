@@ -86,15 +86,15 @@
   position: fixed;
   top: 8.3vw;
   background: var(--popup_bkg);
-  width: 25vw;
-  height: 27.5vw;
+  width: 20vw;
+  height: 20vw;
 }
 .profileMenu * {
   margin: auto;
   color: rgb(209, 231, 248);
 }
 .profileMenuBtns div {
-  margin-top: 2vw;
+  margin-top: 3vw;
   padding: 0.5vw;
   width: 80%;
   font-size: 1.25vw;

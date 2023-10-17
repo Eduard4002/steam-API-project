@@ -31,9 +31,9 @@ html {
 
   /* ----------------------------topper/footer__ popup----------------------------------------------------- */
 
---popup_bkg:rgb(84, 63, 116);
---popup_bttn:rgb(54, 38, 73);
---popup_bttn_hover:rgb(20,15,36);
+--popup_bkg:rgba(26, 13, 52, 0.944);
+--popup_bttn:rgb(77, 46, 116);
+--popup_bttn_hover:rgb(110, 91, 174);
 
   /* -------------------sidebar------------------------------------ */
   --sidebar: linear-gradient(to bottom, #010110, #0b0422, #120923, #020110, #01010b);;
@@ -49,16 +49,19 @@ html {
 
 --starfave:rgb(255, 231, 154);
 --starfave_hover:rgb(255, 195, 0);
+--gradient: linear-gradient(318deg, rgb(101, 35, 108) 0%, rgb(45, 1, 61) 48%, rgb(31, 20, 83) 100%);
 
 
 /* ----------------------------login page----------------------------------- */
 
---background_login:rgb(45, 39, 93);
---login_text:rgb(161,159,250);
---login_submit:rgb(23, 13, 58);
---login_submit_text:rgb(161,159,250);
---login_submit_hover:rgb(89, 76, 138);
---login_submit_hover_text:rgb(28, 14, 78);
+--background_login:rgba(19, 9, 42, 0.458);
+--login_text:rgb(227, 227, 255);
+--login_submit:rgb(70, 21, 106);
+--login_submit_text:rgb(216, 215, 255);
+--login_submit_hover:rgb(111, 86, 202);
+--login_submit_hover_text:rgb(13, 4, 45);
+
+--input_bkg:rgb(99, 98, 177);
 
 /* -------------------------------------games page---------------------------------------- */
 
@@ -88,12 +91,26 @@ html {
 --aboutUs: linear-gradient(to right, #1d0a2e, #281533, #3f2352, #452251, #642e6b);
 --aboutBig:#0e0513;
 
+
+
   /* ------------------------------------------------------------------------ */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+/* ---------------------------------Filter------------------------------------ */
+
+--filter_main_bkg: rgba(74, 27, 69, 0.267);
+--filter_border:1px solid rgba(116, 5, 116, 0.692);
+--option-bkg:rgb(38, 13, 36);
+--option_border:solid rgb(68, 17, 65) 2px;
+--primary-color: #8d3bb9;
+
+
+
+
 }
 
 
@@ -116,6 +133,8 @@ html {
 
 [data-theme= "light"]{
 
+
+  --gradient: linear-gradient(318deg, rgb(82, 118, 209) 0%, rgb(64, 75, 158) 48%,rgb(68, 66, 166));
   /* --------------------general ---------------------------------------- */
   --body_color: rgb(220, 187, 223);
   --body_background: radial-gradient(circle, #ecf4ff, #dae9fd, #c9defb, #b8d2f9, #a7c7f7);
@@ -191,6 +210,15 @@ html {
 /* ------------------------------------------about-------------------------------------------------- */
 --aboutUs: linear-gradient(to right, #0f0519, #281533, #3f2352, #492754, #642e6b);
 --aboutBig:#120918;
+
+
+/* ------------------------------------filter---------------------------- */
+
+--filter_main_bkg: rgba(44, 50, 113, 0.473);
+--filter_border:1px solid rgba(114, 113, 203, 0.692);
+--option-bkg:rgba(28, 57, 155, 0.673);
+--option_border:solid rgb(40, 34, 123) 2px;
+--primary-color: #2b468b;
 
 
 }

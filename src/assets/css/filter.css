@@ -23,7 +23,7 @@
   border-radius: 99%;
   justify-content: center;
   align-items: center;
-  background-color: var(--popup_bkg);
+  background: var(--popup_bkg);
   border: #8d3bb9 1px solid;
 }
 .filterButton:hover {
@@ -44,12 +44,12 @@
   padding: 2vw;
   margin-top: 10vw;
 
-  background: rgba(74, 27, 69, 0.267);
+  background: var(--filter_main_bkg);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(143, 30, 120, 0.171);
   backdrop-filter: blur(5.2px);
   -webkit-backdrop-filter: blur(5.2px);
-  border: 1px solid rgba(116, 5, 116, 0.692);
+  border: var(--filter_border);
 }
 .filter-parent * {
   text-align: left;
@@ -62,8 +62,8 @@
 .filter-parent select {
   margin-left: 0.2vw;
   width: 70%;
-  background-color: rgb(38, 13, 36);
-  border: solid rgb(68, 17, 65) 2px;
+  background: var(--option-bkg);
+  border: var(--option_border);
   cursor: pointer;
 }
 
@@ -94,7 +94,7 @@
 
 /* ----------------checkbox css---------------------------------- */
 .ui-checkbox {
-  --primary-color: #8d3bb9;
+ 
   --secondary-color: #fff;
   --primary-hover-color: #4096ff;
   /* checkbox */

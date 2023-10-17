@@ -143,13 +143,6 @@ function Header() {
                 </>
               )}
             </div>
-            <p>
-              Dont have an account?{" "}
-              <Link to={"/signup"} onClick={openLogIn}>
-                Sign Up
-              </Link>{" "}
-              to continue
-            </p>
           </div>
         </div>
       </nav>

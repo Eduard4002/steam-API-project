@@ -26,6 +26,19 @@
   background-position: center;
   transition: all 0.2s ease-in-out;
 }
+
+
+
+.par_pop{
+
+  font-size: 2.3vw;
+  font-weight: 100;
+margin-left: -34vw;
+margin-bottom: -1vw;
+
+}
+
+
 .favoriteCard:hover {
   transform: scale(1.05);
   box-shadow: rgba(113, 12, 156, 0.892) 0px 2px 4px,
