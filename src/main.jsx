@@ -275,7 +275,7 @@ const SetGames = () => {
           {sortedData.length === 0 ? (
             <h1>There are no games currently with this filter</h1>
           ) : (
-            <ListGames dataToDisplay={sortedData} gamesPerPage={5} />
+            <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
           )}
         </div>
         <div className="empty-parent"></div>
