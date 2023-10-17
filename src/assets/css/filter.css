@@ -42,8 +42,7 @@
   margin: auto;
   width: 90%;
   padding: 2vw;
-  margin-top: 10vw;
-
+  margin-top: 4vw;
   background: var(--filter_main_bkg);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(143, 30, 120, 0.171);
@@ -70,6 +69,7 @@
 .filter-parent select:hover {
   background-image: none;
   background-color: rgb(38, 13, 36);
+  pointer-events: none;
 }
 
 .price-lable {
@@ -194,7 +194,9 @@
     height: 100%;
     margin-top: 0;
     display: none !important;
+    
   }
+ 
   .filter-parent.open {
   display: block !important;
   }
