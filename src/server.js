@@ -75,6 +75,8 @@ app.post("/signup", async function (req, res) {
   const foundUser = findUserStatement.get(req.body.username)
 
   const foundEmail = findUserStatement.get(req.body.email)
+  
+ 
 
   if (foundUser ) {
     res.status(409)
@@ -98,6 +100,7 @@ app.post("/signup", async function (req, res) {
     req.body.username,
     md5(req.body.password)
   );
+  
 });
 
 app.post("/singlegame", function (req, res) {

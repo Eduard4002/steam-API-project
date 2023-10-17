@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./assets/css/favorites.css";
 import Star from "./assets/components/star";
+import "./assets/css/favorites.css";
 import "./assets/css/listGames.css";
 
 function Favorites({ displayFavorites = true }) {

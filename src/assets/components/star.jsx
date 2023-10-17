@@ -3,8 +3,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/single.css";
+import SignUp from "../../signUpPage";
 
-function Star({ type, gameId }) {
+function Star({ type, gameId, refreshLink }) {
   const { value } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
@@ -12,7 +13,7 @@ function Star({ type, gameId }) {
   const [error, setError] = useState(null);
   const [itemData, setItemData] = useState(null);
   let [starActive, setStarActive] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   let data;
 
@@ -66,15 +67,12 @@ function Star({ type, gameId }) {
   useEffect(() => {
     if (!gameId) return;
 
-    getExistingFavoriteBool(uid.uid, gameId).then(
-      (isFavorite) => {
-        console.log(isFavorite);
-        setStarActive(isFavorite);
-      }
-    );
+    getExistingFavoriteBool(uid.uid, gameId).then((isFavorite) => {
+      console.log(isFavorite);
+      setStarActive(isFavorite);
+    });
   }, [gameId]);
-    
-    
+
   /*
   //const gameId = data[randomIndex].appid;
   useEffect(() => {
@@ -158,35 +156,35 @@ function Star({ type, gameId }) {
 
   //   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
 
-    function favoriteClick() {
-        if (localStorage.getItem("CurrLogged")) {
-            //StarAnim
-            setAnimate(true);
-            setTimeout(() => setAnimate(false), 200);
+  function favoriteClick() {
+    if (localStorage.getItem("CurrLogged")) {
+      //StarAnim
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 200);
 
-            const newItem = {
-                newItem: gameId,
-            };
+      const newItem = {
+        newItem: gameId,
+      };
 
-            console.log("check");
+      console.log("check");
 
-            //post Request
-            axios
-                .post("http://localhost:3000/singlegame", {
-                    uid: uid.uid,
-                    newItem: gameId,
-                })
-                .then((response) => {
-                    setStarActive(!starActive);
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-            console.log("CheckFunction run");
-        } else {
-            navigate("/signup");
-        }
+      //post Request
+      axios
+        .post("http://localhost:3000/singlegame", {
+          uid: uid.uid,
+          newItem: gameId,
+        })
+        .then((response) => {
+          setStarActive(!starActive);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      console.log("CheckFunction run");
+    } else {
+      alert("You need to Sign Up to favorite a game!");
     }
+  }
   return (
     <>
       <div
