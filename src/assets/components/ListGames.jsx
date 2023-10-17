@@ -13,7 +13,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
   //Create index elements
   const elements = [];
-  const test = true;
 
   // const user = JSON.parse(localStorage.getItem("users"));
   // const index = user.favorites.findIndex((fav) => fav.appid === newItem);

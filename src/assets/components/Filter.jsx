@@ -131,7 +131,9 @@ function Filter({ initialData, onFilteredData }) {
                 onChange={(e) => {
                   e.preventDefault();
                   setSortBy("price-custom");
-                  setMinPrice(parseFloat(e.target.value));
+                  setMinPrice((prev) =>
+                    Math.max(0, parseFloat(e.target.value))
+                  );
                 }}
               />
               <label>Max Price €:</label>
@@ -144,7 +146,9 @@ function Filter({ initialData, onFilteredData }) {
 
                   setSortBy("price-custom");
 
-                  setMaxPrice(parseFloat(e.target.value));
+                  setMaxPrice((prev) =>
+                    Math.max(0, parseFloat(e.target.value))
+                  );
                 }}
               />
             </div>
