@@ -62,6 +62,8 @@ const Test = () => {
 const SearchBar = () => {
   let { value } = useParams();
   const [info, setInfo] = useState([]);
+  const [sortedData, setSortedData] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
   //Fetch the required information
   useEffect(() => {
@@ -128,13 +130,19 @@ const SearchBar = () => {
   if (isLoading) return <h1>Loading...</h1>;
   console.log("Info");
   console.log(info);
+
+  const handleFilteredData = (data) => {
+    setSortedData(data);
+  };
   if (info.length === 0) {
     return <h1>There does not appear to be any result</h1>;
   } else {
     return (
       <>
         <h1>There are {info.length} results</h1>
-        <ListGames dataToDisplay={info} gamesPerPage={10} />
+        <Filter initialData={info} onFilteredData={handleFilteredData} />
+
+        <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
       </>
     );
   }
