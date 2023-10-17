@@ -28,8 +28,8 @@ function LogIn() {
         } else {
           // alert("Wrong details bozo");
 
-          const dialogThingi = document.getElementById("dialogThingi");
-          dialogThingi.showModal();
+          // const dialogThingi = document.getElementById("dialogThingi");
+          // dialogThingi.showModal();
 
         }
       })
