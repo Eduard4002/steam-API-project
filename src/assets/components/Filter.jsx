@@ -89,83 +89,97 @@ function Filter({ initialData, onFilteredData }) {
     // ... Your useEffect logic here ...
     onFilteredData(sortedData); // This callback passes the filtered data back up to the parent.
   }, [sortBy, minPrice, maxPrice, selectedTypes, isLoading]);
+
+  const [openFilter, setOpenFilter] = useState(false);
+
+  const changeFilterState = () => {
+    console.log("Clicked...");
+    setOpenFilter(!openFilter);
+  };
   if (isLoading) return;
 
   return (
-    <div className={`filter-parent `}>
-      <div>
-        <label>Name:</label>
-        <br></br>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="default">Default</option>
-          <option value="name-asc">Name: A-Z</option>
-          <option value="name-desc">Name: Z-A</option>
-        </select>
-
+    <>
+      <div className={`filterButton`} onClick={changeFilterState}>
+        <span className="filterIcon material-symbols-outlined">
+          {openFilter ? "close" : "tune"}
+        </span>
+      </div>
+      <div className={`filter-parent ${openFilter ? "open" : ""}`}>
         <div>
-          <label>Price:</label>
+          <label>Name:</label>
           <br></br>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="default">Default</option>
-            <option value="price-free">Free to play</option>
-            <option value="price-asc">Price: Least Expensive</option>
-            <option value="price-desc">Price: Most Expensive</option>
+            <option value="name-asc">Name: A-Z</option>
+            <option value="name-desc">Name: Z-A</option>
           </select>
 
-          <div className="price-div">
-            <label>Min Price €:</label>
-            <input
-              className="price-lable"
-              type="number"
-              value={minPrice}
-              onChange={(e) => {
-                e.preventDefault();
-                setSortBy("price-custom");
-                setMinPrice(parseFloat(e.target.value));
-              }}
-            />
-            <label>Max Price €:</label>
-            <input
-              className="price-lable"
-              type="number"
-              value={maxPrice}
-              onChange={(e) => {
-                e.preventDefault();
+          <div>
+            <label>Price:</label>
+            <br></br>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="default">Default</option>
+              <option value="price-free">Free to play</option>
+              <option value="price-asc">Price: Least Expensive</option>
+              <option value="price-desc">Price: Most Expensive</option>
+            </select>
 
-                setSortBy("price-custom");
-
-                setMaxPrice(parseFloat(e.target.value));
-              }}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="typeFilter">
-        <label>Filter by Type:</label>
-        <br></br>
-        {["game", "dlc", "music", "demo"].map((type) => (
-          <span key={type}>
-            <label>
+            <div className="price-div">
+              <label>Min Price €:</label>
               <input
-                className="ui-checkbox"
-                type="checkbox"
-                value={type}
-                checked={selectedTypes.includes(type)}
+                className="price-lable"
+                type="number"
+                value={minPrice}
                 onChange={(e) => {
-                  if (e.target.checked) {
-                    setSelectedTypes([...selectedTypes, type]);
-                  } else {
-                    setSelectedTypes(selectedTypes.filter((t) => t !== type));
-                  }
+                  e.preventDefault();
+                  setSortBy("price-custom");
+                  setMinPrice(parseFloat(e.target.value));
                 }}
               />
-              {type.toUpperCase()}
-            </label>
-            <br></br>
-          </span>
-        ))}
+              <label>Max Price €:</label>
+              <input
+                className="price-lable"
+                type="number"
+                value={maxPrice}
+                onChange={(e) => {
+                  e.preventDefault();
+
+                  setSortBy("price-custom");
+
+                  setMaxPrice(parseFloat(e.target.value));
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="typeFilter">
+          <label>Filter by Type:</label>
+          <br></br>
+          {["game", "dlc", "music", "demo"].map((type) => (
+            <span key={type}>
+              <label>
+                <input
+                  className="ui-checkbox"
+                  type="checkbox"
+                  value={type}
+                  checked={selectedTypes.includes(type)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedTypes([...selectedTypes, type]);
+                    } else {
+                      setSelectedTypes(selectedTypes.filter((t) => t !== type));
+                    }
+                  }}
+                />
+                {type.toUpperCase()}
+              </label>
+              <br></br>
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

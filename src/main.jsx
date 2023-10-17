@@ -166,23 +166,13 @@ const SetGames = () => {
   }
 
   const [sortedData, setSortedData] = useState(data);
-  const [openFilter, setOpenFilter] = useState(false);
 
   const handleFilteredData = (data) => {
     setSortedData(data);
   };
-  const changeFilterState = () => {
-    console.log("Clicked...");
-    setOpenFilter(!openFilter);
-  };
 
   return (
     <>
-      <div className={`filterButton`} onClick={changeFilterState}>
-        <span className="filterIcon material-symbols-outlined">
-          {openFilter ? "close" : "tune"}
-        </span>
-      </div>
       <div className="parent">
         <Filter initialData={data} onFilteredData={handleFilteredData} />
         <div className="games-parent">
