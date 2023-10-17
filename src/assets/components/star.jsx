@@ -182,7 +182,8 @@ function Star({ type, gameId, refreshLink }) {
         });
       console.log("CheckFunction run");
     } else {
-      alert("You need to Sign Up to favorite a Game");
+      const dialogThing = document.getElementById("dialogThing");
+      dialogThing.showModal();
     }
   }
   return (
@@ -193,6 +194,12 @@ function Star({ type, gameId, refreshLink }) {
         }`}
         onClick={favoriteClick}
       ></div>
+      <dialog id="dialogThing">
+        <p>Greetings, one and all!</p>
+        <form method="dialog">
+          <button>OK</button>
+        </form>
+      </dialog>
     </>
   );
 }
