@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../css/single.css";
 import SignUp from "../../signUpPage";
 // import ShowAlert, { showSignupAlert } from "./alerts";
+import { BottomAlert } from "./alerts";
 
 function Star({ type, gameId, refreshLink }) {
   const { value } = useParams();
@@ -184,6 +185,18 @@ function Star({ type, gameId, refreshLink }) {
     } else {
       const dialogThing = document.getElementById("dialogThing");
       dialogThing.showModal();
+
+      dialogThing.addEventListener("click", (e) => {
+        const dialogDimensions = dialogThing.getBoundingClientRect();
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          dialogThing.close()
+        }
+      });
     }
   }
   return (
@@ -194,12 +207,7 @@ function Star({ type, gameId, refreshLink }) {
         }`}
         onClick={favoriteClick}
       ></div>
-      <dialog id="dialogThing">
-        <p>Greetings, one and all!</p>
-        <form method="dialog">
-          <button>OK</button>
-        </form>
-      </dialog>
+      {BottomAlert("Hejsan på dejsan")}
     </>
   );
 }
