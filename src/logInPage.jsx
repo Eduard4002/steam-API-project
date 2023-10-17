@@ -1,8 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
-import ToggleVisibility from "./assets/components/ToggleVisibility";
-import StuckMenu from "./assets/components/stuckMenu"; // Import your Slideshow component
-import "./assets/css/logInPage.css";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import "./assets/css/logInPage.css";
 
 function LogIn() {
   const navigate = useNavigate();
@@ -16,8 +14,7 @@ function LogIn() {
     axios
       .post("http://localhost:3000/login", { username, password })
       .then((response) => {
-        const { success } = response.data;
-        if (success) {
+        if (response.data) {
           window.localStorage.setItem("CurrLogged", response.data.userId);
           //navigate("/");
           window.location.href = "/";

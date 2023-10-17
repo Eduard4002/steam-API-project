@@ -1,3 +1,8 @@
+.About{
+  font-size: 3vw;
+  margin-bottom: 4vw;
+}
+
 .main {
   margin-top: 10vh;
   margin-bottom: 10vh;
@@ -16,7 +21,7 @@
   backdrop-filter: blur(8.7px);
   -webkit-backdrop-filter: blur(8.7px);
   border: 1px solid rgba(132, 79, 187, 0.63);
-  height: 24vw;
+  height: 13vw;
   width: 80vw;
   padding: 2vw;
   border-radius: 20px;
@@ -26,13 +31,14 @@
 .InfoCont > img {
   object-fit: cover;
   float: left;
-  width: 20vw;
-  height: 20vw;
+  width: 8vw;
+  height: 8vw;
   margin-left: 2vw;
   border-radius: 15px;
 }
 .names {
   float: left;
+  font-size: 2vw !important;
 }
 .infoTextCont {
   width: 40vw;
@@ -50,11 +56,12 @@
   font-size: 1.2vw;
 }
 .Textinfo {
-  font-size: 10vw !important;
+  font-size: 3vw !important;
 }
 
 .AboutUs {
-  margin: 50px;
+  font-size: 2vw !important;
+  margin: 2vw 5vw;
   font-size: x-large;
 }
 
@@ -79,7 +86,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   float: right;
-  margin: 40px 20px 0px 0px;
+  margin-top: 2.5vw;
 }
 
 .button-82-shadow {
@@ -114,9 +121,9 @@
 .button-82-front {
   display: block;
   position: relative;
-  padding: 12px 27px;
+  padding: 1vw 2vw;
   border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 1.2vw;
   color: white;
   background: hsl(253, 41%, 40%);
   will-change: transform;
@@ -124,10 +131,9 @@
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
-@media (min-width: 768px) {
-  .button-82-front {
-    font-size: 1.25rem;
-    padding: 12px 42px;
+@media screen and (min-width: 768px) {
+  .button-82 {
+     padding: 12px 27px;
   }
 }
 
@@ -173,8 +179,9 @@
   backdrop-filter: blur(8.7px);
   -webkit-backdrop-filter: blur(8.7px);
   border: 1px solid rgba(132, 79, 187, 0.63);
-
-  margin: 0px 50px 0px 50px;
+width: 60vw;
+margin: auto;
+margin-bottom: 3vw;
   float: right;
   border-radius: 20px;
 }
