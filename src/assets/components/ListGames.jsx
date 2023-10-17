@@ -96,17 +96,24 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                             {/* Is short description too large to fit inside of the container? */}
                             {game?.short_description.length <
                             descriptionMaxLength ? (
-                              <p key={game.short_description}>
-                                {game.short_description}
-                              </p>
+                              <p
+                                key={game.short_description}
+                                dangerouslySetInnerHTML={{
+                                  __html: game?.short_description,
+                                }}
+                              ></p>
                             ) : (
                               /*Short description is too large to fit inside of the container*/
-                              <p key={game.short_description}>
-                                {game?.short_description.slice(
-                                  0,
-                                  descriptionMaxLength
-                                ) + "..."}
-                              </p>
+                              <p
+                                key={game.short_description}
+                                dangerouslySetInnerHTML={{
+                                  __html:
+                                    game?.short_description.slice(
+                                      0,
+                                      descriptionMaxLength
+                                    ) + "...",
+                                }}
+                              ></p>
                             )}
                           </div>
                         </div>
