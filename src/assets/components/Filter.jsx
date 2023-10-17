@@ -38,11 +38,9 @@ function Filter({ initialData, onFilteredData }) {
     "demo",
   ]);
   useEffect(() => {
-    console.log("Setting filter from localstorage");
     const cachedFilter = localStorage.getItem("Filter");
     if (cachedFilter) {
       const filter = JSON.parse(cachedFilter);
-      console.log(filter);
       setSortBy(filter[0].sortBy);
       setSelectedTypes(filter[0].selectedTypes);
       setMinPrice(filter[0].minPrice);
@@ -93,7 +91,6 @@ function Filter({ initialData, onFilteredData }) {
   const [openFilter, setOpenFilter] = useState(false);
 
   const changeFilterState = () => {
-    console.log("Clicked...");
     setOpenFilter(!openFilter);
   };
   if (isLoading) return;
