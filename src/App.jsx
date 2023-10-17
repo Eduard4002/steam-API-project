@@ -138,6 +138,7 @@ function App() {
   <h1></h1> 
 </div>
 <p className="par_pop">Popular and recommended</p>
+
         <div className="slideWrapper" >
           <Slideshow images={imagesArr} />
         </div>

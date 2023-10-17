@@ -30,17 +30,20 @@
 .topper{
 
   background: var(--gradient);
-  padding: 1vw;
+  padding: 0.1vw;
   color: var(--more_text);
   font-size: 0.6vw;
+  margin-bottom: 4vw;
 }
 
 .par_pop{
 
-  
-  font-size: 1vw;
+  font-size: 1.5vw;
+margin-left: -42vw;
+margin-bottom: -2vw;
 
 }
+
 
 .favoriteCard:hover {
   transform: scale(1.05);
