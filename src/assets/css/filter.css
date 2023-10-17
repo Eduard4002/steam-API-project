@@ -68,6 +68,7 @@
 }
 
 .filter-parent select:hover {
+  background-image: none;
   background-color: rgb(38, 13, 36);
 }
 
