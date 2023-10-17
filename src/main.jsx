@@ -140,9 +140,13 @@ const SearchBar = () => {
     return (
       <>
         <h1>There are {info.length} results</h1>
+        <div className="parent">
         <Filter initialData={info} onFilteredData={handleFilteredData} />
 
+        <div className="games-parent">
         <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
+        </div>
+        </div>
       </>
     );
   }
