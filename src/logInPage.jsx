@@ -2,6 +2,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./assets/css/logInPage.css";
 
+
 function LogIn() {
   const navigate = useNavigate();
 
@@ -25,7 +26,11 @@ function LogIn() {
           navigate("/");
           //window.location.href = "/";
         } else {
-          alert("Wrong details bozo");
+          // alert("Wrong details bozo");
+
+          const dialogThingi = document.getElementById("dialogThingi");
+          dialogThingi.showModal();
+
         }
       })
       .catch((error) => {
@@ -52,6 +57,13 @@ function LogIn() {
 
       <div className="logInDiv">
         
+      <dialog id="dialogThingi">
+        <p>OPS something went wrong, try again</p>
+        <form method="dialog">
+          <button>OK</button>
+        </form>
+      </dialog>
+
         <h3>Log In</h3>
         <form onSubmit={loggingIn} className="logInForm">
           <label>Username:</label>
