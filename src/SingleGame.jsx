@@ -77,63 +77,7 @@ function Singlegame({ type }) {
       }
     );
   }, [itemData]);
-  /*
-  //const gameId = data[randomIndex].appid;
-  useEffect(() => {
-    console.log(itemData);
-    if (isLoading || type != "index" || itemData) {
-      return;
-    }
-    console.log("Fetching information from API");
-    DataArray().then((result) => {
-      /*
-      let gameId;
-      if (type === "id") {
-        gameId = value;
-      } else {
-        gameId = data[value]?.appid;
-      }
-      gameId = result[value]?.appid;
-
-      console.log("Game id: " + gameId);
-      const url = `http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`;
-
-      fetch(url)
-        .then((response) => response.json())
-        .then((json) => {
-          setItemData(json[gameId].data);
-          localStorage.setItem(
-            "Single game",
-            JSON.stringify(json[gameId].data)
-          );
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error(error);
-          setError(error);
-        });
-    });
-  }, [value, isLoading]);*/
-
-  //itemData = JSON.parse(localStorage.getItem("Single game"));
-
-  //localStorage.setItem("Single game", JSON.stringify(itemData));
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const url = `http://localhost:3000/api?url=https://store.steampowered.com/api/appdetails?appids=${gameId}`;
-  //         const response = await fetch(url);
-  //         const data = await response.json();
-  //         setItemData(data);
-  //       } catch (error) {
-  //         console.error('Error fetching data:', error);
-  //       }
-  //     };
-
-  // console.log(gameId);
-  // console.log(isLoading);
-
+  
   if (error) {
     return (
       <>

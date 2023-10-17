@@ -33,17 +33,6 @@ function LogIn() {
       });
   }
 
-  /* const loggedInUserId = localStorage.getItem("user");
-
-  if (loggedInUserId) {
-    return (
-      <p className="logInQ">
-        You are already logged in. Go to <Link to={"/"}> Home Page </Link> or{" "}
-        <Link to={"/profile"}> Profile Page </Link> to continue.{" "}
-      </p>
-    );
-  } */
-
   return (
     <>
       {/* <ToggleVisibility>
