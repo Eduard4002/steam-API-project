@@ -67,7 +67,6 @@ function Star({ type, gameId, refreshLink }) {
     if (!gameId) return;
 
     getExistingFavoriteBool(uid.uid, gameId).then((isFavorite) => {
-      console.log(isFavorite);
       setStarActive(isFavorite);
     });
   }, [gameId]);

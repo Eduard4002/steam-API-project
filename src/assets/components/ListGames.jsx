@@ -20,7 +20,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   // if (index !== -1) {
   //   console.log("")
   // }
-
   for (let i = 0; i < indexAmount; i++) {
     // Generate unique key if needed
     const key = `element_${i}`;
@@ -37,9 +36,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
     );
   }
 
-  
-
-  
   // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
   return (
@@ -119,9 +115,7 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
                     <div className="buttonsDiv">
                       <button className="starButton">
-                        <Star gameId={game.steam_appid}>
-
-                        </Star>
+                        <Star gameId={game.steam_appid}></Star>
                       </button>
                     </div>
                   </div>
