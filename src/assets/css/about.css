@@ -30,6 +30,7 @@
   border-radius: 20px;
   margin: auto;
   margin-bottom: 2vw;
+  margin-left: 1vw;
 }
 .InfoCont > img {
   object-fit: cover;
