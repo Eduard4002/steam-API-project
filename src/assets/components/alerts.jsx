@@ -1,3 +1,5 @@
+import "../css/alerts.css";
+
 export function ScreenAlert(meddelande) {
   return (
     <>
