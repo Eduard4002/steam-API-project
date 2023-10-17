@@ -10,32 +10,6 @@ var app = express();
 const db = sqlite3("db/database.sqlite");
  
 
-// db.serialize(() => {
-//   db.run('CREATE TABLE [IF NOT EXISTS] [schema_name].table_name' (
-//     column_1, data_type, PRIMARY, KEY,
-//     column_2, data_type, NOT, NULL,
-//     column_3, data_type, DEFAULT, 0,
-//     table_constraints
-
-//   ) [WITHOUT [ROWID] ] );
-
-//   const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
-//   VALUES
-//     (email, password, username, id, favorites, )
-
-//   for (let i = 0; i < 10; i++) {
-//     stmt.run(`Ipsum ${i}`)
-//   }
-
-//   stmt.finalize()
-
-//   db.each('SELECT rowid AS id, info FROM lorem', (err, row) => {
-//     console.log(`${row.id}: ${row.info}`)
-//   })
-// })
-
-// db.close()
-
 db.prepare(
   "CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL)"
 ).run();
@@ -44,24 +18,15 @@ db.prepare(
 ).run();
 console.log(db.prepare("SELECT * FROM users").all());
 
-/* const user = {
-  id: "YEEET",
-  username: "admin",
-  email: "example@yeet.com",
-  password: "hashy",
-}
-
-const favorite = {
-  uid: "YEEET",
-  game_id: 12
-} */
 
 app.set("port", 3000);
 app.use(express.json());
 
 app.use(cors());
 
-const findUserStatement = db.prepare("SELECT id FROM users WHERE username = ?");
+const findUserNameStatement = db.prepare("SELECT id FROM users WHERE username = ?");
+
+const findEmailStatement = db.prepare("SELECT id FROM users WHERE email = ?")
 
 const createUserStatement = db.prepare(
   "INSERT INTO users (id, email, username, password) VALUES (?, ?, ?, ?)"
@@ -71,12 +36,12 @@ const addToFav = db.prepare(
   "INSERT INTO favorites (uid, gameid) VALUES (?, ?)"
 );
 
-app.post("/signup", async function (req, res) {
-  const foundUser = findUserStatement.get(req.body.username)
+app.post("/signup", function (req, res) {
+  const foundUser = findUserNameStatement.get(req.body.username)
 
-  const foundEmail = findUserStatement.get(req.body.email)
+  const foundEmail = findEmailStatement.get(req.body.email)
   
- 
+
 
   if (foundUser ) {
     res.status(409)
@@ -95,7 +60,7 @@ app.post("/signup", async function (req, res) {
   res.status(200).send("User created successfully");
 
   createUserStatement.run(
-    md5(req.body.id),
+    req.body.id,
     req.body.email,
     req.body.username,
     md5(req.body.password)
@@ -201,6 +166,32 @@ app.get("/favorites/:userId", function (req, res) {
   const gameIds = favorites.map((favorite) => favorite.gameid);
 
   res.json(gameIds);
+});
+
+app.post("/changepassw", function (req, res) {
+  const userId = req.body.uid;
+  const currentPassword = md5(req.body.currentPassword);
+  const newPassword = md5(req.body.newPassword);
+
+  // Query the database to get the user's current password
+  const user = db
+    .prepare("SELECT password FROM users WHERE id = ?")
+    .get(userId);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  const currentHashedPassword = user.password;
+
+  if (currentPassword === currentHashedPassword) {
+    // If the current password matches, update the password in the database
+    db.prepare("UPDATE users SET password = ? WHERE id = ?").run(newPassword, userId);
+    res.json({ success: true });
+  } else {
+    // If the current password doesn't match, send an error response
+    res.status(401).json({ error: "Current password is incorrect" });
+  }
 });
 
 app.get("/api", function (req, res) {
