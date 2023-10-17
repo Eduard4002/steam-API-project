@@ -4,6 +4,8 @@
     border-radius: 25px;
     margin: auto;
     width: 30vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
 }
 .signUpDiv > h3 {
     color: var(--login_text);
@@ -19,11 +21,11 @@
 .signUpForm input {
     border-radius: 10px;
     border: none;
-    margin-bottom: 1vw;
+    font-size: 0.7vw;
     width: 50%;
     padding: 0.75vw;
-    background-color: rgb(161,159,250);
-    color: rgb(26,22,53);
+    background: var(--input_bkg);
+    color: rgb(8, 6, 23);
     
 }
 .signUpForm input[type=submit] {

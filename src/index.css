@@ -31,9 +31,9 @@ html {
 
   /* ----------------------------topper/footer__ popup----------------------------------------------------- */
 
---popup_bkg:rgb(84, 63, 116);
---popup_bttn:rgb(54, 38, 73);
---popup_bttn_hover:rgb(20,15,36);
+--popup_bkg:rgba(26, 13, 52, 0.944);
+--popup_bttn:rgb(77, 46, 116);
+--popup_bttn_hover:rgb(110, 91, 174);
 
   /* -------------------sidebar------------------------------------ */
   --sidebar: linear-gradient(to bottom, #010110, #0b0422, #120923, #020110, #01010b);;
@@ -54,12 +54,14 @@ html {
 
 /* ----------------------------login page----------------------------------- */
 
---background_login:rgb(45, 39, 93);
---login_text:rgb(161,159,250);
---login_submit:rgb(23, 13, 58);
---login_submit_text:rgb(161,159,250);
---login_submit_hover:rgb(89, 76, 138);
---login_submit_hover_text:rgb(28, 14, 78);
+--background_login:rgba(19, 9, 42, 0.458);
+--login_text:rgb(227, 227, 255);
+--login_submit:rgb(70, 21, 106);
+--login_submit_text:rgb(216, 215, 255);
+--login_submit_hover:rgb(111, 86, 202);
+--login_submit_hover_text:rgb(13, 4, 45);
+
+--input_bkg:rgb(99, 98, 177);
 
 /* -------------------------------------games page---------------------------------------- */
 
