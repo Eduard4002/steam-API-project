@@ -60,7 +60,8 @@
 }
 
 .AboutUs {
-  margin: 50px;
+  font-size: 2vw !important;
+  margin: 2vw 5vw;
   font-size: x-large;
 }
 
@@ -85,7 +86,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   float: right;
-  margin: 40px 20px 0px 0px;
+  margin-top: 2.5vw;
 }
 
 .button-82-shadow {
@@ -120,9 +121,9 @@
 .button-82-front {
   display: block;
   position: relative;
-  padding: 12px 27px;
+  padding: 1vw 2vw;
   border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 1.2vw;
   color: white;
   background: hsl(253, 41%, 40%);
   will-change: transform;
