@@ -13,13 +13,8 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
 
   //Create index elements
   const elements = [];
-  const test = true;
 
-  // const user = JSON.parse(localStorage.getItem("users"));
-  // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
-  // if (index !== -1) {
-  //   console.log("")
-  // }
+
   for (let i = 0; i < indexAmount; i++) {
     // Generate unique key if needed
     const key = `element_${i}`;
@@ -96,17 +91,24 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
                             {/* Is short description too large to fit inside of the container? */}
                             {game?.short_description.length <
                             descriptionMaxLength ? (
-                              <p key={game.short_description}>
-                                {game.short_description}
-                              </p>
+                              <p
+                                key={game.short_description}
+                                dangerouslySetInnerHTML={{
+                                  __html: game?.short_description,
+                                }}
+                              ></p>
                             ) : (
                               /*Short description is too large to fit inside of the container*/
-                              <p key={game.short_description}>
-                                {game?.short_description.slice(
-                                  0,
-                                  descriptionMaxLength
-                                ) + "..."}
-                              </p>
+                              <p
+                                key={game.short_description}
+                                dangerouslySetInnerHTML={{
+                                  __html:
+                                    game?.short_description.slice(
+                                      0,
+                                      descriptionMaxLength
+                                    ) + "...",
+                                }}
+                              ></p>
                             )}
                           </div>
                         </div>

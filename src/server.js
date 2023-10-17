@@ -10,32 +10,6 @@ var app = express();
 const db = sqlite3("db/database.sqlite");
  
 
-// db.serialize(() => {
-//   db.run('CREATE TABLE [IF NOT EXISTS] [schema_name].table_name' (
-//     column_1, data_type, PRIMARY, KEY,
-//     column_2, data_type, NOT, NULL,
-//     column_3, data_type, DEFAULT, 0,
-//     table_constraints
-
-//   ) [WITHOUT [ROWID] ] );
-
-//   const stmt = db.prepare('INSERT INTO accounts VALUES (?)')
-//   VALUES
-//     (email, password, username, id, favorites, )
-
-//   for (let i = 0; i < 10; i++) {
-//     stmt.run(`Ipsum ${i}`)
-//   }
-
-//   stmt.finalize()
-
-//   db.each('SELECT rowid AS id, info FROM lorem', (err, row) => {
-//     console.log(`${row.id}: ${row.info}`)
-//   })
-// })
-
-// db.close()
-
 db.prepare(
   "CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL)"
 ).run();
@@ -44,17 +18,6 @@ db.prepare(
 ).run();
 console.log(db.prepare("SELECT * FROM users").all());
 
-/* const user = {
-  id: "YEEET",
-  username: "admin",
-  email: "example@yeet.com",
-  password: "hashy",
-}
-
-const favorite = {
-  uid: "YEEET",
-  game_id: 12
-} */
 
 app.set("port", 3000);
 app.use(express.json());

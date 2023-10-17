@@ -141,15 +141,19 @@ const SearchBar = () => {
       <>
         <h1>There are {info.length} results</h1>
         <div className="parent">
-        <Filter initialData={info} onFilteredData={handleFilteredData} />
+          <Filter initialData={info} onFilteredData={handleFilteredData} />
 
-        <div className="games-parent">
-        {sortedData.length === 0 ? (
-            <h1>There are no games currently with this filter</h1>
-          ) : (
-            <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
-          )}
-        </div>
+          <div className="games-parent">
+            {sortedData.length === 0 ? (
+              <h1>There are no games currently with this filter</h1>
+            ) : (
+              <ListGames
+                dataToDisplay={sortedData}
+                gamesPerPage={10}
+                key={sortedData.length}
+              />
+            )}
+          </div>
         </div>
       </>
     );
@@ -165,117 +169,25 @@ const SetGames = () => {
     window.location.href = "/";
   }
 
-  /*
-  const [sortBy, setSortBy] = useState("default");
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(50); // Set your initial max price value
-  const [isLoading, setIsLoading] = useState(true);
-  const [selectedTypes, setSelectedTypes] = useState([
-    "game",
-    "dlc",
-    "music",
-    "demo",
-  ]);
-  const [openFilter, setOpenFilter] = useState(false);
-  useEffect(() => {
-    const cachedFilter = localStorage.getItem("Filter");
-    if (cachedFilter) {
-      const filter = JSON.parse(cachedFilter);
-      setSortBy(filter[0].sortBy);
-      setSelectedTypes(filter[0].selectedTypes);
-      setMinPrice(filter[0].minPrice);
-      setMaxPrice(filter[0].maxPrice);
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
-    }
-  }, [isLoading]);
-  if (isLoading) return;
-  const sortGames = (data, sortBy) => {
-    const [field, order] = sortBy.split("-");
-    if (field === "default") return data;
-
-    if (field === "name") {
-      return [...data].sort((a, b) => {
-        if (order === "asc") {
-          return a["name"].localeCompare(b["name"]);
-        } else if (order === "desc") {
-          return b["name"].localeCompare(a["name"]);
-        }
-      });
-    } else if (field === "price") {
-      return [...data].sort((a, b) => {
-        const priceA = a["price_overview"] ? a["price_overview"]["final"] : 0;
-        const priceB = b["price_overview"] ? b["price_overview"]["final"] : 0;
-        if (order === "asc") {
-          return priceA - priceB;
-        } else if (order === "desc") {
-          return priceB - priceA;
-        }
-      });
-    }
-
-    return [];
-  };
-  const filteredData = data.filter((item) => selectedTypes.includes(item.type));
-  // Filter data based on custom price range
-  const customFilteredData = filteredData.filter((item) => {
-    //Only return items that do not have the price_overview property
-    if (sortBy === "price-free") {
-      return !item.price_overview;
-    }
-    //If we are not using the custom prices then return all games
-    if (sortBy !== "price-custom") return true;
-    if (item.price_overview) {
-      const price = item.price_overview.final;
-      return price >= minPrice * 100 && price <= maxPrice * 100;
-    }
-    // Handle the case where price_overview doesn't exist or is not an object
-    if (minPrice === 0 || minPrice === NaN) {
-      return true; // Include the item if minPrice is 0
-    } else {
-      return false; // Exclude the item if price information is missing
-    }
-  });
-  const sortedData = sortGames(customFilteredData, sortBy);
-
-  const filterArr = [
-    {
-      sortBy: sortBy,
-      selectedTypes: selectedTypes,
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-    },
-  ];
-  localStorage.setItem("Filter", JSON.stringify(filterArr));
-
-  */
-  //const sortedData2 = Filter({ initialData: data });
   const [sortedData, setSortedData] = useState(data);
-  const [openFilter, setOpenFilter] = useState(false);
 
   const handleFilteredData = (data) => {
     setSortedData(data);
   };
-  const changeFilterState = () => {
-    console.log("Clicked...");
-    setOpenFilter(!openFilter);
-  };
 
   return (
     <>
-      <div className={`filterButton`} onClick={changeFilterState}>
-        <span className="filterIcon material-symbols-outlined">
-          {openFilter ? "close" : "tune"}
-        </span>
-      </div>
       <div className="parent">
         <Filter initialData={data} onFilteredData={handleFilteredData} />
         <div className="games-parent">
           {sortedData.length === 0 ? (
             <h1>There are no games currently with this filter</h1>
           ) : (
-            <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
+            <ListGames
+              dataToDisplay={sortedData}
+              gamesPerPage={10}
+              key={sortedData.length}
+            />
           )}
         </div>
         <div className="empty-parent"></div>

@@ -10,9 +10,12 @@
 
 .aboutGrid {
   display: grid;
-  grid-template-columns: 0.8fr 1fr;
+  grid-template-columns: 0.8fr 1fr !important;
   gap: 0px 7%;
 }
+
+
+
 
 .InfoCont {
   background: rgba(100, 65, 187, 0.279);
@@ -21,27 +24,28 @@
   backdrop-filter: blur(8.7px);
   -webkit-backdrop-filter: blur(8.7px);
   border: 1px solid rgba(132, 79, 187, 0.63);
-  height: 13vw;
-  width: 80vw;
+  height: 10vw;
+  width: 50vw;
   padding: 2vw;
   border-radius: 20px;
   margin: auto;
   margin-bottom: 2vw;
+  margin-left: 1vw;
 }
 .InfoCont > img {
   object-fit: cover;
   float: left;
-  width: 8vw;
-  height: 8vw;
+  width: 6vw;
+  height: 6vw;
   margin-left: 2vw;
   border-radius: 15px;
 }
 .names {
   float: left;
-  font-size: 2vw !important;
+  font-size: 1vw !important;
 }
 .infoTextCont {
-  width: 40vw;
+  width: 20vw;
   display: table-row;
   margin-left: 2vw;
 }
@@ -53,16 +57,17 @@
 }
 .infoTextCont > p {
   float: left;
-  font-size: 1.2vw;
+  font-size: 1vw;
 }
 .Textinfo {
-  font-size: 3vw !important;
+  font-size: 2.5vw !important;
 }
 
 .AboutUs {
-  font-size: 2vw !important;
+  font-size: 1vw !important;
   margin: 2vw 5vw;
-  font-size: x-large;
+
+ 
 }
 
 .thisA {
@@ -121,7 +126,7 @@
 .button-82-front {
   display: block;
   position: relative;
-  padding: 1vw 2vw;
+  padding: 0.6vw 1.7vw;
   border-radius: 12px;
   font-size: 1.2vw;
   color: white;
@@ -179,16 +184,18 @@
   backdrop-filter: blur(8.7px);
   -webkit-backdrop-filter: blur(8.7px);
   border: 1px solid rgba(132, 79, 187, 0.63);
-width: 60vw;
+width: 40vw;
 margin: auto;
+margin-top: -1vw;
 margin-bottom: 3vw;
   float: right;
   border-radius: 20px;
 }
 
-@media screen and (max-width: 18000px) {
+@media screen and (max-width: 1300px) {
   .aboutGrid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+
   }
 }

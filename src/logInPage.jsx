@@ -2,6 +2,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./assets/css/logInPage.css";
 
+
 function LogIn() {
   const navigate = useNavigate();
 
@@ -25,24 +26,17 @@ function LogIn() {
           navigate("/");
           //window.location.href = "/";
         } else {
-          alert("Wrong details bozo");
+          // alert("Wrong details bozo");
+
+          const dialogThingi = document.getElementById("dialogThingi");
+          dialogThingi.showModal();
+
         }
       })
       .catch((error) => {
         console.error(error);
       });
   }
-
-  /* const loggedInUserId = localStorage.getItem("user");
-
-  if (loggedInUserId) {
-    return (
-      <p className="logInQ">
-        You are already logged in. Go to <Link to={"/"}> Home Page </Link> or{" "}
-        <Link to={"/profile"}> Profile Page </Link> to continue.{" "}
-      </p>
-    );
-  } */
 
   return (
     <>
@@ -52,6 +46,13 @@ function LogIn() {
 
       <div className="logInDiv">
         
+      <dialog id="dialogThingi">
+        <p>OPS something went wrong, try again</p>
+        <form method="dialog">
+          <button>OK</button>
+        </form>
+      </dialog>
+
         <h3>Log In</h3>
         <form onSubmit={loggingIn} className="logInForm">
           <label>Username:</label>
