@@ -63,12 +63,7 @@ function Favorites({ displayFavorites = true }) {
               to={"/game/id/" + game.steam_appid}
               key={game.steam_appid}
               onClick={() =>
-                localStorage.setItem(
-                  "Single game",
-                  JSON.stringify(
-                    dataToDisplay[currentIndex * gamesPerPage + index]
-                  )
-                )
+                localStorage.setItem("Single game", JSON.stringify(data[index]))
               }
             >
               {/*-------------------- Old Classname = container ------------*/}
