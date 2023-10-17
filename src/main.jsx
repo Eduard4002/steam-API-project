@@ -144,7 +144,11 @@ const SearchBar = () => {
         <Filter initialData={info} onFilteredData={handleFilteredData} />
 
         <div className="games-parent">
-        <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
+        {sortedData.length === 0 ? (
+            <h1>There are no games currently with this filter</h1>
+          ) : (
+            <ListGames dataToDisplay={sortedData} gamesPerPage={10} />
+          )}
         </div>
         </div>
       </>
