@@ -7,10 +7,13 @@ import gustaf from "./assets/img/gustaf.jpg";
 function About() {
   return (
     <>
+    <div className="topper"> </div>
       <h1 className="About">About Us</h1>
 
       <div className="main">
+
         <div className="aboutGrid">
+
           <div className="lables">
             <div className="InfoCont">
               <img src={margo} alt="Picture of Margo" />
