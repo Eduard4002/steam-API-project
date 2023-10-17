@@ -26,6 +26,22 @@
   background-position: center;
   transition: all 0.2s ease-in-out;
 }
+
+.topper{
+
+  background: var(--gradient);
+  padding: 1vw;
+  color: var(--more_text);
+  font-size: 0.6vw;
+}
+
+.par_pop{
+
+  
+  font-size: 1vw;
+margin-left: ;
+}
+
 .favoriteCard:hover {
   transform: scale(1.05);
   box-shadow: rgba(113, 12, 156, 0.892) 0px 2px 4px,
