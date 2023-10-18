@@ -3,8 +3,6 @@ import React from "react";
 import RandomGame from "./RandomGame.jsx";
 import "../css/sidebar.css";
 export default function stuckMenu() {
-  //window.location.href("/game/" + data[randomGameIndex].appid);
-
   return (
     <div className="default-container" id="bitch">
       <ul>
