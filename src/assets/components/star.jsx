@@ -70,7 +70,7 @@ function Star({ gameId }) {
         });
       console.log("CheckFunction run");
     } else {
-      alert("You need to Log In before you can Favorite a Game");
+      alert("You need to Log In before you can Favorite a Game!");
     }
   }
   return (

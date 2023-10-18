@@ -130,7 +130,7 @@ function Singlegame({ type }) {
         });
       console.log("CheckFunction run");
     } else {
-      alert("You need to log in first!")
+      alert("You need to Log In before you can Favorite a Game!")
     }
   }
 
