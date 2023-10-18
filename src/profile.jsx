@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
 import "./assets/css/profile.css";
 import Favorites from "./favorites";
@@ -8,17 +7,6 @@ import Favorites from "./favorites";
 function Profile() {
   const loggedInUserId = localStorage.getItem("CurrLogged");
   const [username, setUsername] = useState("");
-  const navigate = useNavigate();
-
-  if (!loggedInUserId) {
-    return (
-      <p className="logInQ">
-        You are not logged in. To continue, please{" "}
-        <Link to={"/login"}> Log In </Link> or{" "}
-        <Link to={"/signup"}> Sign Up </Link>{" "}
-      </p>
-    );
-  }
 
   const uid = {
     uid: localStorage.getItem("CurrLogged"),
@@ -68,7 +56,7 @@ function Profile() {
         console.error(error);
       });
 
-    navigate("/");
+    window.location.href = "/"
   }
 
   return (
