@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./assets/css/logInPage.css";
-import { BottomAlert } from "./assets/components/alerts";
+
 
 
 function LogIn() {
@@ -38,7 +38,7 @@ function LogIn() {
 
       <div className="logInDiv">
         
-      {BottomAlert("OPS")}
+      
 
         <h3>Log In</h3>
         <form onSubmit={loggingIn} className="logInForm">
