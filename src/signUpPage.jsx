@@ -1,11 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import "./assets/css/signUpPage.css";
 import axios from "axios";
 
 function SignUp() {
-  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     id: "",
@@ -40,8 +38,7 @@ function SignUp() {
       .then((response) => {
         if (response.status == 200) {
           window.localStorage.setItem("CurrLogged", newUser.id);
-          navigate("/");
-          //window.location.href = "/"
+          window.location.href = "/"
         }
       })
       .catch((error) => {
