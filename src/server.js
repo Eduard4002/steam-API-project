@@ -158,6 +158,7 @@ app.delete("/profile/:userId", function (req, res) {
   //If user is found, delete the account!
   if (userDetails) {
     db.prepare("DELETE FROM users WHERE id = ?").run(userId);
+    db.prepare("DELETE FROM favorites WHERE uid = ?").run(userId)
     res.json({ message: "User deleted successfully" });
   
   //If user is not found, don't do anything
