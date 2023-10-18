@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./assets/css/logInPage.css";
 
 
+
 function LogIn() {
 
   function loggingIn(e) {
@@ -21,6 +22,7 @@ function LogIn() {
         } else {
           alert("Wrong log in credentials"); //Alert the user that the details did not match
 
+        
         }
       })
       .catch((error) => {
@@ -32,12 +34,7 @@ function LogIn() {
     <>
       <div className="logInDiv">
         
-      <dialog id="dialogThingi">
-        <p>OPS something went wrong, try again</p>
-        <form method="dialog">
-          <button>OK</button>
-        </form>
-      </dialog>
+      
 
         <h3>Log In</h3>
         <form onSubmit={loggingIn} className="logInForm">

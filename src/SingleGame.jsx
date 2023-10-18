@@ -105,29 +105,33 @@ function Singlegame({ type }) {
   if (itemData.steam_appid === 0) return <h1>Loading</h1>;
 
   function favoriteClick() {
-    //StarAnim
-    setAnimate(true);
-    setTimeout(() => setAnimate(false), 200);
+    if (localStorage.getItem("CurrLogged")) {
+      //StarAnim
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 200);
 
-    const newItem = {
-      newItem: itemData.steam_appid,
-    };
+      const newItem = {
+        newItem: itemData.steam_appid,
+      };
 
-    console.log("check");
+      console.log("check");
 
-    //post Request
-    axios
-      .post("http://localhost:3000/singlegame", {
-        uid: uid.uid,
-        newItem: newItem.newItem,
-      })
-      .then((response) => {
-        setStarActive(!starActive);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    console.log("CheckFunction run");
+      //post Request
+      axios
+        .post("http://localhost:3000/singlegame", {
+          uid: uid.uid,
+          newItem: newItem.newItem,
+        })
+        .then((response) => {
+          setStarActive(!starActive);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      console.log("CheckFunction run");
+    } else {
+      alert("You need to log in first!")
+    }
   }
 
   // Example usage:

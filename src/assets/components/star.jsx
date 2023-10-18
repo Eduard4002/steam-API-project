@@ -1,21 +1,13 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import "../css/single.css";
 // import ShowAlert, { showSignupAlert } from "./alerts";
 
-function Star({ type, gameId, refreshLink }) {
-  const { value } = useParams();
-  const [isLoading, setLoading] = useState(true);
+function Star({ gameId }) {
   const [animate, setAnimate] = useState(false);
-  const [favorites, setFavorites] = useState([]);
-  const [error, setError] = useState(null);
-  const [itemData, setItemData] = useState(null);
-  let [starActive, setStarActive] = useState(false);
-  const navigate = useNavigate();
 
-  let data;
+  let [starActive, setStarActive] = useState(false);
 
   const uid = {
     uid: localStorage.getItem("CurrLogged"),
@@ -64,12 +56,6 @@ function Star({ type, gameId, refreshLink }) {
       setAnimate(true);
       setTimeout(() => setAnimate(false), 200);
 
-      const newItem = {
-        newItem: gameId,
-      };
-
-      console.log("check");
-
       //post Request
       axios
         .post("http://localhost:3000/singlegame", {
@@ -84,7 +70,7 @@ function Star({ type, gameId, refreshLink }) {
         });
       console.log("CheckFunction run");
     } else {
-      alert("You need to Sign Up before you can Favorite a Game");
+      alert("You need to Log In before you can Favorite a Game");
     }
   }
   return (
