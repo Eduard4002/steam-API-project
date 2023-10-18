@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/single.css";
 // import ShowAlert, { showSignupAlert } from "./alerts";
-import { BottomAlert } from "./alerts";
 
 function Star({ type, gameId, refreshLink }) {
   const { value } = useParams();
@@ -85,8 +84,7 @@ function Star({ type, gameId, refreshLink }) {
         });
       console.log("CheckFunction run");
     } else {
-      const dialogThing = document.getElementById("dialogThing");
-      dialogThing.showModal();
+      alert("You need to Sign Up before you can Favorite a Game");
     }
   }
   return (
@@ -97,7 +95,6 @@ function Star({ type, gameId, refreshLink }) {
         }`}
         onClick={favoriteClick}
       ></div>
-      {BottomAlert("Hejsan på dejsan")}
     </>
   );
 }
