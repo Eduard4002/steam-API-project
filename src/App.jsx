@@ -42,6 +42,7 @@ function App() {
     //if (extraData.length > 0 || data.length > 0) return;
     getRandomGames(amountOfGames).then((result) => {
       console.log("Fetching information from API");
+      localStorage.removeItem("Filter");
 
       // Create a temporary map to associate extra data with games
       const temp = {};
