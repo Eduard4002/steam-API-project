@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "./assets/components/DarkMode";
 import "./assets/css/profile.css";
 import Favorites from "./favorites";
@@ -8,17 +7,6 @@ import Favorites from "./favorites";
 function Profile() {
   const loggedInUserId = localStorage.getItem("CurrLogged");
   const [username, setUsername] = useState("");
-  const navigate = useNavigate();
-
-  if (!loggedInUserId) {
-    return (
-      <p className="logInQ">
-        You are not logged in. To continue, please{" "}
-        <Link to={"/login"}> Log In </Link> or{" "}
-        <Link to={"/signup"}> Sign Up </Link>{" "}
-      </p>
-    );
-  }
 
   const uid = {
     uid: localStorage.getItem("CurrLogged"),
@@ -38,6 +26,24 @@ function Profile() {
       });
   }, []);
 
+  function changePassword() {
+    const currentPassword = document.getElementById("current").value;
+    const newPassword = document.getElementById("new").value;
+  
+    axios
+      .post("http://localhost:3000/changepassw", {
+        uid: uid.uid,
+        currentPassword,
+        newPassword
+      })
+      .then((response) => {
+        alert("Password changed successfully")
+      })
+      .catch((error) => {
+        alert("Couldn't change password, try again later")
+      });
+  }
+
   function deleteUser() {
     localStorage.removeItem("CurrLogged");
 
@@ -50,7 +56,7 @@ function Profile() {
         console.error(error);
       });
 
-    navigate("/");
+    window.location.href = "/"
   }
 
   return (
@@ -84,12 +90,17 @@ function Profile() {
                 <h3>Profile Settings</h3>
               </div>
               <div className="settingsCard">
-                <h5>Change Password:</h5>
-                <label>Current Password:</label>
-                <input type="password" name="" id="" />
-                <label>New Password:</label>
-                <input type="password" name="" id="" />
-                <input type="submit" value="Change Password" />
+
+                <form onSubmit = {changePassword}>
+                  <h5>Change Password:</h5>
+                  <label>Current Password:</label>
+                  <input type="password" name="" id="current" />
+                  <label>New Password:</label>
+                  <input type="password" name="" id="new" />
+                  <input type="submit" value="Change Password" />
+                </form>
+
+                
               </div>
               <div className="settingsCard">
                 <h5>Delete User:</h5>

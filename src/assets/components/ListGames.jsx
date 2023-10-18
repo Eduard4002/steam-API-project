@@ -14,7 +14,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
   //Create index elements
   const elements = [];
 
-
   for (let i = 0; i < indexAmount; i++) {
     // Generate unique key if needed
     const key = `element_${i}`;
@@ -30,8 +29,6 @@ function ListGames({ dataToDisplay, maxGames = 20, gamesPerPage = 5 }) {
       </button>
     );
   }
-
-  // const index = user.favorites.findIndex((fav) => fav.appid === newItem);
 
   return (
     <>

@@ -1,12 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import "./assets/css/signUpPage.css";
 import axios from "axios";
 
-
 function SignUp() {
-  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     id: "",
@@ -34,17 +31,21 @@ function SignUp() {
 
     const newUser = {
       ...userData,
-      id: generateUserId(), 
-      
+      id: generateUserId(),
     };
-
     axios
       .post("http://localhost:3000/signup", newUser)
       .then((response) => {
-        window.localStorage.setItem("CurrLogged", newUser.id);
-        window.location.href = "/";
+        if (response.status == 200) {
+          window.localStorage.setItem("CurrLogged", newUser.id);
+          window.location.href = "/"
+        }
       })
       .catch((error) => {
+        console.log("ERROR", error);
+        if (error.response.status === 409) {
+          alert("Email or username is taken");
+        }
         console.error(error);
       });
   }
