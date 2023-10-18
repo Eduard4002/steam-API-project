@@ -131,7 +131,7 @@ app.post("/login", function (req, res) {
   }
 });
 
-
+//Get the users username to display it on the profile page
 app.get("/profile/:userId", function (req, res) {
   const userId = req.params.userId;
 
