@@ -9,6 +9,7 @@ function Favorites({ displayFavorites = true }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const descriptionMaxLength = 130;
+  const uid = localStorage.getItem("CurrLogged")
 
   useEffect(() => {
     // Fetch user's favorite game IDs from the server
@@ -47,7 +48,15 @@ function Favorites({ displayFavorites = true }) {
       console.log("outdata", outData);
     });
   }, [favoriteGameIds]);
-
+  if (!uid) {
+    return (
+      <>
+      <h2> You need to <Link to={"/login"}>Log in </Link> or <Link to={"/signup"}> Sign up </Link> to view favorites </h2>
+        
+      </>
+    )
+  }
+  
   return (
     <>
       <div className="favoritesDiv">
