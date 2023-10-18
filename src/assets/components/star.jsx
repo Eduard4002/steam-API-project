@@ -84,7 +84,7 @@ function Star({ type, gameId, refreshLink }) {
         });
       console.log("CheckFunction run");
     } else {
-      alert("You need to Sign Up before you can Favorite a Game");
+      alert("You need to Log In before you can Favorite a Game");
     }
   }
   return (
