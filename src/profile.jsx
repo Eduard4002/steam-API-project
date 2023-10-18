@@ -5,7 +5,6 @@ import "./assets/css/profile.css";
 import Favorites from "./favorites";
 
 function Profile() {
-  const loggedInUserId = localStorage.getItem("CurrLogged");
   const [username, setUsername] = useState("");
 
   const uid = {
@@ -26,45 +25,43 @@ function Profile() {
       });
   }, []);
 
+  //Change password function
   function changePassword() {
-    const currentPassword = document.getElementById("current").value;
-    const newPassword = document.getElementById("new").value;
+    const currentPassword = document.getElementById("current").value; //Get current password
+    const newPassword = document.getElementById("new").value; //Get new password
   
     axios
-      .post("http://localhost:3000/changepassw", {
+      .post("http://localhost:3000/changepassw", { //Send current and new password to the server
         uid: uid.uid,
         currentPassword,
         newPassword
       })
-      .then((response) => {
+
+      .then((response) => { //If success, change password
         alert("Password changed successfully")
       })
-      .catch((error) => {
+      .catch((error) => { //If not success, alert the user that it failed
         alert("Couldn't change password, try again later")
       });
   }
 
+  //Delete account
   function deleteUser() {
-    localStorage.removeItem("CurrLogged");
+    localStorage.removeItem("CurrLogged"); 
 
     axios
-      .delete(`http://localhost:3000/profile/${uid.uid}`)
+      .delete(`http://localhost:3000/profile/${uid.uid}`) //Send user id to database so it knows who to delete
       .then((response) => {
-        console.log("User deleted successfully");
       })
       .catch((error) => {
         console.error(error);
       });
 
-    window.location.href = "/"
+    window.location.href = "/" //Navigate to home
   }
 
   return (
     <>
-      {/* <ToggleVisibility> */}
-      {/* <StuckMenu /> 
-      </ToggleVisibility> */}
-
       <div className="profileDiv">
         <div className="profileName">
           <h1>Hi, {username} </h1>
@@ -77,15 +74,8 @@ function Profile() {
                 <h3>Main Settings</h3>
               </div>
               <div className="settingsCard">
-                <DarkMode />
-                {/* <DarkModeToggle /> */}
-                {/* <input type="checkbox" name="" id="" />
-                              <label>DarkMode</label> */}
+                <DarkMode /> 
               </div>
-              {/* <div className="settingsCard">
-                              <input type="checkbox" name="" id="" checked />
-                              <label>Något annat</label>
-                            </div> */}
               <div className="settingsHeader">
                 <h3>Profile Settings</h3>
               </div>

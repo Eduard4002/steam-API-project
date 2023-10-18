@@ -16,7 +16,7 @@ function Favorites({ displayFavorites = true }) {
       uid: localStorage.getItem("CurrLogged"),
     };
 
-    fetch(`http://localhost:3000/favorites/${userId.uid}`)
+    fetch(`http://localhost:3000/favorites/${userId.uid}`) 
       .then((response) => response.json())
       .then((data) => {
         setFavoriteGameIds(data);

@@ -8,21 +8,18 @@ function LogIn() {
   function loggingIn(e) {
     e.preventDefault();
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value; //Get username
+    const password = document.getElementById("password").value; //Get password
 
     axios
-      .post("http://localhost:3000/login", { username, password })
+      .post("http://localhost:3000/login", { username, password }) //Send username and password to database to see if it matches
       .then((response) => {
         const { success } = response.data;
         if (success) {
-          window.localStorage.setItem("CurrLogged", response.data.userId);
-          window.location.href = "/";
+          window.localStorage.setItem("CurrLogged", response.data.userId); //If successful, log in
+          window.location.href = "/"; //Redirect to home page
         } else {
-          // alert("Wrong details bozo");
-
-          // const dialogThingi = document.getElementById("dialogThingi");
-          // dialogThingi.showModal();
+          alert("Wrong log in credentials"); //Alert the user that the details did not match
 
         }
       })
@@ -33,10 +30,6 @@ function LogIn() {
 
   return (
     <>
-      {/* <ToggleVisibility>
-        <StuckMenu /> 
-      </ToggleVisibility> */}
-
       <div className="logInDiv">
         
       <dialog id="dialogThingi">
